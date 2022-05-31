@@ -3,10 +3,10 @@
     <div class="p-3  card">
       <div class="card-body">
 
-        @if (Request::is('admin/banner/create'))
-          <form action="/admin/banner" method="POST" enctype="multipart/form-data">  
+        @if (Request::is('account/banner/create'))
+          <form action="/account/banner" method="POST" enctype="multipart/form-data">  
         @else
-          <form action="/admin/banner/{{$banner->id}}" method="POST" encype="multipart/form-data">  
+          <form action="/account/banner/{{$banner->id}}" method="POST" encype="multipart/form-data">  
             @method('PUT')
         @endif
           @csrf
@@ -73,7 +73,7 @@
           </div>
 
      
-          <a href="/admin/banner" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
+          <a href="/account/banner" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
         
         </form>

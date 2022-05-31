@@ -3,10 +3,10 @@
     <div class="p-3  card">
       <div class="card-body">
 
-        @if (Request::is('admin/posts/kategori/create'))
-          <form action="/admin/posts/kategori" method="POST">  
+        @if (Request::is('account/posts/kategori/create'))
+          <form action="/account/posts/kategori" method="POST">  
         @else
-          <form action="/admin/posts/kategori/{{$kategori->id}}" method="POST">  
+          <form action="/account/posts/kategori/{{$kategori->id}}" method="POST">  
             @method('PUT')
         @endif
           @csrf
@@ -22,7 +22,7 @@
 
      {{-- {!!form_input($errors, 'nama', 'Nama', isset($kategori) ? $kategori : null)!!} --}}
 
-          <a href="/admin/posts/kategori" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
+          <a href="/account/posts/kategori" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
         
         </form>

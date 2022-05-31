@@ -17,16 +17,17 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="/admin/dashboard" class="nav-link {{Request::is('admin/dashboard') ? 'active' : ''}}">
+            <a href="/account/dashboard" class="nav-link {{Request::is('account/dashboard') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
+          
 
-            <li class="nav-item {{Request::is('admin/posts*') ? 'menu-open' : ''}}">
-            <a href="#" class="nav-link {{Request::is('admin/posts*') ? 'active' : ''}}">
+          <li class="nav-item {{Request::is('account/posts*') ? 'menu-open' : ''}}">
+            <a href="#" class="nav-link {{Request::is('account/posts*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 Artikel
@@ -35,13 +36,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/posts/post" class="nav-link {{Request::is('admin/posts/post*') ? 'child-active' : ''}}">
+                <a href="/account/posts/post" class="nav-link {{Request::is('account/posts/post*') ? 'child-active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Artikel</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/posts/kategori" class="nav-link {{Request::is('admin/posts/kategori*') ? 'child-active' : '' }}">
+                <a href="/account/posts/kategori" class="nav-link {{Request::is('account/posts/kategori*') ? 'child-active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori</p>
                 </a>
@@ -49,8 +50,27 @@
             </ul>
           </li>
 
-          <li class="nav-item {{Request::is('admin/user*') ? 'menu-open' : ''}}">
-            <a href="#" class="nav-link {{Request::is('admin/user*') ? 'active' : ''}}">
+           <li class="nav-item">
+            <a href="/account/berkas" class="nav-link {{Request::is('account/berkas') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Berkas
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/account/profile" class="nav-link {{Request::is('account/profile') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Profil
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item {{Request::is('account/user*') ? 'menu-open' : ''}}">
+            <a href="#" class="nav-link {{Request::is('account/user*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 User
@@ -59,7 +79,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/user" class="nav-link {{Request::is('admin/user*') ? 'child-active' : ''}}">
+                <a href="/account/user" class="nav-link {{Request::is('account/user*') ? 'child-active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User</p>
                 </a>
@@ -74,7 +94,7 @@
           </li>
 
            <li class="nav-item">
-            <a href="/admin/banner" class="nav-link">
+            <a href="/account/banner" class="nav-link">
               <i class="nav-icon fas fa-image"></i>
               <p>
                 Banner
@@ -83,7 +103,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="/admin/konfigurasi" class="nav-link">
+            <a href="/account/konfigurasi" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Konfigurasi

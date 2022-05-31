@@ -30,7 +30,7 @@
                  </div>
         @endif
 
-      <form action="/admin/auth/login" method="post">
+      <form action="/account/auth/login" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control @error('email') is-invalid @enderror " placeholder="Email">

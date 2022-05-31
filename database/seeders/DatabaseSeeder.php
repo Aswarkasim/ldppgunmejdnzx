@@ -20,19 +20,33 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'aswarkasim',
             'email' => 'aswarkasim@gmail.com',
+            'role' => 'superadmin',
+            'password' => bcrypt('password')
+        ]);
+
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
             'role' => 'admin',
             'password' => bcrypt('password')
         ]);
 
         User::create([
-            'name' => 'riski',
-            'email' => 'riski@gmail.com',
-            'role' => 'user',
+            'name' => 'mahasiswa',
+            'email' => 'mahasiswa@gmail.com',
+            'role' => 'mahasiswa',
+            'password' => bcrypt('password')
+        ]);
+
+        User::create([
+            'name' => 'dosen',
+            'email' => 'dosen@gmail.com',
+            'role' => 'dosen',
             'password' => bcrypt('password')
         ]);
 
         Configuration::create([
-            'app_name' => 'KTC FW'
+            'app_name' => 'LDPPGUNM'
         ]);
     }
 }

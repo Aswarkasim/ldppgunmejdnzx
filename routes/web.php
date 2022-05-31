@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
+use App\Http\Controllers\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 
-Route::prefix('/admin/auth')->group(function () {
+Route::prefix('/account/auth')->group(function () {
     Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest');
     Route::post('/login', [AdminAuthController::class, 'login']);
 
@@ -34,7 +35,7 @@ Route::prefix('/admin/auth')->group(function () {
 });
 
 
-Route::prefix('/admin')->group(function () {
+Route::prefix('/account')->middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         $data = [
             'content' => 'admin/dashboard/index'
@@ -53,6 +54,11 @@ Route::prefix('/admin')->group(function () {
     Route::prefix('/posts')->group(function () {
         Route::resource('/post', AdminPostController::class);
         Route::resource('/kategori', AdminCategoryPostController::class);
+    });
+
+    Route::prefix('/profile')->group(function () {
+        Route::get('/', [AdminProfileController::class, 'index']);
+        Route::put('/update', [AdminProfileController::class, 'update']);
     });
 });
 
