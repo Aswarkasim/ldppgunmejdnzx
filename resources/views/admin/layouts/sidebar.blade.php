@@ -1,9 +1,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary elevation-2">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/account/dashboard" class="brand-link">
       <img src="/img/ktc_logo_line.png" alt="AdminLTE Logo" width="15px" class="" style="opacity: .8"> 
-      <span class="brand-text font-weight-light">KTC FW</span>
+      <span class="brand-text font-weight-light">LDPPGUNM</span>
     </a>
 
     <!-- Sidebar -->
@@ -26,6 +26,8 @@
           </li>
           
 
+          @if (Auth::user()->role == 'superadmin')
+              
           <li class="nav-item {{Request::is('account/posts*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{Request::is('account/posts*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-newspaper"></i>
@@ -50,24 +52,53 @@
             </ul>
           </li>
 
-           <li class="nav-item">
+          <li class="nav-item">
+            <a href="/account/kelengkapan" class="nav-link {{Request::is('account/kelengkapan') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+               Kelengkapan
+              </p>
+            </a>
+          </li>
+
+          @endif
+
+          @if (auth()->user()->role === 'mahasiswa')
+              
+          <li class="nav-item">
             <a href="/account/berkas" class="nav-link {{Request::is('account/berkas') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-file"></i>
               <p>
                 Berkas
               </p>
             </a>
           </li>
+          
+          @endif
+           
 
           <li class="nav-item">
             <a href="/account/profile" class="nav-link {{Request::is('account/profile') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-edit  "></i>
               <p>
-                Profil
+                Data Diri
+              </p>
+            </a>
+          </li>
+          
+           <li class="nav-item">
+            <a href="/account" class="nav-link {{Request::is('account') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Akun
               </p>
             </a>
           </li>
 
+
+          
+
+          @if (auth()->user()->role == 'superadmin')
 
           <li class="nav-item {{Request::is('account/user*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{Request::is('account/user*') ? 'active' : ''}}">
@@ -92,7 +123,7 @@
               </li>
             </ul>
           </li>
-
+              
            <li class="nav-item">
             <a href="/account/banner" class="nav-link">
               <i class="nav-icon fas fa-image"></i>
@@ -110,6 +141,9 @@
               </p>
             </a>
           </li>
+
+          @endif
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

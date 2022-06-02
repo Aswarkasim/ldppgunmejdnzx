@@ -6,8 +6,10 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminBannerController;
+use App\Http\Controllers\AdminBerkasController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
+use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminProfileController;
 
 /*
@@ -26,7 +28,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 Route::prefix('/account/auth')->group(function () {
-    Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest');
+    Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest')->name('login');
     Route::post('/login', [AdminAuthController::class, 'login']);
 
     Route::get('/register', [AdminAuthController::class, 'register']);
@@ -47,6 +49,11 @@ Route::prefix('/account')->middleware('auth')->group(function () {
 
     Route::get('/konfigurasi', [AdminConfigurationController::class, 'index']);
     Route::put('/konfigurasi/update', [AdminConfigurationController::class, 'update']);
+
+    Route::resource('/kelengkapan', AdminKelengkapanController::class);
+
+    Route::put('/berkas/upload', [AdminBerkasController::class, 'upload']);
+    Route::resource('/berkas', AdminBerkasController::class);
 
     Route::resource('/banner', AdminBannerController::class);
 

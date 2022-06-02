@@ -71,7 +71,7 @@ class AdminBannerController extends Controller
 
         Banner::create($data);
         Alert::success('Sukses', 'Banner telah ditambahkan');
-        return redirect('/admin/banner');
+        return redirect('/account/banner');
     }
 
     /**
@@ -141,7 +141,7 @@ class AdminBannerController extends Controller
 
         $banner->update($data);
         Alert::success('Sukses', 'Banner telah diubah');
-        return redirect('/admin/banner');
+        return redirect('/account/banner');
     }
 
     /**

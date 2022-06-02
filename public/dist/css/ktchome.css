@@ -11,8 +11,15 @@ body {
     max-width: 800px;
 } */
 
+.bg-dark{
+    background-color: #2177b8!important;
+}
 a {
-    color: #3b7ddd;
+    color: #2177b8;
+}
+
+.btn-secondary{
+    background-color: #e1820c;
 }
 
 .img-post-wrapper {

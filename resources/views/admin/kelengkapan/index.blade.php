@@ -1,6 +1,9 @@
+<div class="row">
+  <div class="col-6">
+
 <div class="card">
 <div class="card-body">
-  <a href="/account/banner/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+  <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
 
   <div class="float-right">
     <form action="" method="get">
@@ -8,7 +11,7 @@
         <input type="text" name="cari" class="form-control" placeholder="Cari..">
         <span class="input-group-append">
           <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-          <a href="/account/banner" class="btn btn-info btn-flat tombol-hapus"><i class="fa fa-sync-alt"></i></a>
+          <a href="/account/kelengkapan" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i></a>
         </span>
       </div>
       </form>
@@ -23,11 +26,11 @@
   </thead>
 
   <tbody>
-    @foreach ($banner as $row)
+    @foreach ($kelengkapan as $row)
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/account/banner/{{$row->id}}"><b>{{$row->topik}}</a></b> </td>
+      <td>{{$row->name}} </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
@@ -35,9 +38,9 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-              <a class="dropdown-item" href="/account/banner/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
+              <a class="dropdown-item" href="/account/kelengkapan/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
-                <form action="/account/banner/{{$row->id}}" method="post" id="form-delete" class="tombol-hapus">
+                <form action="/account/kelengkapan/{{$row->id}}" method="post" id="form-delete" class="tombol-hapus">
                   @method('delete')
                   @csrf
                   <button type="submit" id="delete" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>
@@ -53,10 +56,14 @@
 </table>
 
   <div class="float-right">
-    {{$banner->links()}}
+    {{$kelengkapan->links()}}
   </div>
 </div>
 </div>
+
+  </div>
+</div>
+
 <!-- /.card-body -->
 
 

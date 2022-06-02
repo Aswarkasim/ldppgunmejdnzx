@@ -83,7 +83,7 @@ class AdminPostController extends Controller
 
         Post::create($data);
         Alert::success('Sukses', 'Artikel telah ditambahkan');
-        return redirect('/admin/posts/post');
+        return redirect('/account/posts/post');
     }
 
     /**
@@ -156,7 +156,7 @@ class AdminPostController extends Controller
 
         $post->update($data);
         Alert::success('Sukses', 'Artikel sukses disimpan');
-        return redirect('/admin/posts/post/' . $data['slug'] . '/edit');
+        return redirect('/account/posts/post/' . $data['slug'] . '/edit');
     }
 
     /**
@@ -174,6 +174,6 @@ class AdminPostController extends Controller
         }
         $post->delete();
         Alert::success('Sukses', 'Artikel sukses dihapus');
-        return redirect('/admin/posts/post/');
+        return redirect('/account/posts/post/');
     }
 }
