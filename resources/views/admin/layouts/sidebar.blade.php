@@ -78,7 +78,7 @@
            
 
           <li class="nav-item">
-            <a href="/account/profile" class="nav-link {{Request::is('account/profile') ? 'active' : ''}}">
+            <a href="/account/profile?page=data_diri" class="nav-link {{Request::is('account/profile*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-edit  "></i>
               <p>
                 Data Diri

@@ -1,21 +1,51 @@
-<div class="card">
-<div class="card-body">
-  <a href="/admin/banner/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card p-4">
+      
+        <style>
+          .cursor-pointer{
+            cursor: pointer;
+          }
+        </style>
 
-  <div class="float-right">
-    <form action="" method="get">
-    <div class="input-group input-group-sm">
-        <input type="text" name="cari" class="form-control" placeholder="Cari..">
-        <span class="input-group-append">
-          <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-          <a href="/admin/banner" class="btn btn-info btn-flat tombol-hapus"><i class="fa fa-sync-alt"></i></a>
-        </span>
-      </div>
-      </form>
+        @php
+            $page = request('page')
+        @endphp
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+          <li class="nav-item">
+            <a href="?page=data_diri" class="nav-link {{$page == 'data_diri' ? 'active' : ''}} cursor-pointer">Data Diri</a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=instansi" class="nav-link {{$page == 'instansi' ? 'active' : ''}} cursor-pointer">Instansi</a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=pendidikan" class="nav-link {{$page == 'pendidikan' ? 'active' : ''}} cursor-pointer">Pendidikan</a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=keluarga" class="nav-link {{$page == 'keluarga' ? 'active' : ''}} cursor-pointer">Keluarga</a>
+          </li>
+
+        </ul>
+
+
+        @switch($page)
+            @case('data_diri')
+                @include('/admin/profile/data_diri')
+                @break
+            @case('instansi')
+                @include('/admin/profile/instansi')
+                @break
+            @case('pendidikan')
+                @include('/admin/profile/pendidikan')
+                @break
+            @case('keluarga')
+                @include('/admin/profile/keluarga')
+            @break
+            @default
+                
+        @endswitch
+
+    </div>
   </div>
-
 </div>
-</div>
-<!-- /.card-body -->
-
-

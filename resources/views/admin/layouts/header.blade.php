@@ -41,7 +41,7 @@
    
 
       <li class="nav-item">
-        <a href="/account/auth/logout" class="nav-link" role="button">
+        <a href="/auth/logout" class="nav-link" role="button">
           <i class="fas fa-sign-out-alt"></i>
         </a>
       </li>

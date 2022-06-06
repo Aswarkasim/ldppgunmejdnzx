@@ -30,6 +30,7 @@ class AdminAuthController extends Controller
 
     function register()
     {
+        return view('admin/auth/register');
     }
 
     function doRegister()

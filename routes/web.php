@@ -27,7 +27,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 
-Route::prefix('/account/auth')->group(function () {
+Route::prefix('/auth')->group(function () {
     Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest')->name('login');
     Route::post('/login', [AdminAuthController::class, 'login']);
 
@@ -65,7 +65,10 @@ Route::prefix('/account')->middleware('auth')->group(function () {
 
     Route::prefix('/profile')->group(function () {
         Route::get('/', [AdminProfileController::class, 'index']);
-        Route::put('/update', [AdminProfileController::class, 'update']);
+        Route::put('/datadiri', [AdminProfileController::class, 'updateDataDiri']);
+        Route::put('/instansi', [AdminProfileController::class, 'updateInstansi']);
+        Route::put('/pendidikan', [AdminProfileController::class, 'updatePendidikan']);
+        Route::put('/keluarga', [AdminProfileController::class, 'updateKeluarga']);
     });
 });
 
