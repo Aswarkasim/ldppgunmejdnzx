@@ -53,7 +53,16 @@
           </li>
 
           <li class="nav-item">
-            <a href="/account/kelengkapan" class="nav-link {{Request::is('account/kelengkapan') ? 'active' : ''}}">
+            <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+               Verifikasi
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/account/kelengkapan" class="nav-link {{Request::is('account/kelengkapan*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-file"></i>
               <p>
                Kelengkapan
@@ -73,11 +82,8 @@
               </p>
             </a>
           </li>
-          
-          @endif
-           
 
-          <li class="nav-item">
+           <li class="nav-item">
             <a href="/account/profile?page=data_diri" class="nav-link {{Request::is('account/profile*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-edit  "></i>
               <p>
@@ -85,6 +91,12 @@
               </p>
             </a>
           </li>
+
+          
+          @endif
+           
+
+         
           
            <li class="nav-item">
             <a href="/account" class="nav-link {{Request::is('account') ? 'active' : ''}}">
@@ -99,6 +111,41 @@
           
 
           @if (auth()->user()->role == 'superadmin')
+
+          
+          <li class="nav-item {{Request::is('account/master*') ? 'menu-open' : ''}}">
+            <a href="#" class="nav-link {{Request::is('account/master*') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-folder"></i>
+              <p>
+                Master
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/account/master/angkatan" class="nav-link {{Request::is('account/master/angkatan*') ? 'child-active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Angkatan</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/account/master/bidangstudi" class="nav-link {{Request::is('account/master/bidangstudi*') ? 'child-active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bidang Studi</p>
+                </a>
+              </li>
+
+              {{-- <li class="nav-item">
+                <a href="/account/master/prodi" class="nav-link {{Request::is('account/master/prodi*') ? 'child-active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Prodi</p>
+                </a>
+              </li> --}}
+             
+            </ul>
+          </li>
+
 
           <li class="nav-item {{Request::is('account/user*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{Request::is('account/user*') ? 'active' : ''}}">

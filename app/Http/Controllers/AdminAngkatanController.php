@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelengkapan;
+use App\Models\Angkatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AdminKelengkapanController extends Controller
+class AdminAngkatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,15 +20,15 @@ class AdminKelengkapanController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $angkatan = Angkatan::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $kelengkapan = Kelengkapan::latest()->paginate(10);
+            $angkatan = Angkatan::latest()->paginate(10);
         }
         $data = [
-            'title'   => 'Type Berkas',
-            'create'  => route('kelengkapan.create'),
-            'kelengkapan' => $kelengkapan,
-            'content' => 'admin/kelengkapan/index'
+            'title'   => 'Angkatan',
+            'create'  => route('angkatan.create'),
+            'angkatan' => $angkatan,
+            'content' => 'admin/angkatan/index'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -43,8 +43,8 @@ class AdminKelengkapanController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
-            'store'    => route('kelengkapan.store'),
-            'content' => 'admin/kelengkapan/add'
+            'store'    => route('angkatan.store'),
+            'content' => 'admin/angkatan/add'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -60,11 +60,11 @@ class AdminKelengkapanController extends Controller
         //
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'kebutuhan'              => 'required',
+            'desc'              => 'required|min:3',
         ]);
-        Kelengkapan::create($data);
-        Alert::success('Sukses', 'Kelengkapan telah ditambahkan');
-        return redirect('/account/kelengkapan');
+        Angkatan::create($data);
+        Alert::success('Sukses', 'Angkatan telah ditambahkan');
+        return redirect('/account/master/angkatan');
     }
 
     /**
@@ -89,9 +89,9 @@ class AdminKelengkapanController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
-            'kelengkapan' => Kelengkapan::find($id),
-            'store'    => route('kelengkapan.store'),
-            'content' => 'admin/kelengkapan/add'
+            'angkatan' => Angkatan::find($id),
+            'store'    => route('angkatan.store'),
+            'content' => 'admin/angkatan/add'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -106,13 +106,13 @@ class AdminKelengkapanController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kelengkapan = Kelengkapan::find($id);
+        $angkatan = Angkatan::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
         ]);
-        $kelengkapan->update($data);
+        $angkatan->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');
-        return redirect('/account/kelengkapan');
+        return redirect('/account/master/angkatan');
     }
 
     /**
@@ -124,8 +124,8 @@ class AdminKelengkapanController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('kelengkapans')->delete($id);
-        Alert::success('success', 'Kelengkapan telah dihapus');
-        return redirect('/account/kelengkapan');
+        DB::table('angkatans')->delete($id);
+        Alert::success('success', 'Angkatan telah dihapus');
+        return redirect('/account/master/angkatan');
     }
 }

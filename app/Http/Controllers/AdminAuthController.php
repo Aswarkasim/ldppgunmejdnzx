@@ -43,6 +43,6 @@ class AdminAuthController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect('account/auth');
+        return redirect('auth');
     }
 }

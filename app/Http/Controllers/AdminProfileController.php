@@ -14,6 +14,13 @@ class AdminProfileController extends Controller
     {
         //
         $user_id = auth()->user()->id;
+        $cek = Mahasiswa::whereUserId($user_id)->first();
+        if ($cek == false) {
+            $data = [
+                'user_id' => $user_id
+            ];
+            Mahasiswa::create($data);
+        }
         $profile = Mahasiswa::whereUserId($user_id)->first();
         $data = [
             'title'   => 'Data Diri',

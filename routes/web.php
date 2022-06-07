@@ -1,16 +1,21 @@
 <?php
 
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminProdiController;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminBerkasController;
+use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\AdminAngkatanController;
+use App\Http\Controllers\AdminVerifikasiController;
+use App\Http\Controllers\AdminBidangStudiController;
+use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
-use App\Http\Controllers\AdminKelengkapanController;
-use App\Http\Controllers\AdminProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +62,18 @@ Route::prefix('/account')->middleware('auth')->group(function () {
 
     Route::resource('/banner', AdminBannerController::class);
 
+    Route::prefix('/master')->group(function () {
+        Route::resource('/angkatan', AdminAngkatanController::class);
+        Route::resource('/bidangstudi', AdminBidangStudiController::class);
+        // Route::resource('/prodi', AdminProdiController::class);
+    });
+
+    Route::prefix('/verifikasi')->group(function () {
+        Route::get('/', [AdminVerifikasiController::class, 'index']);
+        Route::get('/show/{id}', [AdminVerifikasiController::class, 'show']);
+        Route::get('/validasi/{id}', [AdminVerifikasiController::class, 'validasi']);
+    });
+
 
     Route::prefix('/posts')->group(function () {
         Route::resource('/post', AdminPostController::class);
@@ -75,4 +92,11 @@ Route::prefix('/account')->middleware('auth')->group(function () {
 Route::prefix('/home')->group(function () {
     // Route::resource('/mitra', HomeMitraController::class);;
     // Route::resource('/layanan', HomeLayananController::class);;
+});
+
+
+Route::get('/toast', function () {
+    Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+
+    return view('welcome');
 });

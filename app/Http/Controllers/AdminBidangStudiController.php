@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelengkapan;
+use App\Models\BidangStudi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AdminKelengkapanController extends Controller
+class AdminBidangStudiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,15 +20,15 @@ class AdminKelengkapanController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $bidangstudi = BidangStudi::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $kelengkapan = Kelengkapan::latest()->paginate(10);
+            $bidangstudi = BidangStudi::latest()->paginate(10);
         }
         $data = [
-            'title'   => 'Type Berkas',
-            'create'  => route('kelengkapan.create'),
-            'kelengkapan' => $kelengkapan,
-            'content' => 'admin/kelengkapan/index'
+            'title'   => 'BidangStudi',
+            'create'  => route('bidangstudi.create'),
+            'bidangstudi' => $bidangstudi,
+            'content' => 'admin/bidangstudi/index'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -43,8 +43,8 @@ class AdminKelengkapanController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
-            'store'    => route('kelengkapan.store'),
-            'content' => 'admin/kelengkapan/add'
+            'store'    => route('bidangstudi.store'),
+            'content' => 'admin/bidangstudi/add'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -60,11 +60,11 @@ class AdminKelengkapanController extends Controller
         //
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'kebutuhan'              => 'required',
+            'desc'              => 'required|min:3',
         ]);
-        Kelengkapan::create($data);
-        Alert::success('Sukses', 'Kelengkapan telah ditambahkan');
-        return redirect('/account/kelengkapan');
+        BidangStudi::create($data);
+        Alert::success('Sukses', 'BidangStudi telah ditambahkan');
+        return redirect('/account/master/bidangstudi');
     }
 
     /**
@@ -89,9 +89,9 @@ class AdminKelengkapanController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
-            'kelengkapan' => Kelengkapan::find($id),
-            'store'    => route('kelengkapan.store'),
-            'content' => 'admin/kelengkapan/add'
+            'bidangstudi' => BidangStudi::find($id),
+            'store'    => route('bidangstudi.store'),
+            'content' => 'admin/bidangstudi/add'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -106,13 +106,13 @@ class AdminKelengkapanController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kelengkapan = Kelengkapan::find($id);
+        $bidangstudi = BidangStudi::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
         ]);
-        $kelengkapan->update($data);
+        $bidangstudi->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');
-        return redirect('/account/kelengkapan');
+        return redirect('/account/master/bidangstudi');
     }
 
     /**
@@ -124,8 +124,8 @@ class AdminKelengkapanController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('kelengkapans')->delete($id);
-        Alert::success('success', 'Kelengkapan telah dihapus');
-        return redirect('/account/kelengkapan');
+        DB::table('bidang_studi')->delete($id);
+        Alert::success('success', 'Bidang studi telah dihapus');
+        return redirect('/account/master/bidangstudi');
     }
 }

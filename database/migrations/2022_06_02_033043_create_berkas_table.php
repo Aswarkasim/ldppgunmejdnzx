@@ -19,7 +19,7 @@ class CreateBerkasTable extends Migration
             $table->foreignId('kelengkapan_id');
             $table->string('path')->nullable();
             $table->string('berkas')->nullable();
-            $table->enum('status', ['KOSONG', 'PENDING', 'VALID', 'TIDAK VALID'])->default('KOSONG');
+            $table->enum('status', ['KOSONG', 'PENDING', 'VALID', 'INVALID'])->default('KOSONG');
             $table->boolean('is_valid')->default(false);
             $table->timestamps();
         });
