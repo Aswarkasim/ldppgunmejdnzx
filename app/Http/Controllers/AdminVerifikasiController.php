@@ -52,7 +52,7 @@ class AdminVerifikasiController extends Controller
 
     function validasi($user_id)
     {
-        die('masuk');
+        // die('masuk');
         $berkas_id = request('berkas_id');
         $status = request('status');
 
@@ -60,6 +60,6 @@ class AdminVerifikasiController extends Controller
         $berkas->status = $status;
         $berkas->update();
         Toastr::success('Status berkas diubah', 'Sukses');
-        redirect('/admin/account/verifikasi/' . $user_id . 'berkas_id=' . $berkas_id);
+        return redirect('/account/verifikasi/show/' . $user_id . '?berkas_id=' . $berkas_id);
     }
 }

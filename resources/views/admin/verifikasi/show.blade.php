@@ -62,15 +62,25 @@
     <div class="card">
       <div class="card-body">
         <div class="pb-1">
-          <form action="{{$link_route.$row->user_id}}" method="POST">
+          {{-- <form action="{{$link_route.$row->user_id}}" method="POST">
           @method('PUT')
-          </form>
-          <a href="{{$link_route.$row->user_id.'?berkas_id='.$berkas_data->id.'&status=VALID'}}" class="btn btn-success btn-sm px-4"><i class="fas fa-check"></i> Valid</a>
-          <a href="{{$link_route.$row->user_id.'?berkas_id='.$berkas_data->id.'&status=INVALID'}}" class="btn btn-danger btn-sm px-4"><i class="fas fa-times"></i> Tidak valid</a>
+
+          <select name="" id="" class="form-control">
+            <option value="">VALID</option>
+            <option value="">INVALID</option>
+          </select>
+
+          </form> --}}
+         
         </div>  
         
           @if ($berkas_data)
             @if ($berkas_data->berkas)
+            <div class="mb-1">
+              <a href="/account/verifikasi/validasi/{{$berkas_data->user_id.'?berkas_id='.$berkas_data->id.'&status=VALID'}}" class="btn btn-success btn-sm px-4"><i class="fas fa-check"></i> Valid</a>
+              <a href="/account/verifikasi/validasi/{{$berkas_data->user_id.'?berkas_id='.$berkas_data->id.'&status=INVALID'}}" class="btn btn-danger btn-sm px-4"><i class="fas fa-check"></i> Tidak Valid</a>
+            </div>
+              
               <embed src="/{{$berkas_data->path.$berkas_data->berkas}}" type="application/pdf" width="100%" height="600px">
             @else
                 <span class="alert alert-info">

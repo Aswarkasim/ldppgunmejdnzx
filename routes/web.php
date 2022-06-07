@@ -37,7 +37,7 @@ Route::prefix('/auth')->group(function () {
     Route::post('/login', [AdminAuthController::class, 'login']);
 
     Route::get('/register', [AdminAuthController::class, 'register']);
-    Route::post('/doRegister', [AdminAuthController::class, 'doRegsiter']);
+    Route::post('/doRegister', [AdminAuthController::class, 'doRegister']);
     Route::get('/logout', [AdminAuthController::class, 'logout']);
 });
 

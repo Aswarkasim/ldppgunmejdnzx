@@ -21,7 +21,7 @@
 
         </ul>
         <form class="d-flex" role="search">
-          <a href="/account/auth" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="/auth" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
         </form>
       </div>
     </div>

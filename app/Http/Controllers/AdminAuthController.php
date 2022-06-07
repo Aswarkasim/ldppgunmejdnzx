@@ -33,8 +33,16 @@ class AdminAuthController extends Controller
         return view('admin/auth/register');
     }
 
-    function doRegister()
+    function doRegister(Request $request)
     {
+        $data = $request->validate([
+            'nik'       => 'required',
+            'name'       => 'required',
+            'nohp'       => 'required',
+            'password'       => 'required',
+            're_password'   => 'required|same:password'
+        ]);
+        $data['role']   = 'Mahasiswa';
     }
 
     function logout()

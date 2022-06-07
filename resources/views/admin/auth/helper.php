@@ -1,19 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login | LDPPGUNM</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="/dist/css/ktcstyle.css">
-</head>
 <body style="background-color:#f0f0f0">
 
   <form action="/auth/login" method="POST">
@@ -30,24 +14,23 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <label for="">Email</label>
+              <label for="">Email<span class="text-danger">*</span></label>
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{isset($profile) ? $profile->email : old('email')}}" placeholder="Email">
-               @error('email')
-              <div class="invalid-feedback">
-                {{$message}}
-              </div>
-              @enderror
             </div>
           </div>
-         
+          @error('email')
+          <div class="invalid-feedback">
+            {{$message}}
+          </div>
+          @enderror
         </div>
 
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <label for="">Password</label>
+              <label for="">Password<span class="text-danger">*</span></label>
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{isset($profile) ? $profile->password : old('password')}}" placeholder="Password">
@@ -77,4 +60,3 @@
 
   </form>
 </body>
-</html>
