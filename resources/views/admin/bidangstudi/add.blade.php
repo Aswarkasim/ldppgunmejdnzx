@@ -10,6 +10,18 @@
             @method('PUT')
         @endif
           @csrf
+
+          <div class="form-group">
+            <label for="">Kode Bidang Studi</label>
+            <input type="text" class="form-control  @error('kode') is-invalid @enderror"  name="kode"  value="{{isset($bidangstudi) ? $bidangstudi->kode : old('kode')}}" placeholder="Kode Bidang Studi">
+             @error('kode')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+             @enderror
+          </div>
+
+
           <div class="form-group">
             <label for="">Nama</label>
             <input type="text" class="form-control  @error('name') is-invalid @enderror"  name="name"  value="{{isset($bidangstudi) ? $bidangstudi->name : old('name')}}" placeholder="Nama">
@@ -33,7 +45,7 @@
 
      {{-- {!!form_input($errors, 'name', 'Nama', isset($bidangstudi) ? $bidangstudi : null)!!} --}}
 
-          <a href="/account/bidangstudi" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
+          <a href="/account/master/bidangstudi" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
          <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
         
         </form>

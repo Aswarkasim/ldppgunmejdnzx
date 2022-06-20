@@ -8,8 +8,6 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="/dist/css/ktcstyle.css">
@@ -26,14 +24,21 @@
       <hr>
       <p class="text-center">Buat akun untuk memulai lengkapi berkas</p>
       
+      {{-- show registerError --}}
+      @if(session()->has('registerError'))
+        <div class="alert alert-danger">
+          {{session()->get('registerError')}}
+        </div>
+      @endif
+
       <div class="form-group">
         <div class="row">
           <div class="col-md-3">
-            <label for="">NIK<span class="text-danger">*</span></label>
+            <label for="">No. UKG.<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
-            <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"  value="{{old('nik')}}" placeholder="NIK">
-             @error('nik')
+            <input type="text" class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg"  value="{{old('no_ukg')}}" placeholder="No. UKG.">
+             @error('no_ukg')
             <div class="invalid-feedback">
             {{$message}}
             </div>
@@ -63,11 +68,12 @@
       <div class="form-group">
         <div class="row">
           <div class="col-md-3">
-            <label for="">No. Hp/Wa<span class="text-danger">*</span></label>
+            <label for="">No. WhatsApp<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
             <input type="text" class="form-control @error('nohp') is-invalid @enderror" name="nohp"  value="{{old('nohp')}}" placeholder="No. Hp/Wa">
-             @error('nohp')
+            <small>Masukkan Nomor WhatsApp Aktif</small> 
+            @error('nohp')
               <div class="invalid-feedback">
               {{$message}}
               </div>
@@ -83,7 +89,7 @@
             <label for="">Password<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
-            <input type="text" class="form-control @error('password') is-invalid @enderror" name="password"  value="{{old('password')}}" placeholder="Password">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"  value="{{old('password')}}" placeholder="Password">
             @error('password')
               <div class="invalid-feedback">
               {{$message}}
@@ -100,7 +106,7 @@
             <label for="">Konfirmasi Password<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
-            <input type="text" class="form-control @error('re_password') is-invalid @enderror" name="re_password"  value="{{old('re_password')}}" placeholder="Konfirmasi Password">
+            <input type="password" class="form-control @error('re_password') is-invalid @enderror" name="re_password"  value="{{old('re_password')}}" placeholder="Konfirmasi Password">
               @error('re_password')
                 <div class="invalid-feedback">
                 {{$message}}
@@ -113,7 +119,8 @@
 
        <div class="form-group">
         <div class="row">
-          <div class="offset-3 col-md-9">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
             <button type="submit" class="btn btn-primary btn-block"> <i class="fas fa-user-plus"></i> Register</button>
           </div>
         </div>
@@ -124,5 +131,8 @@
     </div>
   </div>
 </form>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/vendor/sweetalert/sweetalert2.all.min.js"></script>
 </body>
 </html>

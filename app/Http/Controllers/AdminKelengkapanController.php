@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelengkapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminKelengkapanController extends Controller
@@ -17,15 +18,18 @@ class AdminKelengkapanController extends Controller
     public function index()
     {
         //
+        // Alert::error('Sukses', 'Kelengkapan telah ditambahkan');
+
+        $periode_id = Session::get('periode_id');
         $cari = request('cari');
 
         if ($cari) {
-            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('name', 'desc')->paginate(10);
         } else {
-            $kelengkapan = Kelengkapan::latest()->paginate(10);
+            $kelengkapan = Kelengkapan::wherePeriodeId($periode_id)->orderBy('name', 'desc')->paginate(10);
         }
         $data = [
-            'title'   => 'Type Berkas',
+            'title'   => 'Kelengkapan',
             'create'  => route('kelengkapan.create'),
             'kelengkapan' => $kelengkapan,
             'content' => 'admin/kelengkapan/index'
@@ -62,6 +66,7 @@ class AdminKelengkapanController extends Controller
             'name'              => 'required|min:3',
             'kebutuhan'              => 'required',
         ]);
+        $data['periode_id'] = Session::get('periode_id');
         Kelengkapan::create($data);
         Alert::success('Sukses', 'Kelengkapan telah ditambahkan');
         return redirect('/account/kelengkapan');
@@ -109,6 +114,7 @@ class AdminKelengkapanController extends Controller
         $kelengkapan = Kelengkapan::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
+            'kebutuhan'              => 'required'
         ]);
         $kelengkapan->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');

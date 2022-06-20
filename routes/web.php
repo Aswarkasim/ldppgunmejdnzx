@@ -16,6 +16,10 @@ use App\Http\Controllers\AdminBidangStudiController;
 use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminKelasProgramController;
+use App\Http\Controllers\AdminMahasiswaController;
+use App\Http\Controllers\AdminPeriodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +32,12 @@ use App\Http\Controllers\AdminConfigurationController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::prefix('/')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/petunjuk', [HomeController::class, 'petunjuk']);
+    Route::get('/timeline', [HomeController::class, 'timeline']);
+});
+
 
 
 
@@ -43,12 +52,8 @@ Route::prefix('/auth')->group(function () {
 
 
 Route::prefix('/account')->middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        $data = [
-            'content' => 'admin/dashboard/index'
-        ];
-        return view('admin/layouts/wrapper', $data);
-    });
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('account.dashboard');
+    Route::get('/periode', [AdminDashboardController::class, 'periodeActive']);
 
     Route::resource('/user', AdminUserController::class);
 
@@ -63,8 +68,9 @@ Route::prefix('/account')->middleware('auth')->group(function () {
     Route::resource('/banner', AdminBannerController::class);
 
     Route::prefix('/master')->group(function () {
-        Route::resource('/angkatan', AdminAngkatanController::class);
+        Route::resource('/periode', AdminPeriodeController::class);
         Route::resource('/bidangstudi', AdminBidangStudiController::class);
+        Route::resource('/kelasprogram', AdminKelasProgramController::class);
         // Route::resource('/prodi', AdminProdiController::class);
     });
 
@@ -72,6 +78,11 @@ Route::prefix('/account')->middleware('auth')->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);
         Route::get('/show/{id}', [AdminVerifikasiController::class, 'show']);
         Route::get('/validasi/{id}', [AdminVerifikasiController::class, 'validasi']);
+    });
+
+    Route::prefix('/mahasiswa')->group(function () {
+        Route::get('/', [AdminMahasiswaController::class, 'index']);
+        Route::post('/import', [AdminMahasiswaController::class, 'import']);
     });
 
 
@@ -89,10 +100,7 @@ Route::prefix('/account')->middleware('auth')->group(function () {
     });
 });
 
-Route::prefix('/home')->group(function () {
-    // Route::resource('/mitra', HomeMitraController::class);;
-    // Route::resource('/layanan', HomeLayananController::class);;
-});
+
 
 
 Route::get('/toast', function () {
@@ -100,3 +108,6 @@ Route::get('/toast', function () {
 
     return view('welcome');
 });
+
+
+Route::get('/get-regency/{province_id?}', [AdminProfileController::class, 'getCity']);

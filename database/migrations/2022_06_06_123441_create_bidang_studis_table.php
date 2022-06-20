@@ -15,6 +15,7 @@ class CreateBidangStudisTable extends Migration
     {
         Schema::create('bidang_studis', function (Blueprint $table) {
             $table->id();
+            $table->string('kode');
             $table->string('name');
             $table->text('desc');
             $table->timestamps();

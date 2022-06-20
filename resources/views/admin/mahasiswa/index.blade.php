@@ -1,9 +1,11 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
 
 <div class="card">
 <div class="card-body">
-  <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+  {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
+  {{-- <a href="" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Import</a> --}}
+  @include('/admin/mahasiswa/upload')
 
   <div class="float-right">
     <form action="" method="get">
@@ -11,7 +13,7 @@
         <input type="text" name="cari" class="form-control" placeholder="Cari..">
         <span class="input-group-append">
           <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-          <a href="/account/master/angkatan" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i></a>
+          <a href="/account/mahasiswa" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i></a>
         </span>
       </div>
       </form>
@@ -21,18 +23,18 @@
     <tr>
       <th>No</th>
       <th>Nama</th>
-      <th>Deskripsi</th>
+      <th>Kebutuhan</th>
       <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
-    @foreach ($angkatan as $row)
+    @foreach ($mahasiswa as $row)
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->name}} </td>
-      <td>{{$row->desc}} </td>
+      <td>{{$row->kebutuhan}} </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
@@ -40,9 +42,9 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-              <a class="dropdown-item" href="/account/master/angkatan/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
+              <a class="dropdown-item" href="/account/mahasiswa/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
-                <form action="/account/master/angkatan/{{$row->id}}" method="post" id="form-delete" class="tombol-hapus">
+                <form action="/account/mahasiswa/{{$row->id}}" method="post" id="form-delete" class="tombol-hapus">
                   @method('delete')
                   @csrf
                   <button type="submit" id="delete" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>
@@ -58,7 +60,7 @@
 </table>
 
   <div class="float-right">
-    {{$angkatan->links()}}
+    {{$mahasiswa->links()}}
   </div>
 </div>
 </div>

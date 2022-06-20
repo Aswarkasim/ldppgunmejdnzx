@@ -15,6 +15,7 @@ class CreateKelengkapansTable extends Migration
     {
         Schema::create('kelengkapans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('periode_id');
             $table->string('name');
             $table->enum('kebutuhan', ['WAJIB', 'OPTIONAL'])->nullable();
             $table->timestamps();

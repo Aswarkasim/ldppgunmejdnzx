@@ -31,3 +31,7 @@ a {
 .img-post {
     max-width: 100%;
 }
+
+.active-menu-header{
+    border-bottom: 5px solid #e1820c;
+}

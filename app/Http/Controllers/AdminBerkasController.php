@@ -19,7 +19,9 @@ class AdminBerkasController extends Controller
     {
         //
         $user_id = auth()->user()->id;
-        // echo $user_id;
+        $noukg = auth()->user()->no_ukg;
+        //get data mahasiswa web user id = $user_id and noukg = $noukg
+
         $kelengkapan = Kelengkapan::get();
         foreach ($kelengkapan as $item) {
             $cek = Berkas::whereUserId($user_id)->whereKelengkapanId($item->id)->first();
@@ -31,10 +33,18 @@ class AdminBerkasController extends Controller
                 Berkas::create($data);
             }
         }
+        $berkas = Berkas::with('kelengkapan')
+            ->whereUserId($user_id)
+            ->get();
+        $berkas->sortBy(function ($berkas) {
+            return $berkas->kelengkapan->name;
+        });
+
         $data = [
             'title'   => 'Manajemen Berkas',
             'create'  => route('kelengkapan.create'),
-            'berkas'  => Berkas::with('kelengkapan')->whereUserId($user_id)->get(),
+            // 'berkas'  => Berkas::with('kelengkapan')->whereUserId($user_id)->get(),
+            'berkas' => $berkas,
             'content' => 'admin/berkas/index'
         ];
         return view('admin/layouts/wrapper', $data);

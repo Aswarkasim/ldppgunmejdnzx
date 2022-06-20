@@ -1,3 +1,7 @@
+<div class="py-2">
+  <a href="" class="btn btn-primary masuk-verifikasi"><i class="fas fa-upload"></i> Masuk ke verifikasi</a>
+</div>
+
 <div class="row">
   <div class="col-md-6">
 
@@ -35,6 +39,7 @@
           
           @include('/admin/berkas/upload')
           <strong>{{$item->kelengkapan->name}}</strong>
+          <div class="float-right">{{$item->kelengkapan->kebutuhan}}</div>
         </div>
 
     @if($errors->has('berkas'.$item->id))

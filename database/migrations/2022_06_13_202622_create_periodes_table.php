@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAngkatansTable extends Migration
+class CreatePeriodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateAngkatansTable extends Migration
      */
     public function up()
     {
-        Schema::create('angkatans', function (Blueprint $table) {
+        Schema::create('periodes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('tahun');
             $table->text('desc');
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ class CreateAngkatansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('angkatans');
+        Schema::dropIfExists('periodes');
     }
 }

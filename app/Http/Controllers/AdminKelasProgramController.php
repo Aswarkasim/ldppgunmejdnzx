@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Angkatan;
+use App\Models\KelasProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AdminAngkatanController extends Controller
+class AdminKelasProgramController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,15 +20,15 @@ class AdminAngkatanController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $angkatan = Angkatan::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $kelasprogram = KelasProgram::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $angkatan = Angkatan::latest()->paginate(10);
+            $kelasprogram = KelasProgram::latest()->paginate(10);
         }
         $data = [
-            'title'   => 'Angkatan',
-            'create'  => route('angkatan.create'),
-            'angkatan' => $angkatan,
-            'content' => 'admin/angkatan/index'
+            'title'   => 'Kelas Program',
+            'create'  => route('kelasprogram.create'),
+            'kelasprogram' => $kelasprogram,
+            'content' => 'admin/kelasprogram/index'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -43,8 +43,8 @@ class AdminAngkatanController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
-            'store'    => route('angkatan.store'),
-            'content' => 'admin/angkatan/add'
+            'store'    => route('kelasprogram.store'),
+            'content' => 'admin/kelasprogram/add'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -60,11 +60,11 @@ class AdminAngkatanController extends Controller
         //
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'desc'              => 'required|min:3',
+            'kode'              => 'required',
         ]);
-        Angkatan::create($data);
-        Alert::success('Sukses', 'Angkatan telah ditambahkan');
-        return redirect('/account/master/angkatan');
+        KelasProgram::create($data);
+        Alert::success('Sukses', 'KelasProgram telah ditambahkan');
+        return redirect('/account/master/kelasprogram');
     }
 
     /**
@@ -89,9 +89,9 @@ class AdminAngkatanController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
-            'angkatan' => Angkatan::find($id),
-            'store'    => route('angkatan.store'),
-            'content' => 'admin/angkatan/add'
+            'kelasprogram' => KelasProgram::find($id),
+            'store'    => route('kelasprogram.store'),
+            'content' => 'admin/kelasprogram/add'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -106,13 +106,14 @@ class AdminAngkatanController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $angkatan = Angkatan::find($id);
+        $kelasprogram = KelasProgram::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
+            'kode'              => 'required',
         ]);
-        $angkatan->update($data);
+        $kelasprogram->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');
-        return redirect('/account/master/angkatan');
+        return redirect('/account/master/kelasprogram');
     }
 
     /**
@@ -124,8 +125,8 @@ class AdminAngkatanController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('angkatans')->delete($id);
-        Alert::success('success', 'Angkatan telah dihapus');
-        return redirect('/account/master/angkatan');
+        DB::table('kelasprograms')->delete($id);
+        Alert::success('success', 'KelasProgram telah dihapus');
+        return redirect('/account/master/kelasprogram');
     }
 }

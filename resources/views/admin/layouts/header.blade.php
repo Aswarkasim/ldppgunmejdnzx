@@ -13,6 +13,23 @@
       </li> --}}
     </ul>
 
+    @if (auth()->user()->role == 'superadmin')
+        
+
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{Illuminate\Support\Facades\Session::get('periode_name')}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          @foreach ($provider_periode as $item)
+          <a href="/account/periode?id={{$item->id}}&name={{$item->name}}" class="dropdown-item" type="button">{{$item->name}}</a>
+          @endforeach
+        </div>
+      </div>
+
+    @endif
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->

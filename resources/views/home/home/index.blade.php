@@ -34,22 +34,8 @@
 
 
 <div class="container">
-  <div class="row">
-    @foreach ($post as $item)
-    <div class="col-3 overflow-hidden">
-      <div class="rounded shadow-sm p-0">
-        <div class="img-post-wrapper">
-          <img src="/{{$item->image}}" class="img-post" alt="">
-        </div>
-        <div class="p-2">
-          <a href="/home/post/show/{{$item->slug}}"><h5><strong>{{$item->title}}</strong></h5></a>
-          <>{!!$item->excerpt!!} <a href="">Baca Selengkapnya &rightarrow;</a></p>
-        </div>
-      </div>
-    </div>
-    @endforeach
-
-    
+  <div class="text-center">
+    <h2><b>Tentang</b></h2>
   </div>
 </div>
 

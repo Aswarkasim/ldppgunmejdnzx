@@ -10,10 +10,26 @@
           <label for=""> No. UKG<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg"  value="{{isset($profile) ? $profile->no_ukg : old('no_ukg')}}" placeholder="No. UKG">
+          <input type="text" disabled class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg"  value="{{isset($profile) ? $profile->no_ukg : old('no_ukg')}}" placeholder="No. UKG">
         </div>
       </div>
       @error('no_ukg')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+    </div>
+
+     <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Nama Lengkap<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('namalengkap') is-invalid @enderror" name="namalengkap"  value="{{isset($profile) ? $profile->namalengkap : old('namalengkap')}}" placeholder="Nama Lengkap">
+        </div>
+      </div>
+      @error('namalengkap')
           <div class="invalid-feedback">
           {{$message}}
           </div>
@@ -36,23 +52,57 @@
         @enderror
     </div>
 
-     <div class="form-group">
+    <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Lengkap<span class="text-danger">*</span></label>
+          <label for=""> Angkatan PPG<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('namalengkap') is-invalid @enderror" name="namalengkap"  value="{{isset($profile) ? $profile->namalengkap : old('namalengkap')}}" placeholder="Nama Lengkap">
+          <input type="text" class="form-control @error('angkatan_id') is-invalid @enderror" name="angkatan_id"  value="{{isset($profile) ? $profile->angkatan_id : old('angkatan_id')}}" placeholder="Angkatan PPG">
         </div>
       </div>
-      @error('namalengkap')
+      @error('angkatan_id')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
     </div>
+
+   
+    
     
     <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Bidang Studi<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <select name="bidang_studi_id" class="form-control @error('bidang_studi_id') is-invalid @enderror" id="">
+              <option value="">-- Bidang Studi --</option>
+              @foreach ($bidangstudi as $bs)
+                  <option value="{{$bs->id}}">{{$bs->name}}</option>
+              @endforeach
+            </select>
+        </div>
+      </div>
+      @error('bidang_studi_id')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+    </div>
+
+
+   
+
+    
+
+
+  </div>
+
+  <div class="col-md-6">
+
+     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
           <label for="">Tanggal Lahir<span class="text-danger">*</span></label>
@@ -84,13 +134,7 @@
           </div>
         @enderror
     </div>
-
     
-
-
-  </div>
-
-  <div class="col-md-6">
 
       <div class="form-group">
         <div class="row">
@@ -162,6 +206,32 @@
       </div>
     </div> --}}
 
+          <div class="row">
+                <div class="col-12 col-md-6">
+                  <label for="province" class="form-label">Provinsi</label>
+                  <select class="form-control" id="province" name="province" required>
+                    <option value="">Pilih Provinsi</option>
+                    @foreach($provinces as $item)
+                      <option value="{{$item->id}}" {{$item->id == $profile->province ? 'selected' : ''}} >{{$item->name}}</option>
+                    @endforeach
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid province.
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="city" class="form-label">Kota/Kabupaten</label>
+                  <select class="form-control" id="city" name="city" disabled required>
+                    <option value="">Pilih Kota/Kabupaten</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
+                </div>
+                </div>
+
+
      <div class="form-group">
       <div class="row">
         <div class="col-md-3">
@@ -211,4 +281,34 @@
 
 </form>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#province option[value=""]').prop('selected',true);
+    $('#city option[value!=""]').remove();
+
+    province = $('#province')
+    province.on('change', function() {
+        $this = $(this)
+        city = $('#city')
+
+        if ($this.val() !== '') {
+            $.ajax({
+                url: "{{url('/get-regency')}}" +'/' +$this.val() , 
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    if (response !== 'NOT OK') {
+                        city.removeAttr('disabled')
+                        city.html(response)
+                    }
+                }
+            });
+        } else {
+            city.prop('disabled', true)
+            city.find('option').val('').text('Pilih Kota/Kabupaten')
+        }
+    })  
+  });
+</script>
 

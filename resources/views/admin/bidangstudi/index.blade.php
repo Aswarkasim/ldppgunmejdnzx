@@ -20,6 +20,7 @@
   <thead>
     <tr>
       <th>No</th>
+      <th>Kode</th>
       <th>Nama</th>
       <th>Deskripsi</th>
       <th>Action</th>
@@ -31,6 +32,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
+      <td>{{$row->kode}} </td>
       <td>{{$row->name}} </td>
       <td>{{$row->desc}} </td>
       <td>

@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="/account/dashboard" class="brand-link">
       <img src="/img/ktc_logo_line.png" alt="AdminLTE Logo" width="15px" class="" style="opacity: .8"> 
-      <span class="brand-text font-weight-light">LDPPGUNM</span>
+      <span class="brand-text font-weight-light">SIAPPGUNM</span>
     </a>
 
     <!-- Sidebar -->
@@ -73,21 +73,23 @@
           @endif
 
           @if (auth()->user()->role === 'mahasiswa')
-              
-          <li class="nav-item">
-            <a href="/account/berkas" class="nav-link {{Request::is('account/berkas') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Berkas
-              </p>
-            </a>
-          </li>
+         
 
            <li class="nav-item">
             <a href="/account/profile?page=data_diri" class="nav-link {{Request::is('account/profile*') ? 'active' : ''}}">
               <i class="nav-icon fas fa-edit  "></i>
               <p>
                 Data Diri
+              </p>
+            </a>
+          </li>
+
+               
+          <li class="nav-item">
+            <a href="/account/berkas" class="nav-link {{Request::is('account/berkas') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+                Berkas
               </p>
             </a>
           </li>
@@ -112,6 +114,15 @@
 
           @if (auth()->user()->role == 'superadmin')
 
+           <li class="nav-item">
+            <a href="/account/mahasiswa" class="nav-link {{Request::is('account/mahasiswa') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Mahasiswa
+              </p>
+            </a>
+          </li>
+
           
           <li class="nav-item {{Request::is('account/master*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{Request::is('account/master*') ? 'active' : ''}}">
@@ -123,9 +134,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/account/master/angkatan" class="nav-link {{Request::is('account/master/angkatan*') ? 'child-active' : ''}}">
+                <a href="/account/master/periode" class="nav-link {{Request::is('account/master/periode*') ? 'child-active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Angkatan</p>
+                  <p>Periode</p>
                 </a>
               </li>
 
@@ -133,6 +144,13 @@
                 <a href="/account/master/bidangstudi" class="nav-link {{Request::is('account/master/bidangstudi*') ? 'child-active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bidang Studi</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/account/master/kelasprogram" class="nav-link {{Request::is('account/master/kelasprogram*') ? 'child-active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kelas Program</p>
                 </a>
               </li>
 
@@ -170,6 +188,8 @@
               </li>
             </ul>
           </li>
+
+
               
            <li class="nav-item">
             <a href="/account/banner" class="nav-link">

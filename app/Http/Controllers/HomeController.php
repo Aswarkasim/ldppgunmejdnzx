@@ -20,4 +20,20 @@ class HomeController extends Controller
         ];
         return view('home/layouts/wrapper', $data);
     }
+
+    function petunjuk()
+    {
+        $data = [
+            'content'  => 'home/home/petunjuk'
+        ];
+        return view('home/layouts/wrapper', $data);
+    }
+
+    function timeline()
+    {
+        $data = [
+            'content'  => 'home/home/timeline'
+        ];
+        return view('home/layouts/wrapper', $data);
+    }
 }

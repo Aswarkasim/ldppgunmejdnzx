@@ -27,14 +27,21 @@
         <hr>
         <p class="text-center">Masuk ke akun anda dan lengkapi berkas</p>
 
+         {{-- show registerError --}}
+      @if(session()->has('loginError'))
+        <div class="alert alert-danger">
+          {{session()->get('loginError')}}
+        </div>
+      @endif
+
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <label for="">Email</label>
+              <label for="">No. UKG.</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{isset($profile) ? $profile->email : old('email')}}" placeholder="Email">
-               @error('email')
+              <input type="text" class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg" value="{{old('no_ukg')}}" placeholder="No. UKG.">
+               @error('no_ukg')
               <div class="invalid-feedback">
                 {{$message}}
               </div>
@@ -50,7 +57,7 @@
               <label for="">Password</label>
             </div>
             <div class="col-md-9">
-              <input type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{isset($profile) ? $profile->password : old('password')}}" placeholder="Password">
+              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{isset($profile) ? $profile->password : old('password')}}" placeholder="Password">
               @error('password')
               <div class="invalid-feedback">
                 {{$message}}

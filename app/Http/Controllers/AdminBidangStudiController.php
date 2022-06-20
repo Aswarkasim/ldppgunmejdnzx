@@ -59,6 +59,7 @@ class AdminBidangStudiController extends Controller
     {
         //
         $data = $request->validate([
+            'kode'              => 'required|unique:bidang_studis',
             'name'              => 'required|min:3',
             'desc'              => 'required|min:3',
         ]);
@@ -108,6 +109,7 @@ class AdminBidangStudiController extends Controller
         //
         $bidangstudi = BidangStudi::find($id);
         $data = $request->validate([
+            'kode'              => 'required|unique:bidang_studis',
             'name'              => 'required|min:3',
         ]);
         $bidangstudi->update($data);
@@ -124,7 +126,7 @@ class AdminBidangStudiController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('bidang_studi')->delete($id);
+        DB::table('bidang_studis')->delete($id);
         Alert::success('success', 'Bidang studi telah dihapus');
         return redirect('/account/master/bidangstudi');
     }

@@ -30,8 +30,9 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/account/verifikasi/show/{{$row->user->id}}"><b>{{$row->user->mahasiswa->namalengkap}}</b></a></td>
+      <td><a href="/account/verifikasi/show/{{$row->user->id}}"><b>{{$row->user->nik}} - {{$row->user->name}}</b></a></td>
       {{-- <td>{{$row->name}} </td> --}}
+      {{-- @dd($row->user) --}}
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
