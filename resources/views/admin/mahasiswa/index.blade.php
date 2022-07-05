@@ -22,8 +22,8 @@
   <thead>
     <tr>
       <th>No</th>
+      <th>NPM</th>
       <th>Nama</th>
-      <th>Kebutuhan</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -33,8 +33,8 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td>{{$row->name}} </td>
-      <td>{{$row->kebutuhan}} </td>
+      <td>{{$row->npm}} </td>
+      <td>{{$row->namalengkap}} </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

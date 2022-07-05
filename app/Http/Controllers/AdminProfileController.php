@@ -18,14 +18,16 @@ class AdminProfileController extends Controller
     {
         //
         $no_ukg = auth()->user()->no_ukg;
-        $cek = Mahasiswa::whereNoUkg($no_ukg)->first();
+        $user_id  = auth()->user()->id;
+        $cek = Mahasiswa::whereNoUkg($no_ukg)->whereUserId($user_id)->first();
         if ($cek == false) {
             $data = [
+                'user_id' => $user_id,
                 'no_ukg' => $no_ukg
             ];
             Mahasiswa::create($data);
         }
-        $profile = Mahasiswa::whereNoUkg($no_ukg)->first();
+        $profile = Mahasiswa::with(['periode'])->whereUserId($user_id)->whereNoUkg($no_ukg)->first();
         $data = [
             'title'   => 'Data Diri',
             'profile' => $profile,
@@ -40,54 +42,70 @@ class AdminProfileController extends Controller
     function updateDataDiri(Request $request)
     {
 
-        $request->validate([
-            // 'no_ukg'    => 'required',
-            'nuptk'    => 'required',
-            'angkatan_id'    => 'required',
-            'bidang_studi_id'    => 'required',
-            'namalengkap'    => 'required',
-            'tanggal_lahir'    => 'required',
-            'tempat_lahir'    => 'required',
-            'nik'    => 'required',
-            'alamat_domisili'    => 'required'
-        ]);
         $user_id = auth()->user()->id;
         $profile = Mahasiswa::whereUserId($user_id)->first();
-        // $profile->no_ukg = $request->no_ukg;
-        $profile->nuptk = $request->nuptk;
-        $profile->angkatan_id = $request->angkatan_id;
-        $profile->bidang_studi_id = $request->bidang_studi_id;
-        $profile->namalengkap = $request->namalengkap;
-        $profile->tanggal_lahir = $request->tanggal_lahir;
-        $profile->tempat_lahir = $request->tempat_lahir;
-        $profile->jenis_kelamin = $request->jenis_kelamin;
-        $profile->nik = $request->nik;
-        $profile->alamat_domisili = $request->alamat_domisili;
-        $profile->rt = $request->rt;
-        $profile->rw = $request->rw;
-        $profile->kelurahan_tempat_tinggal = $request->kelurahan_tempat_tinggal;
-        $profile->kecamatan_tempat_tinggal = $request->kecamatan_tempat_tinggal;
 
-        $profile->save();
+        // dd($profile);
+        // dd($request->all());
+        $data = $request->validate([
+            // 'no_ukg'    => 'required',
+            'nuptk'             => 'required',
+            // 'angkatan_id'       => 'required',
+            'kementrian'   => 'required',
+            'bidang_studi_id'   => 'required',
+            'namalengkap'       => 'required',
+            'tanggal_lahir'     => 'required',
+            'tempat_lahir'      => 'required',
+            'golongan_darah'    => 'required',
+            'nik'               => 'required',
+            'jenis_kelamin'                 => 'required',
+            'nik'                           => 'required',
+            'alamat_domisili'               => 'required',
+            'provinsi_tempat_tinggal'       => 'required',
+            'kabupaten_tempat_tinggal'      => 'required',
+            // $profile->nuptk = $request->nuptk;
+        ]);
+        $data['kecamatan']     = $request->rt;
+        $data['kelurahan']     = $request->rt;
+        $data['rt']     = $request->rt;
+        $data['rw']     = $request->rw;
+
+        // $profile->no_ukg = $request->no_ukg;
+        // $profile->angkatan_id = $request->angkatan_id;
+        // $profile->bidang_studi_id = $request->bidang_studi_id;
+        // $profile->namalengkap = $request->namalengkap;
+        // $profile->tanggal_lahir = $request->tanggal_lahir;
+        // $profile->tempat_lahir = $request->tempat_lahir;
+        // $profile->jenis_kelamin = $request->jenis_kelamin;
+        // $profile->nik = $request->nik;
+        // $profile->alamat_domisili = $request->alamat_domisili;
+        // $profile->golongan_darah = $request->golongan_darah;
+        // $profile->rt = $request->rt;
+        // $profile->rw = $request->rw;
+        // $profile->kelurahan_tempat_tinggal = $request->kelurahan_tempat_tinggal;
+        // $profile->kecamatan_tempat_tinggal = $request->kecamatan_tempat_tinggal;
+
+        $profile->update($data);
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=data_diri');
     }
 
     function updateInstansi(Request $request)
     {
+        // dd($request);    
         $request->validate([
 
-            'nama_instansi'    => 'required',
-            'npsn_sekolah'    => 'required',
+            'nama_instansi'         => 'required',
+            'npsn_sekolah'          => 'required',
             'jenjang_pendidikan'    => 'required',
-            'alamat_instansi'    => 'required',
+            'alamat_instansi'       => 'required',
         ]);
-        $user_id = auth()->user()->id;
-        $profile = Mahasiswa::whereUserId($user_id)->first();
-        $profile->nama_instansi = $request->nama_instansi;
-        $profile->npsn_sekolah = $request->npsn_sekolah;
+        $user_id                     = auth()->user()->id;
+        $profile                     = Mahasiswa::whereUserId($user_id)->first();
+        $profile->nama_instansi      = $request->nama_instansi;
+        $profile->npsn_sekolah       = $request->npsn_sekolah;
         $profile->jenjang_pendidikan = $request->jenjang_pendidikan;
-        $profile->alamat_instansi = $request->alamat_instansi;
+        $profile->alamat_instansi    = $request->alamat_instansi;
 
         $profile->update();
         Alert::success('Sukses', 'Data Anda Disimpan');
@@ -97,9 +115,9 @@ class AdminProfileController extends Controller
     function updatePendidikan(Request $request)
     {
         $user_id = auth()->user()->id;
-        $profile = Mahasiswa::whereUserId($user_id)->first();
+        $profile = Mahasiswa::whereUserId($user_id)->whereUserId($user_id)->first();
 
-        $profile->perguruan_tinggi_s1 = $request->perguruan_tinggi_s1;
+        $profile->pt_s1 = $request->pt_s1;
         $profile->nama_prodi_s1 = $request->nama_prodi_s1;
         $profile->nomor_ijazah_s1 = $request->nomor_ijazah_s1;
         $profile->ipk_s1 = $request->ipk_s1;
@@ -109,7 +127,7 @@ class AdminProfileController extends Controller
         $profile->provinsi_pt_s1 = $request->provinsi_pt_s1;
         $profile->unggah_ijazah_s1 = $request->unggah_ijazah_s1;
         $profile->unggah_transkrip_s1 = $request->unggah_transkrip_s1;
-        $profile->perguruan_tinggi_s2 = $request->perguruan_tinggi_s2;
+        $profile->pt_s2 = $request->pt_s2;
         $profile->nama_prodi_s2 = $request->nama_prodi_s2;
         $profile->nomor_ijazah_s2 = $request->nomor_ijazah_s2;
         $profile->ipk_s2 = $request->ipk_s2;
@@ -128,7 +146,7 @@ class AdminProfileController extends Controller
     function updateKeluarga(Request $request)
     {
         $user_id = auth()->user()->id;
-        $profile = Mahasiswa::whereNoUkg($user_id)->first();
+        $profile = Mahasiswa::whereUserId($user_id)->first();
         // dd($profile);
 
 
@@ -141,11 +159,13 @@ class AdminProfileController extends Controller
         $profile->nama_ayah_kandung = $request->nama_ayah_kandung;
         $profile->pendidikan_ayah_kandung = $request->pendidikan_ayah_kandung;
         $profile->penghasilan_ayah_kandung = $request->penghasilan_ayah_kandung;
+        $profile->pekerjaan_ayah_kandung = $request->pekerjaan_ayah_kandung;
         $profile->nik_ayah_kandung = $request->nik_ayah_kandung;
 
         $profile->nama_ibu_kandung = $request->nama_ibu_kandung;
         $profile->pendidikan_ibu_kandung = $request->pendidikan_ibu_kandung;
         $profile->penghasilan_ibu_kandung = $request->penghasilan_ibu_kandung;
+        $profile->pekerjaan_ibu_kandung = $request->pekerjaan_ibu_kandung;
         $profile->nik_ibu_kandung = $request->nik_ibu_kandung;
 
 

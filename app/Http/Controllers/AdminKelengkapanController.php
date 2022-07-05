@@ -65,6 +65,8 @@ class AdminKelengkapanController extends Controller
         $data = $request->validate([
             'name'              => 'required|min:3',
             'kebutuhan'              => 'required',
+            'is_verified'           => 'required',
+            'desc'                  => 'required'
         ]);
         $data['periode_id'] = Session::get('periode_id');
         Kelengkapan::create($data);
@@ -114,7 +116,9 @@ class AdminKelengkapanController extends Controller
         $kelengkapan = Kelengkapan::find($id);
         $data = $request->validate([
             'name'              => 'required|min:3',
-            'kebutuhan'              => 'required'
+            'kebutuhan'              => 'required',
+            'is_verified'           => 'required',
+            'desc'                  => 'required'
         ]);
         $kelengkapan->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');

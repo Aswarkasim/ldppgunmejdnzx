@@ -46,3 +46,24 @@ $(".masuk-verifikasi").on("click", function (e) {
         }
     });
 });
+
+// Tommbol hapus
+$(".verifikasi-all").on("click", function (e) {
+    // Mematikan href
+    e.preventDefault();
+    const href = $(this).attr("href");
+
+    Swal({
+        title: "Apakah anda ingin menyetujui semua berkas?",
+        text: "Pastikan semua berkas telah valid",
+        type: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Lanjutkan",
+    }).then((result) => {
+        if (result.value) {
+            document.location.href = href;
+        }
+    });
+});

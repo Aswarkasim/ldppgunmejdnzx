@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisPpg;
+use App\Models\KelasProgram;
 use App\Models\Periode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +22,9 @@ class AdminPeriodeController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $periode = Periode::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $periode = Periode::with('jenisPpg')->where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $periode = Periode::latest()->paginate(10);
+            $periode = Periode::with('jenisPpg')->latest()->paginate(10);
         }
         $data = [
             'title'   => 'Periode',
@@ -43,6 +45,7 @@ class AdminPeriodeController extends Controller
         //
         $data = [
             'title'   => 'Tambah Type Berkas',
+            'jenis'     => JenisPpg::all(),
             'store'    => route('periode.store'),
             'content' => 'admin/periode/add'
         ];
@@ -59,6 +62,7 @@ class AdminPeriodeController extends Controller
     {
         //
         $data = $request->validate([
+            'jenis_ppg_id'              => 'required',
             'name'              => 'required|min:3',
             'tahun'              => 'required|min:4',
             'desc'              => 'required|min:3',
@@ -91,6 +95,7 @@ class AdminPeriodeController extends Controller
         $data = [
             'title'   => 'Tambah Type Berkas',
             'periode' => Periode::find($id),
+            'jenis'     => JenisPpg::all(),
             'store'    => route('periode.store'),
             'content' => 'admin/periode/add'
         ];
@@ -109,6 +114,7 @@ class AdminPeriodeController extends Controller
         //
         $periode = Periode::find($id);
         $data = $request->validate([
+            'jenis_ppg_id'              => 'required',
             'name'              => 'required|min:3',
             'tahun'              => 'required|min:4',
             'desc'              => 'required|min:3',

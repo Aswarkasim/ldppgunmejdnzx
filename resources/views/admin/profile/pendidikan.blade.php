@@ -12,10 +12,10 @@
           <label for="">Perguruan Tnggi S1</label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('perguruan_tinggi_s1') is-invalid @enderror" name="perguruan_tinggi_s1" value="{{isset($profile) ? $profile->perguruan_tinggi_s1 : old('perguruan_tinggi_s1')}}" placeholder="Perguruan Tnggi S1">
+          <input type="text" class="form-control @error('pt_s1') is-invalid @enderror" name="pt_s1" value="{{isset($profile) ? $profile->pt_s1 : old('pt_s1')}}" placeholder="Perguruan Tnggi S1">
         </div>
       </div>
-      @error('perguruan_tinggi_s1')
+      @error('pt_s1')
       <div class="invalid-feedback">
         {{$message}}
       </div>
@@ -103,29 +103,35 @@
       @enderror
     </div>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Kabupaten/ Kota Perguruan Tinggi</label>
-        </div>
-        <div class="col-md-9">
-          <input type="text" class="form-control @error('kabupaten_kota_pt_s1') is-invalid @enderror" name="kabupaten_kota_pt_s1" value="{{isset($profile) ? $profile->kabupaten_kota_pt_s1 : old('kabupaten_kota_pt_s1')}}" placeholder="Kabupaten/ Kota Perguruan Tinggi">
-        </div>
-      </div>
-      @error('kabupaten_kota_pt_s1')
-      <div class="invalid-feedback">
-        {{$message}}
-      </div>
-      @enderror
-    </div>
 
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Provinsi Perguruan Tinggi</label>
+          <label for="">Alamat Perguruan Tinggi</label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('provinsi_pt_s1') is-invalid @enderror" name="provinsi_pt_s1" value="{{isset($profile) ? $profile->provinsi_pt_s1 : old('provinsi_pt_s1')}}" placeholder="Kabupaten/ Kota Perguruan Tinggi">
+          <div class="row pt-1">
+            <div class="col-md-6">
+              <select class="form-control" id="province_s1" name="provinsi_pt_s2" required>
+                <option value="">Pilih Provinsi</option>
+                @foreach($provinces as $item)
+                  <option value="{{$item->id}}" {{$item->id == $profile->province ? 'selected' : ''}} >{{$item->name}}</option>
+                @endforeach
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid province.
+              </div>
+            </div>
+
+              <div class="col-md-6">
+                <select class="form-control" id="city_s1" name="kabupaten_pt_s2" disabled required>
+                    <option value="">Pilih Kota/Kabupaten</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
+            </div>
+          </div>
         </div>
       </div>
       @error('provinsi_pt_s1')
@@ -156,10 +162,10 @@
           <label for="">Perguruan Tinggi S2</label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('perguruan_tinggi_s2') is-invalid @enderror" name="perguruan_tinggi_s2" value="{{isset($profile) ? $profile->perguruan_tinggi_s2 : old('perguruan_tinggi_s2')}}" placeholder="Perguruan Tinggi S2">
+          <input type="text" class="form-control @error('pt_s2') is-invalid @enderror" name="pt_s2" value="{{isset($profile) ? $profile->pt_s2 : old('pt_s2')}}" placeholder="Perguruan Tinggi S2">
         </div>
       </div>
-      @error('perguruan_tinggi_s2')
+      @error('pt_s2')
       <div class="invalid-feedback">
         {{$message}}
       </div>
@@ -215,6 +221,9 @@
       @enderror
     </div>
 
+     
+
+
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
@@ -222,7 +231,10 @@
         </div>
         <div class="col-md-9">
           <input type="date" class="form-control @error('tanggal_kelulusan_s2') is-invalid @enderror" name="tanggal_kelulusan_s2" value="{{isset($profile) ? $profile->tanggal_kelulusan_s2 : old('tanggal_kelulusan_s2')}}" placeholder="Tanggal Kelulusan S2">
+
+          
         </div>
+
       </div>
       @error('tanggal_kelulusan_s2')
       <div class="invalid-feedback">
@@ -231,45 +243,36 @@
       @enderror
     </div>
   
-     <div class="form-group">
+ 
+
+    <div class="form-group">
       <div class="row">
         <div class="col-md-3">
           <label for="">Alamat Perguruan Tinggi</label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('alamat_pt_s2') is-invalid @enderror" name="alamat_pt_s2" value="{{isset($profile) ? $profile->alamat_pt_s2 : old('alamat_pt_s2')}}" placeholder="Alamat Perguruan Tinggi">
-        </div>
-      </div>
-      @error('alamat_pt_s2')
-      <div class="invalid-feedback">
-        {{$message}}
-      </div>
-      @enderror
-    </div>
+          <div class="row pt-1">
+            <div class="col-md-6">
+              <select class="form-control" id="province_s2" name="provinsi_pt_s2" required>
+                <option value="">Pilih Provinsi</option>
+                @foreach($provinces as $item)
+                  <option value="{{$item->id}}" {{$item->id == $profile->province ? 'selected' : ''}} >{{$item->name}}</option>
+                @endforeach
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid province.
+              </div>
+            </div>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Kabupaten/ Kota Perguruan Tinggi</label>
-        </div>
-        <div class="col-md-9">
-          <input type="text" class="form-control @error('kabupaten_kota_pt_s2') is-invalid @enderror" name="kabupaten_kota_pt_s2" value="{{isset($profile) ? $profile->kabupaten_kota_pt_s2 : old('kabupaten_kota_pt_s2')}}" placeholder="Kabupaten/ Kota Perguruan Tinggi">
-        </div>
-      </div>
-      @error('kabupaten_kota_pt_s2')
-      <div class="invalid-feedback">
-        {{$message}}
-      </div>
-      @enderror
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Provinsi Perguruan Tinggi</label>
-        </div>
-        <div class="col-md-9">
-          <input type="text" class="form-control @error('provinsi_pt_s2') is-invalid @enderror" name="provinsi_pt_s2" value="{{isset($profile) ? $profile->provinsi_pt_s2 : old('provinsi_pt_s2')}}" placeholder="Kabupaten/ Kota Perguruan Tinggi">
+              <div class="col-md-6">
+                <select class="form-control" id="city_s2" name="kabupaten_pt_s2" disabled required>
+                    <option value="">Pilih Kota/Kabupaten</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
+            </div>
+          </div>
         </div>
       </div>
       @error('provinsi_pt_s2')
@@ -278,19 +281,6 @@
       </div>
       @enderror
     </div>
-
-    {{-- <div class="form-group">
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Unggah</label>
-        </div>
-        <div class="col-md-9">
-          <button class="btn btn-primary btn-sm">Unggah KK</button>
-          <button class="btn btn-primary btn-sm">Unggah KTP</button>
-        </div>
-      </div>
-    </div> --}}
-
 
   </div>
 
@@ -305,3 +295,64 @@
 
 </form>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#province_s2 option[value=""]').prop('selected',true);
+    $('#city_s2 option[value!=""]').remove();
+
+    province = $('#province_s2')
+    province.on('change', function() {
+        $this = $(this)
+        city = $('#city_s2')
+
+        if ($this.val() !== '') {
+            $.ajax({
+                url: "{{url('/get-regency')}}" +'/' +$this.val() , 
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    if (response !== 'NOT OK') {
+                        city.removeAttr('disabled')
+                        city.html(response)
+                    }
+                }
+            });
+        } else {
+            city.prop('disabled', true)
+            city.find('option').val('').text('Pilih Kota/Kabupaten')
+        }
+    })  
+  });
+</script>
+
+
+<script>
+  $(document).ready(function(){
+    $('#province_s1 option[value=""]').prop('selected',true);
+    $('#city_s1 option[value!=""]').remove();
+
+    province = $('#province_s1')
+    province.on('change', function() {
+        $this = $(this)
+        city = $('#city_s1')
+
+        if ($this.val() !== '') {
+            $.ajax({
+                url: "{{url('/get-regency')}}" +'/' +$this.val() , 
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    if (response !== 'NOT OK') {
+                        city.removeAttr('disabled')
+                        city.html(response)
+                    }
+                }
+            });
+        } else {
+            city.prop('disabled', true)
+            city.find('option').val('').text('Pilih Kota/Kabupaten')
+        }
+    })  
+  });
+</script>

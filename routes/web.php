@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAkunController;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -10,16 +11,18 @@ use App\Http\Controllers\AdminProdiController;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminBerkasController;
 use App\Http\Controllers\AdminProfileController;
-use App\Http\Controllers\AdminAngkatanController;
 use App\Http\Controllers\AdminVerifikasiController;
 use App\Http\Controllers\AdminBidangStudiController;
 use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminJenisPpgController;
 use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminMahasiswaController;
+use App\Http\Controllers\AdminNotifController;
 use App\Http\Controllers\AdminPeriodeController;
+use App\Http\Controllers\AdminRegisterSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +55,21 @@ Route::prefix('/auth')->group(function () {
 
 
 Route::prefix('/account')->middleware('auth')->group(function () {
+
+
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('account.dashboard');
+    Route::get('/dashboard/status', [AdminDashboardController::class, 'changeStatus']);
+    Route::get('/dashboard/config/periode/{id}', [AdminDashboardController::class, 'periodeLD']);
     Route::get('/periode', [AdminDashboardController::class, 'periodeActive']);
 
+    Route::get('/notif', [AdminNotifController::class, 'index']);
+
+    Route::get('/akun', [AdminAkunController::class, 'index']);
+    Route::post('/akun/save', [AdminAkunController::class, 'save']);
+
     Route::resource('/user', AdminUserController::class);
+
+    Route::put('/setting/register/update', [AdminRegisterSettingController::class, 'update']);
 
     Route::get('/konfigurasi', [AdminConfigurationController::class, 'index']);
     Route::put('/konfigurasi/update', [AdminConfigurationController::class, 'update']);
@@ -63,6 +77,7 @@ Route::prefix('/account')->middleware('auth')->group(function () {
     Route::resource('/kelengkapan', AdminKelengkapanController::class);
 
     Route::put('/berkas/upload', [AdminBerkasController::class, 'upload']);
+    Route::get('/berkas/cetak', [AdminBerkasController::class, 'cetakBukti']);
     Route::resource('/berkas', AdminBerkasController::class);
 
     Route::resource('/banner', AdminBannerController::class);
@@ -70,14 +85,18 @@ Route::prefix('/account')->middleware('auth')->group(function () {
     Route::prefix('/master')->group(function () {
         Route::resource('/periode', AdminPeriodeController::class);
         Route::resource('/bidangstudi', AdminBidangStudiController::class);
+        Route::resource('/jenisppg', AdminJenisPpgController::class);
         Route::resource('/kelasprogram', AdminKelasProgramController::class);
         // Route::resource('/prodi', AdminProdiController::class);
     });
 
     Route::prefix('/verifikasi')->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);
+        Route::get('/all/{id}', [AdminVerifikasiController::class, 'verifikasiAll']);
+        Route::get('/biodata/{id}', [AdminVerifikasiController::class, 'biodata']);
         Route::get('/show/{id}', [AdminVerifikasiController::class, 'show']);
         Route::get('/validasi/{id}', [AdminVerifikasiController::class, 'validasi']);
+        Route::post('/invalid/{id}', [AdminVerifikasiController::class, 'invalid']);
     });
 
     Route::prefix('/mahasiswa')->group(function () {

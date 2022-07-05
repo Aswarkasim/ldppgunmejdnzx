@@ -35,7 +35,53 @@
 
 <div class="container">
   <div class="text-center">
-    <h2><b>Tentang</b></h2>
+    <h2><b>Mekanisme Lapor Diri</b></h2>
+
+    <div class="row">
+      
+      <div class="col-md-3">
+        <div class="card card-mekanisme bg-ppg py-5">
+          <div class="wrapper-text-mekanisme">
+            <h4>Registrasi</h4>
+            <p>Registrasi online Mahasiswa, dengan menggunakan nomor UKG</p>
+          </div>
+          <h1 class="number-mekanisme">1</h1>
+        </div>
+      </div>
+
+       <div class="col-md-3">
+        <div class="card card-mekanisme bg-success py-5">
+          <div class="wrapper-text-mekanisme text-white">
+            <h4>Melengkapi Biodata</h4>
+            <p>Isikan biodata pribadi, instansi, pendidikan, dan keluarga</p>
+          </div>
+          <h1 class="number-mekanisme">2</h1>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-mekanisme bg-info py-5">
+          <div class="wrapper-text-mekanisme text-white">
+            <h4>Mengupload Berkas</h4>
+            <p>Pastikan yang diupload harus berformat PDF.</p>
+          </div>
+          <h1 class="number-mekanisme">3</h1>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card card-mekanisme bg-danger py-5">
+          <div class="wrapper-text-mekanisme text-white">
+            <h4>Verifikasi Berkas</h4>
+            <p>Tunggu admin PPG untuk memverifikasi berkas anda.</p>
+          </div>
+          <h1 class="number-mekanisme">4</h1>
+        </div>
+      </div>
+
+
+    </div>
+        
   </div>
 </div>
 

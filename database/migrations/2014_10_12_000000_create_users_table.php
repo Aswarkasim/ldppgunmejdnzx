@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mahasiswa_id')->nullable();
+            $table->foreignId('bidang_studi_id')->nullable();
             $table->foreignId('periode_id')->nullable();
             $table->string('no_ukg')->unique()->nullable();
             $table->string('name');
@@ -24,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['superadmin', 'admin', 'mahasiswa', 'dosen']);
+
             $table->rememberToken();
             $table->timestamps();
         });

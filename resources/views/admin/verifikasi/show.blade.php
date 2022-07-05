@@ -2,6 +2,11 @@
   <div class="col-md-5">
     <div class="card">
       <div class="card-body">
+
+  <a href="/account/verifikasi/biodata/{{$user_id}}" class="btn btn-primary"><i class="fas fa-user"></i> Lihat Biodata</a>
+  <a href="/account/verifikasi/all/{{$user_id}}" class="btn btn-success verifikasi-all"><i class="fas fa-check-circle"></i> Validasi Semua</a>
+
+
         <table id="example1" class="table table-striped">
           <thead>
             <tr>
@@ -42,6 +47,7 @@
                       @default
                           
                   @endswitch
+                  
                   <a href="{{$link_route.$row->user_id.'?berkas_id='.$row->id}}" class="btn btn-primary btn-sm"><i class="fas fa-sign-out-alt"></i></a>
                 </td>
               </tr>
@@ -77,8 +83,9 @@
           @if ($berkas_data)
             @if ($berkas_data->berkas)
             <div class="mb-1">
-              <a href="/account/verifikasi/validasi/{{$berkas_data->user_id.'?berkas_id='.$berkas_data->id.'&status=VALID'}}" class="btn btn-success btn-sm px-4"><i class="fas fa-check"></i> Valid</a>
-              <a href="/account/verifikasi/validasi/{{$berkas_data->user_id.'?berkas_id='.$berkas_data->id.'&status=INVALID'}}" class="btn btn-danger btn-sm px-4"><i class="fas fa-check"></i> Tidak Valid</a>
+              <a href="/account/verifikasi/validasi/{{$berkas_data->user_id.'?berkas_id='.$berkas_data->id}}" class="btn btn-success btn-sm px-4"><i class="fas fa-check"></i> Valid</a>
+              @include('/admin/verifikasi/invalid')
+              {{-- <a href="/account/verifikasi/validasi/{{$berkas_data->user_id.'?berkas_id='.$berkas_data->id.'&status=INVALID'}}" class="btn btn-danger btn-sm px-4"><i class="fas fa-check"></i> Tidak Valid</a> --}}
             </div>
               
               <embed src="/{{$berkas_data->path.$berkas_data->berkas}}" type="application/pdf" width="100%" height="600px">

@@ -16,6 +16,7 @@ class CreateBerkasTable extends Migration
         Schema::create('berkas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('periode_id');
             $table->foreignId('kelengkapan_id');
             $table->string('path')->nullable();
             $table->string('berkas')->nullable();

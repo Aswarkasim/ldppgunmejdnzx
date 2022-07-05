@@ -10,4 +10,9 @@ class Periode extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    function jenisPpg()
+    {
+        return $this->belongsTo(JenisPpg::class);
+    }
 }

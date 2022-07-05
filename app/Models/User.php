@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Mahasiswa::class);
     }
+
+    function bidang_studi()
+    {
+        return $this->belongsTo(BidangStudi::class);
+    }
 }

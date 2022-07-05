@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
 
 <div class="card">
 <div class="card-body">
@@ -21,18 +21,20 @@
     <tr>
       <th>No</th>
       <th>Nama</th>
+      <th>Jenis</th>
       <th>Tahun</th>
       <th>Deskripsi</th>
       <th>Action</th>
     </tr>
   </thead>
-
+{{-- @dd($periode) --}}
   <tbody>
     @foreach ($periode as $row)
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->name}} </td>
+      <td>{{$row->jenisPpg->name}} </td>
       <td>{{$row->tahun}} </td>
       <td>{{$row->desc}} </td>
       <td>

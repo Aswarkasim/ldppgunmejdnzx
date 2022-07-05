@@ -41,15 +41,18 @@ class AdminAuthController extends Controller
 
     function doRegister(Request $request)
     {
+        // dd($request);
         $data = $request->validate([
             'no_ukg'       => 'required|unique:users',
-            'name'       => 'required|unique:users',
+            'name'       => 'required',
             'nohp'       => 'required|unique:users',
             'password'       => 'required',
             're_password'   => 'required|same:password'
         ]);
         $data['role']   = 'Mahasiswa';
+        $data['periode_id'] = $request->periode_id;
         $data['password']   = bcrypt(request('password'));
+
 
         $mahasiswa = Mahasiswa::whereNoUkg($request->no_ukg)->first();
         if (!$mahasiswa) {
@@ -59,6 +62,7 @@ class AdminAuthController extends Controller
         } else {
             $user = User::create($data);
             $mahasiswa->user_id = $user->id;
+            $mahasiswa->is_registered = 1;
             $mahasiswa->save();
             Alert::success('Sukses', 'Angkatan telah ditambahkan');
             return redirect('/auth');

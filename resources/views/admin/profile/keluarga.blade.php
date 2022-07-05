@@ -239,14 +239,30 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('alamat_orangtua') is-invalid @enderror" name="alamat_orangtua"  value="{{isset($profile) ? $profile->alamat_orangtua : old('alamat_orangtua')}}" placeholder="Alamat orang tua/keluarga dekat">
+         
           <div class="row pt-1">
             <div class="col-md-6">
-              <input type="text" class="form-control @error('kabupaten_orangtua') is-invalid @enderror" name="kabupaten_orangtua"  value="{{isset($profile) ? $profile->kabupaten_orangtua : old('kabupaten_orangtua')}}" placeholder="Kabupaten Orang Tua/Keluarga Dekat">
+              <select class="form-control" id="province_orangtua" name="provinsi_orangtua" required>
+                <option value="">Pilih Provinsi</option>
+                @foreach($provinces as $item)
+                  <option value="{{$item->id}}" {{$item->id == $profile->province ? 'selected' : ''}} >{{$item->name}}</option>
+                @endforeach
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid province.
+              </div>
             </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control @error('provinsi_orangtua') is-invalid @enderror" name="provinsi_orangtua"  value="{{isset($profile) ? $profile->provinsi_orangtua : old('provinsi_orangtua')}}" placeholder="Provinsi Orang Tua/Keluarga Dekat">
+
+              <div class="col-md-6">
+                <select class="form-control" id="city_orangtua" name="kabupaten_orangtua" disabled required>
+                    <option value="">Pilih Kota/Kabupaten</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid city.
+                  </div>
             </div>
           </div>
+
         </div>
       </div>
       @error('alamat_orangtua')
@@ -268,3 +284,34 @@
 </div>
 
 </form>
+
+
+<script>
+  $(document).ready(function(){
+    $('#province_orangtua option[value=""]').prop('selected',true);
+    $('#city_orangtua option[value!=""]').remove();
+
+    province = $('#province_orangtua')
+    province.on('change', function() {
+        $this = $(this)
+        city = $('#city_orangtua')
+
+        if ($this.val() !== '') {
+            $.ajax({
+                url: "{{url('/get-regency')}}" +'/' +$this.val() , 
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    if (response !== 'NOT OK') {
+                        city.removeAttr('disabled')
+                        city.html(response)
+                    }
+                }
+            });
+        } else {
+            city.prop('disabled', true)
+            city.find('option').val('').text('Pilih Kota/Kabupaten')
+        }
+    })  
+  });
+</script>

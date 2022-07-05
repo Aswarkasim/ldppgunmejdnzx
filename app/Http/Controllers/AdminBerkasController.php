@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Berkas;
 use App\Models\Kelengkapan;
+use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,14 +22,20 @@ class AdminBerkasController extends Controller
         //
         $user_id = auth()->user()->id;
         $noukg = auth()->user()->no_ukg;
+        // echo $noukg;
+        // echo $user_id;
         //get data mahasiswa web user id = $user_id and noukg = $noukg
+        $mahasiswa = \App\Models\Mahasiswa::where('user_id', $user_id)->where('no_ukg', $noukg)->first();
+        // dd($mahasiswa);
+
 
         $kelengkapan = Kelengkapan::get();
         foreach ($kelengkapan as $item) {
-            $cek = Berkas::whereUserId($user_id)->whereKelengkapanId($item->id)->first();
+            $cek = Berkas::whereUserId($user_id)->whereKelengkapanId($item->id)->wherePeriodeId($mahasiswa->periode_id)->first();
             if ($cek == false) {
                 $data = [
                     'user_id'           => $user_id,
+                    'periode_id'        => $mahasiswa->periode_id,
                     'kelengkapan_id'    => $item->id,
                 ];
                 Berkas::create($data);
@@ -45,6 +53,7 @@ class AdminBerkasController extends Controller
             'create'  => route('kelengkapan.create'),
             // 'berkas'  => Berkas::with('kelengkapan')->whereUserId($user_id)->get(),
             'berkas' => $berkas,
+            'user'      => User::find($user_id),
             'content' => 'admin/berkas/index'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -58,7 +67,7 @@ class AdminBerkasController extends Controller
         ];
 
         $request->validate([
-            'berkas' . $request->id   => 'mimes:pdf',
+            'berkas' . $request->id   => 'mimes:pdf|max:200',
         ], $messages);
         $berkasData = Berkas::find($request->id);
 
@@ -80,5 +89,19 @@ class AdminBerkasController extends Controller
         $berkasData->update($data);
         Alert::success('Sukses', 'Berkas diupload');
         return redirect('/account/berkas');
+    }
+
+    function cetakBukti()
+    {
+        $user_id = auth()->user()->id;
+        //check if status valid
+        $berkas = Mahasiswa::whereUserId($user_id)->whereStatus('VALID')->get();
+        if ($berkas->count() == 0) {
+            Alert::error('Error', 'Berkas belum valid');
+            return redirect('/account/dashboard');
+        } else {
+            $data['mahasiswa'] = Mahasiswa::with(['bidang_studi', 'province', 'kabupaten'])->whereUserId($user_id)->first();
+            return view('admin/berkas/cetak', $data);
+        }
     }
 }

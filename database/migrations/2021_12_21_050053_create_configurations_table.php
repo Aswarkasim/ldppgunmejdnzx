@@ -16,6 +16,8 @@ class CreateConfigurationsTable extends Migration
         Schema::create('configurations', function (Blueprint $table) {
             $table->id();
             $table->string('app_name');
+            $table->foreignId('periode_id')->nullable();
+            $table->boolean('is_active_registrasi')->default(false);
             $table->timestamps();
         });
     }

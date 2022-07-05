@@ -17,6 +17,8 @@ class CreateKelengkapansTable extends Migration
             $table->id();
             $table->foreignId('periode_id');
             $table->string('name');
+            $table->boolean('is_verified');
+            $table->text('desc');
             $table->enum('kebutuhan', ['WAJIB', 'OPTIONAL'])->nullable();
             $table->timestamps();
         });

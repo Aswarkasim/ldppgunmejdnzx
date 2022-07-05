@@ -8,38 +8,6 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for=""> Angkatan PPG<span class="text-danger">*</span></label>
-        </div>
-        <div class="col-md-9">
-          <input type="text" class="form-control @error('angkatan_id') is-invalid @enderror" name="angkatan_id"  value="{{isset($profile) ? $profile->angkatan_id : old('angkatan_id')}}" placeholder="Angkatan PPG">
-        </div>
-      </div>
-      @error('angkatan_id')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
-    </div>
-    
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-3">
-          <label for="">Bidang Studi<span class="text-danger">*</span></label>
-        </div>
-        <div class="col-md-9">
-          <input type="text" class="form-control @error('bidang_studi_id') is-invalid @enderror" name="bidang_studi_id"  value="{{isset($profile) ? $profile->bidang_studi_id : old('bidang_studi_id')}}" placeholder="Bidang Studi">
-        </div>
-      </div>
-      @error('bidang_studi_id')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md-3">
           <label for="">Nama Instansi<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
@@ -52,14 +20,6 @@
           </div>
         @enderror
     </div>
-
-   
-
-  </div>
-
-  <div class="col-md-6">
-
-
      <div class="form-group">
       <div class="row">
         <div class="col-md-3">
@@ -76,7 +36,14 @@
         @enderror
     </div>
 
+    akreditasi sekolah
+   
+
+  </div>
+
+  <div class="col-md-6">
     <div class="form-group">
+
       <div class="row">
         <div class="col-md-3">
           <label for="">Jenjang Pendidikan<span class="text-danger">*</span></label>

@@ -26,11 +26,11 @@
   </thead>
 
   <tbody>
-    @foreach ($berkas as $row)
+    @foreach ($user as $row)
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/account/verifikasi/show/{{$row->user->id}}"><b>{{$row->user->nik}} - {{$row->user->name}}</b></a></td>
+      <td><a href="/account/verifikasi/show/{{$row->user_id}}"><b>{{$row->no_ukg}} - {{$row->namalengkap}}</b></a></td>
       {{-- <td>{{$row->name}} </td> --}}
       {{-- @dd($row->user) --}}
       <td>
@@ -58,7 +58,7 @@
 </table>
 
   <div class="float-right">
-    {{$berkas->links()}}
+    {{$user->links()}}
   </div>
 </div>
 </div>
@@ -67,5 +67,7 @@
 </div>
 
 <!-- /.card-body -->
+
+
 
 

@@ -58,6 +58,53 @@
                 @enderror
             </div>
 
+             <div class="form-group">
+             <label for="">Verifikasi</label>
+              <select name="is_verified" class="form-control @error('is_verified') is-invalid @enderror" id="">
+                <option value="">-- Verifikasi --</option>
+                <option value="1"
+                <?php 
+                if(isset($kelengkapan)) {
+                  if($kelengkapan->is_verified == 1) {
+                    echo 'selected';
+                    }
+                }else{
+                  if(old('is_verified') == 1) {
+                    echo 'selected';
+                  }
+                } ?> >Ya</option>
+                <option value="0"
+                <?php 
+                if(isset($kelengkapan)) {
+                  if($kelengkapan->is_verified == 0) {
+                    echo 'selected';
+                    }
+                }else{
+                  if(old('is_verified') == 0) {
+                    echo 'selected';
+                  }
+                } ?>
+                >Tidak</option>
+              </select>
+       
+              
+                @error('is_verified')
+                  <div class="invalid-feedback">
+                    {{$message}}
+                  </div>
+                @enderror
+            </div>
+
+             <div class="form-group">
+            <label for="">Deskripsi</label>
+            <input type="text" class="form-control  @error('desc') is-invalid @enderror"  name="desc"  value="{{isset($kelengkapan) ? $kelengkapan->desc : old('desc')}}" placeholder="Nama">
+             @error('desc')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+             @enderror
+            </div>
+
 
      {{-- {!!form_input($errors, 'name', 'Nama', isset($kelengkapan) ? $kelengkapan : null)!!} --}}
 

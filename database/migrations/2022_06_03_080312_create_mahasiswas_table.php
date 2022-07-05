@@ -21,6 +21,9 @@ class CreateMahasiswasTable extends Migration
             $table->string('npm')->nullable();
             $table->string('no_ukg')->nullable();
             $table->string('nuptk')->nullable();
+            $table->enum('KEMENTRIAN', ['KEMENDIKBUD', 'KEMENAG'])->nullable();
+
+
             $table->string('namalengkap')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
@@ -95,7 +98,8 @@ class CreateMahasiswasTable extends Migration
             $table->string('kabupaten_orangtua')->nullable();
             $table->string('provinsi_orangtua')->nullable();
 
-
+            $table->enum('status', ['LENGKAPI', 'WAITING', 'PENDING', 'VALID', 'INVALID']);
+            $table->boolean('is_registered')->default(0);
             $table->timestamps();
         });
     }

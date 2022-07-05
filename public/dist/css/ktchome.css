@@ -35,3 +35,18 @@ a {
 .active-menu-header{
     border-bottom: 5px solid #e1820c;
 }
+
+.bg-ppg{
+    background-color: #2177b8;
+    color: white;
+}
+
+.number-mekanisme{
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.5;
+}
+
+.card-mekanisme{
+    height: 200px;
+}

@@ -15,6 +15,7 @@ class CreatePeriodesTable extends Migration
     {
         Schema::create('periodes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('jenis_ppg_id');
             $table->string('name');
             $table->string('tahun');
             $table->text('desc');

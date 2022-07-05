@@ -19,12 +19,14 @@ class AdminUserController extends Controller
     {
         //
         $cari = request('cari');
+        $role = request('role');
 
         if ($cari) {
-            $user = User::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $user = User::with('bidang_studi')->where('name', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(10);
         } else {
-            $user = User::latest()->paginate(10);
+            $user = User::with('bidang_studi')->latest()->where('role', $role)->paginate(10);
         }
+        // dd($user);
         $data = [
             'title'   => 'Manajemen User',
             'user' => $user,
@@ -42,7 +44,7 @@ class AdminUserController extends Controller
     {
         //
         $data = [
-            'title'   => 'Tambah User',
+            'title'   => 'Tambah ' . request('role'),
             'content' => 'admin/user/add'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -61,6 +63,7 @@ class AdminUserController extends Controller
         // die;
         // Re Password harusnya tidak masuk
         $data = $request->validate([
+            'no_ukg'          => 'required',
             'name'          => 'required|min:3',
             'email'         => 'required|email|min:4|unique:users',
             'role'          => 'required',
@@ -70,7 +73,7 @@ class AdminUserController extends Controller
         $data['password'] = Hash::make($data['password']);
         User::create($data);
         Alert::success('Sukses', 'User telah ditambahkan');
-        return redirect('/admin/user/create');
+        return redirect('/account/user/create');
     }
 
     /**
@@ -114,6 +117,7 @@ class AdminUserController extends Controller
         //
         $user = User::find($id);
         $data = $request->validate([
+            'no_ukg'          => 'required',
             'name'          => 'required|min:3',
             'email'         => 'required|email|min:4|unique:users,email,' . $user->id,
             'role'          => 'required',
@@ -127,7 +131,7 @@ class AdminUserController extends Controller
 
         $user->update($data);
         Alert::success('success', 'User telah diedit');
-        return redirect('/admin/user/' . $user->id . '/edit');
+        return redirect('/account/user/' . $user->id . '/edit');
     }
 
     /**
@@ -141,6 +145,6 @@ class AdminUserController extends Controller
         //
         DB::table('users')->delete($id);
         Alert::success('success', 'User telah dihapus');
-        return redirect('/admin/user');
+        return redirect('/account/user');
     }
 }

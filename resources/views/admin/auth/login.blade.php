@@ -23,7 +23,7 @@
 
       <div class="col-md-3"></div>
       <div class="col-md-6 shadow bg-white rounded p-5 mt-5">
-        <h4 class="text-center">Login Akun LDPPGUNM</h4>
+        <h4 class="text-center">Login Akun SIAPPGUNM</h4>
         <hr>
         <p class="text-center">Masuk ke akun anda dan lengkapi berkas</p>
 

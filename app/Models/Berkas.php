@@ -20,6 +20,6 @@ class Berkas extends Model
 
     function user()
     {
-        return $this->belongsTo(User::class)->with('mahasiswa');
+        return $this->belongsTo(User::class)->where('status_berkas', 'WAITING');
     }
 }

@@ -19,6 +19,29 @@
                 </div>
              @enderror
           </div>
+
+           <div class="form-group">
+                <label for="">Jenis PPG</label>
+                <select name="jenis_ppg_id" class="form-control @error('jenis_ppg_id') is-invalid @enderror" >
+                  <option value="">-- Jenis PPG --</option>
+                  @foreach ($jenis as $item)
+                      <option value="{{$item->id}}"
+                        <?php 
+                          if(isset($periode)){
+                            if($periode->jenis_ppg_id == $item->id){
+                              echo 'selected';
+                            }
+                          }
+                          ?>
+                        >{{$item->name}}</option>
+                  @endforeach
+                </select>
+                @error('kategori_id')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                @enderror
+              </div>
           
 
            <div class="form-group">

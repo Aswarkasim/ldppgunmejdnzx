@@ -1,6 +1,6 @@
 <div class="card">
 <div class="card-body">
-  <a href="/admin/user/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+  <a href="/account/user/create?role={{request('role')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
 
   <div class="float-right">
     <form action="" method="get">
@@ -18,6 +18,7 @@
     <tr>
       <th>No</th>
       <th>Nama</th>
+      {!!request('role') == 'verificator' ? '<th>Bidang Studi</th>' : ''!!}
       <th>Role</th>
       <th>Action</th>
     </tr>
@@ -28,7 +29,8 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/admin/user/{{$row->id}}">{{$row->name}}</a> <br> {{ $row->email}} </td>
+      <td>{{$row->name}}</a> <br> {{ 'ID : '.$row->no_ukg}} </td>
+      {!!request('role') == 'verificator' ? '<td>'.$row->bidang_studi->name.'</td>' : ''!!}
       <td>{{$row->role}}</td>
       <td>
         <div class="btn-group">
@@ -37,7 +39,7 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-              <a class="dropdown-item" href="/admin/user/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
+              <a class="dropdown-item" href="/admin/user/{{$row->id}}/edit?role={{request('role')}}"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
                 <form action="/admin/user/{{$row->id}}" method="post" class="tombol-hapus">
                   @method('delete')
