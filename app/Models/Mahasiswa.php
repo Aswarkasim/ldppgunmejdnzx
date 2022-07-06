@@ -22,13 +22,13 @@ class Mahasiswa extends Model
         return $this->belongsTo(Periode::class);
     }
 
-    function province()
+    function provinceBydomisili()
     {
         return $this->belongsTo(Province::class, 'provinsi_tempat_tinggal');
     }
 
-    function kabupaten()
+    function kabupatenByDomisili()
     {
-        return $this->belongsTo(Regency::class, 'provinsi_tempat_tinggal');
+        return $this->belongsTo(Regency::class, 'kabupaten_tempat_tinggal');
     }
 }

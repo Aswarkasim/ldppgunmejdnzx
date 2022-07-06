@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-8">
 
 <div class="card">
 <div class="card-body">
@@ -20,9 +20,9 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Kode</th>
+      {{-- <th>Kode</th> --}}
       <th>Nama</th>
-      <th>Deskripsi</th>
+      {{-- <th>Deskripsi</th> --}}
       <th>Action</th>
     </tr>
   </thead>
@@ -32,9 +32,9 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td>{{$row->kode}} </td>
+      {{-- <td>{{$row->kode}} </td> --}}
       <td>{{$row->name}} </td>
-      <td>{{$row->desc}} </td>
+      {{-- <td>{{$row->desc}} </td> --}}
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

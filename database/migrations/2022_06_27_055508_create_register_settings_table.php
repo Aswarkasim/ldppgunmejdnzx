@@ -16,9 +16,9 @@ class CreateRegisterSettingsTable extends Migration
         Schema::create('register_settings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('jenis_ppg_id')->nullable();
             $table->foreignId('periode_id')->nullable();
-            $table->foreignId('kelas_program_id')->nullable();
-            $table->boolean('is_active')->default(0);
+            $table->enum('is_active', ['WAITING', 'BUKA', 'TUTUP'])->default(0);
             $table->timestamps();
         });
     }

@@ -59,13 +59,13 @@ class AdminBidangStudiController extends Controller
     {
         //
         $data = $request->validate([
-            'kode'              => 'required|unique:bidang_studis',
+            // 'kode'              => 'required|unique:bidang_studis',
             'name'              => 'required|min:3',
-            'desc'              => 'required|min:3',
+            // 'desc'              => 'required|min:3',
         ]);
         BidangStudi::create($data);
         Alert::success('Sukses', 'BidangStudi telah ditambahkan');
-        return redirect('/account/master/bidangstudi');
+        return redirect('/account/master/bidangstudi/create');
     }
 
     /**
@@ -89,7 +89,7 @@ class AdminBidangStudiController extends Controller
     {
         //
         $data = [
-            'title'   => 'Tambah Type Berkas',
+            'title'   => 'Edit BIdang Studi',
             'bidangstudi' => BidangStudi::find($id),
             'store'    => route('bidangstudi.store'),
             'content' => 'admin/bidangstudi/add'
@@ -109,8 +109,9 @@ class AdminBidangStudiController extends Controller
         //
         $bidangstudi = BidangStudi::find($id);
         $data = $request->validate([
-            'kode'              => 'required|unique:bidang_studis',
+            // 'kode'              => 'required|unique:bidang_studis',
             'name'              => 'required|min:3',
+            // 'desc'              => 'required'
         ]);
         $bidangstudi->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');

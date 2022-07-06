@@ -40,7 +40,11 @@
 
         </ul>
         <form class="d-flex" role="search">
-          <a href="/auth" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
+          @auth
+          <a href="/auth" class="btn btn-secondary btn-sm"><i class="fas fa-user"></i> Dashboard</a>
+          @else
+          <a href="/account/dashboard" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
+          @endauth
         </form>
       </div>
     </div>

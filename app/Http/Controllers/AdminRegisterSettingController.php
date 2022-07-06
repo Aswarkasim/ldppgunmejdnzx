@@ -15,9 +15,9 @@ class AdminRegisterSettingController extends Controller
         // dd($request->all());
         $setting = RegisterSetting::first();
         // dd($setting);
+        $setting->jenis_ppg_id = $request->jenis_ppg_id;
         $setting->periode_id = $request->periode_id;
-        $setting->kelas_program_id = $request->kelas_program_id;
-        $setting->is_active = $request->is_active;
+        $setting->status = $request->status;
         $setting->save();
         Toastr::success('Status berkas diubah', 'Sukses');
         return redirect('/account/dashboard');

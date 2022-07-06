@@ -54,8 +54,7 @@ Route::prefix('/auth')->group(function () {
 });
 
 
-Route::prefix('/account')->middleware('auth')->group(function () {
-
+Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('account.dashboard');
     Route::get('/dashboard/status', [AdminDashboardController::class, 'changeStatus']);
@@ -82,7 +81,7 @@ Route::prefix('/account')->middleware('auth')->group(function () {
 
     Route::resource('/banner', AdminBannerController::class);
 
-    Route::prefix('/master')->group(function () {
+    Route::prefix('/master')->middleware('role:superadmin')->group(function () {
         Route::resource('/periode', AdminPeriodeController::class);
         Route::resource('/bidangstudi', AdminBidangStudiController::class);
         Route::resource('/jenisppg', AdminJenisPpgController::class);
@@ -90,7 +89,7 @@ Route::prefix('/account')->middleware('auth')->group(function () {
         // Route::resource('/prodi', AdminProdiController::class);
     });
 
-    Route::prefix('/verifikasi')->group(function () {
+    Route::prefix('/verifikasi')->middleware(['role:verificator', 'role:superadmin'])->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);
         Route::get('/all/{id}', [AdminVerifikasiController::class, 'verifikasiAll']);
         Route::get('/biodata/{id}', [AdminVerifikasiController::class, 'biodata']);
@@ -130,3 +129,4 @@ Route::get('/toast', function () {
 
 
 Route::get('/get-regency/{province_id?}', [AdminProfileController::class, 'getCity']);
+Route::get('/get-periode/{jenis_ppg_id?}', [AdminDashboardController::class, 'getPeriode']);

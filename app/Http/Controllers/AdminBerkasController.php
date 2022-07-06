@@ -100,7 +100,7 @@ class AdminBerkasController extends Controller
             Alert::error('Error', 'Berkas belum valid');
             return redirect('/account/dashboard');
         } else {
-            $data['mahasiswa'] = Mahasiswa::with(['bidang_studi', 'province', 'kabupaten'])->whereUserId($user_id)->first();
+            $data['mahasiswa'] = Mahasiswa::with(['periode', 'bidang_studi', 'provinceBydomisili', 'kabupatenByDomisili'])->whereUserId($user_id)->first();
             return view('admin/berkas/cetak', $data);
         }
     }

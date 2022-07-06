@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Configuration;
 use App\Models\JenisPpg;
 use App\Models\KelasProgram;
+use App\Models\RegisterSetting;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -78,6 +79,7 @@ class AdminDashboardController extends Controller
         $data = [
             'periode'   => Periode::latest()->get(),
             'jenis'     => JenisPpg::all(),
+            'register_setting'  => RegisterSetting::with(['periode', 'jenis_ppg'])->first(),
             'total_mahasiswa' => Mahasiswa::count(),
             'total_registered' => Mahasiswa::where('is_registered', 1)->count(),
             'total_verifikasi' => Mahasiswa::where('status', 'WAITING')->count(),
@@ -123,5 +125,22 @@ class AdminDashboardController extends Controller
         $mahasiswa->save();
         Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
         return redirect('/account/dashboard');
+    }
+
+    function getPeriode($jenis_ppg_id)
+    {
+        if (!$jenis_ppg_id) return response()->json('NOT OK');
+
+        $periode = Periode::where('jenis_ppg_id', $jenis_ppg_id)->get();
+
+        if ($periode == false) return response()->json('NOT OK');
+
+        $dataPeriode = "";
+
+        foreach ($periode as $key) {
+            $dataPeriode .= "<option value='" . $key->id . "'>$key->name</option>";
+        }
+
+        return response()->json($dataPeriode);
     }
 }

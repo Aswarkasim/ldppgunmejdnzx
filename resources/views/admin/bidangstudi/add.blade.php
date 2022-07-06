@@ -10,7 +10,7 @@
             @method('PUT')
         @endif
           @csrf
-
+{{-- 
           <div class="form-group">
             <label for="">Kode Bidang Studi</label>
             <input type="text" class="form-control  @error('kode') is-invalid @enderror"  name="kode"  value="{{isset($bidangstudi) ? $bidangstudi->kode : old('kode')}}" placeholder="Kode Bidang Studi">
@@ -19,7 +19,7 @@
                   {{$message}}
                 </div>
              @enderror
-          </div>
+          </div> --}}
 
 
           <div class="form-group">
@@ -32,7 +32,7 @@
              @enderror
           </div>
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="">Deskripsi</label>
             <input type="text" class="form-control  @error('desc') is-invalid @enderror"  name="desc"  value="{{isset($bidangstudi) ? $bidangstudi->desc : old('desc')}}" placeholder="Deskripsi">
              @error('desc')
@@ -40,7 +40,7 @@
                   {{$message}}
                 </div>
              @enderror
-          </div>
+          </div> --}}
 
 
      {{-- {!!form_input($errors, 'name', 'Nama', isset($bidangstudi) ? $bidangstudi : null)!!} --}}

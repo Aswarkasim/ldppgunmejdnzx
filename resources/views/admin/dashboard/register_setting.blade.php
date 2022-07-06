@@ -19,32 +19,36 @@
 
           <div class="form-group">
           <label class="label">Jenis PPG</label>
-          <select name="kelas_program_id" class="form-control @error('kelas_program_id') is-invalid @enderror" id="">
-              <option value="">-- Jenis PPG --</option>
-              @foreach ($jenis as $j)
-                  <option value="{{$j->id}}" {{$j->id == $provider_register_setting->id ? 'selected' : ''}}>{{$j->name}}</option>
+           <select class="form-control" id="jenisppg" name="jenis_ppg_id" required>
+              <option value="">Pilih Jenis PPG</option>
+              @foreach($jenis as $item)
+                <option value="{{$item->id}}" {{$item->id == $register_setting->jenis_ppg_id ? 'selected' : ''}}>{{$item->name}}</option>
               @endforeach
             </select>
+            <div class="invalid-feedback">
+              Please select a valid Jenis PPG.
+            </div>
         </div>
 
         
         <div class="form-group">
           <label class="label">Periode</label>
-          <select name="periode_id" class="form-control @error('periode_id') is-invalid @enderror" id="">
-              <option value="">-- Periode --</option>
-              @foreach ($periode as $p)
-                  <option value="{{$p->id}}" {{$p->id == $provider_register_setting->periode_id ? 'selected' : ''}}>{{$p->name}}</option>
-              @endforeach
+          <select class="form-control" id="periode" name="periode_id" disabled required>
+              <option value="">Pilih Periode</option>
             </select>
+            <div class="invalid-feedback">
+              Please provide a valid periode.
+            </div>
         </div>
 
       
         <div class="form-group">
           <label class="label">Status</label>
-          <select name="is_active" class="form-control @error('is_active') is-invalid @enderror" id="">
+          <select name="status" required class="form-control @error('status') is-invalid @enderror" id="">
               <option value="">-- Status --</option>
-              <option value="1">AKTIF</option>
-              <option value="0">NONAKTIF</option>
+              <option value="WAITING" {{$provider_register_setting->status == 'WAITING' ? 'selected' : ''}}>MENUNGGU</option>
+              <option value="BUKA" {{$provider_register_setting->status == 'BUKA' ? 'selected' : ''}}>BUKA</option>
+              <option value="TUTUP" {{$provider_register_setting->status == 'TUTUP' ? 'selected' : ''}}>TUTUP</option>
             </select>
         </div>
 
@@ -57,3 +61,40 @@
     </div>
   </div>
 </div>
+
+
+       
+
+          
+
+
+
+    <script>
+  $(document).ready(function(){
+    $('#jenisppg option[value=""]').prop('selected',true);
+    $('#periode option[value!=""]').remove();
+
+    jenisppg = $('#jenisppg')
+    jenisppg.on('change', function() {
+        $this = $(this)
+        periode = $('#periode')
+
+        if ($this.val() !== '') {
+            $.ajax({
+                url: "{{url('/get-periode')}}" +'/' +$this.val() , 
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    if (response !== 'NOT OK') {
+                        periode.removeAttr('disabled')
+                        periode.html(response)
+                    }
+                }
+            });
+        } else {
+            periode.prop('disabled', true)
+            periode.find('option').val('').text('Pilih Kota/Kabupaten')
+        }
+    })  
+  });
+</script>

@@ -23,7 +23,7 @@
       <h4 class="text-center">Registrasi Akun SIAPPGUNM</h4>
       <hr>
       <p class="text-center">Buat akun untuk memulai lengkapi berkas</p>
-      
+      {{-- @dd($provider_register_setting) --}}
       {{-- show registerError --}}
       @if(session()->has('registerError'))
         <div class="alert alert-danger">
@@ -31,12 +31,18 @@
         </div>
       @endif
 
-      @if ($provider_register_setting->is_active == 0)
+      @if ($provider_register_setting->status == 'WAITING')
 
       <div class="alert alert-info">
         <i class="fa fa-info"></i> Registrasi belum dibuka untuk periode saat ini
       </div>
           
+      @elseif($provider_register_setting->status == 'TUTUP')
+
+      <div class="alert alert-warning">
+        <i class="fa fa-info"></i> Registrasi lapor diri telah ditutup. Hubungi admin untuk informasi lebih lanjut
+      </div>
+
       @else
           
       <input type="hidden" name="periode_id" value="{{$provider_register_setting->periode_id}}">

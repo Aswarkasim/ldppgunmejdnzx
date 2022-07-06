@@ -36,7 +36,7 @@
 </head>
 
 <body>
-
+{{-- @dd($mahasiswa) --}}
 
   <div class="d-flex">
     <img src="/img/unm_pentagon.png" width="150px" height="150px" alt="">
@@ -96,18 +96,18 @@
 
     <tr>
       <td>Kabupaten</td>
-      <td>: {{$mahasiswa->kabupaten->name}}</td>
+      <td>: {{$mahasiswa->kabupatenByDomisili->name}}</td>
     </tr>
 
     <tr>
       <td>Provinsi</td>
-      <td>: {{$mahasiswa->province->name}}</td>
+      <td>: {{$mahasiswa->provinceByDomisili->name}}</td>
     </tr>
 
     
   </table>
 
-  <p>Yang bersangkutan Mahasiswa Universitas Negeri Makassar dengan Nomor Induk Mahasiswa 1629041001 Program Studi Pendidikan Profesi Guru dalam Jabatan Tahun 2022 Periode 1</p>
+  <p>Yang bersangkutan Mahasiswa Universitas Negeri Makassar dengan Nomor Pokok Mahasiswa <b>1629041001</b> Program Studi Pendidikan Profesi Guru dalam Jabatan Tahun {{$mahasiswa->periode->tahun}} <b>{{$mahasiswa->periode->name}}</b></p>
 
   <div class="pull-right">
     <p class="pull-right">Makassar, 23 Juli 2022</p>
@@ -131,7 +131,7 @@
   </table>
       
   <script>
-    // window.print()
+    window.print()
   </script>
 </body>
 
