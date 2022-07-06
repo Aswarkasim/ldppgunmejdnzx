@@ -23,6 +23,7 @@
       {{-- <th>Kode</th> --}}
       <th>Nama</th>
       {{-- <th>Deskripsi</th> --}}
+
       <th>Action</th>
     </tr>
   </thead>

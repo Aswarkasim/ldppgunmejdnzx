@@ -6,7 +6,7 @@
         @if (Request::is('account/banner/create'))
           <form action="/account/banner" method="POST" enctype="multipart/form-data">  
         @else
-          <form action="/account/banner/{{$banner->id}}" method="POST" encype="multipart/form-data">  
+          <form action="/account/banner/{{$banner->id}}" method="POST" enctype="multipart/form-data">  
             @method('PUT')
         @endif
           @csrf

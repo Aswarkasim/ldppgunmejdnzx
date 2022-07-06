@@ -54,7 +54,7 @@ class AdminBannerController extends Controller
             'topik'        => 'required',
             'urutan'        => 'required|unique:banners',
             'desc'              => 'required|min:3',
-            'image'              => 'required:mimes:jpg,png',
+            // 'image'              => 'required:mimes:jpg,png',
         ]);
 
         //perbaiki upload imagenya
