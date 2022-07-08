@@ -36,7 +36,21 @@
         @enderror
     </div>
 
-    akreditasi sekolah
+     <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Akreditasi Sekolah<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('akreditasi_sekolah') is-invalid @enderror" name="akreditasi_sekolah"  value="{{isset($profile) ? $profile->akreditasi_sekolah : old('akreditasi_sekolah')}}" placeholder="Akreditasi Sekolah">
+        </div>
+      </div>
+      @error('akreditasi_sekolah')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+    </div>
    
 
   </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Banner;
+use App\Models\Timeline;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -32,6 +33,7 @@ class HomeController extends Controller
     function timeline()
     {
         $data = [
+            'timeline' => Timeline::all(),
             'content'  => 'home/home/timeline'
         ];
         return view('home/layouts/wrapper', $data);

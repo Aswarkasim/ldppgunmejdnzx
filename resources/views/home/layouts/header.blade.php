@@ -1,18 +1,19 @@
 <div style="background-color: #f58a0f">
   <div class="container">
     <div class="d-flex">
-      <img src="/img/unm_white.png" style="width: 100px; height:auto ;" alt="">
+      <img src="/img/unm_white.png" style="width: 150px; height:150px;" alt="">
       <h3 class="text-white my-3">
         <strong>
           SISTEM INFORMASI AKADEMIK   <br>
-          PPG UNM
+          PROGRAM STUDI PENDIDIKAN PROFESI GURU <br>
+          UNIVERSITAS NEGERI MAKASSAR
         </strong>
       </h3>
     </div>
     <div class="d-flex text-white pb-2">
-      <span class="mx-2"><i class="fas fa-map-marker-alt"></i> Jl. A.P. Pettarani</span>
-      <span class="mx-2"><i class="fas fa-phone"></i> 085-000-000-000</span>
-      <span class="mx-2"><i class="fas fa-at"></i> ppgunm@gmail.com</span>
+      <span class="mx-2"><i class="fas fa-map-marker-alt"></i> {{$provider_config->alamat}}</span>
+      <span class="mx-2"><i class="fas fa-phone"></i>  {{$provider_config->nohp_1}}</span>
+      <span class="mx-2"><i class="fas fa-at"></i>  {{$provider_config->email}}</span>
     </div>
   </div>
 </div>
@@ -43,6 +44,7 @@
           @auth
           <a href="/auth" class="btn btn-secondary btn-sm"><i class="fas fa-user"></i> Dashboard</a>
           @else
+          <a href="/account/dashboard" class="btn btn-danger btn-sm mx-2"><i class="fas fa-user-plus"></i> Buat akun</a>
           <a href="/account/dashboard" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
           @endauth
         </form>

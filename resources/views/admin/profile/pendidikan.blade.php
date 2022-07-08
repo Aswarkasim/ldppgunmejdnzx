@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-3">
           <label for="">Perguruan Tnggi S1</label>
-        </div>
+      </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pt_s1') is-invalid @enderror" name="pt_s1" value="{{isset($profile) ? $profile->pt_s1 : old('pt_s1')}}" placeholder="Perguruan Tnggi S1">
         </div>
@@ -42,10 +42,10 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nomot Ijazah S1</label>
+          <label for="">Nomor Ijazah S1</label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('nomor_ijazah_s1') is-invalid @enderror" name="nomor_ijazah_s1" value="{{isset($profile) ? $profile->nomor_ijazah_s1 : old('nomor_ijazah_s1')}}" placeholder="Nomot Ijazah S1">
+          <input type="text" class="form-control @error('nomor_ijazah_s1') is-invalid @enderror" name="nomor_ijazah_s1" value="{{isset($profile) ? $profile->nomor_ijazah_s1 : old('nomor_ijazah_s1')}}" placeholder="Nomor Ijazah S1">
         </div>
       </div>
       @error('nomor_ijazah_s1')
@@ -107,7 +107,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Alamat Perguruan Tinggi</label>
+          <label for=""></label>
         </div>
         <div class="col-md-9">
           <div class="row pt-1">
@@ -192,10 +192,10 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nomot Ijazah S2</label>
+          <label for="">Nomor Ijazah S2</label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('nomor_ijazah_s2') is-invalid @enderror" name="nomor_ijazah_s2" value="{{isset($profile) ? $profile->nomor_ijazah_s2 : old('nomor_ijazah_s2')}}" placeholder="Nomot Ijazah S2">
+          <input type="text" class="form-control @error('nomor_ijazah_s2') is-invalid @enderror" name="nomor_ijazah_s2" value="{{isset($profile) ? $profile->nomor_ijazah_s2 : old('nomor_ijazah_s2')}}" placeholder="Nomor Ijazah S2">
         </div>
       </div>
       @error('nomor_ijazah_s2')

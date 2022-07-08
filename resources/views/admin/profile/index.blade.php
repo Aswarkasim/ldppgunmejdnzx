@@ -26,6 +26,10 @@
             <a href="?page=keluarga" class="nav-link {{$page == 'keluarga' ? 'active' : ''}} cursor-pointer">Keluarga</a>
           </li>
 
+           <li class="nav-item">
+            <a href="?page=pasfoto" class="nav-link {{$page == 'pasfoto' ? 'active' : ''}} cursor-pointer">Pas Foto</a>
+          </li>
+
         </ul>
 
 
@@ -41,6 +45,9 @@
                 @break
             @case('keluarga')
                 @include('/admin/profile/keluarga')
+            @break
+            @case('pasfoto')
+                @include('/admin/profile/pasfoto')
             @break
             @default
                 

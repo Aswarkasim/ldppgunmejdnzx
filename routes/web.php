@@ -23,6 +23,7 @@ use App\Http\Controllers\AdminMahasiswaController;
 use App\Http\Controllers\AdminNotifController;
 use App\Http\Controllers\AdminPeriodeController;
 use App\Http\Controllers\AdminRegisterSettingController;
+use App\Http\Controllers\AdminTimelineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::get('/dashboard/config/periode/{id}', [AdminDashboardController::class, 'periodeLD']);
     Route::get('/periode', [AdminDashboardController::class, 'periodeActive']);
 
+
     Route::get('/notif', [AdminNotifController::class, 'index']);
 
     Route::get('/akun', [AdminAkunController::class, 'index']);
@@ -70,6 +72,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::put('/setting/register/update', [AdminRegisterSettingController::class, 'update']);
 
+    // Route::middleware('role:superadmin');
     Route::get('/konfigurasi', [AdminConfigurationController::class, 'index']);
     Route::put('/konfigurasi/update', [AdminConfigurationController::class, 'update']);
 
@@ -79,7 +82,8 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::get('/berkas/cetak', [AdminBerkasController::class, 'cetakBukti']);
     Route::resource('/berkas', AdminBerkasController::class);
 
-    Route::resource('/banner', AdminBannerController::class);
+
+    Route::resource('/timeline', AdminTimelineController::class);
 
     Route::prefix('/master')->middleware('role:superadmin')->group(function () {
         Route::resource('/periode', AdminPeriodeController::class);
@@ -87,9 +91,11 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/jenisppg', AdminJenisPpgController::class);
         Route::resource('/kelasprogram', AdminKelasProgramController::class);
         // Route::resource('/prodi', AdminProdiController::class);
+
+        Route::resource('/banner', AdminBannerController::class);
     });
 
-    Route::prefix('/verifikasi')->middleware(['role:verificator', 'role:superadmin'])->group(function () {
+    Route::prefix('/verifikasi')->middleware('role:superadmin,verificator')->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);
         Route::get('/all/{id}', [AdminVerifikasiController::class, 'verifikasiAll']);
         Route::get('/biodata/{id}', [AdminVerifikasiController::class, 'biodata']);
@@ -115,6 +121,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::put('/instansi', [AdminProfileController::class, 'updateInstansi']);
         Route::put('/pendidikan', [AdminProfileController::class, 'updatePendidikan']);
         Route::put('/keluarga', [AdminProfileController::class, 'updateKeluarga']);
+        Route::put('/pasfoto', [AdminProfileController::class, 'pasfoto']);
     });
 });
 

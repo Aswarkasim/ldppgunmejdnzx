@@ -17,7 +17,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if (Auth::user()->role == $role) {
+        if ($request->user()->role == $role) {
             return $next($request);
         } else {
             // echo '<script>alert("Anda tidak memiliki akses ke halaman ini");</script>';

@@ -23,7 +23,7 @@
 </li>
   
   <li class="nav-item">
-  <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi') ? 'active' : ''}}">
+  <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-edit"></i>
     <p>
       Verifikasi
@@ -41,7 +41,7 @@
 </li>
 
   <li class="nav-item">
-  <a href="/account/mahasiswa" class="nav-link {{Request::is('account/mahasiswa') ? 'active' : ''}}">
+  <a href="/account/mahasiswa" class="nav-link {{Request::is('account/mahasiswa*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-users"></i>
     <p>
       Mahasiswa
@@ -123,10 +123,18 @@
   </ul>
 </li>
 
+  <li class="nav-item">
+  <a href="/account/timeline" class="nav-link {{Request::is('account/timeline*') ? 'child-active' : ''}}">
+    <i class="nav-icon fas fa-calendar"></i>
+    <p>
+      Timeline
+    </p>
+  </a>
+</li>
 
     
   <li class="nav-item">
-  <a href="/account/banner" class="nav-link">
+  <a href="/account/banner" class="nav-link {{Request::is('account/banner*') ? 'child-active' : ''}}">
     <i class="nav-icon fas fa-image"></i>
     <p>
       Banner
@@ -135,7 +143,7 @@
 </li>
 
 <li class="nav-item">
-  <a href="/account/konfigurasi" class="nav-link">
+  <a href="/account/konfigurasi" class="nav-link {{Request::is('account/konfigurasi*') ? 'child-active' : ''}}">
     <i class="nav-icon fas fa-cogs"></i>
     <p>
       Konfigurasi

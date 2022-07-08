@@ -27,10 +27,15 @@ class AdminConfigurationController extends Controller
         $konfigurasi  = Configuration::find('1')->first();
 
         $data = $request->validate([
-            'app_name' => 'required|min:3'
+            'app_name' => 'required|min:3',
+            'alamat' => 'required|min:3',
+            'nohp_1' => 'required|min:3',
+            'nohp_2' => 'required|min:3',
+            'email' => 'required|min:3',
+            'maps' => 'required|min:3',
         ]);
         $konfigurasi->update($data);
         Alert::success('Sukses', 'Konfigurasi telah diperbaharui');
-        return redirect('/admin/konfigurasi');
+        return redirect('/account/konfigurasi');
     }
 }

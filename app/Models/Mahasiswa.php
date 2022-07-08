@@ -19,7 +19,7 @@ class Mahasiswa extends Model
 
     function periode()
     {
-        return $this->belongsTo(Periode::class);
+        return $this->belongsTo(Periode::class)->with('jenisPpg');
     }
 
     function provinceBydomisili()

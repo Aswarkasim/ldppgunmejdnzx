@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use App\Models\Periode;
 use App\Models\Regency;
 use App\Models\Province;
@@ -97,6 +98,7 @@ class AdminProfileController extends Controller
 
             'nama_instansi'         => 'required',
             'npsn_sekolah'          => 'required',
+            'akreditasi_sekolah'          => 'required',
             'jenjang_pendidikan'    => 'required',
             'alamat_instansi'       => 'required',
         ]);
@@ -177,6 +179,40 @@ class AdminProfileController extends Controller
         $profile->update();
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=keluarga');
+    }
+
+    function pasfoto(Request $request)
+    {
+        $user_id = auth()->user()->id;
+        $profile = Mahasiswa::whereUserId($user_id)->first();
+
+        $request->validate([
+            'pasfoto'  => 'max:200',
+        ]);
+
+        // $pasfoto = $request->hasFile('pasfoto');
+        // dd($request->all());
+        $profile = Mahasiswa::find($request->id);
+
+        if ($profile->pasfoto != null) {
+            unlink($profile->pasfoto);
+        }
+
+        //masih belum bagus
+        $pasfoto = $request->file('pasfoto');
+        dd($pasfoto);
+        $uuid1 = Uuid::uuid4()->toString();
+        $uuid2 = Uuid::uuid4()->toString();
+        $file_name = $uuid1 . $uuid2 . '.' . $pasfoto->getClientOriginalExtension();
+
+        $storage = 'uploads/pasfoto/';
+        $pasfoto->move($storage, $file_name);
+        // $data['path'] = $storage;
+        $data['pasfoto'] =  $storage . $file_name;
+
+        $profile->update($data);
+        Alert::success('Sukses', 'Berkas diupload');
+        return redirect('/account/profile?page=pasfoto');
     }
 
     function getCity($provinsi_id)

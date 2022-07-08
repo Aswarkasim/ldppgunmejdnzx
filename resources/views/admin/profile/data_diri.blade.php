@@ -27,30 +27,30 @@
      <div class="form-group">
         <div class="row">
           <div class="col-md-3">
-            <label for="">Kementrian<span class="text-danger">*</span></label>
+            <label for="">Kementerian<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
-            <select name="kementrian" class="form-control @error('kementrian') is-invalid @enderror" id="">
+            <select name="kementerian" class="form-control @error('kementerian') is-invalid @enderror" id="">
           <option value="">-- Kementrian --</option>
           <option value="KEMENDIKBUD"
           <?php 
           if(isset($profile)) {
-            if($profile->kementrian == 'KEMENDIKBUD') {
+            if($profile->kementerian == 'KEMENDIKBUD') {
               echo 'selected';
               }
           }else{
-            if(old('kementrian') == 'KEMENDIKBUD') {
+            if(old('kementerian') == 'KEMENDIKBUD') {
               echo 'selected';
             }
           } ?> >KEMENDIKBUD</option>
           <option value="KEMENAG"
           <?php 
           if(isset($profile)) {
-            if($profile->kementrian == 'KEMENAG') {
+            if($profile->kementerian == 'KEMENAG') {
               echo 'selected';
               }
           }else{
-            if(old('kementrian') == 'KEMENAG') {
+            if(old('kementerian') == 'KEMENAG') {
               echo 'selected';
             }
           } ?>
@@ -59,7 +59,7 @@
           </div>
         </div>
         
-          @error('kementrian')
+          @error('kementerian')
             <div class="invalid-feedback">
               {{$message}}
             </div>
@@ -73,6 +73,7 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('namalengkap') is-invalid @enderror" name="namalengkap"  value="{{isset($profile) ? $profile->namalengkap : old('namalengkap')}}" placeholder="Nama Lengkap">
+          <small>Lengkap dengan gelar akademik</small>
         </div>
       </div>
       @error('namalengkap')
@@ -85,7 +86,7 @@
       <div class="form-group">
         <div class="row">
           <div class="col-md-3">
-            <label for="">NUPTK<span class="text-danger">*</span></label>
+            <label for="">NUPTK/NPK<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
             <input type="text" class="form-control @error('nuptk') is-invalid @enderror" name="nuptk"  value="{{isset($profile) ? $profile->nuptk : old('nuptk')}}" placeholder="NUPTK">

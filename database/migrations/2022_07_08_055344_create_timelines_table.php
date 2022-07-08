@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConfigurationsTable extends Migration
+class CreateTimelinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configurations', function (Blueprint $table) {
+        Schema::create('timelines', function (Blueprint $table) {
             $table->id();
-            $table->string('app_name');
-            $table->string('alamat');
-            $table->string('nohp_1');
-            $table->string('nohp_2');
-            $table->string('email');
-            $table->text('maps')->nullable();
+            $table->string('title');
+            $table->string('desc')->nullable();
+            $table->date('start');
+            $table->date('end')->nullable();
+            $table->boolean('is_done')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateConfigurationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configurations');
+        Schema::dropIfExists('timelines');
     }
 }

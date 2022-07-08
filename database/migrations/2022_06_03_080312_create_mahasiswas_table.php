@@ -21,7 +21,7 @@ class CreateMahasiswasTable extends Migration
             $table->string('npm')->nullable();
             $table->string('no_ukg')->nullable();
             $table->string('nuptk')->nullable();
-            $table->enum('KEMENTRIAN', ['KEMENDIKBUD', 'KEMENAG'])->nullable();
+            $table->enum('kementerian', ['KEMENDIKBUD', 'KEMENAG'])->nullable();
 
 
             $table->string('namalengkap')->nullable();
@@ -29,6 +29,7 @@ class CreateMahasiswasTable extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->string('nik')->nullable();
+            $table->text('pasfoto')->nullable();
             $table->string('unggah_kk')->nullable();
             $table->string('unggah_ktp')->nullable();
             $table->string('alamat_domisili')->nullable();
@@ -45,6 +46,7 @@ class CreateMahasiswasTable extends Migration
 
             $table->string('nama_instansi')->nullable();
             $table->string('npsn_sekolah')->nullable();
+            $table->string('akreditasi_sekolah')->nullable();
             $table->string('jenjang_pendidikan')->nullable();
             $table->string('alamat_instansi')->nullable();
 
