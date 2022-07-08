@@ -40,13 +40,38 @@
   </a>
 </li>
 
-  <li class="nav-item">
+  {{-- <li class="nav-item">
   <a href="/account/mahasiswa" class="nav-link {{Request::is('account/mahasiswa*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-users"></i>
     <p>
       Mahasiswa
     </p>
   </a>
+</li> --}}
+
+<li class="nav-item {{Request::is('account/mahasiswa*') ? 'menu-open' : ''}}">
+  <a href="#" class="nav-link {{Request::is('account/mahasiswa*') ? 'active' : ''}}">
+    <i class="nav-icon fas fa-users"></i>
+    <p>
+      Mahasiswa
+     <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="/account/mahasiswa?kementerian=KEMENDIKBUD" class="nav-link {{request('kementerian') == 'KEMENDIKBUD' ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Kemendikbud</p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/account/mahasiswa?kementerian=KEMENAG" class="nav-link {{request('kementerian') == 'KEMENAG'  ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Kemenag</p>
+      </a>
+    </li>
+    
+  </ul>
 </li>
 
 

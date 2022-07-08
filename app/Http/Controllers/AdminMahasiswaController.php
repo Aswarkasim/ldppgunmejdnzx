@@ -16,12 +16,15 @@ class AdminMahasiswaController extends Controller
     {
         $periode_id = Session::get('periode_id');
         $cari = request('cari');
+        $kementerian = request('kementerian');
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::where('name', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::where('name', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::whereIsRegistered(1)->wherePeriodeId($periode_id)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
         }
+
+
         $data = [
             'title'   => 'Mahasiswa',
             'mahasiswa' => $mahasiswa,

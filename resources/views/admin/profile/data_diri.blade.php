@@ -105,7 +105,7 @@
           <label for=""> Jenis PPG<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text"  class="form-control @error('periode_id') is-invalid @enderror" name="periode_id"  value="{{isset($profile->periode) ? $profile->periode->name : old('periode_id')}}"  disabled placeholder="Periode PPG">
+          <input type="text"  class="form-control @error('periode_id') is-invalid @enderror" name="periode_id"  value="{{isset($profile->periode) ? $profile->periode->jenisPpg->name : old('periode_id')}}"  disabled placeholder="Periode PPG">
         </div>
       </div>
       @error('periode_id')

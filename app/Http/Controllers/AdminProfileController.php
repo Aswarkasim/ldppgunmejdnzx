@@ -200,7 +200,7 @@ class AdminProfileController extends Controller
 
         //masih belum bagus
         $pasfoto = $request->file('pasfoto');
-        dd($pasfoto);
+        // dd($pasfoto);
         $uuid1 = Uuid::uuid4()->toString();
         $uuid2 = Uuid::uuid4()->toString();
         $file_name = $uuid1 . $uuid2 . '.' . $pasfoto->getClientOriginalExtension();

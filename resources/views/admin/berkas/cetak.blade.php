@@ -70,7 +70,7 @@
 
     <tr>
       <td>Bidang Studi PPG</td>
-      <td>: {{$mahasiswa->bidang_studi->namalengkap}}</td>
+      <td>: {{$mahasiswa->bidang_studi->name}}</td>
     </tr>
 
     <tr>
@@ -108,11 +108,11 @@
 
   <p>Yang bersangkutan Mahasiswa Universitas Negeri Makassar dengan Nomor Pokok Mahasiswa <b><span style="color: red">{{$mahasiswa->npm}}</b></span> {{$mahasiswa->periode->jenisPpg->name}} {{$mahasiswa->periode->tahun}} <b>{{$mahasiswa->periode->name}}</b></p>
 
-    <p style="position: absolute; right: 12px;">Makassar, 23 Juli 2022</p>
+    <p style="position: absolute; right: 12px;">Makassar, {{format_tanggal(date('Y-m-d'))}}</p>
 
   <div class="d-flex mt-5">
     <div style="margin-left: 400px">
-      <img src="/img/bg.jpg" width="200px" alt="">
+      <img src="/{{$mahasiswa->pasfoto}}" width="200px" alt="">
     </div>
 
     <table class="table">

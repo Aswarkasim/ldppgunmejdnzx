@@ -1,4 +1,4 @@
-<form action="/account/profile/pasfoto" method="POST">
+<form action="/account/profile/pasfoto" method="POST" enctype="multipart/form-data">
 @method('PUT')
 @csrf
 
@@ -12,18 +12,23 @@
         </div>
         <div class="col-md-9">
           <input type="file" class="form-control @error('pasfoto') is-invalid @enderror" name="pasfoto"  value="{{isset($profile) ? $profile->pasfoto : old('pasfoto')}}" required placeholder="Akreditasi Sekolah">
-          <small>Pastika foto berukuran 3X4</small>
+          <small>Pastika foto berukuran 3X4 dan ukuran maksimal 200KB</small>
 
           @error('pasfoto')
           <div class="invalid-feedback">
           {{$message}}
           </div>
-        @enderror
-        
+
+          @enderror
+          
+          @if ($profile->pasfoto != null)
+              <img src="/{{$profile->pasfoto}}" width="70%" alt="">
+          @endif
         </div>
       </div>
       
     </div>
+    
  </div>
 </div>
 

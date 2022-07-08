@@ -95,7 +95,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     });
 
-    Route::prefix('/verifikasi')->middleware('role:superadmin,verificator')->group(function () {
+    Route::prefix('/verifikasi')->middleware(['role:superadmin,verificator'])->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);
         Route::get('/all/{id}', [AdminVerifikasiController::class, 'verifikasiAll']);
         Route::get('/biodata/{id}', [AdminVerifikasiController::class, 'biodata']);
