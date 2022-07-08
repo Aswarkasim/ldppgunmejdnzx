@@ -53,8 +53,8 @@ class AdminBannerController extends Controller
         $data = $request->validate([
             // 'topik'        => 'required',
             'urutan'        => 'required|unique:banners',
-            'desc'              => 'required|min:3',
-            // 'image'              => 'required:mimes:jpg,png',
+            // 'desc'              => 'required|min:3',
+            'image'              => 'required:mimes:jpg,png',
         ]);
 
         //perbaiki upload imagenya
