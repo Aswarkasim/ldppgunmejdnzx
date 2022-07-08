@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Banner;
+use App\Models\Petunjuk;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,8 @@ class HomeController extends Controller
     function petunjuk()
     {
         $data = [
+            'title'   => 'Petunjuk',
+            'petunjuk' => Petunjuk::all(),
             'content'  => 'home/home/petunjuk'
         ];
         return view('home/layouts/wrapper', $data);

@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminMahasiswaController;
 use App\Http\Controllers\AdminNotifController;
 use App\Http\Controllers\AdminPeriodeController;
+use App\Http\Controllers\AdminPetunjukController;
 use App\Http\Controllers\AdminRegisterSettingController;
 use App\Http\Controllers\AdminTimelineController;
 
@@ -84,6 +85,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 
     Route::resource('/timeline', AdminTimelineController::class);
+    Route::resource('/petunjuk', AdminPetunjukController::class);
 
     Route::resource('/banner', AdminBannerController::class);
     Route::prefix('/master')->middleware('role:superadmin')->group(function () {
@@ -95,7 +97,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     });
 
-    Route::prefix('/verifikasi')->middleware(['role:superadmin,verificator'])->group(function () {
+    Route::prefix('/verifikasi')->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);
         Route::get('/all/{id}', [AdminVerifikasiController::class, 'verifikasiAll']);
         Route::get('/biodata/{id}', [AdminVerifikasiController::class, 'biodata']);

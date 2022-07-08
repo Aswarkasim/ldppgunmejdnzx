@@ -148,6 +148,15 @@
   </ul>
 </li>
 
+ <li class="nav-item">
+  <a href="/account/petunjuk" class="nav-link {{Request::is('account/petunjuk*') ? 'child-active' : ''}}">
+    <i class="nav-icon fas fa-directions"></i>
+    <p>
+      Petunjuk
+    </p>
+  </a>
+</li>
+
   <li class="nav-item">
   <a href="/account/timeline" class="nav-link {{Request::is('account/timeline*') ? 'child-active' : ''}}">
     <i class="nav-icon fas fa-calendar"></i>
