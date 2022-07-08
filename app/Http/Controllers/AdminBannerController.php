@@ -51,7 +51,7 @@ class AdminBannerController extends Controller
     {
         //
         $data = $request->validate([
-            'topik'        => 'required',
+            // 'topik'        => 'required',
             'urutan'        => 'required|unique:banners',
             'desc'              => 'required|min:3',
             // 'image'              => 'required:mimes:jpg,png',
@@ -116,10 +116,10 @@ class AdminBannerController extends Controller
         // die('Adakah');
         $banner = Banner::find($id);
         $data = $request->validate([
-            'topik'         => 'required',
+            // 'topik'         => 'required',
             'image'         => 'mimes:jpeg,jpg,png,bmp',
             'urutan'        => 'required|unique:banners,urutan,' . $banner->id,
-            'desc'          => 'required|min:3',
+            // 'desc'          => 'required|min:3',
         ]);
 
         //perbaiki upload imagenya

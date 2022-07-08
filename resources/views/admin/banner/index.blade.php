@@ -16,8 +16,9 @@
 <table id="example1" class="table table-striped">
   <thead>
     <tr>
-      <th>No</th>
-      <th>Nama</th>
+      {{-- <th>No</th> --}}
+      <th>Urutan</th>
+      <th>Gambar</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -26,8 +27,9 @@
     @foreach ($banner as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/account/banner/{{$row->id}}"><b>{{$row->topik}}</a></b> </td>
+      {{-- <td width="50px">{{$loop->iteration}}</td> --}}
+      <td>{{$row->urutan}}</td>
+      <td><img src="/{{$row->image}}" width="100px" alt=""></td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

@@ -12,7 +12,7 @@
           @csrf
           
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="">Topik</label>
             <input type="text" class="form-control  @error('topik') is-invalid @enderror"  name="topik"  value="{{isset($banner) ? $banner->topik : old('topik')}}" placeholder="Topik">
              @error('topik')
@@ -30,7 +30,7 @@
                   {{$message}}
                 </div>
             @enderror
-          </div>
+          </div> --}}
 
             <div class="form-group">
               <label for="">Urutan</label>
