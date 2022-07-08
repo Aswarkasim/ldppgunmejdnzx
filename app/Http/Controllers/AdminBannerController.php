@@ -153,5 +153,12 @@ class AdminBannerController extends Controller
     public function destroy($id)
     {
         //
+        $banner = Banner::find($id);
+        if ($banner->image != null) {
+            unlink($banner->image);
+        }
+        $banner->delete();
+        Alert::success('Sukses', 'Banner sukses dihapus');
+        return redirect('/account/banner');
     }
 }
