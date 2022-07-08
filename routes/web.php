@@ -85,6 +85,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::resource('/timeline', AdminTimelineController::class);
 
+    Route::resource('/banner', AdminBannerController::class);
     Route::prefix('/master')->middleware('role:superadmin')->group(function () {
         Route::resource('/periode', AdminPeriodeController::class);
         Route::resource('/bidangstudi', AdminBidangStudiController::class);
@@ -92,7 +93,6 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/kelasprogram', AdminKelasProgramController::class);
         // Route::resource('/prodi', AdminProdiController::class);
 
-        Route::resource('/banner', AdminBannerController::class);
     });
 
     Route::prefix('/verifikasi')->middleware('role:superadmin,verificator')->group(function () {
