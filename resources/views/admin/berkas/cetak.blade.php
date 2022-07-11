@@ -17,18 +17,10 @@
 
 
 
-    /* h2 {
-            position: absolute;
-            left: 410px;
-            top: 320px;
-        }
-
-        p {
-            position: absolute;
-            left: 220px;
-            top: 380px;
-            width: 600px
-        } */
+    .kop-surat{
+      font-family: serif;
+      font-style: bold;
+    }
   </style>
 </head>
 
@@ -36,13 +28,13 @@
 {{-- @dd($mahasiswa) --}}
 
 
-  <div class="d-flex" style="margin-left: 200px">
-    <img src="/img/unm_pentagon.png" width="100px" height="100px" alt="">
-    <div class="text-center">
-      <h4>KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN</h4>
-      <h4>UNIVERSITAS NEGERI MAKASSAR (UNM)</h4>
-      <p>PROGRAM STUDI PENDIDIKAN PROFESI GURU</p>
-      <p style="font-size: 8px; font-style: italic">Jalan A. P. Pettarani  Makassar Gedung Pinisi UNM Wing C lantai 4,
+  <div class="d-flex" style="margin-left: 0px">
+    <img src="/img/unm_black.png" width="180px" height="180px" alt="">
+    <div class="text-center kop-surat">
+      <h1><b>KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN</b></h1>
+      <h1><b>UNIVERSITAS NEGERI MAKASSAR (UNM)</b></h1>
+      <h4><b>PROGRAM STUDI PENDIDIKAN PROFESI GURU</b></h4>
+      <p style="font-size: 12px; font-style: italic">Jalan A. P. Pettarani  Makassar Gedung Pinisi UNM Wing C lantai 4,
         Telepon  0411 – 4091045,
         Laman : ppg.unm.ac.id</p>    
       </div>
@@ -122,9 +114,9 @@
       <td>
         Ketua Program Studi <br>
         Pendidikan Profesi GUru
-        <br><br><br><br>
+        <br><br><br><br><br><br><br>
         Dr. Ir. Darmawang, M.Kes. <br>
-        NIP. 123123123123
+        NIP. 196207071991031002
       </td>
     </tr>
   </table>
