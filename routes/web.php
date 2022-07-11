@@ -41,6 +41,7 @@ Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/petunjuk', [HomeController::class, 'petunjuk']);
     Route::get('/timeline', [HomeController::class, 'timeline']);
+    Route::get('/helpdesk', [HomeController::class, 'helpdesk']);
 });
 
 
@@ -69,7 +70,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::get('/akun', [AdminAkunController::class, 'index']);
     Route::post('/akun/save', [AdminAkunController::class, 'save']);
 
-    Route::resource('/user', AdminUserController::class);
+
 
     Route::put('/setting/register/update', [AdminRegisterSettingController::class, 'update']);
 
@@ -88,12 +89,17 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::resource('/petunjuk', AdminPetunjukController::class);
 
     Route::resource('/banner', AdminBannerController::class);
+    Route::post('/user/province', [AdminUserController::class, 'addProvince']);
+    Route::get('/user/delete/province/{id}', [AdminUserController::class, 'deleteProvince']);
+    Route::resource('/user', AdminUserController::class);
+
     Route::prefix('/master')->middleware('role:superadmin')->group(function () {
         Route::resource('/periode', AdminPeriodeController::class);
         Route::resource('/bidangstudi', AdminBidangStudiController::class);
         Route::resource('/jenisppg', AdminJenisPpgController::class);
         Route::resource('/kelasprogram', AdminKelasProgramController::class);
         // Route::resource('/prodi', AdminProdiController::class);
+
 
     });
 
@@ -104,6 +110,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/show/{id}', [AdminVerifikasiController::class, 'show']);
         Route::get('/validasi/{id}', [AdminVerifikasiController::class, 'validasi']);
         Route::post('/invalid/{id}', [AdminVerifikasiController::class, 'invalid']);
+        Route::get('/list/province/{id}', [AdminVerifikasiController::class, 'province']);
     });
 
     Route::prefix('/mahasiswa')->group(function () {
@@ -124,6 +131,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::put('/pendidikan', [AdminProfileController::class, 'updatePendidikan']);
         Route::put('/keluarga', [AdminProfileController::class, 'updateKeluarga']);
         Route::put('/pasfoto', [AdminProfileController::class, 'pasfoto']);
+        Route::put('/rekening', [AdminProfileController::class, 'updateRekening']);
     });
 });
 

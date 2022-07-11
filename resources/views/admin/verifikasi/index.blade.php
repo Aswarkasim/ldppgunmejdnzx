@@ -5,6 +5,7 @@
 <div class="card-body">
   {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
 
+  <a href="/account/verifikasi" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">
@@ -26,7 +27,7 @@
   </thead>
 
   <tbody>
-    @foreach ($user as $row)
+    @foreach ($mahasiswa as $row)
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
@@ -58,7 +59,7 @@
 </table>
 
   <div class="float-right">
-    {{$user->links()}}
+    {{$mahasiswa->links()}}
   </div>
 </div>
 </div>

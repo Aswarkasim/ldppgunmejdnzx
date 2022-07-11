@@ -3,9 +3,15 @@
     <div class="card">
       <div class="card-body">
 
-  <a href="/account/verifikasi/biodata/{{$user_id}}" class="btn btn-primary"><i class="fas fa-user"></i> Lihat Biodata</a>
-  <a href="/account/verifikasi/all/{{$user_id}}" class="btn btn-success verifikasi-all"><i class="fas fa-check-circle"></i> Validasi Semua</a>
+  <a href="/account/verifikasi/list/province/{{$mahasiswa->provinsi_tempat_tinggal}}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
 
+  <a href="/account/verifikasi/biodata/{{$user_id}}" class="btn btn-info"><i class="fas fa-user"></i> Lihat Biodata</a>
+
+  @if (!$cek_history)
+      
+  <a href="/account/verifikasi/all/{{$user_id}}" class="btn btn-success verifikasi-all"><i class="fas fa-check-circle"></i> Validasi Semua</a>
+  
+  @endif
 
         <table id="example1" class="table table-striped">
           <thead>

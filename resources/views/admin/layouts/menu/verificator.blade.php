@@ -9,7 +9,7 @@
   
   
   <li class="nav-item">
-  <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi') ? 'active' : ''}}">
+  <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-edit"></i>
     <p>
       Verifikasi

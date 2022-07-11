@@ -27,6 +27,10 @@
           </li>
 
            <li class="nav-item">
+            <a href="?page=rekening" class="nav-link {{$page == 'rekening' ? 'active' : ''}} cursor-pointer">Rekening</a>
+          </li>
+
+           <li class="nav-item">
             <a href="?page=pasfoto" class="nav-link {{$page == 'pasfoto' ? 'active' : ''}} cursor-pointer">Pas Foto</a>
           </li>
 
@@ -48,6 +52,9 @@
             @break
             @case('pasfoto')
                 @include('/admin/profile/pasfoto')
+            @break
+             @case('rekening')
+                @include('/admin/profile/rekening')
             @break
             @default
                 

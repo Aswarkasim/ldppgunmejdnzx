@@ -100,6 +100,10 @@ class CreateMahasiswasTable extends Migration
             $table->string('kabupaten_orangtua')->nullable();
             $table->string('provinsi_orangtua')->nullable();
 
+            $table->string('nama_bank')->nullable();
+            $table->string('nama_pemilik')->nullable();
+            $table->string('nomor_rekening')->nullable();
+
             $table->enum('status', ['LENGKAPI', 'WAITING', 'PENDING', 'VALID', 'INVALID']);
             $table->boolean('is_registered')->default(0);
             $table->timestamps();

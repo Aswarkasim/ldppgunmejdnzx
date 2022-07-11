@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Berkas;
 use App\Models\Periode;
+use App\Models\JenisPpg;
 use App\Models\Dashboard;
 use App\Models\Mahasiswa;
+use App\Models\KelasProgram;
 use Illuminate\Http\Request;
 use App\Models\Configuration;
-use App\Models\JenisPpg;
-use App\Models\KelasProgram;
+use App\Models\VerifyHistory;
 use App\Models\RegisterSetting;
+use App\Models\VerifyRole;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -95,10 +98,14 @@ class AdminDashboardController extends Controller
         // count percentage berkas where not null
         $user_id = auth()->user()->id;
 
+        $periode_id = Auth::user()->periode_id;
+
         $data = [
-            'user'      => User::find($user_id),
-            'mahasiswa' => Mahasiswa::whereUserId($user_id)->first(),
-            'content'   => 'admin/dashboard/verificator'
+            'total_verified'    => VerifyHistory::whereVerificatorId($user_id)->wherePeriodeId($periode_id)->count(),
+            'total_provinsi'    => VerifyRole::wherePeriodeId($periode_id)->whereUserId($user_id)->count(),
+            'user'              => User::find($user_id),
+            'mahasiswa'         => Mahasiswa::whereUserId($user_id)->first(),
+            'content'           => 'admin/dashboard/verificator'
         ];
         return view('admin/layouts/wrapper', $data);
     }

@@ -21,7 +21,7 @@
     <a href="/account/berkas" class="nav-link {{Request::is('account/berkas') ? 'active' : ''}}">
       <i class="nav-icon fas fa-file"></i>
       <p>
-        Berkas
+        Unggah Berkas
       </p>
     </a>
   </li>

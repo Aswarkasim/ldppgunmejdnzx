@@ -2,6 +2,11 @@
 @method('PUT')
 @csrf
 
+
+ @if($errors->any())
+        {!! implode('', $errors->all('<div class="text-danger">:message</div>')) !!}
+    @endif
+
 <div class="row">
   <div class="col-md-6">
     
@@ -12,13 +17,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_pasangan') is-invalid @enderror" name="nama_pasangan"  value="{{isset($profile) ? $profile->nama_pasangan : old('nama_pasangan')}}" placeholder="Nama Suami/ Istri">
-        </div>
-      </div>
-      @error('nama_pasangan')
+          @error('nama_pasangan')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
@@ -28,13 +34,31 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pekerjaan_pasangan') is-invalid @enderror" name="pekerjaan_pasangan"  value="{{isset($profile) ? $profile->pekerjaan_pasangan : old('pekerjaan_pasangan')}}" placeholder="Pekerjaan Suami/Istri">
-        </div>
-      </div>
-      @error('pekerjaan_pasangan')
+          @error('pekerjaan_pasangan')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
+    </div>
+
+     <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Pendidikan Suami/Istri</label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('pendidikan_pasangan') is-invalid @enderror" name="pendidikan_pasangan"  value="{{isset($profile) ? $profile->pendidikan_pasangan : old('pendidikan_pasangan')}}" placeholder="Pendidikan Suami/Istri">
+          @error('pendidikan_pasangan')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
@@ -44,14 +68,15 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('jumlah_anak') is-invalid @enderror" name="jumlah_anak"  value="{{isset($profile) ? $profile->jumlah_anak : old('jumlah_anak')}}" placeholder="Jumlah Anak">
-        </div>
-      </div>
-      @error('jumlah_anak')
+          @error('jumlah_anak')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
     </div>
+        </div>
+      </div>
+      
 
     <div class="form-group">
       <div class="row">
@@ -60,13 +85,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_ayah_kandung') is-invalid @enderror" name="nama_ayah_kandung"  value="{{isset($profile) ? $profile->nama_ayah_kandung : old('nama_ayah_kandung')}}" placeholder="Nama Ayah Kandung">
-        </div>
-      </div>
-      @error('nama_ayah_kandung')
+          @error('nama_ayah_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
@@ -76,13 +102,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pendidikan_ayah_kandung') is-invalid @enderror" name="pendidikan_ayah_kandung"  value="{{isset($profile) ? $profile->pendidikan_ayah_kandung : old('pendidikan_ayah_kandung')}}" placeholder="Pendidikan Ayah Kandung">
-        </div>
-      </div>
-      @error('pendidikan_ayah_kandung')
+           @error('pendidikan_ayah_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+     
     </div>
 
     <div class="form-group">
@@ -92,30 +119,32 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pekerjaan_ayah_kandung') is-invalid @enderror" name="pekerjaan_ayah_kandung"  value="{{isset($profile) ? $profile->pekerjaan_ayah_kandung : old('pekerjaan_ayah_kandung')}}" placeholder="Pekerjaan Ayah Kandung">
-        </div>
-      </div>
-      @error('pekerjaan_ayah_kandung')
+          @error('pekerjaan_ayah_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
       <div class="row">
         <div class="col-md-3">
           <label for="">Penghasilan Ayah Kandung</label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nik') is-invalid @enderror" name="penghasilan_ayah_kandung"  value="{{isset($profile) ? $profile->penghasilan_ayah_kandung : old('penghasilan_ayah_kandung')}}" placeholder="Penghasilan Ayah Kandung">
-        </div>
-      </div>
-      @error('penghasilan_ayah_kandung')
+          @error('penghasilan_ayah_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
-    </div>
+        </div>
+      </div>
+      
+    </div> --}}
 
     <div class="form-group">
       <div class="row">
@@ -124,13 +153,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nik_ayah_kandung') is-invalid @enderror" name="nik_ayah_kandung"  value="{{isset($profile) ? $profile->nik_ayah_kandung : old('nik_ayah_kandung')}}" placeholder="NIK Ayah Kandung">
-        </div>
-      </div>
-      @error('nik_ayah_kandung')
+          @error('nik_ayah_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
   </div>
@@ -143,13 +173,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_ibu_kandung') is-invalid @enderror" name="nama_ibu_kandung"  value="{{isset($profile) ? $profile->nama_ibu_kandung : old('nama_ibu_kandung')}}" placeholder="Nama Ibu Kandung">
-        </div>
-      </div>
-      @error('nama_ibu_kandung')
+          @error('nama_ibu_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
@@ -159,13 +190,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pendidikan_ibu_kandung') is-invalid @enderror" name="pendidikan_ibu_kandung"  value="{{isset($profile) ? $profile->pendidikan_ibu_kandung : old('pendidikan_ibu_kandung')}}" placeholder="Pendidikan Ibu Kandung">
-        </div>
-      </div>
-      @error('pendidikan_ibu_kandung')
+           @error('pendidikan_ibu_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+     
     </div>
 
     <div class="form-group">
@@ -175,30 +207,32 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pekerjaan_ibu_kandung') is-invalid @enderror" name="pekerjaan_ibu_kandung"  value="{{isset($profile) ? $profile->pekerjaan_ibu_kandung : old('pekerjaan_ibu_kandung')}}" placeholder="Pekerjaan Ibu Kandung">
-        </div>
-      </div>
-      @error('pekerjaan_ibu_kandung')
+           @error('pekerjaan_ibu_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+     
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
       <div class="row">
         <div class="col-md-3">
           <label for="">Penghasilan Ibu Kandung</label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nik') is-invalid @enderror" name="penghasilan_ibu_kandung"  value="{{isset($profile) ? $profile->penghasilan_ibu_kandung : old('penghasilan_ibu_kandung')}}" placeholder="Penghasilan Ibu Kandung">
-        </div>
-      </div>
-      @error('penghasilan_ibu_kandung')
+           @error('penghasilan_ibu_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
-    </div>
+        </div>
+      </div>
+     
+    </div> --}}
 
     <div class="form-group">
       <div class="row">
@@ -207,13 +241,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nik_ibu_kandung') is-invalid @enderror" name="nik_ibu_kandung"  value="{{isset($profile) ? $profile->nik_ibu_kandung : old('nik_ibu_kandung')}}" placeholder="NIK Ibu Kandung">
-        </div>
-      </div>
-      @error('nik_ibu_kandung')
+          @error('nik_ibu_kandung')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
@@ -223,13 +258,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nohp_keluarga_dekat') is-invalid @enderror" name="nohp_keluarga_dekat"  value="{{isset($profile) ? $profile->nohp_keluarga_dekat : old('nohp_keluarga_dekat')}}" placeholder="No. Hp Orang Tua/Keluarga Dekat">
-        </div>
-      </div>
-      @error('nohp_keluarga_dekat')
+          @error('nohp_keluarga_dekat')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
     <div class="form-group">
@@ -239,13 +275,17 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('alamat_orangtua') is-invalid @enderror" name="alamat_orangtua"  value="{{isset($profile) ? $profile->alamat_orangtua : old('alamat_orangtua')}}" placeholder="Alamat orang tua/keluarga dekat">
-         
+          @error('alamat_orangtua')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
           <div class="row pt-1">
             <div class="col-md-6">
               <select class="form-control" id="province_orangtua" name="provinsi_orangtua" required>
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $item)
-                  <option value="{{$item->id}}" {{$item->id == $profile->province ? 'selected' : ''}} >{{$item->name}}</option>
+                  <option value="{{$item->id}}" {{$item->id == $profile->province_orangtua ? 'selected' : ''}} >{{$item->name}}</option>
                 @endforeach
               </select>
               <div class="invalid-feedback">
@@ -265,12 +305,10 @@
 
         </div>
       </div>
-      @error('alamat_orangtua')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
+     
     </div>
+
+    <p class="text-primary">Keterangan : Gunakan tanda strip (-) jika kosong</p>
 
 
   </div>

@@ -15,13 +15,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" disabled class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg"  value="{{isset($profile) ? $profile->no_ukg : old('no_ukg')}}" placeholder="No. UKG">
-        </div>
-      </div>
-      @error('no_ukg')
+          @error('no_ukg')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
      <div class="form-group">
@@ -56,14 +57,15 @@
           } ?>
           >KEMENAG</option>
         </select>
-          </div>
-        </div>
-        
-          @error('kementerian')
+         @error('kementerian')
             <div class="invalid-feedback">
               {{$message}}
             </div>
           @enderror
+          </div>
+        </div>
+        
+         
       </div>
 
      <div class="form-group">
@@ -74,13 +76,14 @@
         <div class="col-md-9">
           <input type="text" class="form-control @error('namalengkap') is-invalid @enderror" name="namalengkap"  value="{{isset($profile) ? $profile->namalengkap : old('namalengkap')}}" placeholder="Nama Lengkap">
           <small>Lengkap dengan gelar akademik</small>
-        </div>
-      </div>
-      @error('namalengkap')
+           @error('namalengkap')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+     
     </div>
 
       <div class="form-group">
@@ -90,13 +93,14 @@
           </div>
           <div class="col-md-9">
             <input type="text" class="form-control @error('nuptk') is-invalid @enderror" name="nuptk"  value="{{isset($profile) ? $profile->nuptk : old('nuptk')}}" placeholder="NUPTK">
-          </div>
-        </div>
-        @error('nuptk')
+             @error('nuptk')
             <div class="invalid-feedback">
             {{$message}}
             </div>
           @enderror
+          </div>
+        </div>
+       
       </div>
 
     <div class="form-group">
@@ -106,13 +110,14 @@
         </div>
         <div class="col-md-9">
           <input type="text"  class="form-control @error('periode_id') is-invalid @enderror" name="periode_id"  value="{{isset($profile->periode) ? $profile->periode->jenisPpg->name : old('periode_id')}}"  disabled placeholder="Periode PPG">
-        </div>
-      </div>
-      @error('periode_id')
+           @error('periode_id')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+     
     </div>
 
     <div class="form-group">
@@ -122,13 +127,14 @@
         </div>
         <div class="col-md-9">
           <input type="text"  class="form-control @error('periode_id') is-invalid @enderror" name="periode_id"  value="Periode I"  disabled placeholder="Periode PPG">
-        </div>
-      </div>
-      @error('periode_id')
+           @error('periode_id')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+     
     </div>
 
    
@@ -146,13 +152,14 @@
                   <option value="{{$bs->id}}" {{$bs->id == $profile->bidang_studi_id ? 'selected': ''}}>{{$bs->name}}</option>
               @endforeach
             </select>
+             @error('bidang_studi_id')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+              @enderror
         </div>
       </div>
-      @error('bidang_studi_id')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
+     
     </div>
 
 
@@ -174,13 +181,14 @@
         </div>
         <div class="col-md-9">
           <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir"  value="{{isset($profile) ? $profile->tanggal_lahir : old('tanggal_lahir')}}" placeholder="Tanggal Lahir">
+          @error('tanggal_lahir')
+            <div class="invalid-feedback">
+            {{$message}}
+            </div>
+          @enderror
         </div>
       </div>
-      @error('tanggal_lahir')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
+      
     </div>
 
 
@@ -191,13 +199,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir"  value="{{isset($profile) ? $profile->tempat_lahir : old('tempat_lahir')}}" placeholder="Tempat Lahir">
-        </div>
-      </div>
-      @error('tempat_lahir')
+          @error('tempat_lahir')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
     
@@ -209,13 +218,14 @@
           </div>
           <div class="col-md-9">
             <input type="text" class="form-control @error('golongan_darah') is-invalid @enderror" name="golongan_darah"  value="{{isset($profile) ? $profile->golongan_darah : old('golongan_darah')}}" placeholder="Golongan Darah">
+             @error('golongan_darah')
+              <div class="invalid-feedback">
+              {{$message}}
+              </div>
+            @enderror
           </div>
         </div>
-        @error('golongan_darah')
-            <div class="invalid-feedback">
-            {{$message}}
-            </div>
-          @enderror
+       
       </div>
     
 
@@ -251,14 +261,16 @@
           } ?>
           >Perempuan</option>
         </select>
-          </div>
-        </div>
-        
           @error('jenis_kelamin')
-            <div class="invalid-feedback">
+
+           <div class="invalid-feedback">
               {{$message}}
             </div>
           @enderror
+          </div>
+        </div>
+        
+         
       </div>
 
     <div class="form-group">
@@ -268,13 +280,14 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"  value="{{isset($profile) ? $profile->nik : old('nik')}}" placeholder="NIK">
-        </div>
-      </div>
-      @error('nik')
+          @error('nik')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
+        </div>
+      </div>
+      
     </div>
 
      {{-- <div class="form-group">
@@ -297,25 +310,40 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('alamat_domisili') is-invalid @enderror" name="alamat_domisili"  value="{{isset($profile) ? $profile->alamat_domisili : old('alamat_domisili')}}" placeholder="Alamat Domisili">
+           @error('alamat_domisili')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
           
           <div class="row pt-1">
             <div class="col-md-6">
-              <select class="form-control" id="province" name="provinsi_tempat_tinggal" required>
+              <select class="form-control @error('provinsi_tempat_tinggal') is-invalid @enderror" id="province" name="provinsi_tempat_tinggal" required>
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $item)
-                  {{-- <option value="{{$item->id}}" {{$item->id == $profile->provinsi_tempat_tinggal ? 'selected' : ''}} >{{$item->name}}</option> --}}
                   <option value="{{$item->id}}" {{$item->id == $profile->provinsi_tempat_tinggal ? 'selected' : ''}} >{{$item->name}}</option>
+                  <option value="{{$item->id}}"  >{{$item->name}}</option>
                 @endforeach
               </select>
+               @error('provinsi_tempat_tinggal')
+                <div class="invalid-feedback">
+                {{$message}}
+                </div>
+              @enderror
               <div class="invalid-feedback">
                 Please select a valid province.
               </div>
             </div>
 
              <div class="col-md-6">
-               <select class="form-control" id="city" name="kabupaten_tempat_tinggal" disabled required>
+               <select class="form-control @error('kabupaten_tempat_tinggal') is-invalid @enderror" id="city" name="kabupaten_tempat_tinggal" disabled required>
                     <option value="">Pilih Kota/Kabupaten</option>
                   </select>
+                   @error('kabupaten_domisili')
+                    <div class="invalid-feedback">
+                    {{$message}}
+                    </div>
+                  @enderror
                   <div class="invalid-feedback">
                     Please provide a valid city.
                   </div>
@@ -351,11 +379,7 @@
 
         </div>
       </div>
-      @error('alamat_domisili')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
+     
     </div>
     
   </div>
@@ -372,8 +396,8 @@
 
 <script>
   $(document).ready(function(){
-    $('#province option[value=""]').prop('selected',true);
-    $('#city option[value!=""]').remove();
+    // $('#province option[value=""]').prop('selected',true);
+    // $('#city option[value!=""]').remove();
 
     province = $('#province')
     province.on('change', function() {

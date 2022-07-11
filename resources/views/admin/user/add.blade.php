@@ -42,6 +42,32 @@
              @enderror
           </div>
 
+          @if (request('role') == 'verificator')
+              
+           <div class="form-group">
+                <label for="">Bidang Studi</label>
+                <select name="bidang_studi_id" class="form-control @error('bidang_studi_id') is-invalid @enderror" >
+                  <option value="">-- Bidang Studi --</option>
+                  @foreach ($bidangstudi as $item)
+                      <option value="{{$item->id}}"
+                        <?php 
+                          if(isset($user)){
+                            if($user->bidang_studi_id == $item->id){
+                              echo 'selected';
+                            }
+                          }
+                          ?>
+                        >{{$item->name}}</option>
+                  @endforeach
+                </select>
+                @error('kategori_id')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                @enderror
+              </div>
+
+          @endif
           
 
           <div class="form-group">

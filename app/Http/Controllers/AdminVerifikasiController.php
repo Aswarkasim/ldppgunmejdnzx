@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Berkas;
 use App\Models\Mahasiswa;
 use App\Models\Notif;
+use App\Models\VerifyHistory;
+use App\Models\VerifyRole;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Toaster;
 use Brian2694\Toastr\Facades\Toastr;
@@ -18,7 +20,6 @@ class AdminVerifikasiController extends Controller
     function index()
     {
         //
-        $role = Auth::user()->periode_id;
         // die($role);
         $periode_id = '';
         if (Auth::user()->role == 'verificator') {
@@ -48,12 +49,14 @@ class AdminVerifikasiController extends Controller
                 ->paginate(10);
         }
 
-
+        $user_id = Auth::user()->id;
+        $verify = VerifyRole::with('province')->whereUserId($user_id)->get();
 
         $data = [
             'title'   => 'Verifikasi Berkas',
             'user' => $user,
-            'content' => 'admin/verifikasi/index'
+            'verify' => $verify,
+            'content' => 'admin/verifikasi/province'
         ];
         return view('admin/layouts/wrapper', $data);
     }
@@ -61,7 +64,13 @@ class AdminVerifikasiController extends Controller
     function show($user_id)
     {
 
-        $berkas = Berkas::with('kelengkapan')->whereUserId($user_id)->get();
+        $periode_id = Auth::user()->periode_id;
+        $verificator_id  = Auth::user()->id;
+        $cek_history = VerifyHistory::wherePeriodeId($periode_id)->whereVerificatorId($verificator_id)->whereMahasiswaId($user_id)->first();
+        // $berkas = Berkas::with('kelengkapan')->whereUserId($user_id)->get();
+        $berkas = Berkas::whereHas('kelengkapan', function ($q) {
+            $q->where('is_verified', 1);
+        })->whereUserId($user_id)->get();
         // @dd($berkas);
         $berkas_id = request('berkas_id');
         $berkas_data = Berkas::find($berkas_id);
@@ -69,7 +78,9 @@ class AdminVerifikasiController extends Controller
             'title'   => 'Verifikasi Berkas',
             'berkas' => $berkas,
             'user_id' => $user_id,
+            'cek_history'      => $cek_history,
             'berkas_data' => $berkas_data,
+            'mahasiswa' => Mahasiswa::whereUserId($user_id)->first(),
             'link_route' => '/account/verifikasi/show/',
             'content' => 'admin/verifikasi/show'
         ];
@@ -132,6 +143,21 @@ class AdminVerifikasiController extends Controller
         $mahasiswa->status = 'VALID';
         $mahasiswa->save();
 
+        $periode_id = Auth::user()->periode_id;
+        $verificator_id  = Auth::user()->id;
+
+        $cek = VerifyHistory::wherePeriodeId($periode_id)->whereVerificatorId($verificator_id)->whereMahasiswaId($user_id)->first();
+        if (!$cek) {
+            $history = [
+                'periode_id'        => $periode_id,
+                'verificator_id'    => $verificator_id,
+                'mahasiswa_id'      => $user_id
+            ];
+
+            VerifyHistory::create($history);
+        }
+
+
         $notif = [
             'user_id'   => $user_id,
             'title'     => 'Berkas Valid',
@@ -146,11 +172,27 @@ class AdminVerifikasiController extends Controller
 
     function biodata($user_id)
     {
-        $mahasiswa = Mahasiswa::with('bidangstudi')->whereUserId($user_id)->first();
+        $mahasiswa = Mahasiswa::with('bidang_studi')->whereUserId($user_id)->first();
         $data = [
             'title'   => 'Verifikasi Data',
             'mahasiswa' => $mahasiswa,
             'content' => 'admin/verifikasi/biodata'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    function province($id)
+    {
+        $periode_id = Auth::user()->periode_id;
+        $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)
+            ->where('provinsi_tempat_tinggal', $id)
+            ->whereStatus('WAITING')
+            ->paginate(10);
+
+        $data = [
+            'title'   => 'Verifikasi Data',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/verifikasi/index'
         ];
         return view('admin/layouts/wrapper', $data);
     }

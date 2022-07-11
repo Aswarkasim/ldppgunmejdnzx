@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Banner;
+use App\Models\Configuration;
 use App\Models\Petunjuk;
 use App\Models\Timeline;
 use Illuminate\Http\Request;
@@ -38,6 +39,15 @@ class HomeController extends Controller
         $data = [
             'timeline' => Timeline::all(),
             'content'  => 'home/home/timeline'
+        ];
+        return view('home/layouts/wrapper', $data);
+    }
+
+    function helpdesk()
+    {
+        $data = [
+            'helpdesk' => Configuration::first(),
+            'content'  => 'home/home/helpdesk'
         ];
         return view('home/layouts/wrapper', $data);
     }

@@ -20,7 +20,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Nama</th>
+      <th>Periode</th>
       <th>Jenis</th>
       <th>Tahun</th>
       <th>Deskripsi</th>

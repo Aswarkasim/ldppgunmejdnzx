@@ -39,13 +39,17 @@
             <a class="nav-link active {{Request::is('timeline') ? 'active-menu-header' : ''}}" aria-current="page" href="/timeline"><i class="fas fa-edit"></i> Timeline</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link active {{Request::is('helpdesk') ? 'active-menu-header' : ''}}" aria-current="page" href="/helpdesk"><i class="fas fa-phone"></i> Helpdek</a>
+          </li>
+
         </ul>
         <form class="d-flex" role="search">
           @auth
-          <a href="/auth" class="btn btn-secondary btn-sm"><i class="fas fa-user"></i> Dashboard</a>
+          <a href="/account/dashboard" class="btn btn-secondary btn-sm"><i class="fas fa-user"></i> Dashboard</a>
           @else
-          <a href="/account/dashboard" class="btn btn-danger btn-sm mx-2"><i class="fas fa-user-plus"></i> Buat akun</a>
-          <a href="/account/dashboard" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="/auth/register" class="btn btn-danger btn-sm mx-2"><i class="fas fa-user-plus"></i> Buat akun</a>
+          <a href="/auth" class="btn btn-secondary btn-sm"><i class="fas fa-sign-in-alt"></i> Login</a>
           @endauth
         </form>
       </div>

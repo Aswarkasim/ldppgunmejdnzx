@@ -29,7 +29,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td>{{$row->name}}</a> <br> {{ 'ID : '.$row->no_ukg}} </td>
+      <td><a href="/account/user/{{$row->id}}"><b>{{$row->name}}</b></a> <br> {{ 'ID : '.$row->no_ukg}} </td>
       {!!request('role') == 'verificator' ? '<td>'.$row->bidang_studi->name.'</td>' : ''!!}
       <td>{{$row->role}}</td>
       <td>
@@ -39,9 +39,9 @@
               <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-              <a class="dropdown-item" href="/admin/user/{{$row->id}}/edit?role={{request('role')}}"><i class="fa fa-edit"></i> Edit</a>
+              <a class="dropdown-item" href="/account/user/{{$row->id}}/edit?role={{request('role')}}"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
-                <form action="/admin/user/{{$row->id}}" method="post" class="tombol-hapus">
+                <form action="/account/user/{{$row->id}}" method="post" class="tombol-hapus">
                   @method('delete')
                   @csrf
                   <button type="submit" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>

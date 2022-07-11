@@ -64,7 +64,7 @@ class AdminAuthController extends Controller
             $mahasiswa->user_id = $user->id;
             $mahasiswa->is_registered = 1;
             $mahasiswa->save();
-            Alert::success('Sukses', 'Angkatan telah ditambahkan');
+            Alert::success('Sukses', 'Akun anda telah dibuat');
             return redirect('/auth');
         }
     }

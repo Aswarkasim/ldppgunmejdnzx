@@ -14,7 +14,7 @@
               </tr>
               <tr>
                 <td>Bidang Studi</td>
-                <td>: {{ $mahasiswa->bidangstudi != null ? $mahasiswa->bidangstudi->name : ''}}</td>
+                <td>: {{ $mahasiswa->bidang_studi != null ? $mahasiswa->bidang_studi->name : ''}}</td>
               </tr>
               <tr>
                 <td>NIK</td>

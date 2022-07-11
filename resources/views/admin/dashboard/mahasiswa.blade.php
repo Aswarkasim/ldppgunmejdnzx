@@ -34,7 +34,7 @@
         </div>
         <!-- /.info-box -->
       </div>
-      <div class="col-md-4">
+      {{-- <div class="col-md-4">
         
         <div class="info-box">
           <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-file"></i></span>
@@ -66,7 +66,7 @@
           <!-- /.info-box-content -->
         </div>
         <!-- /.info-box -->
-      </div>
+      </div> --}}
 
 
     </div>

@@ -63,9 +63,9 @@ class AdminPeriodeController extends Controller
         //
         $data = $request->validate([
             'jenis_ppg_id'              => 'required',
-            'name'              => 'required|min:3',
+            'name'              => 'required',
             'tahun'              => 'required|min:4',
-            'desc'              => 'required|min:3',
+            'desc'              => 'required',
         ]);
         Periode::create($data);
         Alert::success('Sukses', 'Periode telah ditambahkan');
@@ -115,9 +115,9 @@ class AdminPeriodeController extends Controller
         $periode = Periode::find($id);
         $data = $request->validate([
             'jenis_ppg_id'              => 'required',
-            'name'              => 'required|min:3',
+            'name'              => 'required',
             'tahun'              => 'required|min:4',
-            'desc'              => 'required|min:3',
+            'desc'              => 'required',
         ]);
         $periode->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');

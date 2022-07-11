@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/dist/css/ktcstyle.css">
 </head>
 <body style="background-color:#f0f0f0">
-
+@include('sweetalert::alert')  
   <form action="/auth/login" method="POST">
     @csrf
 

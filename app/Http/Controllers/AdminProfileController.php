@@ -52,13 +52,13 @@ class AdminProfileController extends Controller
             // 'no_ukg'    => 'required',
             'nuptk'             => 'required',
             // 'angkatan_id'       => 'required',
-            'kementrian'   => 'required',
+            'kementerian'   => 'required',
             'bidang_studi_id'   => 'required',
             'namalengkap'       => 'required',
             'tanggal_lahir'     => 'required',
             'tempat_lahir'      => 'required',
             'golongan_darah'    => 'required',
-            'nik'               => 'required',
+            'nik'               => 'required|min:3',
             'jenis_kelamin'                 => 'required',
             'nik'                           => 'required',
             'alamat_domisili'               => 'required',
@@ -119,16 +119,48 @@ class AdminProfileController extends Controller
         $user_id = auth()->user()->id;
         $profile = Mahasiswa::whereUserId($user_id)->whereUserId($user_id)->first();
 
-        $profile->pt_s1 = $request->pt_s1;
-        $profile->nama_prodi_s1 = $request->nama_prodi_s1;
-        $profile->nomor_ijazah_s1 = $request->nomor_ijazah_s1;
-        $profile->ipk_s1 = $request->ipk_s1;
-        $profile->tanggal_kelulusan_s1 = $request->tanggal_kelulusan_s1;
-        $profile->alamat_pt_s1 = $request->alamat_pt_s1;
-        $profile->kabupaten_kota_pt_s1 = $request->kabupaten_kota_pt_s1;
-        $profile->provinsi_pt_s1 = $request->provinsi_pt_s1;
-        $profile->unggah_ijazah_s1 = $request->unggah_ijazah_s1;
-        $profile->unggah_transkrip_s1 = $request->unggah_transkrip_s1;
+        // $profile->pt_s1 = $request->pt_s1;
+        // $profile->nama_prodi_s1 = $request->nama_prodi_s1;
+        // $profile->nomor_ijazah_s1 = $request->nomor_ijazah_s1;
+        // $profile->ipk_s1 = $request->ipk_s1;
+        // $profile->tanggal_kelulusan_s1 = $request->tanggal_kelulusan_s1;
+        // $profile->alamat_pt_s1 = $request->alamat_pt_s1;
+        // $profile->kabupaten_kota_pt_s1 = $request->kabupaten_kota_pt_s1;
+        // $profile->provinsi_pt_s1 = $request->provinsi_pt_s1;
+        // $profile->unggah_ijazah_s1 = $request->unggah_ijazah_s1;
+        // $profile->unggah_transkrip_s1 = $request->unggah_transkrip_s1;
+
+        // $profile->pt_s2 = $request->pt_s2;
+        // $profile->nama_prodi_s2 = $request->nama_prodi_s2;
+        // $profile->nomor_ijazah_s2 = $request->nomor_ijazah_s2;
+        // $profile->ipk_s2 = $request->ipk_s2;
+        // $profile->tanggal_kelulusan_s2 = $request->tanggal_kelulusan_s2;
+        // $profile->alamat_pt_s2 = $request->alamat_pt_s2;
+        // $profile->kabupaten_kota_pt_s2 = $request->kabupaten_kota_pt_s2;
+        // $profile->provinsi_pt_s2 = $request->provinsi_pt_s2;
+        // $profile->unggah_ijazah_s2 = $request->unggah_ijazah_s2;
+        // $profile->unggah_transkrip_s2 = $request->unggah_transkrip_s2;
+
+        $data = $request->validate([
+            'pt_s1' => 'required',
+            'nama_prodi_s1' => 'required',
+            'nomor_ijazah_s1' => 'required',
+            'ipk_s1' => 'required',
+            'tanggal_kelulusan_s1' => 'required',
+            'alamat_pt_s1' => 'required',
+            'kabupaten_kota_pt_s1' => 'required',
+            'provinsi_pt_s1' => 'required',
+
+            // 'pt_s2' => 'required',
+            // 'nama_prodi_s2' => 'required',
+            // 'nomor_ijazah_s2' => 'required',
+            // 'ipk_s2' => 'required',
+            // 'tanggal_kelulusan_s2' => 'required',
+            // 'alamat_pt_s2' => 'required',
+            // 'kabupaten_kota_pt_s2' => 'required',
+            // 'provinsi_pt_s2' => 'required',
+        ]);
+
         $profile->pt_s2 = $request->pt_s2;
         $profile->nama_prodi_s2 = $request->nama_prodi_s2;
         $profile->nomor_ijazah_s2 = $request->nomor_ijazah_s2;
@@ -137,10 +169,8 @@ class AdminProfileController extends Controller
         $profile->alamat_pt_s2 = $request->alamat_pt_s2;
         $profile->kabupaten_kota_pt_s2 = $request->kabupaten_kota_pt_s2;
         $profile->provinsi_pt_s2 = $request->provinsi_pt_s2;
-        $profile->unggah_ijazah_s2 = $request->unggah_ijazah_s2;
-        $profile->unggah_transkrip_s2 = $request->unggah_transkrip_s2;
 
-        $profile->update();
+        $profile->update($data);
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=pendidikan');
     }
@@ -152,31 +182,55 @@ class AdminProfileController extends Controller
         // dd($profile);
 
 
-        $profile->nama_pasangan = $request->nama_pasangan;
-        $profile->pendidikan_pasangan = $request->pendidikan_pasangan;
-        $profile->pekerjaan_pasangan = $request->pekerjaan_pasangan;
-        $profile->jumlah_anak = $request->jumlah_anak;
+        // $profile->nama_pasangan = $request->nama_pasangan;
+        // $profile->pendidikan_pasangan = $request->pendidikan_pasangan;
+        // $profile->pekerjaan_pasangan = $request->pekerjaan_pasangan;
+        // $profile->jumlah_anak = $request->jumlah_anak;
 
 
-        $profile->nama_ayah_kandung = $request->nama_ayah_kandung;
-        $profile->pendidikan_ayah_kandung = $request->pendidikan_ayah_kandung;
-        $profile->penghasilan_ayah_kandung = $request->penghasilan_ayah_kandung;
-        $profile->pekerjaan_ayah_kandung = $request->pekerjaan_ayah_kandung;
-        $profile->nik_ayah_kandung = $request->nik_ayah_kandung;
+        // $profile->nama_ayah_kandung = $request->nama_ayah_kandung;
+        // $profile->pendidikan_ayah_kandung = $request->pendidikan_ayah_kandung;
+        // $profile->penghasilan_ayah_kandung = $request->penghasilan_ayah_kandung;
+        // $profile->pekerjaan_ayah_kandung = $request->pekerjaan_ayah_kandung;
+        // $profile->nik_ayah_kandung = $request->nik_ayah_kandung;
 
-        $profile->nama_ibu_kandung = $request->nama_ibu_kandung;
-        $profile->pendidikan_ibu_kandung = $request->pendidikan_ibu_kandung;
-        $profile->penghasilan_ibu_kandung = $request->penghasilan_ibu_kandung;
-        $profile->pekerjaan_ibu_kandung = $request->pekerjaan_ibu_kandung;
-        $profile->nik_ibu_kandung = $request->nik_ibu_kandung;
+        // $profile->nama_ibu_kandung = $request->nama_ibu_kandung;
+        // $profile->pendidikan_ibu_kandung = $request->pendidikan_ibu_kandung;
+        // $profile->penghasilan_ibu_kandung = $request->penghasilan_ibu_kandung;
+        // $profile->pekerjaan_ibu_kandung = $request->pekerjaan_ibu_kandung;
+        // $profile->nik_ibu_kandung = $request->nik_ibu_kandung;
 
 
-        $profile->nohp_keluarga_dekat = $request->nohp_keluarga_dekat;
-        $profile->alamat_orangtua = $request->alamat_orangtua;
-        $profile->kabupaten_orangtua = $request->kabupaten_orangtua;
-        $profile->provinsi_orangtua = $request->provinsi_orangtua;
+        // $profile->nohp_keluarga_dekat = $request->nohp_keluarga_dekat;
+        // $profile->alamat_orangtua = $request->alamat_orangtua;
+        // $profile->kabupaten_orangtua = $request->kabupaten_orangtua;
+        // $profile->provinsi_orangtua = $request->provinsi_orangtua;
 
-        $profile->update();
+        $data = $request->validate([
+            'nama_pasangan' => 'required',
+            'pendidikan_pasangan' => 'required',
+            'pekerjaan_pasangan' => 'required',
+            'jumlah_anak' => 'required',
+
+            'nama_ayah_kandung' => 'required',
+            'pendidikan_ayah_kandung' => 'required',
+            // 'penghasilan_ayah_kandung' => 'required',
+            'pekerjaan_ayah_kandung' => 'required',
+            'nik_ayah_kandung' => 'required',
+
+            'nama_ibu_kandung' => 'required',
+            'pendidikan_ibu_kandung' => 'required',
+            // 'penghasilan_ibu_kandung' => 'required',
+            'pekerjaan_ibu_kandung' => 'required',
+            'nik_ibu_kandung' => 'required',
+
+            'nohp_keluarga_dekat' => 'required',
+            'alamat_orangtua' => 'required',
+            'kabupaten_orangtua' => 'required',
+            'provinsi_orangtua' => 'required',
+        ]);
+
+        $profile->update($data);
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=keluarga');
     }
@@ -230,5 +284,22 @@ class AdminProfileController extends Controller
         }
 
         return response()->json($cities);
+    }
+
+    function updateRekening(Request $request)
+    {
+        // dd($request);    
+        $data = $request->validate([
+
+            'nama_bank'         => 'required',
+            'nama_pemilik'          => 'required',
+            'nomor_rekening'          => 'required',
+        ]);
+        $user_id                     = auth()->user()->id;
+        $profile                     = Mahasiswa::whereUserId($user_id)->first();
+
+        $profile->update($data);
+        Alert::success('Sukses', 'Data Anda Disimpan');
+        return redirect('/account/profile?page=rekening');
     }
 }

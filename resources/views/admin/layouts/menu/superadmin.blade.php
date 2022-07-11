@@ -1,4 +1,4 @@
-<li class="nav-item {{Request::is('account/posts*') ? 'menu-open' : ''}}">
+{{-- <li class="nav-item {{Request::is('account/posts*') ? 'menu-open' : ''}}">
   <a href="#" class="nav-link {{Request::is('account/posts*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-newspaper"></i>
     <p>
@@ -20,7 +20,7 @@
       </a>
     </li>
   </ul>
-</li>
+</li> --}}
   
   <li class="nav-item">
   <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi*') ? 'active' : ''}}">

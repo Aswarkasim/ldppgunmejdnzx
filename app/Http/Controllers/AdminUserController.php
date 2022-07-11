@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Province;
+use App\Models\VerifyRole;
+use App\Models\BidangStudi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminUserController extends Controller
@@ -45,6 +50,7 @@ class AdminUserController extends Controller
         //
         $data = [
             'title'   => 'Tambah ' . request('role'),
+            'bidangstudi' => BidangStudi::all(),
             'content' => 'admin/user/add'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -70,10 +76,12 @@ class AdminUserController extends Controller
             'password'      => 'required|min:4',
             're_password'   => 'required|same:password'
         ]);
+
+        $data['bidang_studi_id'] = $request->bidang_studi_id;
         $data['password'] = Hash::make($data['password']);
         User::create($data);
         Alert::success('Sukses', 'User telah ditambahkan');
-        return redirect('/account/user/create');
+        return redirect('/account/user/create?role=' . $data['role']);
     }
 
     /**
@@ -85,6 +93,14 @@ class AdminUserController extends Controller
     public function show($id)
     {
         //
+        $data = [
+            'title'   => 'Tambah ',
+            'province' => Province::all(),
+            'user'     => User::find($id),
+            'verifyRole' => VerifyRole::with('province')->whereUserId($id)->get(),
+            'content' => 'admin/user/show'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 
     /**
@@ -98,8 +114,9 @@ class AdminUserController extends Controller
         //
         $user = User::find($id);
         $data = [
-            'title'   => 'Tambah User',
+            'title'   => 'Edit User',
             'user' => $user,
+            'bidangstudi' => BidangStudi::all(),
             'content' => 'admin/user/add'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -123,6 +140,8 @@ class AdminUserController extends Controller
             'role'          => 'required',
         ]);
 
+        $data['bidang_studi_id'] = $request->bidang_studi_id;
+
         if ($request->password == '') {
             $data['password'] = $user->password;
         } else {
@@ -131,7 +150,7 @@ class AdminUserController extends Controller
 
         $user->update($data);
         Alert::success('success', 'User telah diedit');
-        return redirect('/account/user/' . $user->id . '/edit');
+        return redirect('/account/user/' . $user->id . '/edit?role=' . $data['role']);
     }
 
     /**
@@ -146,5 +165,25 @@ class AdminUserController extends Controller
         DB::table('users')->delete($id);
         Alert::success('success', 'User telah dihapus');
         return redirect('/account/user');
+    }
+
+    function addProvince(Request $request)
+    {
+        $data = [
+            'province_id'   => $request->province_id,
+            'user_id'       => $request->user_id,
+            'periode_id'    => Session::get('periode_id')
+        ];
+        VerifyRole::create($data);
+        Toastr::success('Status berkas diubah', 'Sukses');
+        return redirect('/account/user/' . $data['user_id']);
+    }
+
+
+    function deleteProvince($id)
+    {
+        DB::table('verify_roles')->delete($id);
+        Toastr::success('File berhasil dihapus', 'Sukses');
+        return redirect('/account/user/' . $id);
     }
 }

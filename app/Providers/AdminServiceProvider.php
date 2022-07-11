@@ -29,7 +29,7 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $periode = Periode::get();
+        $periode = Periode::with('jenisPpg')->get();
         // View::share('provider_periode', $periode);
 
         $config = Configuration::first();
