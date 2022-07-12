@@ -8,7 +8,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Instansi<span class="text-danger">*</span></label>
+          <label for="">Nama Instansi (Sekolah)<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_instansi') is-invalid @enderror" name="nama_instansi"  value="{{isset($profile) ? $profile->nama_instansi : old('nama_instansi')}}" placeholder="Nama Instansi">
@@ -76,7 +76,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Alamat Instansi<span class="text-danger">*</span></label>
+          <label for="">Alamat Instansi (Sekolah)<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('alamat_instansi') is-invalid @enderror" name="alamat_instansi"  value="{{isset($profile) ? $profile->alamat_instansi : old('alamat_instansi')}}" placeholder="Alamat Instansi">

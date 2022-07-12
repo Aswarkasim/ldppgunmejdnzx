@@ -19,7 +19,7 @@
                 <option value="">-- Nama Bank --</option>
                 <option value="BRI" {{$profile->nama_bank == 'BRI' ? 'selected' : ''}}>BRI</option>
                 <option value="BNI" {{$profile->nama_bank == 'BNI' ? 'selected' : ''}}>BNI</option>
-                <option value="BNI">Lainnya..</option>
+                <option value="BNI">Lainnya</option>
                 
               </select>
           @error('nama_bank')
