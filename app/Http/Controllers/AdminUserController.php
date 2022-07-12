@@ -182,8 +182,10 @@ class AdminUserController extends Controller
 
     function deleteProvince($id)
     {
+        $verify = VerifyRole::find($id);
+        $user_id = $verify->user_id;
         DB::table('verify_roles')->delete($id);
         Toastr::success('File berhasil dihapus', 'Sukses');
-        return redirect('/account/user/' . $id);
+        return redirect('/account/user/' . $user_id . '?role=verificator');
     }
 }
