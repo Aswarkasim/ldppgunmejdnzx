@@ -1,4 +1,4 @@
-@dd($user)
+{{-- @dd($user) --}}
 <div class="card">
 <div class="card-body">
   <a href="/account/user/create?role={{request('role')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
@@ -31,7 +31,7 @@
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td><a href="/account/user/{{$row->id}}"><b>{{$row->name}}</b></a> <br> {{ 'ID : '.$row->no_ukg}} </td>
-      {!!request('role') == 'verificator' ? '<td>'.$row->bidang_studi->name.'</td>' : ''!!}
+      {{-- {!!request('role') == 'verificator' ? '<td>'.$row->bidang_studi->name.'</td>' : ''!!} --}}
       <td>{{$row->role}}</td>
       <td>
         <div class="btn-group">
