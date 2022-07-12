@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MahasiswaExport;
 use Ramsey\Uuid\Uuid;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
@@ -49,5 +50,10 @@ class AdminMahasiswaController extends Controller
 
         Excel::import(new MahasiswaImport, public_path('/uploads/excel/') . $file_name);
         redirect('/account/mahasiswa');
+    }
+
+    function exportExcel()
+    {
+        return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
     }
 }

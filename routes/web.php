@@ -115,6 +115,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::prefix('/mahasiswa')->group(function () {
         Route::get('/', [AdminMahasiswaController::class, 'index']);
+        Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
     });
 
