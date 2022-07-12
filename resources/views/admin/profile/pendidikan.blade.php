@@ -276,7 +276,7 @@
             @enderror
           <div class="row pt-1">
             <div class="col-md-6">
-              <select class="form-control" id="province_s2" name="provinsi_pt_s2" required>
+              <select class="form-control" id="province_s2" name="provinsi_pt_s2" >
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $item)
                   <option value="{{$item->id}}" {{$item->id == $profile->provinsi_pt_s2 ? 'selected' : ''}} >{{$item->name}}</option>
@@ -294,7 +294,7 @@
             </div>
 
               <div class="col-md-6">
-                <select class="form-control" id="city_s2" name="kabupaten_kota_pt_s2" disabled required>
+                <select class="form-control" id="city_s2" name="kabupaten_kota_pt_s2" disabled >
                     <option value="">Pilih Kota/Kabupaten</option>
                   </select>
                   <div class="invalid-feedback">
