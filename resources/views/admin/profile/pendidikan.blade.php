@@ -14,10 +14,10 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Perguruan Tnggi S1</label>
+          <label for="">Nama Perguruan Tinggi S1</label>
       </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('pt_s1') is-invalid @enderror" name="pt_s1" value="{{isset($profile) ? $profile->pt_s1 : old('pt_s1')}}" placeholder="Perguruan Tnggi S1">
+          <input type="text" class="form-control @error('pt_s1') is-invalid @enderror" name="pt_s1" value="{{isset($profile) ? $profile->pt_s1 : old('pt_s1')}}" placeholder="Nama Perguruan Tinggi S1">
            @error('pt_s1')
       <div class="invalid-feedback">
         {{$message}}
@@ -171,7 +171,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Perguruan Tinggi S2</label>
+          <label for="">Nama Perguruan Tinggi S2</label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pt_s2') is-invalid @enderror" name="pt_s2" value="{{isset($profile) ? $profile->pt_s2 : old('pt_s2')}}" placeholder="Perguruan Tinggi S2">
