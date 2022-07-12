@@ -21,6 +21,7 @@ class AdminBerkasController extends Controller
     {
         //
         $user_id = auth()->user()->id;
+        $user = User::find($user_id);
         $noukg = auth()->user()->no_ukg;
         // echo $noukg;
         // echo $user_id;
@@ -35,7 +36,7 @@ class AdminBerkasController extends Controller
             if ($cek == false) {
                 $data = [
                     'user_id'           => $user_id,
-                    'periode_id'        => $mahasiswa->periode_id,
+                    'periode_id'        => $user->periode_id,
                     'kelengkapan_id'    => $item->id,
                 ];
                 Berkas::create($data);
