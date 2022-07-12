@@ -25,6 +25,8 @@
         </div>
 
 
+        @if (request('role') == 'verificator')
+            
         <div class="col-md-6">
           @include('admin.user.province_modal')
           {{-- <a href="">Tambah Provinsi</a> --}}
@@ -48,6 +50,8 @@
             </table>
 
         </div>
+        @endif
+
        </div>
       </div>
     </div>
