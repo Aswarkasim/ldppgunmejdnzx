@@ -19,6 +19,7 @@
                 <option value="">-- Nama Bank --</option>
                 <option value="BRI" {{$profile->nama_bank == 'BRI' ? 'selected' : ''}}>BRI</option>
                 <option value="BNI" {{$profile->nama_bank == 'BNI' ? 'selected' : ''}}>BNI</option>
+                <option value="BNI">Lainnya..</option>
                 
               </select>
           @error('nama_bank')
@@ -55,6 +56,7 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nomor_rekening') is-invalid @enderror" name="nomor_rekening"  value="{{isset($profile) ? $profile->nomor_rekening : old('nomor_rekening')}}" placeholder="Nomor Rekening">
+          <p class="text-danger">Jika bank lainnya, ketikkan nama bank di depan nomor rekening. Contoh : BANK Mandiri : 0000000</p>
            @error('nomor_rekening')
               <div class="invalid-feedback">
               {{$message}}
