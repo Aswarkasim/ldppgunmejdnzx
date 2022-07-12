@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-9">
           <select name="akreditasi_sekolah" class="form-control @error('akreditasi_sekolah') is-invalid @enderror" id="">
-                <option value="">-- Nama Bank --</option>
+                <option value="">-- Akreditasi --</option>
                 <option value="A" {{$profile->akreditasi_sekolah == 'A' ? 'selected' : ''}}>A</option>
                 <option value="B" {{$profile->akreditasi_sekolah == 'B' ? 'selected' : ''}}>B</option>
                 <option value="C" {{$profile->akreditasi_sekolah == 'C' ? 'selected' : ''}}>C</option>
@@ -53,6 +53,7 @@
           <div class="invalid-feedback">
           {{$message}}
           </div>
+          @enderror
         </div>
       </div>
       @error('akreditasi_sekolah')
