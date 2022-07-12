@@ -116,7 +116,7 @@
         Pendidikan Profesi GUru
         <br><br><br><br><br><br><br>
         Dr. Ir. Darmawang, M.Kes. <br>
-        NIP. 196207071991031002
+        NIP. 19620707 199103 1 002
       </td>
     </tr>
   </table>
