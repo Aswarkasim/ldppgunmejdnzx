@@ -176,7 +176,7 @@ class AdminUserController extends Controller
         ];
         VerifyRole::create($data);
         Toastr::success('Status berkas diubah', 'Sukses');
-        return redirect('/account/user/' . $data['user_id']);
+        return redirect('/account/user/' . $data['user_id'] . '?role=verificator');
     }
 
 
