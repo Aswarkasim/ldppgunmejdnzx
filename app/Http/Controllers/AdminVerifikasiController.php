@@ -38,26 +38,31 @@ class AdminVerifikasiController extends Controller
         // }
 
         $user = [];
+
+
+
+
         if (Auth::user()->role == 'verificator') {
-            $user = Mahasiswa::wherePeriodeId($periode_id)
-                ->whereStatus('WAITING')
-                ->whereBidangStudiId(Auth::user()->bidang_studi_id)
-                ->paginate(10);
+            $user_id = Auth::user()->id;
+            $verify = VerifyRole::with('province')->whereUserId($user_id)->get();
+            $data = [
+                'title'   => 'Verifikasi Berkas',
+                'verify' => $verify,
+                'content' => 'admin/verifikasi/province'
+            ];
         } else {
             $user = Mahasiswa::wherePeriodeId($periode_id)
                 ->whereStatus('WAITING')
                 ->paginate(10);
+            $data = [
+                'title'   => 'Verifikasi Berkas',
+                'mahasiswa' => $user,
+                'content' => 'admin/verifikasi/index'
+            ];
         }
 
-        $user_id = Auth::user()->id;
-        $verify = VerifyRole::with('province')->whereUserId($user_id)->get();
 
-        $data = [
-            'title'   => 'Verifikasi Berkas',
-            'user' => $user,
-            'verify' => $verify,
-            'content' => 'admin/verifikasi/province'
-        ];
+
         return view('admin/layouts/wrapper', $data);
     }
 
