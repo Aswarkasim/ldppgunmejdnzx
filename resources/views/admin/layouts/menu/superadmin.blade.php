@@ -132,6 +132,13 @@
     </p>
   </a>
   <ul class="nav nav-treeview">
+     <li class="nav-item">
+      <a href="/account/user?role=mahasiswa" class="nav-link {{request('role') == 'mahasiswa'  ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Mahasiswa</p>
+      </a>
+    </li>
+
     <li class="nav-item">
       <a href="/account/user?role=admin" class="nav-link {{request('role') == 'admin' ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>

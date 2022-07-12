@@ -62,6 +62,7 @@ class AdminAuthController extends Controller
         } else {
             $user = User::create($data);
             $mahasiswa->user_id = $user->id;
+            $mahasiswa->periode_id = $request->periode_id;
             $mahasiswa->is_registered = 1;
             $mahasiswa->save();
             Alert::success('Sukses', 'Akun anda telah dibuat');
