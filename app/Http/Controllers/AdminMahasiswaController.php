@@ -20,9 +20,9 @@ class AdminMahasiswaController extends Controller
         $kementerian = request('kementerian');
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::where('name', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('name', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
         }
 
 

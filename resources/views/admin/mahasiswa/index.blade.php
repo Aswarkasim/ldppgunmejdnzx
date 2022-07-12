@@ -4,7 +4,7 @@
 <div class="card">
 <div class="card-body">
   {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
-  <a href="/account/mahasiswa/export" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Export</a>
+  {{-- <a href="/account/mahasiswa/export" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Export</a> --}}
   @include('/admin/mahasiswa/upload')
 
   <div class="float-right">
@@ -24,6 +24,7 @@
       <th>No</th>
       <th>NPM</th>
       <th>Nama</th>
+      <th>Provinsi</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -35,6 +36,7 @@
       <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->npm}} </td>
       <td>{{$row->namalengkap}} </td>
+      <td>{{$row->provinceBydomisili->name}} </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
