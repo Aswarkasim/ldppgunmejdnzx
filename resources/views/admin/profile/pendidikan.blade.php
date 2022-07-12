@@ -14,7 +14,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Perguruan Tinggi S1</label>
+          <label for="">Nama Perguruan Tinggi S1<span class="text-danger">*</span></label>
       </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pt_s1') is-invalid @enderror" name="pt_s1" value="{{isset($profile) ? $profile->pt_s1 : old('pt_s1')}}" placeholder="Nama Perguruan Tinggi S1">
@@ -31,7 +31,7 @@
      <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Prodi S1</label>
+          <label for="">Nama Prodi S1<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_prodi_s1') is-invalid @enderror" name="nama_prodi_s1" value="{{isset($profile) ? $profile->nama_prodi_s1 : old('nama_prodi_s1')}}" placeholder="Nama Prodi S1">
@@ -49,7 +49,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nomor Ijazah S1</label>
+          <label for="">Nomor Ijazah S1<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nomor_ijazah_s1') is-invalid @enderror" name="nomor_ijazah_s1" value="{{isset($profile) ? $profile->nomor_ijazah_s1 : old('nomor_ijazah_s1')}}" placeholder="Nomor Ijazah S1">
@@ -66,7 +66,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">IPK S1</label>
+          <label for="">IPK S1<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('ipk_s1') is-invalid @enderror" name="ipk_s1" value="{{isset($profile) ? $profile->ipk_s1 : old('ipk_s1')}}" placeholder="IPK S1">
@@ -83,7 +83,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Tanggal Kelulusan S1</label>
+          <label for="">Tanggal Kelulusan S1<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="date" class="form-control @error('tanggal_kelulusan_s1') is-invalid @enderror" name="tanggal_kelulusan_s1" value="{{isset($profile) ? $profile->tanggal_kelulusan_s1 : old('tanggal_kelulusan_s1')}}" placeholder="Tanggal Kelulusan S1">
@@ -100,7 +100,7 @@
      <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Alamat Perguruan Tinggi</label>
+          <label for="">Alamat Perguruan Tinggi<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('alamat_pt_s1') is-invalid @enderror" name="alamat_pt_s1" value="{{isset($profile) ? $profile->alamat_pt_s1 : old('alamat_pt_s1')}}" placeholder="Alamat Perguruan Tinggi">
@@ -124,7 +124,7 @@
           <div class="row pt-1">
             <div class="col-md-6">
               <select class="form-control" id="province_s1" name="provinsi_pt_s1" required>
-                <option value="">Pilih Provinsi</option>
+                <option value="">Pilih Provinsi<span class="text-danger">*</span></option>
                 @foreach($provinces as $item)
                   <option value="{{$item->id}}" {{$item->id == $profile->provinsi_pt_s1 ? 'selected' : ''}} >{{$item->name}}</option>
                 @endforeach
@@ -141,7 +141,7 @@
 
               <div class="col-md-6">
                 <select class="form-control" id="city_s1" name="kabupaten_kota_pt_s1" disabled required>
-                    <option value="">Pilih Kota/Kabupaten</option>
+                    <option value="">Pilih Kota/Kabupaten<span class="text-danger">*</span></option>
                   </select>
                   <div class="invalid-feedback">
                     Please provide a valid city.

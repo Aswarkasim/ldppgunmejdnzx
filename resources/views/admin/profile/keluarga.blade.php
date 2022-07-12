@@ -13,7 +13,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Suami/Istri</label>
+          <label for="">Nama Suami/Istri<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_pasangan') is-invalid @enderror" name="nama_pasangan"  value="{{isset($profile) ? $profile->nama_pasangan : old('nama_pasangan')}}" placeholder="Nama Suami/ Istri">
@@ -30,7 +30,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Pekerjaan Suami/Istri</label>
+          <label for="">Pekerjaan Suami/Istri<<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pekerjaan_pasangan') is-invalid @enderror" name="pekerjaan_pasangan"  value="{{isset($profile) ? $profile->pekerjaan_pasangan : old('pekerjaan_pasangan')}}" placeholder="Pekerjaan Suami/Istri">
@@ -47,7 +47,7 @@
      <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Pendidikan Suami/Istri</label>
+          <label for="">Pendidikan Suami/Istri<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('pendidikan_pasangan') is-invalid @enderror" name="pendidikan_pasangan"  value="{{isset($profile) ? $profile->pendidikan_pasangan : old('pendidikan_pasangan')}}" placeholder="Pendidikan Suami/Istri">
@@ -64,7 +64,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Jumlah Anak</label>
+          <label for="">Jumlah Anak<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('jumlah_anak') is-invalid @enderror" name="jumlah_anak"  value="{{isset($profile) ? $profile->jumlah_anak : old('jumlah_anak')}}" placeholder="Jumlah Anak">
@@ -81,7 +81,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Ayah Kandung</label>
+          <label for="">Nama Ayah Kandung<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_ayah_kandung') is-invalid @enderror" name="nama_ayah_kandung"  value="{{isset($profile) ? $profile->nama_ayah_kandung : old('nama_ayah_kandung')}}" placeholder="Nama Ayah Kandung">
@@ -169,7 +169,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Ibu Kandung</label>
+          <label for="">Nama Ibu Kandung<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_ibu_kandung') is-invalid @enderror" name="nama_ibu_kandung"  value="{{isset($profile) ? $profile->nama_ibu_kandung : old('nama_ibu_kandung')}}" placeholder="Nama Ibu Kandung">
@@ -254,7 +254,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">No. Hp Orang Tua/Keluarga Dekat</label>
+          <label for="">No. Hp Orang Tua/Keluarga Dekat<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nohp_keluarga_dekat') is-invalid @enderror" name="nohp_keluarga_dekat"  value="{{isset($profile) ? $profile->nohp_keluarga_dekat : old('nohp_keluarga_dekat')}}" placeholder="No. Hp Orang Tua/Keluarga Dekat">
@@ -271,7 +271,7 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Alamat orang tua/keluarga dekat</label>
+          <label for="">Alamat orang tua/keluarga dekat<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('alamat_orangtua') is-invalid @enderror" name="alamat_orangtua"  value="{{isset($profile) ? $profile->alamat_orangtua : old('alamat_orangtua')}}" placeholder="Alamat orang tua/keluarga dekat">
@@ -285,7 +285,7 @@
               <select class="form-control" id="province_orangtua" name="provinsi_orangtua" required>
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $item)
-                  <option value="{{$item->id}}" {{$item->id == $profile->province_orangtua ? 'selected' : ''}} >{{$item->name}}</option>
+                  <option value="{{$item->id}}" {{$item->id == $profile->provinsi_orangtua ? 'selected' : ''}} >{{$item->name}}</option>
                 @endforeach
               </select>
               <div class="invalid-feedback">
@@ -326,8 +326,8 @@
 
 <script>
   $(document).ready(function(){
-    $('#province_orangtua option[value=""]').prop('selected',true);
-    $('#city_orangtua option[value!=""]').remove();
+    // $('#province_orangtua option[value=""]').prop('selected',true);
+    // $('#city_orangtua option[value!=""]').remove();
 
     province = $('#province_orangtua')
     province.on('change', function() {
