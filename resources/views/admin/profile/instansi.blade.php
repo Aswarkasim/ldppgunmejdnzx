@@ -74,14 +74,23 @@
           <label for="">Jenjang Pendidikan<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('jenjang_pendidikan') is-invalid @enderror" name="jenjang_pendidikan"  value="{{isset($profile) ? $profile->jenjang_pendidikan : old('jenjang_pendidikan')}}" placeholder="Jenjang Pendidikan">
+          <select name="jenjang_pendidikan" class="form-control @error('jenjang_pendidikan') is-invalid @enderror" id="">
+                <option value="">-- Jenjang --</option>
+                <option value="A" {{$profile->jenjang_pendidikan == 'PAUD/RA' ? 'selected' : ''}}>PAUD/RA</option>
+                <option value="B" {{$profile->jenjang_pendidikan == 'SD/MI' ? 'selected' : ''}}>SD/MI</option>
+                <option value="C" {{$profile->jenjang_pendidikan == 'SMP/MTS' ? 'selected' : ''}}>SMP/MTS</option>
+                <option value="C" {{$profile->jenjang_pendidikan == 'SMA/SMK/MA/MAK' ? 'selected' : ''}}>SMA/SMK/MA/MAK</option>
+                
+              </select>
+              @error('jenjang_pendidikan')
+            <div class="invalid-feedback">
+            {{$message}}
+            </div>
+          @enderror
+
         </div>
       </div>
-      @error('jenjang_pendidikan')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
+      
     </div>
 
     <div class="form-group">
