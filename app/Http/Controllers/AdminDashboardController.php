@@ -17,6 +17,7 @@ use App\Models\VerifyRole;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use PhpParser\Parser\Multiple;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminDashboardController extends Controller
@@ -128,6 +129,26 @@ class AdminDashboardController extends Controller
         //berikan pengecekan jika field profil masih kosong
         $user_id = auth()->user()->id;
         $mahasiswa = Mahasiswa::whereUserId($user_id)->first();
+
+        //cek namalengkap, provinsi_tempat_tinggal not string or null
+        if (
+            $mahasiswa->nama_lengkap == null ||
+            $mahasiswa->provinsi_tempat_tinggal == null ||
+            $mahasiswa->npsn_sekola == null ||
+            $mahasiswa->alamat_instansi == null ||
+            $mahasiswa->pt_s1 == null ||
+            $mahasiswa->alamat_pt_s1 == null ||
+            $mahasiswa->nama_pasangan == null ||
+            $mahasiswa->jumlah_anak == null ||
+            $mahasiswa->nama_ayah_kandung == null ||
+            $mahasiswa->alamat_orangtua == null ||
+            $mahasiswa->pasfoto == null ||
+            $mahasiswa->nomor_rekening == null
+        ) {
+            Alert::error('Data diri belum lengkap', 'Cek kembali data diri');
+            return redirect('/account/dashboard');
+        }
+
         $mahasiswa->status = request('status');
         $mahasiswa->save();
         Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
