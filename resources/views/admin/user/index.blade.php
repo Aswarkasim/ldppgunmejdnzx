@@ -1,3 +1,4 @@
+@dd($user)
 <div class="card">
 <div class="card-body">
   <a href="/account/user/create?role={{request('role')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
