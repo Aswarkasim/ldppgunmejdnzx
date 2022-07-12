@@ -42,7 +42,17 @@
           <label for="">Akreditasi Sekolah<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('akreditasi_sekolah') is-invalid @enderror" name="akreditasi_sekolah"  value="{{isset($profile) ? $profile->akreditasi_sekolah : old('akreditasi_sekolah')}}" placeholder="Akreditasi Sekolah">
+          <select name="akreditasi_sekolah" class="form-control @error('akreditasi_sekolah') is-invalid @enderror" id="">
+                <option value="">-- Nama Bank --</option>
+                <option value="A" {{$profile->akreditasi_sekolah == 'A' ? 'selected' : ''}}>A</option>
+                <option value="B" {{$profile->akreditasi_sekolah == 'B' ? 'selected' : ''}}>B</option>
+                <option value="C" {{$profile->akreditasi_sekolah == 'C' ? 'selected' : ''}}>C</option>
+                
+              </select>
+          @error('akreditasi_sekolah')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
         </div>
       </div>
       @error('akreditasi_sekolah')
