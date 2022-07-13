@@ -37,6 +37,8 @@ class CreateMahasiswasTable extends Migration
             $table->string('kabupaten_tempat_tinggal')->nullable();
             $table->string('kecamatan_tempat_tinggal')->nullable();
             $table->string('kelurahan_tempat_tinggal')->nullable();
+            $table->string('rt_tempat_tinggal')->nullable();
+            $table->string('rw_tempat_tinggal')->nullable();
             $table->string('kode_pos')->nullable();
             $table->string('nohp')->nullable();
             $table->string('email')->nullable();

@@ -368,11 +368,11 @@
 
           <div class="row pt-1">
             <div class="col-md-6">
-               <input type="text" class="form-control @error('rt') is-invalid @enderror" name="rt"  value="{{isset($profile) ? $profile->rt : old('rt')}}" placeholder="RT">
+               <input type="text" class="form-control @error('rt_tempat_tinggal') is-invalid @enderror" name="rt_tempat_tinggal"  value="{{isset($profile) ? $profile->rt_tempat_tinggal : old('rt_tempat_tinggal')}}" placeholder="RT">
             </div>
 
              <div class="col-md-6">
-               <input type="text" class="form-control @error('rw') is-invalid @enderror" name="rw"  value="{{isset($profile) ? $profile->rw : old('rw')}}" placeholder="RW">
+               <input type="text" class="form-control @error('rw_tempat_tinggal') is-invalid @enderror" name="rw_tempat_tinggal"  value="{{isset($profile) ? $profile->rw_tempat_tinggal : old('rw_tempat_tinggal')}}" placeholder="RW">
             </div>
 
           </div>

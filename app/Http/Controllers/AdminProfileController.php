@@ -43,6 +43,7 @@ class AdminProfileController extends Controller
 
     function updateDataDiri(Request $request)
     {
+        // dd($request->all());
 
         $user_id = auth()->user()->id;
         $profile = Mahasiswa::whereUserId($user_id)->first();
@@ -67,10 +68,10 @@ class AdminProfileController extends Controller
             'kabupaten_tempat_tinggal'      => 'required',
             // $profile->nuptk = $request->nuptk;
         ]);
-        $data['kecamatan']     = $request->rt;
-        $data['kelurahan']     = $request->rt;
-        $data['rt']     = $request->rt;
-        $data['rw']     = $request->rw;
+        $data['kecamatan_tempat_tinggal']     = $request->kecamatan_tempat_tinggal;
+        $data['kelurahan_tempat_tinggal']     = $request->kelurahan_tempat_tinggal;
+        $data['rt_tempat_tinggal']     = $request->rt_tempat_tinggal;
+        $data['rw_tempat_tinggal']     = $request->rw_tempat_tinggal;
 
         // $profile->no_ukg = $request->no_ukg;
         // $profile->angkatan_id = $request->angkatan_id;
