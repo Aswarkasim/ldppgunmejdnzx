@@ -12,8 +12,6 @@ class MahasiswaExport implements FromCollection
      */
     public function collection()
     {
-        return Mahasiswa::all()([
-            'namalengkap', 'npm'
-        ]);
+        return Mahasiswa::all();
     }
 }
