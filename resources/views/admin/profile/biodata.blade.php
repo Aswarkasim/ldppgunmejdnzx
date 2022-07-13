@@ -15,6 +15,7 @@
             @include('admin.profile.biodata.instansi')
             @include('admin.profile.biodata.keluarga')
             @include('admin.profile.biodata.rekening')
+            @include('admin.profile.biodata.pasfoto')
             
           </div>
         </div>

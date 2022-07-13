@@ -322,7 +322,7 @@
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $item)
                   <option value="{{$item->id}}" {{$item->id == $profile->provinsi_tempat_tinggal ? 'selected' : ''}} >{{$item->name}}</option>
-                  <option value="{{$item->id}}"  >{{$item->name}}</option>
+                  {{-- <option value="{{$item->id}}"  >{{$item->name}}</option> --}}
                 @endforeach
               </select>
                @error('provinsi_tempat_tinggal')
