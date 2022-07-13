@@ -27,7 +27,7 @@ class AdminUserController extends Controller
         $role = request('role');
 
         if ($cari) {
-            $user = User::with('bidang_studi')->where('name', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(10);
+            $user = User::with('bidang_studi')->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(10);
         } else {
             $user = User::with('bidang_studi')->latest()->where('role', $role)->paginate(10);
         }
