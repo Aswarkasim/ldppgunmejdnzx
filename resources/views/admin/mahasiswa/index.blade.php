@@ -38,7 +38,7 @@
       <td>{{$row->no_ukg}} </td>
       <td>{{$row->npm}} </td>
       <td>{{$row->namalengkap}} </td>
-      <td>{{$row->provinceBydomisili->name}} </td>
+      <td>{{ isset($row->provinceBydomisili) ? $row->provinceBydomisili->name : ''}} </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
