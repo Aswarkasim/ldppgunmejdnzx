@@ -22,6 +22,7 @@
   <thead>
     <tr>
       <th>No</th>
+      <th>NO UKG</th>
       <th>NPM</th>
       <th>Nama</th>
       <th>Provinsi</th>
@@ -34,6 +35,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
+      <td>{{$row->no_ukg}} </td>
       <td>{{$row->npm}} </td>
       <td>{{$row->namalengkap}} </td>
       <td>{{$row->provinceBydomisili->name}} </td>
