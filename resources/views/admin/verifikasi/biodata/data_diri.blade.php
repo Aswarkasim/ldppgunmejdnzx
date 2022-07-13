@@ -42,11 +42,11 @@
                 </tr>
                 <tr>
                   <td>Kabupaten/Kota</td>
-                  <td>: {{$mahasiswa->kabupatenByDomisili->name}}</td>
+                  <td>: {{isset($mahasiswa->kabupatenByDomisili) ? $mahasiswa->kabupatenByDomisili->name : ''}}</td>
                 </tr>
                  <tr>
                   <td>Provinsi</td>
-                  <td>: {{$mahasiswa->provinceByDomisili->name}}</td>
+                  <td>: {{ isset($mahasiswa->provinceByDomisili) ? $mahasiswa->provinceByDomisili->name : ''}}</td>
                 </tr>
                 <tr>
                   <td>Kode Pos</td>

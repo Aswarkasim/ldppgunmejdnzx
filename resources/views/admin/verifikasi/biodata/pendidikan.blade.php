@@ -30,7 +30,7 @@
   </tr>
   <tr>
     <td>Provinsi S1</td>
-    <td>: {{$mahasiswa->provinceByPts1->name}}</td>
+    <td>: {{ isset($mahasiswa->provinceByPts1) ? $mahasiswa->provinceByPts1->name : ''}}</td>
   </tr>
   
 
@@ -60,11 +60,11 @@
   </tr>
   <tr>
     <td>Provinsi S2</td>
-    <td>: {{$mahasiswa->provinceByPts2->name}}</td>
+    <td>: {{ isset($mahasiswa->provinceByPts2) ? $mahasiswa->provinceByPts2->name : ''}}</td>
   </tr>
   <tr>
     <td>Kabupaten S2</td>
-    <td>: {{$mahasiswa->kabupatenByPts2->name}}</td>
+    <td>: {{ isset($mahaiswa->kabupatenByPts2) ? $mahasiswa->kabupatenByPts2->name : ''}}</td>
   </tr>
 
 </table>

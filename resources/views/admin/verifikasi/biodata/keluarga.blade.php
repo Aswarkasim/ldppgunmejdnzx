@@ -69,13 +69,12 @@
   </tr>
    <tr>
     <td>Provinsi Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->provinceByOrangtua->name}}</td>
+    <td>: {{ isset($mahasiswa->provinceByOrangtua) ? $mahasiswa->provinceByOrangtua->name : ''}}</td>
   </tr>
    <tr>
     <td>Kabupaten Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->kabupatenByOrangtua->name}}</td>
+    <td>: {{ isset($mahasiswa->kabupatenByOrangtua) ? $mahasiswa->kabupatenByOrangtua->name : ''}}</td>
   </tr>
   
-
 </table>
 
