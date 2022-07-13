@@ -102,6 +102,9 @@
 
     <p style="position: absolute; right: 12px;">Makassar, {{format_tanggal(date('Y-m-d'))}}</p>
 
+        <img src="/img/stempel_unm.png" style="position: absolute; margin-left:550px; margin-top:60px" width="200px" alt="">
+
+
   <div class="d-flex mt-5">
     <div style="margin-left: 400px">
       <img src="/{{$mahasiswa->pasfoto}}" width="200px" alt="">
@@ -113,8 +116,11 @@
       </td>
       <td>
         Ketua Program Studi <br>
-        Pendidikan Profesi GUru
-        <br><br><br><br><br><br><br>
+        Pendidikan Profesi Guru
+        <img src="/img/ttd_darmawang.png" alt="">
+        <div class="space" style="position: relative">
+          {{-- <br><br><br><br><br><br><br> --}}
+        </div>
         Dr. Ir. Darmawang, M.Kes. <br>
         NIP. 19620707 199103 1 002
       </td>
