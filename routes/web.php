@@ -133,6 +133,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::put('/keluarga', [AdminProfileController::class, 'updateKeluarga']);
         Route::put('/pasfoto', [AdminProfileController::class, 'pasfoto']);
         Route::put('/rekening', [AdminProfileController::class, 'updateRekening']);
+        Route::get('/biodata', [AdminProfileController::class, 'biodata']);
     });
 });
 

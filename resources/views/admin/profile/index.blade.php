@@ -1,3 +1,5 @@
+  <a href="/account/profile/biodata/" class="btn btn-info my-2" target="_blank"><i class="fas fa-user"></i> Lihat Data Diri</a>
+
 <div class="row">
   <div class="col-md-12">
     <div class="card p-4">

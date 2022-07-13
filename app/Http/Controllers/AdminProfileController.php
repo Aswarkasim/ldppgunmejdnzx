@@ -10,6 +10,7 @@ use App\Models\Province;
 use App\Models\Mahasiswa;
 use App\Models\BidangStudi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminProfileController extends Controller
@@ -301,5 +302,27 @@ class AdminProfileController extends Controller
         $profile->update($data);
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=rekening');
+    }
+
+    function biodata()
+    {
+        $user_id = Auth::user()->id;
+        $mahasiswa = Mahasiswa::with([
+            'bidang_studi',
+            'provinceBydomisili',
+            'kabupatenByDomisili',
+            'kabupatenByPts1',
+            'provinceByPts1',
+            'kabupatenByPts2',
+            'provinceByPts2',
+            'provinceByOrangtua',
+            'kabupatenByOrangtua'
+        ])->whereUserId($user_id)->first();
+        $data = [
+            'title'   => 'Verifikasi Data',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/profile/biodata'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 }
