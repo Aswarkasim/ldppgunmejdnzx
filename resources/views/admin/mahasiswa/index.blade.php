@@ -5,7 +5,7 @@
 <div class="card-body">
   {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
   <a href="/account/mahasiswa/export" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Export</a>
-  @include('/admin/mahasiswa/upload')
+  {{-- @include('/admin/mahasiswa/upload') --}}
 
   <div class="float-right">
     <form action="" method="get">
