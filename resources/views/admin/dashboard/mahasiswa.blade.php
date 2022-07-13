@@ -4,6 +4,7 @@
       {{-- @dd($mahasiswa) --}}
       @switch($mahasiswa->status)
           @case('LENGKAPI')
+          <div class="alert alert-warning mt-3"><i class="fas fa-info"></i> Klik tombol ini jika semua data diri dan berkas telah lengkap</div>
               <a href="/account/dashboard/status?status=WAITING" class="btn btn-primary masuk-verifikasi"><i class="fas fa-upload"></i> Masuk ke verifikasi</a>
               @break
           @case('WAITING')
