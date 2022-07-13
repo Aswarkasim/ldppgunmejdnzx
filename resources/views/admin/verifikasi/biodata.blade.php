@@ -14,6 +14,7 @@
           <div class="col-md-6">
             @include('admin.verifikasi.biodata.instansi')
             @include('admin.verifikasi.biodata.keluarga')
+            @include('admin.verifikasi.biodata.rekening')
             
           </div>
         </div>

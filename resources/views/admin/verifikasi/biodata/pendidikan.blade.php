@@ -1,7 +1,7 @@
 <h4 class="bg-primary p-2"><b>DATA PENDIDIKAN</b></h4>
 <table class="table">
   <tr class="bg-secondary">
-    <td>Perguruan Tinggi (PT) S1</td>
+    <td>Nama Perguruan Tinggi (PT) S1</td>
     <td>: {{$mahasiswa->pt_s1}}</td>
   </tr>
   <tr>
@@ -25,16 +25,17 @@
     <td>: {{$mahasiswa->alamat_pt_s1}}</td>
   </tr>
   <tr>
-    <td>Provinsi S1</td>
-    <td>: {{$mahasiswa->provinsi_pt_s1}}</td>
+    <td>Kabupaten S1</td>
+    <td>: {{ isset($mahasiswa->kabupatenByPts1) ? $mahasiswa->kabupatenByPts1->name : ''}}</td>
   </tr>
   <tr>
-    <td>Kabupaten S1</td>
-    <td>: {{$mahasiswa->kabupaten_pt_s1}}</td>
+    <td>Provinsi S1</td>
+    <td>: {{$mahasiswa->provinceByPts1->name}}</td>
   </tr>
+  
 
   <tr class="bg-secondary">
-    <td>Perguruan Tinggi (PT) S2</td>
+    <td>Nama Perguruan Tinggi (PT) S2</td>
     <td>: {{$mahasiswa->pt_s1}}</td>
   </tr>
   <tr>
@@ -59,11 +60,11 @@
   </tr>
   <tr>
     <td>Provinsi S2</td>
-    <td>: {{$mahasiswa->provinsi_pt_s1}}</td>
+    <td>: {{$mahasiswa->provinceByPts2->name}}</td>
   </tr>
   <tr>
     <td>Kabupaten S2</td>
-    <td>: {{$mahasiswa->kabupaten_pt_s1}}</td>
+    <td>: {{$mahasiswa->kabupatenByPts2->name}}</td>
   </tr>
 
 </table>

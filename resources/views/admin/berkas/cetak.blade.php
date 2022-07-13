@@ -31,7 +31,7 @@
   <div class="d-flex" style="margin-left: 0px">
     <img src="/img/unm_black.png" width="180px" height="180px" alt="">
     <div class="text-center kop-surat">
-      <h1><b>KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN</b></h1>
+      <h1><b>KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</b></h1>
       <h1><b>UNIVERSITAS NEGERI MAKASSAR (UNM)</b></h1>
       <h4><b>PROGRAM STUDI PENDIDIKAN PROFESI GURU</b></h4>
       <p style="font-size: 12px; font-style: italic">Jalan A. P. Pettarani  Makassar Gedung Pinisi UNM Wing C lantai 4,

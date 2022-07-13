@@ -29,10 +29,10 @@
     <td>Pekerjaan Ayah Kandung</td>
     <td>: {{$mahasiswa->pekerjaan_ayah_kandung}}</td>
   </tr>
-  <tr>
+  {{-- <tr>
     <td>Penghasilan Ayah Kandung</td>
     <td>: {{$mahasiswa->penghasilan_ayah_kandung}}</td>
-  </tr>
+  </tr> --}}
   <tr>
     <td>NIK Ayah Kandung</td>
     <td>: {{$mahasiswa->nik_ayah_kandung}}</td>
@@ -50,10 +50,10 @@
     <td>Pekerjaan Ibu Kandung</td>
     <td>: {{$mahasiswa->pekerjaan_ibu_kandung}}</td>
   </tr>
-  <tr>
+  {{-- <tr>
     <td>Penghasilan Ibu Kandung</td>
     <td>: {{$mahasiswa->penghasilan_ibu_kandung}}</td>
-  </tr>
+  </tr> --}}
   <tr>
     <td>NIK Ibu Kandung</td>
     <td>: {{$mahasiswa->nik_ibu_kandung}}</td>
@@ -65,15 +65,15 @@
   </tr>
    <tr>
     <td>Alamat Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->alamat_keluarga_dekat}}</td>
+    <td>: {{$mahasiswa->alamat_orantua}}</td>
   </tr>
    <tr>
     <td>Provinsi Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->provinsi_keluarga_dekat}}</td>
+    <td>: {{$mahasiswa->provinceByOrangtua->name}}</td>
   </tr>
    <tr>
     <td>Kabupaten Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->kabupaten_keluarga_dekat}}</td>
+    <td>: {{$mahasiswa->kabupatenByOrangtua->name}}</td>
   </tr>
   
 

@@ -132,32 +132,36 @@ class AdminDashboardController extends Controller
 
         //cek namalengkap, provinsi_tempat_tinggal not string or null
         if (
-            $mahasiswa->nama_lengkap == null ||
-            $mahasiswa->provinsi_tempat_tinggal == null ||
-            $mahasiswa->npsn_sekola == null ||
-            $mahasiswa->alamat_instansi == null ||
-            $mahasiswa->pt_s1 == null ||
-            $mahasiswa->alamat_pt_s1 == null ||
-            $mahasiswa->nama_pasangan == null ||
-            $mahasiswa->jumlah_anak == null ||
-            $mahasiswa->nama_ayah_kandung == null ||
-            $mahasiswa->alamat_orangtua == null ||
-            $mahasiswa->pasfoto == null ||
+            $mahasiswa->nama_lengkap == null &&
+            $mahasiswa->provinsi_tempat_tinggal == null &&
+            $mahasiswa->npsn_sekola == null &&
+            $mahasiswa->alamat_instansi == null &&
+            $mahasiswa->pt_s1 == null &&
+            $mahasiswa->alamat_pt_s1 == null &&
+            $mahasiswa->nama_pasangan == null &&
+            $mahasiswa->jumlah_anak == null &&
+            $mahasiswa->nama_ayah_kandung == null &&
+            $mahasiswa->alamat_orangtua == null &&
+            $mahasiswa->pasfoto == null &&
             $mahasiswa->nomor_rekening == null
         ) {
+            Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
+            return redirect('/account/dashboard');
             //ceck if berkas where user_id and periode_id and kelengkapan_id not null
-            $berkas = Berkas::whereUserId($user_id)->wherePeriodeId($mahasiswa->periode_id)->whereBerkas(!null)->count();
+            // $berkas = Berkas::whereUserId($user_id)->wherePeriodeId($mahasiswa->periode_id)->whereBerkas(!null)->count();
 
-            if ($berkas < 10) {
-                Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
-                return redirect('/account/dashboard');
-            } else {
+            // if ($berkas < 10) {
+            //     Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
+            //     return redirect('/account/dashboard');
+            // } else {
 
-                $mahasiswa->status = request('status');
-                $mahasiswa->save();
-                Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
-                return redirect('/account/dashboard');
-            }
+
+            // }
+        } else {
+            $mahasiswa->status = request('status');
+            $mahasiswa->save();
+            Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
+            return redirect('/account/dashboard');
         }
     }
 

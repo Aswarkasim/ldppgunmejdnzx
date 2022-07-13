@@ -31,4 +31,34 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Regency::class, 'kabupaten_tempat_tinggal');
     }
+
+    function kabupatenByPts1()
+    {
+        return $this->belongsTo(Regency::class, 'kabupaten_kota_pt_s1');
+    }
+
+    function provinceByPts1()
+    {
+        return $this->belongsTo(Province::class, 'provinsi_pt_s1');
+    }
+
+    function kabupatenByPts2()
+    {
+        return $this->belongsTo(Regency::class, 'kabupaten_kota_pt_s2');
+    }
+
+    function provinceByPts2()
+    {
+        return $this->belongsTo(Province::class, 'provinsi_pt_s2');
+    }
+
+    function provinceByOrangtua()
+    {
+        return $this->belongsTo(Province::class, 'provinsi_orangtua');
+    }
+
+    function kabupatenByOrangtua()
+    {
+        return $this->belongsTo(Regency::class, 'kabupaten_orangtua');
+    }
 }

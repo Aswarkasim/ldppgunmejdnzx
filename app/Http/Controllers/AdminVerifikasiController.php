@@ -177,7 +177,17 @@ class AdminVerifikasiController extends Controller
 
     function biodata($user_id)
     {
-        $mahasiswa = Mahasiswa::with('bidang_studi')->whereUserId($user_id)->first();
+        $mahasiswa = Mahasiswa::with([
+            'bidang_studi',
+            'provinceBydomisili',
+            'kabupatenByDomisili',
+            'kabupatenByPts1',
+            'provinceByPts1',
+            'kabupatenByPts2',
+            'provinceByPts2',
+            'provinceByOrangtua',
+            'kabupatenByOrangtua'
+        ])->whereUserId($user_id)->first();
         $data = [
             'title'   => 'Verifikasi Data',
             'mahasiswa' => $mahasiswa,

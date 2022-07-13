@@ -41,8 +41,12 @@
                   <td>: {{$mahasiswa->alamat_domisili}}</td>
                 </tr>
                 <tr>
-                  <td>Kota</td>
-                  <td>: {{$mahasiswa->kota}}</td>
+                  <td>Kabupaten/Kota</td>
+                  <td>: {{$mahasiswa->kabupatenByDomisili->name}}</td>
+                </tr>
+                 <tr>
+                  <td>Provinsi</td>
+                  <td>: {{$mahasiswa->provinceByDomisili->name}}</td>
                 </tr>
                 <tr>
                   <td>Kode Pos</td>
