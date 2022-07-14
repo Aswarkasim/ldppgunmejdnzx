@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td>Tanggal Lulus S1</td>
-    <td>: {{$mahasiswa->tanggal_keulusan_s1}}</td>
+    <td>: {{$mahasiswa->tanggal_kelulusan_s1}}</td>
   </tr>
   <tr>
     <td>Alamat PT S1</td>
@@ -52,7 +52,7 @@
   </tr>
   <tr>
     <td>Tanggal Lulus S2</td>
-    <td>: {{$mahasiswa->tanggal_keulusan_s1}}</td>
+    <td>: {{$mahasiswa->tanggal_kelulusan_s1}}</td>
   </tr>
   <tr>
     <td>Alamat PT S2</td>
