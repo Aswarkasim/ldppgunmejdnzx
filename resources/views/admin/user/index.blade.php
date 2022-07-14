@@ -59,7 +59,7 @@
 </table>
 
   <div class="float-right">
-    {{$user->links()}}
+    {{isset($user->links()) ? $user->links() : ''}}
   </div>
 </div>
 </div>
