@@ -94,8 +94,8 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::prefix('/user')->middleware(['role:superadmin'])->group(function () {
         Route::get('/mahasiswa', [AdminUserController::class, 'mahasiswa']);
         Route::get('/delete/province/{id}', [AdminUserController::class, 'deleteProvince']);
-        Route::resource('/', AdminUserController::class);
     });
+    Route::resource('/user', AdminUserController::class);
 
     Route::prefix('/master')->middleware('role:superadmin')->group(function () {
         Route::resource('/periode', AdminPeriodeController::class);
