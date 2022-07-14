@@ -58,9 +58,9 @@
   </tbody>
 </table>
 
-  <div class="float-right">
-    {{isset($user->links()) ? $user->links() : ''}}
-  </div>
+  {{-- <div class="float-right">
+    {{$user->links()}}
+  </div> --}}
 </div>
 </div>
 <!-- /.card-body -->
