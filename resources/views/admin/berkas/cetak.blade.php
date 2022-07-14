@@ -98,7 +98,7 @@
     
   </table>
 
-  <p>Yang bersangkutan Mahasiswa Universitas Negeri Makassar dengan Nomor Pokok Mahasiswa <b><span style="color: red">{{$mahasiswa->npm}}</b></span> {{$mahasiswa->periode->jenisPpg->name}} {{$mahasiswa->periode->tahun}} <b>{{$mahasiswa->periode->name}}</b></p>
+  <p>Yang bersangkutan Mahasiswa Universitas Negeri Makassar dengan Nomor Pokok Mahasiswa <b><span style="color: red">{{$mahasiswa->npm}}</b></span> {{$mahasiswa->periode->jenisPpg->name}} Tahun {{$mahasiswa->periode->tahun}} <b>{{$mahasiswa->periode->name}}</b></p>
 
     <p style="position: absolute; right: 12px;">Makassar, {{format_tanggal(date('Y-m-d'))}}</p>
 
@@ -116,11 +116,11 @@
       </td>
       <td>
         Ketua Program Studi <br>
-        Pendidikan Profesi Guru
-        <img src="/img/ttd_darmawang.png" alt="">
-        <div class="space" style="position: relative">
-          {{-- <br><br><br><br><br><br><br> --}}
-        </div>
+        Pendidikan Profesi Guru <br>
+        <img src="/img/ttd_darmawang.png" alt=""><br>
+        {{-- <div class="space" style="position: relative">
+          <br><br><br><br><br><br><br>
+        </div> --}}
         Dr. Ir. Darmawang, M.Kes. <br>
         NIP. 19620707 199103 1 002
       </td>
