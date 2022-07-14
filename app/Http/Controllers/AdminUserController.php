@@ -77,7 +77,8 @@ class AdminUserController extends Controller
             're_password'   => 'required|same:password'
         ]);
 
-        $data['bidang_studi_id'] = $request->bidang_studi_id;
+        // $data['bidang_studi_id'] = $request->bidang_studi_id;
+        $data['periode_id']     = Session::get('periode_id');
         $data['password'] = Hash::make($data['password']);
         User::create($data);
         Alert::success('Sukses', 'User telah ditambahkan');
@@ -140,7 +141,8 @@ class AdminUserController extends Controller
             'role'          => 'required',
         ]);
 
-        $data['bidang_studi_id'] = $request->bidang_studi_id;
+        $data['periode_id']     = Session::get('periode_id');
+        // $data['bidang_studi_id'] = $request->bidang_studi_id;
 
         if ($request->password == '') {
             $data['password'] = $user->password;

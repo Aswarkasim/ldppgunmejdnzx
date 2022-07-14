@@ -199,6 +199,7 @@ class AdminVerifikasiController extends Controller
     function province($id)
     {
         $periode_id = Auth::user()->periode_id;
+        // echo $periode_id;
         $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)
             ->where('provinsi_tempat_tinggal', $id)
             ->whereStatus('WAITING')

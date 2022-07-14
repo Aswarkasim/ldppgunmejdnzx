@@ -42,7 +42,7 @@
              @enderror
           </div>
 
-          @if (request('role') == 'verificator')
+          {{-- @if (request('role') == 'verificator')
               
            <div class="form-group">
                 <label for="">Bidang Studi</label>
@@ -67,7 +67,7 @@
                 @enderror
               </div>
 
-          @endif
+          @endif --}}
           
 
           <div class="form-group">
