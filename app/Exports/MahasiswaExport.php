@@ -24,17 +24,7 @@ class MahasiswaExport implements FromView
     public function view(): View
     {
         $kemeterian = request('kemeterian');
-        $data['mahasiswa'] = Mahasiswa::with([
-            'bidang_studi',
-            'provinceBydomisili',
-            'kabupatenByDomisili',
-            'kabupatenByPts1',
-            'provinceByPts1',
-            'kabupatenByPts2',
-            'provinceByPts2',
-            'provinceByOrangtua',
-            'kabupatenByOrangtua'
-        ])->whereKementerian($kemeterian)->whereIsRegistered(1)->get();
+        $data['mahasiswa'] = Mahasiswa::whereIsRegistered(1)->get();
         return view('admin.mahasiswa.export', $data);
     }
 }
