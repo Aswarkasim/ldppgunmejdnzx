@@ -138,7 +138,7 @@ class AdminUserController extends Controller
             'no_ukg'          => 'required' . $user->no_ukg,
             'name'          => 'required|min:3',
             // 'email'         => 'required|email|min:4|unique:users,email,' . $user->id,
-            'role'          => 'required',
+            // 'role'          => 'required',
         ]);
 
         $data['periode_id']     = Session::get('periode_id');
