@@ -75,6 +75,7 @@ class AdminMahasiswaController extends Controller
             'provinceByOrangtua',
             'kabupatenByOrangtua'
         ])->whereUserId($user_id)->first();
+        // dd($mahasiswa);
         $data = [
             'title'   => 'Verifikasi Data',
             'mahasiswa' => $mahasiswa,

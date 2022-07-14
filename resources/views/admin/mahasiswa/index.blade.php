@@ -37,7 +37,26 @@
       <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->no_ukg}} </td>
       <td>{{$row->npm}} </td>
-      <td><a href="/account/mahasiswa/show/{{$row->id}}"><b>{{$row->namalengkap}}</b></a> </td>
+      <td>
+        <a href="/account/mahasiswa/show/{{$row->user_id}}"><b>{{$row->namalengkap}}</b></a>
+         <br>
+           @switch($row->status)
+          @case('LENGKAPI')
+              <i class="fas fa-edit text-danger"></i> Belum Lengkap
+              @break
+          @case('WAITING')
+              <i class="fas fa-spinner text-info"></i> Menunggu
+              @break
+          @case('VALID')
+               <i class="fas fa-check text-success"></i> Valid
+              @break
+          @case('INVALID')
+               <i class="fas fa-times text-danger"></i> Tidak Valid
+              @break
+          @default
+              
+        @endswitch
+      </td>
       <td>{{ isset($row->provinceBydomisili) ? $row->provinceBydomisili->name : ''}} </td>
       <td>
         <div class="btn-group">
