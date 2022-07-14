@@ -104,6 +104,7 @@ class AdminMahasiswaController extends Controller
 
     function exportExcel()
     {
-        return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
+
+        return Excel::download(new MahasiswaExport(), 'mahasiswa.xlsx');
     }
 }
