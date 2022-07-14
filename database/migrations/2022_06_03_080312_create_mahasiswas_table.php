@@ -15,8 +15,8 @@ class CreateMahasiswasTable extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('periode_id');
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('periode_id')->nullable();
             $table->foreignId('bidang_studi_id')->nullable();
             $table->string('npm')->nullable();
             $table->string('no_ukg')->nullable();

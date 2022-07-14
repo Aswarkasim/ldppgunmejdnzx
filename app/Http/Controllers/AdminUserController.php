@@ -79,7 +79,7 @@ class AdminUserController extends Controller
 
         // $data['bidang_studi_id'] = $request->bidang_studi_id;
         $data['periode_id']     = Session::get('periode_id');
-        $data['password'] = Hash::make($data['password']);
+        $data['password'] = bcrypt($data['password']);
         User::create($data);
         Alert::success('Sukses', 'User telah ditambahkan');
         return redirect('/account/user/create?role=' . $data['role']);
@@ -147,7 +147,7 @@ class AdminUserController extends Controller
         if ($request->password == '') {
             $data['password'] = $user->password;
         } else {
-            $data['password'] = Hash::make($data['password']);
+            $data['password'] = bcrypt($request->password);
         }
 
         $user->update($data);
