@@ -43,10 +43,10 @@
   {{-- <p>--------------------------------------------------------------------------------------------</p> --}}
   <img src="/img/line_kop.png" height="10px" alt="">
 
-  <div class="text-center">
-    <p><b>BUKTI LAPOR DIRI <br>
+  <div class="text-center" style="font-family: serif">
+    <h3><b>BUKTI LAPOR DIRI <br>
     PENDIDIKAN PROFESI GURU DALAM JABATAN <br>
-    UNIVERSITAS NEGERI MAKASSAR</b></p>
+    UNIVERSITAS NEGERI MAKASSAR</b></h3>
   </div>
 
   <table class="table">
