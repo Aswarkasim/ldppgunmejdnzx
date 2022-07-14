@@ -21,8 +21,8 @@
 
           @enderror
           
-          @if ($profile->pasfoto != null)
-              <img src="/{{$profile->pasfoto}}" width="70%" alt="">
+          @if ($mahasiswa->pasfoto != null)
+              <img src="/{{$mahasiswa->pasfoto}}" width="70%" alt="">
           @endif
         </div>
       </div>
