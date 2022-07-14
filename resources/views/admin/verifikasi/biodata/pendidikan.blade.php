@@ -14,11 +14,11 @@
   </tr>
   <tr>
     <td>IPK S1</td>
-    <td>: {{$mahasiswa->IPK_s1}}</td>
+    <td>: {{$mahasiswa->ipk_s1}}</td>
   </tr>
   <tr>
     <td>Tanggal Lulus S1</td>
-    <td>: {{$mahasiswa->tanggal_lulus_s1}}</td>
+    <td>: {{$mahasiswa->tanggal_keulusan_s1}}</td>
   </tr>
   <tr>
     <td>Alamat PT S1</td>
@@ -48,11 +48,11 @@
   </tr>
   <tr>
     <td>IPK S2</td>
-    <td>: {{$mahasiswa->IPK_s1}}</td>
+    <td>: {{$mahasiswa->ipk_s1}}</td>
   </tr>
   <tr>
     <td>Tanggal Lulus S2</td>
-    <td>: {{$mahasiswa->tanggal_lulus_s1}}</td>
+    <td>: {{$mahasiswa->tanggal_keulusan_s1}}</td>
   </tr>
   <tr>
     <td>Alamat PT S2</td>

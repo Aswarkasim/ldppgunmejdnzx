@@ -6,7 +6,7 @@
   </tr>
   <tr>
     <td>NPSN</td>
-    <td>: {{$mahasiswa->npsn}}</td>
+    <td>: {{$mahasiswa->npsn_sekolah}}</td>
   </tr>
   <tr>
     <td>Jenjang Pendidikan</td>
