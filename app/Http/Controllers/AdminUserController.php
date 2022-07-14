@@ -152,7 +152,7 @@ class AdminUserController extends Controller
 
         $user->update($data);
         Alert::success('success', 'User telah diedit');
-        return redirect('/account/user/' . $user->id);
+        return redirect('/account/user/' . $user->id . '/edit');
     }
 
     /**
