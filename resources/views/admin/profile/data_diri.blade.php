@@ -307,6 +307,23 @@
       
     </div>
 
+      <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">No. Hp<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('nohp') is-invalid @enderror" name="nohp"  value="{{isset($profile) ? $profile->nohp : old('nohp')}}" placeholder="No. Hp">
+          @error('nohp')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+        </div>
+      </div>
+      
+    </div>
+
      {{-- <div class="form-group">
       <div class="row">
         <div class="col-md-3">
@@ -397,6 +414,23 @@
         </div>
       </div>
      
+    </div>
+
+      <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Kode Pos<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('kode_pos') is-invalid @enderror" name="kode_pos"  value="{{isset($profile) ? $profile->kode_pos : old('kode_pos')}}" placeholder="Kode Pos">
+          @error('kode_pos')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+        </div>
+      </div>
+      
     </div>
     
   </div>

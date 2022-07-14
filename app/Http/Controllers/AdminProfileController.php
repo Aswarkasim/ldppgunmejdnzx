@@ -64,6 +64,8 @@ class AdminProfileController extends Controller
             'nik'               => 'required|min:3',
             'jenis_kelamin'                 => 'required',
             'nik'                           => 'required',
+            'nohp'                           => 'required',
+            'kode_pos'                           => 'required',
             'alamat_domisili'               => 'required',
             'provinsi_tempat_tinggal'       => 'required',
             'kabupaten_tempat_tinggal'      => 'required',
