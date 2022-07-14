@@ -37,7 +37,7 @@
       <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->no_ukg}} </td>
       <td>{{$row->npm}} </td>
-      <td>{{$row->namalengkap}} </td>
+      <td><a href="/account/mahasiswa/show/{{$row->id}}"><b>{{$row->namalengkap}}</b></a> </td>
       <td>{{ isset($row->provinceBydomisili) ? $row->provinceBydomisili->name : ''}} </td>
       <td>
         <div class="btn-group">

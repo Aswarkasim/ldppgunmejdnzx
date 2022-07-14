@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\MahasiswaExport;
 use Ramsey\Uuid\Uuid;
+use App\Models\Berkas;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Models\VerifyHistory;
+use App\Exports\MahasiswaExport;
 use App\Imports\MahasiswaImport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 
@@ -30,6 +33,52 @@ class AdminMahasiswaController extends Controller
             'title'   => 'Mahasiswa',
             'mahasiswa' => $mahasiswa,
             'content' => 'admin/mahasiswa/index'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+    function show($user_id)
+    {
+
+        $periode_id = Auth::user()->periode_id;
+        $verificator_id  = Auth::user()->id;
+        $cek_history = VerifyHistory::wherePeriodeId($periode_id)->whereVerificatorId($verificator_id)->whereMahasiswaId($user_id)->first();
+        // $berkas = Berkas::with('kelengkapan')->whereUserId($user_id)->get();
+        $berkas = Berkas::whereHas('kelengkapan', function ($q) {
+            $q->where('is_verified', 1);
+        })->whereUserId($user_id)->get();
+        // @dd($berkas);
+        $berkas_id = request('berkas_id');
+        $berkas_data = Berkas::find($berkas_id);
+        $data = [
+            'title'   => 'Verifikasi Berkas',
+            'berkas' => $berkas,
+            'user_id' => $user_id,
+            'cek_history'      => $cek_history,
+            'berkas_data' => $berkas_data,
+            'mahasiswa' => Mahasiswa::whereUserId($user_id)->first(),
+            'link_route' => '/account/verifikasi/show/',
+            'content' => 'admin/verifikasi/show'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    function biodata($user_id)
+    {
+        $mahasiswa = Mahasiswa::with([
+            'bidang_studi',
+            'provinceBydomisili',
+            'kabupatenByDomisili',
+            'kabupatenByPts1',
+            'provinceByPts1',
+            'kabupatenByPts2',
+            'provinceByPts2',
+            'provinceByOrangtua',
+            'kabupatenByOrangtua'
+        ])->whereUserId($user_id)->first();
+        $data = [
+            'title'   => 'Verifikasi Data',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/verifikasi/biodata'
         ];
         return view('admin/layouts/wrapper', $data);
     }
