@@ -135,7 +135,7 @@ class AdminUserController extends Controller
         //
         $user = User::find($id);
         $data = $request->validate([
-            'no_ukg'          => 'required',
+            'no_ukg'          => 'required' . $user->no_ukg,
             'name'          => 'required|min:3',
             // 'email'         => 'required|email|min:4|unique:users,email,' . $user->id,
             'role'          => 'required',
