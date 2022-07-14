@@ -14,7 +14,7 @@
           <input type="hidden" name="role" value="{{request('role')}}">
            <div class="form-group">
             <label for="">ID</label>
-            <input type="text" class="form-control  @error('no_ukg') is-invalid @enderror"  name="no_ukg"  value="{{isset($user) ? $user->no_ukg : old('no_ukg')}}" placeholder="ID">
+            <input type="text"  class="form-control  @error('no_ukg') is-invalid @enderror"  name="no_ukg"  value="{{isset($user) ? $user->no_ukg : old('no_ukg')}}" placeholder="ID">
              @error('no_ukg')
                 <div class="invalid-feedback">
                   {{$message}}
