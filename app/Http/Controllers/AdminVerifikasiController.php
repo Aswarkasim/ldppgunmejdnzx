@@ -201,7 +201,7 @@ class AdminVerifikasiController extends Controller
         $periode_id = Auth::user()->periode_id;
         $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)
             ->where('provinsi_tempat_tinggal', $id)
-            // ->whereStatus('WAITING')
+            ->whereStatus('WAITING')
             ->paginate(10);
 
         $data = [
