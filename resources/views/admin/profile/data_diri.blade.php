@@ -174,6 +174,23 @@
 
   <div class="col-md-6">
 
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Agama<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('agama') is-invalid @enderror" name="agama"  value="{{isset($profile) ? $profile->agama : old('agama')}}" placeholder="Agama">
+          @error('agama')
+            <div class="invalid-feedback">
+            {{$message}}
+            </div>
+          @enderror
+        </div>
+      </div>
+      
+    </div>
+
      <div class="form-group">
       <div class="row">
         <div class="col-md-3">

@@ -58,6 +58,7 @@ class AdminProfileController extends Controller
             'bidang_studi_id'   => 'required',
             'namalengkap'       => 'required',
             'tanggal_lahir'     => 'required',
+            'agama'     => 'required',
             'tempat_lahir'      => 'required',
             'golongan_darah'    => 'required',
             'nik'               => 'required|min:3',
