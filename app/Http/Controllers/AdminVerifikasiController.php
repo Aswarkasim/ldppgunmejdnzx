@@ -51,7 +51,7 @@ class AdminVerifikasiController extends Controller
                 'content' => 'admin/verifikasi/province'
             ];
         } else {
-            $user = Mahasiswa::wherePeriodeId($periode_id)
+            $user = Mahasiswa::with(['bidang_studi', 'provinceBydomisili'])->wherePeriodeId($periode_id)
                 ->whereStatus('WAITING')
                 ->paginate(10);
             $data = [
