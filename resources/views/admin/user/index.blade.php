@@ -6,6 +6,7 @@
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">
+        <input type="hidden" name="role" value="{{request('role')}}" class="form-control" placeholder="Cari..">
         <input type="text" name="cari" class="form-control" placeholder="Cari..">
         <span class="input-group-append">
           <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
