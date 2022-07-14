@@ -15,6 +15,7 @@
             @include('admin.verifikasi.biodata.instansi')
             @include('admin.verifikasi.biodata.keluarga')
             @include('admin.verifikasi.biodata.rekening')
+            @include('admin.verifikasi.biodata.pasfoto')
             
           </div>
         </div>

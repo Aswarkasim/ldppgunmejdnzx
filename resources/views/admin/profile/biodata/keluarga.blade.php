@@ -65,7 +65,7 @@
   </tr>
    <tr>
     <td>Alamat Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->alamat_orantua}}</td>
+    <td>: {{$mahasiswa->alamat_orangtua}}</td>
   </tr>
    <tr>
     <td>Provinsi Orangtua/Keluarga Dekat</td>
