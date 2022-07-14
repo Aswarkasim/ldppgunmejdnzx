@@ -69,7 +69,7 @@ class AdminUserController extends Controller
         // die;
         // Re Password harusnya tidak masuk
         $data = $request->validate([
-            'no_ukg'          => 'required',
+            'no_ukg'          => 'required|unique:users',
             'name'          => 'required|min:3',
             // 'email'         => 'required|email|min:4|unique:users',
             // 'role'          => 'required',

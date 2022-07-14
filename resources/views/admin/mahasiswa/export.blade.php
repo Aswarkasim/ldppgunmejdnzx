@@ -6,8 +6,10 @@
   </thead>
 
   <tbody>
+    @foreach ($mahasiswa as $item)
     <tr>
-      <td></td>
+      <td>{{$item->namalengkap}}</td>
     </tr>
+    @endforeach
   </tbody>
 </table>
