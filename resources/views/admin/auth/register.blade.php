@@ -69,7 +69,7 @@
             <label for="">Nama Lengkap<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  value="{{old('name')}}" placeholder="Username">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  value="{{old('name')}}" placeholder="Nama Lengkap">
              @error('name')
             <div class="invalid-feedback">
             {{$message}}
