@@ -72,7 +72,7 @@ class AdminUserController extends Controller
             'no_ukg'          => 'required|unique:users',
             'name'          => 'required|min:3',
             // 'email'         => 'required|email|min:4|unique:users',
-            // 'role'          => 'required',
+            'role'          => 'required',
             'password'      => 'required|min:4',
             're_password'   => 'required|same:password'
         ]);
