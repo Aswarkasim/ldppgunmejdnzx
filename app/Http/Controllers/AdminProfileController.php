@@ -96,7 +96,9 @@ class AdminProfileController extends Controller
     function updateInstansi(Request $request)
     {
         // dd($request);    
-        $request->validate([
+        $user_id                     = auth()->user()->id;
+        $profile                     = Mahasiswa::whereUserId($user_id)->first();
+        $data = $request->validate([
 
             'nama_instansi'         => 'required',
             'npsn_sekolah'          => 'required',
@@ -104,14 +106,13 @@ class AdminProfileController extends Controller
             'jenjang_pendidikan'    => 'required',
             'alamat_instansi'       => 'required',
         ]);
-        $user_id                     = auth()->user()->id;
-        $profile                     = Mahasiswa::whereUserId($user_id)->first();
-        $profile->nama_instansi      = $request->nama_instansi;
-        $profile->npsn_sekolah       = $request->npsn_sekolah;
-        $profile->jenjang_pendidikan = $request->jenjang_pendidikan;
-        $profile->alamat_instansi    = $request->alamat_instansi;
 
-        $profile->update();
+        // $profile->nama_instansi      = $request->nama_instansi;
+        // $profile->npsn_sekolah       = $request->npsn_sekolah;
+        // $profile->jenjang_pendidikan = $request->jenjang_pendidikan;
+        // $profile->alamat_instansi    = $request->alamat_instansi;
+
+        $profile->update($data);
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=instansi');
     }

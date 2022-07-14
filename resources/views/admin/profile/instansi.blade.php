@@ -44,6 +44,7 @@
         <div class="col-md-9">
           <select name="akreditasi_sekolah" class="form-control @error('akreditasi_sekolah') is-invalid @enderror" id="">
                 <option value="">-- Akreditasi --</option>
+                <option value="Belum Terakreditasi" {{$profile->akreditasi_sekolah == 'Belum Terakreditasi' ? 'selected' : ''}}>Belum Terakreditasi</option>
                 <option value="A" {{$profile->akreditasi_sekolah == 'A' ? 'selected' : ''}}>A</option>
                 <option value="B" {{$profile->akreditasi_sekolah == 'B' ? 'selected' : ''}}>B</option>
                 <option value="C" {{$profile->akreditasi_sekolah == 'C' ? 'selected' : ''}}>C</option>
@@ -76,10 +77,10 @@
         <div class="col-md-9">
           <select name="jenjang_pendidikan" class="form-control @error('jenjang_pendidikan') is-invalid @enderror" id="">
                 <option value="">-- Jenjang --</option>
-                <option value="A" {{$profile->jenjang_pendidikan == 'PAUD/RA' ? 'selected' : ''}}>PAUD/RA</option>
-                <option value="B" {{$profile->jenjang_pendidikan == 'SD/MI' ? 'selected' : ''}}>SD/MI</option>
-                <option value="C" {{$profile->jenjang_pendidikan == 'SMP/MTS' ? 'selected' : ''}}>SMP/MTS</option>
-                <option value="C" {{$profile->jenjang_pendidikan == 'SMA/SMK/MA/MAK' ? 'selected' : ''}}>SMA/SMK/MA/MAK</option>
+                <option value="PAUD/RA" {{$profile->jenjang_pendidikan == 'PAUD/RA' ? 'selected' : ''}}>PAUD/RA</option>
+                <option value="SD/MI" {{$profile->jenjang_pendidikan == 'SD/MI' ? 'selected' : ''}}>SD/MI</option>
+                <option value="SMP/MTS" {{$profile->jenjang_pendidikan == 'SMP/MTS' ? 'selected' : ''}}>SMP/MTS</option>
+                <option value="SMA/SMK/MA/MAK" {{$profile->jenjang_pendidikan == 'SMA/SMK/MA/MAK' ? 'selected' : ''}}>SMA/SMK/MA/MAK</option>
                 
               </select>
               @error('jenjang_pendidikan')
