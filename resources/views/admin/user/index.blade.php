@@ -58,9 +58,9 @@
   </tbody>
 </table>
 
-  {{-- <div class="float-right">
+  <div class="float-right">
     {{$user->links()}}
-  </div> --}}
+  </div>
 </div>
 </div>
 <!-- /.card-body -->
