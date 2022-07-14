@@ -1,3 +1,5 @@
+<div class="alert alert-info">Selamat Datang {{auth()->user()->name}} di halaman {{auth()->user()->role}}</div>
+
 <div class="row mt-2">
   
   <div class="col-md-3">
