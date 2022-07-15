@@ -19,6 +19,6 @@
 
 </table>
 
-<a href="profile?page=instansi&action=edit" class="btn btn-primary">
+<a href="/account/profile?page=instansi&action=edit" class="btn btn-primary mb-4 ">
   <i class="fas fa-edit"></i> Edit
 </a>
