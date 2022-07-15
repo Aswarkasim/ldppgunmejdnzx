@@ -79,6 +79,7 @@ class AdminMahasiswaController extends Controller
         $data = [
             'title'   => 'Verifikasi Data',
             'mahasiswa' => $mahasiswa,
+            'berkas'    => Berkas::whereUserId($user_id)->get(),
             'content' => 'admin/verifikasi/biodata'
         ];
         return view('admin/layouts/wrapper', $data);

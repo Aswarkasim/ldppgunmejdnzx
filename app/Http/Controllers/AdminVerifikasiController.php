@@ -191,6 +191,7 @@ class AdminVerifikasiController extends Controller
         $data = [
             'title'   => 'Verifikasi Data',
             'mahasiswa' => $mahasiswa,
+            'berkas'    => Berkas::with('kelengkapan')->whereUserId($user_id)->get(),
             'content' => 'admin/verifikasi/biodata'
         ];
         return view('admin/layouts/wrapper', $data);

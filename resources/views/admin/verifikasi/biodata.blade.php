@@ -9,13 +9,14 @@
             
             @include('admin.verifikasi.biodata.data_diri')
             @include('admin.verifikasi.biodata.pendidikan')
+            @include('admin.verifikasi.biodata.instansi')
           </div>
           
           <div class="col-md-6">
-            @include('admin.verifikasi.biodata.instansi')
             @include('admin.verifikasi.biodata.keluarga')
             @include('admin.verifikasi.biodata.rekening')
             @include('admin.verifikasi.biodata.pasfoto')
+            @include('admin.verifikasi.biodata.berkas')
             
           </div>
         </div>

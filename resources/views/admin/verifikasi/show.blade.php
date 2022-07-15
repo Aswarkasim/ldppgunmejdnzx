@@ -28,7 +28,7 @@
               <tr>
                 <td width="50px">{{$loop->iteration}}</td>
                 <td>{{$row->kelengkapan->name}} </td>
-                <td>
+                <td width="150px">
                   @switch($row->status)
                       @case('KOSONG')
                           <button class="btn btn-warning btn-sm">
