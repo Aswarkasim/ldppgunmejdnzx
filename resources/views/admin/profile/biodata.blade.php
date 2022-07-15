@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body p-3">
 
-        <a href="/account/profile/show/{{$mahasiswa->user_id}}" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
+        {{-- <a href="/account/profile/show/{{$profile->user_id}}" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a> --}}
         <div class="row">
           <div class="col-md-6">
             

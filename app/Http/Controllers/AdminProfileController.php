@@ -304,6 +304,10 @@ class AdminProfileController extends Controller
         $user_id                     = auth()->user()->id;
         $profile                     = Mahasiswa::whereUserId($user_id)->first();
 
+        if ($request->nama_bank == 'Lainnya') {
+            $data['nama_bank'] = $request->nama_bank_lain;
+        }
+
         $profile->update($data);
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=rekening');
@@ -325,7 +329,7 @@ class AdminProfileController extends Controller
         ])->whereUserId($user_id)->first();
         $data = [
             'title'   => 'Verifikasi Data',
-            'mahasiswa' => $mahasiswa,
+            'profile' => $mahasiswa,
             'content' => 'admin/profile/biodata'
         ];
         return view('admin/layouts/wrapper', $data);

@@ -15,18 +15,28 @@
           <label for="">Nama Bank<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <select name="nama_bank" class="form-control @error('nama_bank') is-invalid @enderror" id="">
+          <select name="nama_bank" class="form-control @error('nama_bank') is-invalid @enderror" id="nama-bank">
                 <option value="">-- Nama Bank --</option>
                 <option value="BRI" {{$profile->nama_bank == 'BRI' ? 'selected' : ''}}>BRI</option>
                 <option value="BNI" {{$profile->nama_bank == 'BNI' ? 'selected' : ''}}>BNI</option>
                 <option value="Lainnya">Lainnya</option>
                 
               </select>
-          @error('nama_bank')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
+
+                @error('nama_bank')
+                  <div class="invalid-feedback">
+                  {{$message}}
+                  </div>
+                @enderror
+
+          <input type="text" id="nama-bank-input" class="form-control mt-1 @error('nama_bank_lain') is-invalid @enderror" name="nama_bank_lain"  value="{{isset($profile) ? $profile->nama_bank : old('nama_bank')}}" placeholder="Nama Bank">
+
+          @error('nama_bank_lain')
+                  <div class="invalid-feedback">
+                  {{$message}}
+                  </div>
+                @enderror
+        
 
         </div>
       </div>
@@ -81,3 +91,14 @@
 </div>
 
 </form>
+
+{{-- make id = nama-bank-input when i select value = Lainnya in select id = nama-bank --}}
+<script>
+  $('#nama-bank').change(function(){
+    if($(this).val() == 'Lainnya'){
+      $('#nama-bank-input').show();
+    }else{
+      $('#nama-bank-input').hide();
+    }
+  });
+</script>

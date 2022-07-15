@@ -2,79 +2,83 @@
 <table class="table">
   <tr class="bg-secondary">
     <td>Nama Pasangan (Suami/Istri)</td>
-    <td>: {{$mahasiswa->nama_pasangan}}</td>
+    <td>: {{$profile->nama_pasangan}}</td>
   </tr>
   <tr>
     <td>Pendidikan Pasangan</td>
-    <td>: {{$mahasiswa->pendidikan_pasangan}}</td>
+    <td>: {{$profile->pendidikan_pasangan}}</td>
   </tr>
   <tr>
     <td>Pekerjaan Pasangan</td>
-    <td>: {{$mahasiswa->pekerjaan_pasangan}}</td>
+    <td>: {{$profile->pekerjaan_pasangan}}</td>
   </tr>
   <tr>
     <td>Jumlah Anak</td>
-    <td>: {{$mahasiswa->jumlah_anak}}</td>
+    <td>: {{$profile->jumlah_anak}}</td>
   </tr>
 
   <tr class="bg-secondary">
     <td><b>Nama Ayah Kandung</b></td>
-    <td>: {{$mahasiswa->nama_ayah_kandung}}</td>
+    <td>: {{$profile->nama_ayah_kandung}}</td>
   </tr>
   <tr>
     <td>Pendidikan Ayah Kandung</td>
-    <td>: {{$mahasiswa->pendidikan_ayah_kandung}}</td>
+    <td>: {{$profile->pendidikan_ayah_kandung}}</td>
   </tr>
   <tr>
     <td>Pekerjaan Ayah Kandung</td>
-    <td>: {{$mahasiswa->pekerjaan_ayah_kandung}}</td>
+    <td>: {{$profile->pekerjaan_ayah_kandung}}</td>
   </tr>
   {{-- <tr>
     <td>Penghasilan Ayah Kandung</td>
-    <td>: {{$mahasiswa->penghasilan_ayah_kandung}}</td>
+    <td>: {{$profile->penghasilan_ayah_kandung}}</td>
   </tr> --}}
   <tr>
     <td>NIK Ayah Kandung</td>
-    <td>: {{$mahasiswa->nik_ayah_kandung}}</td>
+    <td>: {{$profile->nik_ayah_kandung}}</td>
   </tr>
 
   <tr class="bg-secondary">
     <td><b>Nama Ibu Kandung</b></td>
-    <td>: {{$mahasiswa->nama_ibu_kandung}}</td>
+    <td>: {{$profile->nama_ibu_kandung}}</td>
   </tr>
   <tr>
     <td>Pendidikan Ibu Kandung</td>
-    <td>: {{$mahasiswa->pendidikan_ibu_kandung}}</td>
+    <td>: {{$profile->pendidikan_ibu_kandung}}</td>
   </tr>
   <tr>
     <td>Pekerjaan Ibu Kandung</td>
-    <td>: {{$mahasiswa->pekerjaan_ibu_kandung}}</td>
+    <td>: {{$profile->pekerjaan_ibu_kandung}}</td>
   </tr>
   {{-- <tr>
     <td>Penghasilan Ibu Kandung</td>
-    <td>: {{$mahasiswa->penghasilan_ibu_kandung}}</td>
+    <td>: {{$profile->penghasilan_ibu_kandung}}</td>
   </tr> --}}
   <tr>
     <td>NIK Ibu Kandung</td>
-    <td>: {{$mahasiswa->nik_ibu_kandung}}</td>
+    <td>: {{$profile->nik_ibu_kandung}}</td>
   </tr>
 
   <tr class="bg-secondary">
     <td>No. HP Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->nohp_keluarga_dekat}}</td>
+    <td>: {{$profile->nohp_keluarga_dekat}}</td>
   </tr>
    <tr>
     <td>Alamat Orangtua/Keluarga Dekat</td>
-    <td>: {{$mahasiswa->alamat_orangtua}}</td>
+    <td>: {{$profile->alamat_orangtua}}</td>
   </tr>
    <tr>
     <td>Provinsi Orangtua/Keluarga Dekat</td>
-    <td>: {{ isset($mahasiswa->provinceByOrangtua) ? $mahasiswa->provinceByOrangtua->name : ''}}</td>
+    <td>: {{ isset($profile->provinceByOrangtua) ? $profile->provinceByOrangtua->name : ''}}</td>
   </tr>
    <tr>
     <td>Kabupaten Orangtua/Keluarga Dekat</td>
-    <td>: {{ isset($mahasiswa->kabupatenByOrangtua) ? $mahasiswa->kabupatenByOrangtua->name : ''}}</td>
+    <td>: {{ isset($profile->kabupatenByOrangtua) ? $profile->kabupatenByOrangtua->name : ''}}</td>
   </tr>
   
 </table>
+
+<a href="profile?page=keluarga&action=edit" class="btn btn-primary">
+  <i class="fas fa-edit"></i> Edit
+</a>
 

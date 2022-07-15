@@ -11,7 +11,8 @@
         </style>
 
         @php
-            $page = request('page')
+            $page = request('page');
+            $action = request('action');
         @endphp
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
@@ -41,26 +42,64 @@
 
         @switch($page)
             @case('data_diri')
-                @include('/admin/profile/data_diri')
+                @if ($action == 'edit')
+                  @include('/admin/profile/edit/data_diri')
+                @else
+                  @include('/admin/profile/biodata/data_diri')
+                @endif
                 @break
+
+
             @case('instansi')
-                @include('/admin/profile/instansi')
+                @if ($action == 'edit')
+                  @include('/admin/profile/edit/instansi')
+                @else
+                  @include('/admin/profile/biodata/instansi')
+                @endif
                 @break
+
+
             @case('pendidikan')
-                @include('/admin/profile/pendidikan')
+                @if ($action == 'edit')
+                  @include('/admin/profile/edit/pendidikan')
+                @else
+                  @include('/admin/profile/biodata/pendidikan') 
+                @endif
                 @break
+
+
             @case('keluarga')
-                @include('/admin/profile/keluarga')
-            @break
+                 @if ($action == 'edit')
+                  @include('/admin/profile/edit/keluarga')
+                @else
+                  @include('/admin/profile/biodata/keluarga') 
+                @endif
+                @break
             @case('pasfoto')
-                @include('/admin/profile/pasfoto')
+                @include('/admin/profile/edit/pasfoto')
             @break
+
+
              @case('rekening')
-                @include('/admin/profile/rekening')
-            @break
+                 @if ($action == 'edit')
+                  @include('/admin/profile/edit/rekening')
+                @else
+                  @include('/admin/profile/biodata/rekening')  
+                @endif
             @default
                 
         @endswitch
+
+        {{-- @if ($page == 'data_diri')
+            @if ()
+                
+            @else
+                
+            @endif
+            @include('/admin/profile/read/data_diri')
+        @else
+            
+        @endif --}}
 
     </div>
   </div>

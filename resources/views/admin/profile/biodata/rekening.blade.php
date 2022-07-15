@@ -2,15 +2,19 @@
 <table class="table">
   <tr>
     <td>Nama Pemilik</td>
-    <td>: {{$mahasiswa->nama_pemilik}}</td>
+    <td>: {{$profile->nama_pemilik}}</td>
   </tr>
   <tr>
     <td>Nama Bank</td>
-    <td>: {{$mahasiswa->nama_bank}}</td>
+    <td>: {{$profile->nama_bank}}</td>
   </tr>
   <tr>
     <td>Nomor Rekening</td>
-    <td>: {{$mahasiswa->nomor_rekening}}</td>
+    <td>: {{$profile->nomor_rekening}}</td>
   </tr>
 
 </table>
+
+<a href="profile?page=rekening&action=edit" class="btn btn-primary">
+  <i class="fas fa-edit"></i> Edit
+</a>

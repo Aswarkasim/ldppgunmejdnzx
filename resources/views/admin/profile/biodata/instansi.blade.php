@@ -2,19 +2,23 @@
 <table class="table">
   <tr>
     <td>Instansi</td>
-    <td>: {{$mahasiswa->nama_instansi}}</td>
+    <td>: {{$profile->nama_instansi}}</td>
   </tr>
   <tr>
     <td>NPSN</td>
-    <td>: {{$mahasiswa->npsn_sekolah}}</td>
+    <td>: {{$profile->npsn_sekolah}}</td>
   </tr>
   <tr>
     <td>Jenjang Pendidikan</td>
-    <td>: {{$mahasiswa->jenjang_pendidikan}}</td>
+    <td>: {{$profile->jenjang_pendidikan}}</td>
   </tr>
   <tr>
     <td>Alamat</td>
-    <td>: {{$mahasiswa->alamat_instansi}}</td>
+    <td>: {{$profile->alamat_instansi}}</td>
   </tr>
 
 </table>
+
+<a href="profile?page=instansi&action=edit" class="btn btn-primary">
+  <i class="fas fa-edit"></i> Edit
+</a>
