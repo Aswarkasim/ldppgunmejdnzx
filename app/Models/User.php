@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(BidangStudi::class);
     }
+
+    function VerifyHistory()
+    {
+        return $this->hasMany(VerifyHistory::class, 'verificator_id');
+    }
 }
