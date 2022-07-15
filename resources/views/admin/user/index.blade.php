@@ -24,7 +24,7 @@
     <tr>
       <th>No</th>
       <th>Nama</th>
-      {!!request('role') == 'verificator' ? '<th>Jumah Berkas Verifikasi</th>' : ''!!}
+      {!!request('role') == 'verificator' ? '<th>Jumah Verifikasi Mahasiwa</th>' : ''!!}
       <th>Role</th>
       <th>Action</th>
     </tr>
