@@ -37,7 +37,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-3">
-              <label for="">No. UKG.</label>
+              <label for="">No. UKG./Peg.ID</label>
             </div>
             <div class="col-md-9">
               <input type="text" class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg" value="{{old('no_ukg')}}" placeholder="No. UKG.">

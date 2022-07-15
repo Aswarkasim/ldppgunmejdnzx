@@ -5,7 +5,7 @@
   <div class="col-md-6">
 
     @if($errors->any())
-        {!! implode('', $errors->all('<div>:message</div>')) !!}
+        {!! implode('', $errors->all('<div class="text text-danger">:message</div>')) !!}
     @endif
 
     <div class="form-group">

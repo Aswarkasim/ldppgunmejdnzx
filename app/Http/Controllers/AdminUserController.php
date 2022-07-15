@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UserExport;
 use App\Models\User;
 use App\Models\Province;
 use App\Models\VerifyRole;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -189,5 +191,11 @@ class AdminUserController extends Controller
         DB::table('verify_roles')->delete($id);
         Toastr::success('File berhasil dihapus', 'Sukses');
         return redirect('/account/user/' . $user_id . '?role=verificator');
+    }
+
+    function exportExcel()
+    {
+
+        return Excel::download(new UserExport(), 'registrasi_mahasiswa.xlsx');
     }
 }
