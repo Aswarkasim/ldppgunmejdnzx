@@ -148,17 +148,22 @@ class AdminDashboardController extends Controller
             Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
             return redirect('/account/dashboard');
             //ceck if berkas where user_id and periode_id and kelengkapan_id not null
-            $berkas = Berkas::whereUserId($user_id)->wherePeriodeId($mahasiswa->periode_id)->whereBerkas(!null)->count();
+            // $berkas = Berkas::whereUserId($user_id)->wherePeriodeId($mahasiswa->periode_id)->whereBerkas(!null)->count();
 
-            if ($berkas < 10) {
-                Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
-                return redirect('/account/dashboard');
-            } else {
-                $mahasiswa->status = request('status');
-                $mahasiswa->save();
-                Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
-                return redirect('/account/dashboard');
-            }
+            // if ($berkas < 10) {
+            //     Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
+            //     return redirect('/account/dashboard');
+            // } else {
+            //     $mahasiswa->status = request('status');
+            //     $mahasiswa->save();
+            //     Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
+            //     return redirect('/account/dashboard');
+            // }
+        } else {
+            $mahasiswa->status = request('status');
+            $mahasiswa->save();
+            Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
+            return redirect('/account/dashboard');
         }
     }
 
