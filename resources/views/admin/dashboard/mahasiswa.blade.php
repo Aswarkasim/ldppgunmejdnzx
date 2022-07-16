@@ -8,7 +8,7 @@
               <a href="/account/dashboard/status?status=WAITING" class="btn btn-primary masuk-verifikasi"><i class="fas fa-upload"></i> Masuk ke verifikasi</a>
               @break
           @case('WAITING')
-              <div class="alert alert-info"><i class="fas fa-spinner"></i> Menunggu verifikasi berkas oleh admin</div>
+              <div class="alert alert-info"><i class="fas fa-spinner"></i> Menunggu verifikasi berkas oleh tim verifikasi</div>
               @break
           @case('VALID')
               <div class="alert alert-success"><i class="fas fa-check"></i> Berkas anda valid</div>
