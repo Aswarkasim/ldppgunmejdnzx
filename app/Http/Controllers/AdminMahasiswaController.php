@@ -12,6 +12,7 @@ use App\Imports\MahasiswaImport;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminMahasiswaController extends Controller
 {
@@ -36,6 +37,21 @@ class AdminMahasiswaController extends Controller
         ];
         return view('admin/layouts/wrapper', $data);
     }
+
+    function notRegis()
+    {
+
+        $periode_id = Session::get('periode_id');
+        $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10);
+
+        $data = [
+            'title'   => 'Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/mahasiswa/index'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
     function show($user_id)
     {
 
@@ -107,5 +123,17 @@ class AdminMahasiswaController extends Controller
     {
 
         return Excel::download(new MahasiswaExport(), 'mahasiswa.xlsx');
+    }
+
+    function updatePeriode()
+    {
+        $periode_id = Session::get('periode_id');
+        $mahasiswa = Mahasiswa::wherePeriodeId(null)->get();
+        foreach ($mahasiswa as $item) {
+            $item->periode_id = $periode_id;
+            $item->save();
+        }
+        Alert::success('Sukses', 'Periode telah perbaharui');
+        return redirect('/account/dashboard');
     }
 }

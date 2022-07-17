@@ -5,6 +5,7 @@
 <div class="card-body">
   {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
   <a href="/account/mahasiswa/export" class="btn btn-primary mb-3"><i class="fa fa-upload"></i> Export</a>
+  {{-- <a href="/account/mahasiswa/export" target="_blank" class="btn btn-warning mb-3"><i class="fa fa-user-times"></i> Peseta yang belum Registrasi</a> --}}
   {{-- @include('/admin/mahasiswa/upload') --}}
 
   <div class="float-right">

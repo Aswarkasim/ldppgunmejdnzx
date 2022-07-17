@@ -124,6 +124,8 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/biodata/{id}', [AdminMahasiswaController::class, 'biodata']);
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
+        Route::get('/notregisted', [AdminMahasiswaController::class, 'notRegis']);
+        Route::get('/update/periode', [AdminMahasiswaController::class, 'updatePeriode']);
     });
 
 

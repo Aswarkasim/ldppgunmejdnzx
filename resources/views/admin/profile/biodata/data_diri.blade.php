@@ -61,6 +61,6 @@
 
 <hr>
 
-<a href="/account/profile?page=data_diri&action=edit" class="btn btn-primary mb-4">
+<a href="/account/profile?page=data_diri&action=edit" class="btn btn-primary mb-4 ">
   <i class="fas fa-edit"></i> Edit
 </a>
