@@ -84,10 +84,10 @@ class AdminDashboardController extends Controller
             'periode'   => Periode::latest()->get(),
             'jenis'     => JenisPpg::all(),
             'register_setting'  => RegisterSetting::with(['periode', 'jenis_ppg'])->first(),
-            'total_mahasiswa' => Mahasiswa::count(),
-            'total_registered' => Mahasiswa::where('is_registered', 1)->count(),
-            'total_verifikasi' => Mahasiswa::where('status', 'WAITING')->count(),
-            'total_valid' => Mahasiswa::where('status', 'VALID')->count(),
+            'total_mahasiswa' => Mahasiswa::wherePeriodeId($periode_id)->count(),
+            'total_registered' => Mahasiswa::wherePeriodeId($periode_id)->where('is_registered', 1)->count(),
+            'total_verifikasi' => Mahasiswa::wherePeriodeId($periode_id)->where('status', 'WAITING')->count(),
+            'total_valid' => Mahasiswa::wherePeriodeId($periode_id)->where('status', 'VALID')->count(),
             'content' => 'admin/dashboard/superadmin'
         ];
         return view('admin/layouts/wrapper', $data);
