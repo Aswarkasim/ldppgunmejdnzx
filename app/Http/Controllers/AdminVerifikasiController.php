@@ -53,7 +53,7 @@ class AdminVerifikasiController extends Controller
         } else {
             $user = Mahasiswa::with(['bidang_studi', 'provinceBydomisili'])->wherePeriodeId($periode_id)
                 ->whereStatus('WAITING')
-                ->paginate(10);
+                ->paginate(30);
             $data = [
                 'title'   => 'Verifikasi Berkas',
                 'mahasiswa' => $user,
