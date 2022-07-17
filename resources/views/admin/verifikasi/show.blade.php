@@ -27,7 +27,10 @@
                   
               <tr>
                 <td width="50px">{{$loop->iteration}}</td>
-                <td>{{$row->kelengkapan->name}} </td>
+                <td>
+                  {{$row->kelengkapan->name}}
+                  <br> <small> Diperbaharui pada {{$row->updated_at}} </small>
+                </td>
                 <td width="150px">
                   @switch($row->status)
                       @case('KOSONG')
