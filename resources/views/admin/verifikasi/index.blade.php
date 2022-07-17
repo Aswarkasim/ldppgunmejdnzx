@@ -35,9 +35,9 @@
       <td>
         <a href="/account/verifikasi/show/{{$row->user_id}}"><b>{{$row->no_ukg}} - {{$row->namalengkap}}</b></a>
         {{-- <br>{{'Bidang Studi : '. $row->bidang_studi != null ? $row->bidang_studi->name : ''}} --}}
-        {{ $row->bidang_studi != null ? $row->bidang_studi->name : ''}}
+        <br> Bidang Studi : {{ $row->bidang_studi != null ? $row->bidang_studi->name : ''}}
       </td>
-      {{-- <td>{{$row->provinceBydomisili->name}} </td> --}}
+      <td>{{isset($row->provinceBydomisili) ? $row->provinceBydomisili->name : ''}} </td>
       {{-- @dd($row->user) --}}
       <td>
         <div class="btn-group">
