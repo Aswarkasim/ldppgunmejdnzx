@@ -39,7 +39,12 @@
       <td>{{$row->no_ukg}} </td>
       <td>{{$row->npm}} </td>
       <td>
+        @if ($row->is_registered == 1)
         <a href="/account/mahasiswa/show/{{$row->user_id}}"><b>{{$row->namalengkap}}</b></a>
+            
+        @else
+            {{$row->namalengkap}}
+        @endif
          <br>
            @switch($row->status)
           @case('LENGKAPI')
