@@ -34,7 +34,7 @@
       <td width="50px">{{$loop->iteration}}</td>
       <td>
         <a href="/account/verifikasi/show/{{$row->user_id}}"><b>{{$row->no_ukg}} - {{$row->namalengkap}}</b></a>
-        {{-- <br>{{'Bidang Studi : '. isset($row->bidang_studi) ? $row->bidang_studi->name : ''}} --}}
+        <br>{{'Bidang Studi : '. $row->bidang_studi != null ? $row->bidang_studi->name : ''}}
       </td>
       {{-- <td>{{$row->provinceBydomisili->name}} </td> --}}
       {{-- @dd($row->user) --}}
