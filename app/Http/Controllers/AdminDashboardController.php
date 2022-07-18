@@ -133,7 +133,9 @@ class AdminDashboardController extends Controller
         //cek namalengkap, provinsi_tempat_tinggal not string or null
         if (
             $mahasiswa->nama_lengkap == null &&
+            $mahasiswa->bidang_studi_id == null &&
             $mahasiswa->provinsi_tempat_tinggal == null &&
+            $mahasiswa->kabupaten_tempat_tinggal == null &&
             $mahasiswa->npsn_sekola == null &&
             $mahasiswa->alamat_instansi == null &&
             $mahasiswa->pt_s1 == null &&
