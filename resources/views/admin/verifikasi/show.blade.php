@@ -12,6 +12,8 @@
       
   <a href="/account/verifikasi/all/{{$user_id}}" class="btn btn-success verifikasi-all"><i class="fas fa-check-circle"></i> Validasi Semua</a>
   
+  @elseif ($mahasiswa->status == 'VALID')
+   <a href="/account/berkas/cetak?user_id={{$mahasiswa->user_id}}" class="btn btn-primary" target="_blank">Cetak Bukti</a>
   @endif
 
         <table id="example1" class="table table-striped">

@@ -94,7 +94,13 @@ class AdminBerkasController extends Controller
 
     function cetakBukti()
     {
-        $user_id = auth()->user()->id;
+        $user_id = '';
+
+        if (auth()->user()->role == 'mahasiswa') {
+            $user_id = auth()->user()->id;
+        } else {
+            $user_id = request('user_id');
+        }
         //check if status valid
         $berkas = Mahasiswa::whereUserId($user_id)->whereStatus('VALID')->get();
         if ($berkas->count() == 0) {
