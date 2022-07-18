@@ -122,7 +122,64 @@ class AdminMahasiswaController extends Controller
     function exportExcel()
     {
 
+        $this->updateNameById();
         return Excel::download(new MahasiswaExport(), 'mahasiswa.xlsx');
+    }
+
+    function updateNameById()
+    {
+        $periode_id = Session::get('periode_id');
+        $mahasiswa = Mahasiswa::with([
+            'bidang_studi',
+            'provinceBydomisili',
+            'kabupatenByDomisili',
+            'kabupatenByPts1',
+            'provinceByPts1',
+            'kabupatenByPts2',
+            'provinceByPts2',
+            'provinceByOrangtua',
+            'kabupatenByOrangtua'
+        ])->wherePeriodeId($periode_id)->get();
+
+        foreach ($mahasiswa as $item) {
+
+            if (isset($item->bidang_studi)) {
+                $item->bidang_studi_name = $item->bidang_studi->name;
+            }
+
+            if (isset($item->kabupatenByDomisili)) {
+                $item->kabupaten_tempat_tinggal_name = $item->kabupatenByDomisili->name;
+            }
+
+            if (isset($item->provinceBydomisili)) {
+                $item->provinsi_tempat_tinggal_name = $item->provinceBydomisili->name;
+            }
+
+            if (isset($item->kabupatenByPts1)) {
+                $item->kabupaten_kota_pt_s1_name = $item->kabupatenByPts1->name;
+            }
+
+            if (isset($item->provinceByPts1)) {
+                $item->provinsi_pt_s1_name = $item->provinceByPts1->name;
+            }
+
+            if (isset($item->kabupatenByPts2)) {
+                $item->kabupaten_kota_pt_s2_name = $item->kabupatenByPts2->name;
+            }
+
+            if (isset($item->provinceByPts2)) {
+                $item->provinsi_pt_s2_name = $item->provinceByPts2->name;
+            }
+
+            if (isset($item->kabupatenByOrangtua)) {
+                $item->kabupaten_orangtua_name = $item->kabupatenByOrangtua->name;
+            }
+
+            if (isset($item->kabupatenByOrangtua)) {
+                $item->provinsi_orangtua_name = $item->provinceByOrangtua->name;
+            }
+            $item->save();
+        }
     }
 
     function updatePeriode()

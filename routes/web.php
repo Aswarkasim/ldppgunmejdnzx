@@ -126,6 +126,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
         Route::get('/notregisted', [AdminMahasiswaController::class, 'notRegis']);
         Route::get('/update/periode', [AdminMahasiswaController::class, 'updatePeriode']);
+        Route::get('/update/namebyid', [AdminMahasiswaController::class, 'updateNameById']);
     });
 
 

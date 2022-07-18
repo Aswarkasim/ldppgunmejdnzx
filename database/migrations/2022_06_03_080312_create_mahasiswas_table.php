@@ -18,6 +18,8 @@ class CreateMahasiswasTable extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('periode_id')->nullable();
             $table->foreignId('bidang_studi_id')->nullable();
+
+            $table->foreignId('bidang_studi_name')->nullable();
             $table->string('npm')->nullable();
             $table->string('no_ukg')->nullable();
             $table->string('nuptk')->nullable();
@@ -33,8 +35,13 @@ class CreateMahasiswasTable extends Migration
             $table->string('unggah_kk')->nullable();
             $table->string('unggah_ktp')->nullable();
             $table->string('alamat_domisili')->nullable();
+
             $table->string('provinsi_tempat_tinggal')->nullable();
             $table->string('kabupaten_tempat_tinggal')->nullable();
+
+            $table->string('kabupaten_tempat_tinggal_name')->nullable();
+            $table->string('provinsi_tempat_tinggal_name')->nullable();
+
             $table->string('kecamatan_tempat_tinggal')->nullable();
             $table->string('kelurahan_tempat_tinggal')->nullable();
             $table->string('rt_tempat_tinggal')->nullable();
@@ -60,8 +67,13 @@ class CreateMahasiswasTable extends Migration
             $table->string('ipk_s1')->nullable();
             $table->date('tanggal_kelulusan_s1')->nullable();
             $table->string('alamat_pt_s1')->nullable();
+
             $table->string('provinsi_pt_s1')->nullable();
             $table->string('kabupaten_kota_pt_s1')->nullable();
+
+            $table->string('provinsi_pt_s1_name')->nullable();
+            $table->string('kabupaten_kota_pt_s1_name')->nullable();
+
             $table->string('unggah_ijazah_s1')->nullable();
             $table->string('unggah_transkrip_s1')->nullable();
 
@@ -71,8 +83,14 @@ class CreateMahasiswasTable extends Migration
             $table->string('ipk_s2')->nullable();
             $table->date('tanggal_kelulusan_s2')->nullable();
             $table->string('alamat_pt_s2')->nullable();
+
             $table->string('kabupaten_kota_pt_s2')->nullable();
             $table->string('provinsi_pt_s2')->nullable();
+
+            $table->string('kabupaten_kota_pt_s2_name')->nullable();
+            $table->string('provinsi_pt_s2_name')->nullable();
+
+
             $table->string('unggah_ijazah_s2')->nullable();
             $table->string('unggah_transkrip_s2')->nullable();
 
@@ -99,8 +117,13 @@ class CreateMahasiswasTable extends Migration
             //keluarga_dekat
             $table->string('nohp_keluarga_dekat')->nullable();
             $table->string('alamat_orangtua')->nullable();
+
+
             $table->string('kabupaten_orangtua')->nullable();
             $table->string('provinsi_orangtua')->nullable();
+
+            $table->string('kabupaten_orangtua_name')->nullable();
+            $table->string('provinsi_orangtua_name')->nullable();
 
             $table->string('nama_bank')->nullable();
             $table->string('nama_pemilik')->nullable();

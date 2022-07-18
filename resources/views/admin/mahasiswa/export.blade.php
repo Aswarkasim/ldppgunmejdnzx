@@ -108,8 +108,8 @@
             <td>{{$item->unggah_kk}}</td>
             <td>{{$item->unggah_ktp}}</td>
             <td>{{$item->alamat_domisili}}</td>
-            <td>{{$item->provinsi_tempat_tinggal}}</td>
-            <td>{{$item->kabupaten_tempat_tinggal}}</td>
+            <td>{{$item->provinsi_tempat_tinggal_name}}</td>
+            <td>{{$item->kabupaten_tempat_tinggal_name}}</td>
             <td>{{$item->kecamatan_tempat_tinggal}}</td>
             <td>{{$item->kelurahan_tempat_tinggal}}</td>
             <td>{{$item->rt_tempat_tinggal}}</td>
@@ -134,8 +134,8 @@
             <td>{{$item->ipk_s1}}</td>
             <td>{{$item->tanggal_kelulusan_s1}}</td>
             <td>{{$item->alamat_pt_s1}}</td>
-            <td>{{$item->provinsi_pt_s1}}</td>
-            <td>{{$item->kabupaten_kota_pt_s1}}</td>
+            <td>{{$item->provinsi_pt_s1_name}}</td>
+            <td>{{$item->kabupaten_kota_pt_s1_name}}</td>
             <td>{{$item->unggah_ijazah_s1}}</td>
             <td>{{$item->unggah_transkrip_s1}}</td>
 
@@ -145,8 +145,8 @@
             <td>{{$item->ipk_s2}}</td>
             <td>{{$item->tanggal_kelulusan_s2}}</td>
             <td>{{$item->alamat_pt_s2}}</td>
-            <td>{{$item->kabupaten_kota_pt_s2}}</td>
-            <td>{{$item->provinsi_pt_s2}}</td>
+            <td>{{$item->kabupaten_kota_pt_s2_name}}</td>
+            <td>{{$item->provinsi_pt_s2_name}}</td>
             <td>{{$item->unggah_ijazah_s2}}</td>
             <td>{{$item->unggah_transkrip_s2}}</td>
 
@@ -169,8 +169,8 @@
 
             <td>{{$item->nohp_keluarga_dekat}}</td>
             <td>{{$item->alamat_orangtua}}</td>
-            <td>{{$item->kabupaten_orangtua}}</td>
-            <td>{{$item->provinsi_orangtua}}</td>
+            <td>{{$item->kabupaten_orangtua_name}}</td>
+            <td>{{$item->provinsi_orangtua_name}}</td>
 
             <td>{{$item->nama_bank}}</td>
             <td>{{$item->nama_pemilik}}</td>
