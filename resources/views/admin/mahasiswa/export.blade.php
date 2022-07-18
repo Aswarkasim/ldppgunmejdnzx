@@ -92,7 +92,7 @@
     @foreach ($mahasiswa as $item)
     <tr>
             <td>{{$item->periode_id}}</td>
-            <td>{{$item->bidang_studi_id}}</td>
+            <td>{{$item->bidang_studi_name}}</td>
             <td>{{$item->npm}}</td>
             <td>{{$item->no_ukg}}</td>
             <td>{{$item->nuptk}}</td>

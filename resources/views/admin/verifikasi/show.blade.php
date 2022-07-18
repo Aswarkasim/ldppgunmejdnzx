@@ -7,7 +7,8 @@
 
   <a href="/account/verifikasi/biodata/{{$user_id}}" class="btn btn-info"><i class="fas fa-user"></i> Lihat Biodata</a>
 
-  @if (!$cek_history)
+  {{-- @if (!$cek_history) --}}
+  @if ($mahasiswa->status == 'WAITING')
       
   <a href="/account/verifikasi/all/{{$user_id}}" class="btn btn-success verifikasi-all"><i class="fas fa-check-circle"></i> Validasi Semua</a>
   
