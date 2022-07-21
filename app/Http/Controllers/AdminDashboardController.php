@@ -34,6 +34,10 @@ class AdminDashboardController extends Controller
                 return $this->superadmin();
                 break;
 
+            case 'admin':
+                return $this->admin();
+                break;
+
             case 'mahasiswa':
                 return $this->mahasiswa();
                 break;
@@ -89,6 +93,14 @@ class AdminDashboardController extends Controller
             'total_verifikasi' => Mahasiswa::wherePeriodeId($periode_id)->where('status', 'WAITING')->count(),
             'total_valid' => Mahasiswa::wherePeriodeId($periode_id)->where('status', 'VALID')->count(),
             'content' => 'admin/dashboard/superadmin'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    function admin()
+    {
+        $data = [
+            'content'   => 'admin/dashboard/admin'
         ];
         return view('admin/layouts/wrapper', $data);
     }

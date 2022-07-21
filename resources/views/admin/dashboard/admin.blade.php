@@ -1,16 +1,5 @@
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-  <div class="btn-group" role="group">
-    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="fas fa-calendar"></i> {{$provider_dashboard->periode}}
-    </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      @foreach ($periode as $item)
-      <a class="dropdown-item" href="/account/dashboard/config/periode/{{$item->id}}">{{$item->name}}</a>
-      @endforeach
-    </div>
-  </div>
-</div>
 
+<div class="alert alert-info">Selamat Datang {{auth()->user()->name}} di halaman {{auth()->user()->role}}</div>
 <div class="row">
       <div class="col-12 col-sm-6 col-md-4">
         
@@ -32,5 +21,4 @@
 
     </div>
 
-@include('admin.dashboard.register_setting')
 

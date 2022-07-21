@@ -17,14 +17,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminMahasiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    //
+    function index()
     {
-        //
         $periode_id = Session::get('periode_id');
         $cari = request('cari');
         $kementerian = request('kementerian');
@@ -44,44 +39,35 @@ class AdminMahasiswaController extends Controller
         return view('admin/layouts/wrapper', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    // function 
+
+
+    public function destroy($id)
     {
-        //
+        die('masuk');
+        DB::table('mahasiswas')->delete($id);
+        Alert::success('success', 'Mahasiswa telah dihapus');
+        return redirect('/account/mahasiswa/notregisted');
+    }
+
+    function notRegis()
+    {
+
+        $periode_id = Session::get('periode_id');
+        $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10);
+
         $data = [
-            'title'   => 'Tambah Mahasiswa',
-            'store'    => route('mahasiswa.store'),
-            'content' => 'admin/mahasiswa/add'
+            'title'   => 'Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/mahasiswa/index'
         ];
         return view('admin/layouts/wrapper', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    function show($user_id)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-        $mahasiswa = Mahasiswa::find($id);
-        $user_id = $mahasiswa->user_id;
         $periode_id = Auth::user()->periode_id;
         $verificator_id  = Auth::user()->id;
         $cek_history = VerifyHistory::wherePeriodeId($periode_id)->whereVerificatorId($verificator_id)->whereMahasiswaId($user_id)->first();
@@ -98,73 +84,12 @@ class AdminMahasiswaController extends Controller
             'user_id' => $user_id,
             'cek_history'      => $cek_history,
             'berkas_data' => $berkas_data,
-            'mahasiswa' => $mahasiswa,
+            'mahasiswa' => Mahasiswa::whereUserId($user_id)->first(),
             'link_route' => '/account/verifikasi/show/',
             'content' => 'admin/verifikasi/show'
         ];
         return view('admin/layouts/wrapper', $data);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        // die('masuk');
-        DB::table('mahasiswas')->delete($id);
-        Alert::success('success', 'Mahasiswa telah dihapus');
-        return redirect('/account/mahasiswa/notregisted');
-    }
-
-    function notRegis()
-    {
-
-        $periode_id = Session::get('periode_id');
-        // $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10);
-
-        $cari = request('cari');
-
-        if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10);
-        } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10);
-        }
-
-        $data = [
-            'title'   => 'Mahasiswa',
-            'mahasiswa' => $mahasiswa,
-            'content' => 'admin/mahasiswa/index'
-        ];
-        return view('admin/layouts/wrapper', $data);
-    }
-
 
     function biodata($user_id)
     {

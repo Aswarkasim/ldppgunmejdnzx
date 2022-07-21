@@ -20,7 +20,9 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminJenisPpgController;
 use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminMahasiswaController;
+use App\Http\Controllers\AdminMatakuliahController;
 use App\Http\Controllers\AdminNotifController;
+use App\Http\Controllers\AdminPenilaianController;
 use App\Http\Controllers\AdminPeriodeController;
 use App\Http\Controllers\AdminPetunjukController;
 use App\Http\Controllers\AdminRegisterSettingController;
@@ -103,6 +105,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/bidangstudi', AdminBidangStudiController::class);
         Route::resource('/jenisppg', AdminJenisPpgController::class);
         Route::resource('/kelasprogram', AdminKelasProgramController::class);
+        Route::resource('/matakuliah', AdminMatakuliahController::class);
         // Route::resource('/prodi', AdminProdiController::class);
 
 
@@ -118,9 +121,17 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/list/province/{id}', [AdminVerifikasiController::class, 'province']);
     });
 
+    Route::prefix('/penilaian')->group(function () {
+        Route::get('/', [AdminPenilaianController::class, 'index']);
+        Route::get('/nilai/update', [AdminPenilaianController::class, 'updateNilai']);
+        Route::get('/show/{id}', [AdminPenilaianController::class, 'show']);
+    });
+
+
     Route::prefix('/mahasiswa')->group(function () {
-        Route::get('/', [AdminMahasiswaController::class, 'index']);
-        Route::get('/show/{id}', [AdminMahasiswaController::class, 'show']);
+        // Route::get('/', [AdminMahasiswaController::class, 'index']);
+        // Route::post('/destroy/{id}', [AdminMahasiswaController::class, 'destroy']);
+        // Route::get('/show/{id}', [AdminMahasiswaController::class, 'show']);
         Route::get('/biodata/{id}', [AdminMahasiswaController::class, 'biodata']);
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
@@ -128,6 +139,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/update/periode', [AdminMahasiswaController::class, 'updatePeriode']);
         Route::get('/update/namebyid', [AdminMahasiswaController::class, 'updateNameById']);
     });
+    Route::resource('/mahasiswa', AdminMahasiswaController::class);
 
 
     Route::prefix('/posts')->group(function () {

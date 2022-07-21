@@ -51,7 +51,7 @@
 
 <li class="nav-item {{Request::is('account/mahasiswa*') ? 'menu-open' : ''}}">
   <a href="#" class="nav-link {{Request::is('account/mahasiswa*') ? 'active' : ''}}">
-    <i class="nav-icon fas fa-users"></i>
+    <i class="nav-icon fas fa-graduation-cap"></i>
     <p>
       Mahasiswa
      <i class="right fas fa-angle-left"></i>
@@ -74,7 +74,7 @@
     <li class="nav-item">
       <a href="/account/mahasiswa/notregisted" class="nav-link {{Request::is('account/mahasiswa/notregisted')  ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
-        <p>Tidak Registrasi</p>
+        <p>Calon Mahasiswa</p>
       </a>
     </li>
     
@@ -110,10 +110,17 @@
       </a>
     </li>
 
-      <li class="nav-item">
+    <li class="nav-item">
       <a href="/account/master/bidangstudi" class="nav-link {{Request::is('account/master/bidangstudi*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>Bidang Studi</p>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="/account/master/matakuliah" class="nav-link {{Request::is('account/master/matakuliah*') ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Mata Kuliah</p>
       </a>
     </li>
     

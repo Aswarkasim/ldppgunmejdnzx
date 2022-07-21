@@ -148,7 +148,15 @@ class AdminVerifikasiController extends Controller
         $mahasiswa->status = 'VALID';
         $mahasiswa->save();
 
-        $periode_id = Auth::user()->periode_id;
+
+
+        $periode_id = '';
+        if (Auth::user()->role == 'superadmin') {
+            $periode_id = Session::get('periode_id');
+        } else {
+            $periode_id = Auth::user()->periode_id;
+        }
+
         $verificator_id  = Auth::user()->id;
 
         $cek = VerifyHistory::wherePeriodeId($periode_id)->whereVerificatorId($verificator_id)->whereMahasiswaId($user_id)->first();

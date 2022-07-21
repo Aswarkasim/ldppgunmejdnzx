@@ -4,9 +4,14 @@
 <div class="card">
 <div class="card-body">
   {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
-  <a href="/account/mahasiswa/export" class="btn btn-primary mb-3"><i class="fa fa-upload"></i> Export</a>
+
+  @if (Request::is('account/mahasiswa/notregisted'))
+   <a href="/account/mahasiswa/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+  @endif
+
+  <a href="/account/mahasiswa/export" class="btn btn-info"><i class="fa fa-upload"></i> Export</a>
   {{-- <a href="/account/mahasiswa/export" target="_blank" class="btn btn-warning mb-3"><i class="fa fa-user-times"></i> Peseta yang belum Registrasi</a> --}}
-  {{-- @include('/admin/mahasiswa/upload') --}}
+  @include('/admin/mahasiswa/import')
 
   <div class="float-right">
     <form action="" method="get">
@@ -40,8 +45,7 @@
       <td>{{$row->npm}} </td>
       <td>
         @if ($row->is_registered == 1)
-        <a href="/account/mahasiswa/show/{{$row->user_id}}"><b>{{$row->namalengkap}}</b></a>
-            
+        <a href="/account/mahasiswa/{{$row->id}}"><b>{{$row->namalengkap}}</b></a>
         @else
             {{$row->namalengkap}}
         @endif
@@ -99,4 +103,25 @@
 
 <!-- /.card-body -->
 
+{{-- make ajax to link index mahasiswa  --}}
+
+{{-- <script>
+
+function index(id){
+  console.log('harga')
+  var harga = $("[name='harga"+id+"']").val()
+  
+  $.ajax({
+    method:'GET',
+    url: '/admin/survey/detail/update?id='+id+'&harga='+harga,
+    dataType:'json',
+    success: function(data){
+      console.log(data)
+    }
+  });
+}
+
+</script> --}}
+
+{{-- paginate ajax  --}}
 

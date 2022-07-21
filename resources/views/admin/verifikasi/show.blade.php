@@ -6,6 +6,7 @@
   <a href="/account/verifikasi/list/province/{{$mahasiswa->provinsi_tempat_tinggal}}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
 
   <a href="/account/verifikasi/biodata/{{$user_id}}" class="btn btn-info"><i class="fas fa-user"></i> Lihat Biodata</a>
+  {{-- <a href="/account/mahasiswa/nilai/{{$user_id}}" class="btn btn-info"><i class="fas fa-user"></i> Isi Nilai</a> --}}
 
   {{-- @if (!$cek_history) --}}
   @if ($mahasiswa->status == 'WAITING')
