@@ -151,6 +151,7 @@ class AdminMahasiswaController extends Controller
             'npm'                      => 'required'
         ]);
         $data['periode_id'] = Session::get('periode_id');
+        $data['status'] = 'LENGKAPI';
         $mahasiswa->update($data);
         Alert::success('Sukses', 'Mahasiswa telah diedit');
         return redirect('/account/mahasiswa/notregisted');
