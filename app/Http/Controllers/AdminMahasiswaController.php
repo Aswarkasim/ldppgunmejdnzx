@@ -69,6 +69,16 @@ class AdminMahasiswaController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'no_ukg'           => 'required',
+            'namalengkap'              => 'required',
+            'kementerian'              => 'required',
+            'npm'                  => 'required'
+        ]);
+        $data['periode_id'] = Session::get('periode_id');
+        Mahasiswa::create($data);
+        Alert::success('Sukses', 'Mahasiswa telah ditambahkan');
+        return redirect('/account/mahasiswa/notregisted');
     }
 
     /**
@@ -114,6 +124,13 @@ class AdminMahasiswaController extends Controller
     public function edit($id)
     {
         //
+        $data = [
+            'title'   => 'Edit Mahasiswa',
+            'mahasiswa' => Mahasiswa::find($id),
+            // 'store'    => route('mahasiswa.update'),
+            'content' => 'admin/mahasiswa/add'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 
     /**
@@ -126,6 +143,17 @@ class AdminMahasiswaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $mahasiswa = Mahasiswa::find($id);
+        $data = $request->validate([
+            'no_ukg'                   => 'required',
+            'namalengkap'              => 'required',
+            'kementerian'              => 'required',
+            'npm'                      => 'required'
+        ]);
+        $data['periode_id'] = Session::get('periode_id');
+        $mahasiswa->update($data);
+        Alert::success('Sukses', 'Mahasiswa telah diedit');
+        return redirect('/account/mahasiswa/notregisted');
     }
 
     /**
