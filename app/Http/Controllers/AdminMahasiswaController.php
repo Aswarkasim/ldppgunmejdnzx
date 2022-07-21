@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminMahasiswaController extends Controller
@@ -250,6 +251,12 @@ class AdminMahasiswaController extends Controller
 
         $this->updateNameById();
         return Excel::download(new MahasiswaExport(), 'mahasiswa.xlsx');
+    }
+
+    function downloadFormat()
+    {
+        // return Storage::download('/public/docs/format-excel.xlsx');
+        return response()->download('dokumen/format-excel.xlsx');
     }
 
     function updateNameById()

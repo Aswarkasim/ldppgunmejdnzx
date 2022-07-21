@@ -20,7 +20,7 @@
           <div class="form-group">
             <label for="">File Excel</label>
             <input type="file" name="file" class="form-control">
-            <p>*Hanya menerima format xls dan xlsx. Ikuti formati berikut sbelum mengupload <a href=""><i class="fas fa-download"></i> Download</a></p>
+            <p>*Hanya menerima format xls dan xlsx. Ikuti formati berikut sebelum mengupload <a href="/account/mahasiswa/download"><i class="fas fa-download"></i> Download</a></p>
           </div>
         </div>
         <div class="modal-footer">

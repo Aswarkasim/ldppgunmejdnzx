@@ -133,6 +133,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         // Route::post('/destroy/{id}', [AdminMahasiswaController::class, 'destroy']);
         // Route::get('/show/{id}', [AdminMahasiswaController::class, 'show']);
         Route::get('/biodata/{id}', [AdminMahasiswaController::class, 'biodata']);
+        Route::get('/download', [AdminMahasiswaController::class, 'downloadFormat']);
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
         Route::get('/notregisted', [AdminMahasiswaController::class, 'notRegis']);

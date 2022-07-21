@@ -18,10 +18,11 @@ class MahasiswaImport implements ToModel
         return new Mahasiswa([
             //
             'periode_id' => Session::get('periode_id'),
-            'npm'     => $row[0],
-            'no_ukg'  => $row[1],
+            'no_ukg'  => $row[0],
+            'npm'     => $row[1],
             'namalengkap'     => $row[2],
-            'status'     => $row[3]
+            'kementerian'     => $row[3],
+            'status'            => 'LENGKAPI'
 
         ]);
     }
