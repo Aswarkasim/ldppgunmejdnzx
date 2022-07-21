@@ -70,7 +70,7 @@ class AdminMahasiswaController extends Controller
     {
         //
         $data = $request->validate([
-            'no_ukg'           => 'required',
+            'no_ukg'           => 'required|unique:mahasiswas',
             'namalengkap'              => 'required',
             'kementerian'              => 'required',
             'npm'                  => 'required'
@@ -145,7 +145,7 @@ class AdminMahasiswaController extends Controller
         //
         $mahasiswa = Mahasiswa::find($id);
         $data = $request->validate([
-            'no_ukg'                   => 'required',
+            'no_ukg'                   => 'required|unique:mahasiswas,no_ukg,' . $mahasiswa->id,
             'namalengkap'              => 'required',
             'kementerian'              => 'required',
             'npm'                      => 'required'
