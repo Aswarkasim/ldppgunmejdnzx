@@ -51,7 +51,6 @@ class CreateDosensTable extends Migration
             $table->string('npwp')->nullable();
             $table->string('email')->nullable();
 
-
             $table->timestamps();
         });
     }
