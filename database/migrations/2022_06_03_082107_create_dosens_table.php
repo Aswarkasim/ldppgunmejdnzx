@@ -28,13 +28,21 @@ class CreateDosensTable extends Migration
 
             //alamat
             $table->string('alamat_instansi')->nullable();
+
             $table->string('kab_instansi')->nullable();
             $table->string('prov_instansi')->nullable();
+
+
+            $table->string('kab_instansi_name')->nullable();
+            $table->string('prov_instansi_name')->nullable();
 
             //alamat
             $table->string('alamat_rumah')->nullable();
             $table->string('kab_rumah')->nullable();
             $table->string('prov_rumah')->nullable();
+
+            $table->string('kab_rumah_name')->nullable();
+            $table->string('prov_rumah_name')->nullable();
 
             //pendidikan
             $table->string('s1_jurusan')->nullable();

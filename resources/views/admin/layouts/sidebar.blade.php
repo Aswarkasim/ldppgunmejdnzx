@@ -39,6 +39,9 @@
               @case('mahasiswa')
                   @include('admin.layouts.menu.mahasiswa')                  
                   @break
+              @case('dosen')
+                  @include('admin.layouts.menu.dosen')                  
+                  @break
               @default
                   
           @endswitch

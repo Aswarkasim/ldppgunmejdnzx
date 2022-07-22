@@ -11,6 +11,7 @@ use App\Models\Mahasiswa;
 use App\Models\KelasProgram;
 use Illuminate\Http\Request;
 use App\Models\Configuration;
+use App\Models\Dosen;
 use App\Models\VerifyHistory;
 use App\Models\RegisterSetting;
 use App\Models\VerifyRole;
@@ -42,6 +43,9 @@ class AdminDashboardController extends Controller
                 return $this->mahasiswa();
                 break;
 
+            case 'dosen':
+                return $this->dosen();
+                break;
             case 'verificator':
                 return $this->verificator();
                 break;
@@ -70,6 +74,18 @@ class AdminDashboardController extends Controller
         $config->save();
         return redirect('/account/dashboard');
         Toastr::success('Periode diaktifkan', 'Sukses');
+    }
+
+    function dosen()
+    {
+        $user_id = auth()->user()->id;
+
+        $data = [
+            'user'      => User::find($user_id),
+            'dosen' => Dosen::whereUserId($user_id)->first(),
+            'content'   => 'admin/dashboard/dosen'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 
     function superadmin()

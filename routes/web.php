@@ -18,6 +18,8 @@ use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminJenisPpgController;
+use App\Http\Controllers\AdminKelasController;
+use App\Http\Controllers\AdminKelasPesertaController;
 use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminMahasiswaController;
 use App\Http\Controllers\AdminMatakuliahController;
@@ -106,10 +108,20 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/jenisppg', AdminJenisPpgController::class);
         Route::resource('/kelasprogram', AdminKelasProgramController::class);
         Route::resource('/matakuliah', AdminMatakuliahController::class);
+
         // Route::resource('/prodi', AdminProdiController::class);
-
-
     });
+
+    Route::prefix('/kelas')->middleware('role:superadmin')->group(function () {
+        Route::post('/import', [AdminKelasController::class, 'import']);
+        Route::get('/download', [AdminKelasController::class, 'downloadFormat']);
+        Route::post('/peserta/create', [AdminKelasPesertaController::class, 'create']);
+        Route::post('/peserta/import', [AdminKelasPesertaController::class, 'import']);
+        Route::get('/peserta/download', [AdminKelasPesertaController::class, 'downloadFormat']);
+        Route::get('/peserta/delete/{id}', [AdminKelasPesertaController::class, 'delete']);
+    });
+    Route::resource('/kelas', AdminKelasController::class);
+
 
     Route::prefix('/verifikasi')->group(function () {
         Route::get('/', [AdminVerifikasiController::class, 'index']);

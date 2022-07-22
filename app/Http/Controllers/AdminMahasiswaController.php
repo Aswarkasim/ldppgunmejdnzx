@@ -256,7 +256,7 @@ class AdminMahasiswaController extends Controller
     function downloadFormat()
     {
         // return Storage::download('/public/docs/format-excel.xlsx');
-        return response()->download('dokumen/format-excel.xlsx');
+        return response()->download('dokumen/format-mahasiswa.xlsx');
     }
 
     function updateNameById()

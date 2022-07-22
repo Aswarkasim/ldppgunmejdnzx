@@ -49,8 +49,8 @@
   </a>
 </li> --}}
 
-<li class="nav-item {{Request::is('account/mahasiswa*') ? 'menu-open' : ''}}">
-  <a href="#" class="nav-link {{Request::is('account/mahasiswa*') ? 'active' : ''}}">
+<li class="nav-item {{Request::is('account/dosen*') ? 'menu-open' : ''}}">
+  <a href="#" class="nav-link {{Request::is('account/dosen*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-graduation-cap"></i>
     <p>
       Dosen
@@ -92,12 +92,22 @@
     <li class="nav-item">
       <a href="/account/mahasiswa/notregisted" class="nav-link {{Request::is('account/mahasiswa/notregisted')  ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
-        <p>Calon Mahasiswa</p>
+        <p>Belum Lapor Diri</p>
       </a>
     </li>
     
   </ul>
 </li>
+
+<li class="nav-item">
+  <a href="/account/kelas" class="nav-link {{Request::is('account/kelas*') ? 'active' : ''}}">
+    <i class="nav-icon fas fa-list"></i>
+    <p>
+      Kelas
+    </p>
+  </a>
+</li>
+
 
 
 <li class="nav-item {{Request::is('account/master*') ? 'menu-open' : ''}}">
@@ -141,6 +151,8 @@
         <p>Mata Kuliah</p>
       </a>
     </li>
+
+    
     
     
 
@@ -168,6 +180,13 @@
       <a href="/account/user?role=mahasiswa" class="nav-link {{request('role') == 'mahasiswa'  ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>Mahasiswa</p>
+      </a>
+    </li>
+
+     <li class="nav-item">
+      <a href="/account/user?role=dosen" class="nav-link {{request('role') == 'dosen'  ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Dosen</p>
       </a>
     </li>
 
