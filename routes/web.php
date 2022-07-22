@@ -29,6 +29,7 @@ use App\Http\Controllers\AdminPeriodeController;
 use App\Http\Controllers\AdminPetunjukController;
 use App\Http\Controllers\AdminRegisterSettingController;
 use App\Http\Controllers\AdminTimelineController;
+use App\Http\Controllers\DosenProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,6 +150,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
         Route::get('/notregisted', [AdminMahasiswaController::class, 'notRegis']);
+        Route::get('/notinverified', [AdminMahasiswaController::class, 'notInVerified']);
         Route::get('/update/periode', [AdminMahasiswaController::class, 'updatePeriode']);
         Route::get('/update/namebyid', [AdminMahasiswaController::class, 'updateNameById']);
     });
@@ -160,7 +162,12 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/kategori', AdminCategoryPostController::class);
     });
 
-    Route::prefix('/profile')->group(function () {
+    Route::prefix('/dosen')->middleware('role:dosen')->group(function () {
+        Route::get('/', [DosenProfileController::class, 'index']);
+    });
+
+    //================ MAHASISWA ========================
+    Route::prefix('/profile')->middleware('role:mahasiswa')->group(function () {
         Route::get('/', [AdminProfileController::class, 'index']);
         Route::put('/datadiri', [AdminProfileController::class, 'updateDataDiri']);
         Route::put('/instansi', [AdminProfileController::class, 'updateInstansi']);

@@ -89,6 +89,13 @@
       </a>
     </li>
 
+     <li class="nav-item">
+      <a href="/account/mahasiswa/notinverified" class="nav-link {{Request::is('account/mahasiswa/notinverified')  ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Belum Masuk Verifikasi</p>
+      </a>
+    </li>
+
     <li class="nav-item">
       <a href="/account/mahasiswa/notregisted" class="nav-link {{Request::is('account/mahasiswa/notregisted')  ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>

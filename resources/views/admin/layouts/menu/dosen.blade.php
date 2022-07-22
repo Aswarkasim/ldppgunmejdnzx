@@ -8,7 +8,7 @@
   </li>  
   
   <li class="nav-item">
-    <a href="/account/profile?page=data_diri" class="nav-link {{Request::is('account/profile*') ? 'active' : ''}}">
+    <a href="/account/dosen/profile?page=data_diri" class="nav-link {{Request::is('account/dosen/profile*') ? 'active' : ''}}">
       <i class="nav-icon fas fa-edit  "></i>
       <p>
         Data Diri

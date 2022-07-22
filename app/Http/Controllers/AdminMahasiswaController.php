@@ -195,6 +195,28 @@ class AdminMahasiswaController extends Controller
         return view('admin/layouts/wrapper', $data);
     }
 
+    function notInVerified()
+    {
+
+        $periode_id = Session::get('periode_id');
+        // $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10);
+
+        $cari = request('cari');
+
+        if ($cari) {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus('LENGKAPI')->wherePeriodeId($periode_id)->latest()->paginate(10);
+        } else {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus('LENGKAPI')->wherePeriodeId($periode_id)->latest()->paginate(10);
+        }
+
+        $data = [
+            'title'   => 'Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/mahasiswa/index'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
 
     function biodata($user_id)
     {
