@@ -19,7 +19,7 @@
           <tr>
             <td>{{$loop->iteration}}</td>
             <td>{{$item->no_ukg}}</td>
-            <td>{{$item->mahasiswa->namalengkap}}</td>
+            <td>{{ isset($item->mahasiswa) ? $item->mahasiswa->namalengkap : ''}}</td>
             <td>
               <a href="/account/kelas/peserta/delete/{{$item->id}}"><i class="fas fa-sign-out-alt"></i> Keluarkan</a>
             </td>
