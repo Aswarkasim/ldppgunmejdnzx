@@ -39,26 +39,26 @@ class AdminKelasPesertaController extends Controller
     {
 
 
-        try {
-            $file = $request->file('file');
-            $uuid1 = Uuid::uuid4()->toString();
-            $uuid2 = Uuid::uuid4()->toString();
-            $file_name = $uuid1 . $uuid2 . '.' . $file->getClientOriginalExtension();
+        // try {
+        $file = $request->file('file');
+        $uuid1 = Uuid::uuid4()->toString();
+        $uuid2 = Uuid::uuid4()->toString();
+        $file_name = $uuid1 . $uuid2 . '.' . $file->getClientOriginalExtension();
 
-            // $file_name = time() . "_" . $file->getClientOriginalName();
+        // $file_name = time() . "_" . $file->getClientOriginalName();
 
-            $storage = 'uploads/excel/';
-            $file->move($storage, $file_name);
-            // $data['file'] = $storage . $file_name;
+        $storage = 'uploads/excel/';
+        $file->move($storage, $file_name);
+        // $data['file'] = $storage . $file_name;
 
-            Excel::import(new KelasPesertaImport($request->kelas_id), public_path('/uploads/excel/') . $file_name);
+        Excel::import(new KelasPesertaImport($request->kelas_id), public_path('/uploads/excel/') . $file_name);
 
-            Alert::success('Sukses', 'Data telah di import');
-            return redirect('/account/kelas/' . $request->kelas_id);
-        } catch (\Throwable $th) {
-            Alert::error('Error', 'Tidak sesuai format, atau data sudah ada');
-            return redirect('/account/kelas/' . $request->kelas_id);
-        }
+        Alert::success('Sukses', 'Data telah di import');
+        return redirect('/account/kelas/' . $request->kelas_id);
+        // } catch (\Throwable $th) {
+        //     Alert::error('Error', 'Tidak sesuai format, atau data sudah ada');
+        //     return redirect('/account/kelas/' . $request->kelas_id);
+        // }
     }
 
     function downloadFormat()
