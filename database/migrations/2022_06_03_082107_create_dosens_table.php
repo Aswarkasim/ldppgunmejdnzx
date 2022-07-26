@@ -17,16 +17,31 @@ class CreateDosensTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('namalengkap')->nullable();
+            $table->string('nip')->nullable();
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
+            $table->string('agama')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->string('pekerjaan')->nullable();
             $table->string('pangkat_golongan')->nullable();
             $table->string('jabatan')->nullable();
-            $table->string('insatansi')->nullable();
-            $table->string('nip')->nullable();
 
-            //alamat
+            $table->string('nohp')->nullable();
+
+            $table->string('mapel_diampuh')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('email')->nullable();
+
+
+            $table->string('alamat_rumah')->nullable();
+            $table->string('kab_rumah')->nullable();
+            $table->string('prov_rumah')->nullable();
+
+            $table->string('kab_rumah_name')->nullable();
+            $table->string('prov_rumah_name')->nullable();
+
+            //instansi
+            $table->string('nama_insatansi')->nullable();
             $table->string('alamat_instansi')->nullable();
 
             $table->string('kab_instansi')->nullable();
@@ -37,27 +52,19 @@ class CreateDosensTable extends Migration
             $table->string('prov_instansi_name')->nullable();
 
             //alamat
-            $table->string('alamat_rumah')->nullable();
-            $table->string('kab_rumah')->nullable();
-            $table->string('prov_rumah')->nullable();
 
-            $table->string('kab_rumah_name')->nullable();
-            $table->string('prov_rumah_name')->nullable();
 
             //pendidikan
             $table->string('s1_jurusan')->nullable();
             $table->string('s2_jurusan')->nullable();
             $table->string('s3_jurusan')->nullable();
 
-            $table->string('nohp')->nullable();
 
             $table->string('nama_buku_rekening')->nullable();
             $table->string('nomor_rekening')->nullable();
             $table->string('nama_bank')->nullable();
 
-            $table->string('mapel_diampuh')->nullable();
-            $table->string('npwp')->nullable();
-            $table->string('email')->nullable();
+
 
             $table->timestamps();
         });

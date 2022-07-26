@@ -13,6 +13,6 @@ class Kelas extends Model
 
     function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'no_ukg');
+        return $this->hasMany(Mahasiswa::class, 'no_ukg', 'no_ukg');
     }
 }

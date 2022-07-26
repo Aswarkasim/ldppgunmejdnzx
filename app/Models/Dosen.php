@@ -10,4 +10,9 @@ class Dosen extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    function periode()
+    {
+        return $this->belongsTo(Periode::class);
+    }
 }

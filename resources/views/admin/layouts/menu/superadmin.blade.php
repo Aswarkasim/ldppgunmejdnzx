@@ -198,11 +198,12 @@
     </li>
 
     <li class="nav-item">
-      <a href="/account/user?role=admin" class="nav-link {{request('role') == 'admin' ? 'child-active' : ''}}">
+    <a href="/account/user/admin?role=admin" class="nav-link {{Request::is('account/user/admin*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>Admin</p>
       </a>
     </li>
+
     <li class="nav-item">
       <a href="/account/user?role=verificator" class="nav-link {{request('role') == 'verificator'  ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>

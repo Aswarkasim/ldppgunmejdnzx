@@ -34,7 +34,7 @@ class AdminProfileController extends Controller
             'title'   => 'Data Diri',
             'profile' => $profile,
             'bidangstudi' => BidangStudi::all(),
-            'peridode' => Periode::all(),
+            'periode' => Periode::all(),
             'provinces' => Province::get(),
             'content' => 'admin/profile/index'
         ];

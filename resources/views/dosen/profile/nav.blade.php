@@ -1,0 +1,21 @@
+perguruan_tinggi_s1;
+        nama_prodi_s1;
+        nomor_ijazah_s1;
+        ipk_s1;
+        tanggal_kelulusan_s1;
+        alamat_pt_s1;
+        kabupaten_kota_pt_s1;
+        provinsi_pt_s1;
+        unggah_ijazah_s1;
+        unggah_transkrip_s1;
+
+        perguruan_tinggi_s2;
+        nama_prodi_s2;
+        nomor_ijazah_s2;
+        ipk_s2;
+        tanggal_kelulusan_s2;
+        alamat_pt_s2;
+        kabupaten_kota_pt_s2;
+        provinsi_pt_s2;
+        unggah_ijazah_s2;
+        unggah_transkrip_s2;

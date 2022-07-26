@@ -29,11 +29,11 @@
 {{-- @dd($kelas) --}}
   <tbody>
     @foreach ($kelas as $row)
-        
+        {{-- @dd($row->mahasiswa) --}}
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} </b></a></td>
-      <td></td>
+      <td>{{count($row->mahasiswa)}}</td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

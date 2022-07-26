@@ -98,6 +98,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::prefix('/user')->middleware(['role:superadmin'])->group(function () {
         Route::get('/mahasiswa', [AdminUserController::class, 'mahasiswa']);
+        Route::get('/admin', [AdminUserController::class, 'admin']);
         Route::get('/export', [AdminUserController::class, 'exportExcel']);
         Route::get('/delete/province/{id}', [AdminUserController::class, 'deleteProvince']);
     });
@@ -176,6 +177,21 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::put('/pasfoto', [AdminProfileController::class, 'pasfoto']);
         Route::put('/rekening', [AdminProfileController::class, 'updateRekening']);
         Route::get('/biodata', [AdminProfileController::class, 'biodata']);
+    });
+
+
+    //================ DOSEN ========================
+    Route::prefix('/dosen')->middleware('role:dosen')->group(function () {
+        Route::prefix('/profile')->group(function () {
+            Route::get('/', [DosenProfileController::class, 'index']);
+            Route::put('/datadiri', [DosenProfileController::class, 'updateDataDiri']);
+            Route::put('/instansi', [DosenProfileController::class, 'updateInstansi']);
+            Route::put('/pendidikan', [DosenProfileController::class, 'updatePendidikan']);
+            Route::put('/keluarga', [DosenProfileController::class, 'updateKeluarga']);
+            Route::put('/pasfoto', [DosenProfileController::class, 'pasfoto']);
+            Route::put('/rekening', [DosenProfileController::class, 'updateRekening']);
+            Route::get('/biodata', [DosenProfileController::class, 'biodata']);
+        });
     });
 });
 

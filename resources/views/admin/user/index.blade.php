@@ -5,7 +5,11 @@
   @if (request('role')== 'mahasiswa')
   <a href="/account/user/export" class="btn btn-success mb-3"><i class="fa fa-upload"></i> Export</a>
   @endif
+
+  @if (request('role') != null)
   <a href="/account/user/create?role={{request('role')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+      
+  @endif
 
   <div class="float-right">
     <form action="" method="get">
