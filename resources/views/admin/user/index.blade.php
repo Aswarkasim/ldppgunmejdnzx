@@ -38,7 +38,7 @@
     @foreach ($user as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$user->firstItem() + $loop->index}}</td>
       <td><a href="/account/user/{{$row->id}}?role={{request('role')}}"><b>{{$row->name}}</b></a> <br> {{ 'ID : '.$row->no_ukg}} </td>
       {!!request('role') == 'verificator' ? '<td>'.count($row->verifyHistory).'</td>' : ''!!}
       <td>{{$row->role}}</td>

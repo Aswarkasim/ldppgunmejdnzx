@@ -200,7 +200,7 @@
     <li class="nav-item">
     <a href="/account/user/admin?role=admin" class="nav-link {{Request::is('account/user/admin*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
-        <p>Admin</p>
+        <p>Admin Kelas</p>
       </a>
     </li>
 
