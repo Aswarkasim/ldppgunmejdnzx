@@ -307,7 +307,7 @@
       
     </div>
 
-      <div class="form-group">
+    <div class="form-group">
       <div class="row">
         <div class="col-md-3">
           <label for="">No. Hp<span class="text-danger">*</span></label>
@@ -315,6 +315,23 @@
         <div class="col-md-9">
           <input type="text" class="form-control @error('nohp') is-invalid @enderror" name="nohp"  value="{{isset($profile) ? $profile->nohp : old('nohp')}}" placeholder="No. Hp">
           @error('nohp')
+          <div class="invalid-feedback">
+          {{$message}}
+          </div>
+        @enderror
+        </div>
+      </div>
+      
+    </div>
+
+     <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Email<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"  value="{{isset($profile) ? $profile->email : old('email')}}" placeholder="Email">
+          @error('email')
           <div class="invalid-feedback">
           {{$message}}
           </div>

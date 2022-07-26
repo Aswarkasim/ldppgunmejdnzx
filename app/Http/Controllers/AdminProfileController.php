@@ -65,6 +65,7 @@ class AdminProfileController extends Controller
             'jenis_kelamin'                 => 'required',
             'nik'                           => 'required',
             'nohp'                           => 'required',
+            'email'                           => 'required',
             'kode_pos'                           => 'required',
             'alamat_domisili'               => 'required',
             'provinsi_tempat_tinggal'       => 'required',

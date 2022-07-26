@@ -57,6 +57,11 @@
     <td>: {{$profile->nohp}}</td>
   </tr>
 
+   <tr>
+    <td>Alamat Email</td>
+    <td>: {{$profile->email}}</td>
+  </tr>
+
 </table>
 
 <hr>
