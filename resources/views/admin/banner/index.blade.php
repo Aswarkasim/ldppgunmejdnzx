@@ -28,7 +28,7 @@
         
     <tr>
       {{-- <td width="50px">{{$loop->iteration}}</td> --}}
-      <td>{{$row->urutan}}</td>
+      <td>{{$banner->firstItem() + $loop->index}}</td>
       <td><img src="/{{$row->image}}" width="100px" alt=""></td>
       <td>
         <div class="btn-group">

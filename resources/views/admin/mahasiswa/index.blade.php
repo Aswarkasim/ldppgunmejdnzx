@@ -40,7 +40,7 @@
     @foreach ($mahasiswa as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$mahasiswa->firstItem() + $loop->index}}</td>
       <td>{{$row->no_ukg}} </td>
       <td>{{$row->npm}} </td>
       <td>

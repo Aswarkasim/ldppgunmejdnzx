@@ -32,7 +32,7 @@
     @foreach ($periode as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$periode->firstItem() + $loop->index}}</td>
       <td>{{$row->name}} </td>
       <td>{{$row->jenisPpg->name}} </td>
       <td>{{$row->tahun}} </td>

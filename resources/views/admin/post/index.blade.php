@@ -29,7 +29,7 @@
     @foreach ($post as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$post->firstItem() + $loop->index}}</td>
       <td><a href="/admin/posts/post/{{$row->id}}"><b>{{$row->title}}</a></b> </td>
       <td>
         <div class="btn-group">

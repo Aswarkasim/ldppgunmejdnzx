@@ -30,7 +30,7 @@
           
 
       <tr>
-        <td width="50px">{{$loop->iteration}}</td>
+        <td width="50px">{{$notif->firstItem() + $loop->index}}</td>
         <th>
           <i class="fas {{$row->type == 'VALID' ? 'fa-check text-success' : 'fa-times text-danger'}}"></i>
         </th>

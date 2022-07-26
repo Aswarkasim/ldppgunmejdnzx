@@ -29,7 +29,7 @@
     @foreach ($kategori as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$kategori->firstItem() + $loop->index}}</td>
       <td><a href="/admin/posts/kategori/{{$row->id}}"><b>{{$row->nama}}</a></b> </td>
       <td>
         <div class="btn-group">

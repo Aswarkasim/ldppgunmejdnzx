@@ -31,7 +31,7 @@
     @foreach ($kelas as $row)
         {{-- @dd($row->mahasiswa) --}}
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$kelas->firstItem() + $loop->index}}</td>
       <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} </b></a></td>
       <td>{{count($row->mahasiswa)}}</td>
       <td>

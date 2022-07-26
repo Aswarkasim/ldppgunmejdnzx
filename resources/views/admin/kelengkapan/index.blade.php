@@ -37,7 +37,7 @@
           @foreach ($kelengkapan as $row)
               
           <tr>
-            <td width="50px">{{$loop->iteration}}</td>
+            <td width="50px">{{$kelengkapan->firstItem() + $loop->index}}</td>
             <td>{{$row->name}} </td>
             <td>{{$row->kebutuhan}} </td>
             <td>{{$row->is_verified == 1 ? 'Ya' : 'Tidak'}} </td>

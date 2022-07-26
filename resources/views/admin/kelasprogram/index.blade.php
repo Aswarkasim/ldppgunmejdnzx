@@ -31,7 +31,7 @@
     @foreach ($kelasprogram as $row)
         
     <tr>
-      <td width="50px">{{$loop->iteration}}</td>
+      <td width="50px">{{$kelasprogram->firstItem() + $loop->index}}</td>
       <td>{{$row->kode}} </td>
       <td>{{$row->name}} </td>
       <td>{{$row->desc}} </td>

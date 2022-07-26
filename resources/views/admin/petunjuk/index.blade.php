@@ -35,7 +35,7 @@
           @foreach ($petunjuk as $row)
               
           <tr>
-            <td width="50px">{{$loop->iteration}}</td>
+            <td width="50px">{{$petunjuk->firstItem() + $loop->index}}</td>
             <td>{{$row->title}} </td>
             <td>
               <div class="btn-group">

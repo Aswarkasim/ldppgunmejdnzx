@@ -36,7 +36,7 @@
           @foreach ($mahasiswa as $row)
               
           <tr>
-            <td width="50px">{{$loop->iteration}}</td>
+            <td width="50px">{{$mahasiswa->firstItem() + $loop->index}}</td>
           <td>
             <a href="/account/penilaian/show/{{$row->id}}"><b>{{$row->no_ukg}} - {{$row->namalengkap}}</b></a>
             {{-- <br>{{'Bidang Studi : '. $row->bidang_studi != null ? $row->bidang_studi->name : ''}} --}}
