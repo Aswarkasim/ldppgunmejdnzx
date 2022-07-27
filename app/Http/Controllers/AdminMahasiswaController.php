@@ -45,6 +45,50 @@ class AdminMahasiswaController extends Controller
         return view('admin/layouts/wrapper', $data);
     }
 
+    public function kemendikbud()
+    {
+        //
+        $periode_id = Session::get('periode_id');
+        $cari = request('cari');
+        $kementerian = 'KEMENDIKBUD';
+
+        if ($cari) {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+        } else {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+        }
+
+
+        $data = [
+            'title'   => 'Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/mahasiswa/index'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    public function kemenag()
+    {
+        //
+        $periode_id = Session::get('periode_id');
+        $cari = request('cari');
+        $kementerian = 'KEMENAG';
+
+        if ($cari) {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+        } else {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+        }
+
+
+        $data = [
+            'title'   => 'Mahasiswa',
+            'mahasiswa' => $mahasiswa,
+            'content' => 'admin/mahasiswa/index'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

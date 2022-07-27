@@ -150,6 +150,8 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/download', [AdminMahasiswaController::class, 'downloadFormat']);
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
+        Route::get('/kemendikbud', [AdminMahasiswaController::class, 'kemendikbud']);
+        Route::get('/kemenag', [AdminMahasiswaController::class, 'kemenag']);
         Route::get('/notregisted', [AdminMahasiswaController::class, 'notRegis']);
         Route::get('/notinverified', [AdminMahasiswaController::class, 'notInVerified']);
         Route::get('/update/periode', [AdminMahasiswaController::class, 'updatePeriode']);
