@@ -77,13 +77,13 @@
   </a>
   <ul class="nav nav-treeview">
     <li class="nav-item">
-      <a href="/account/mahasiswa?kementerian=KEMENDIKBUD" class="nav-link {{request('kementerian') == 'KEMENDIKBUD' ? 'child-active' : ''}}">
+      <a href="/account/mahasiswa/kemendikbud" class="nav-link {{Request::is('account/mahasiswa/kemendikbud*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>Kemendikbud</p>
       </a>
     </li>
     <li class="nav-item">
-      <a href="/account/mahasiswa?kementerian=KEMENAG" class="nav-link {{request('kementerian') == 'KEMENAG'  ? 'child-active' : ''}}">
+      <a href="/account/mahasiswa/kemenag" class="nav-link {{Request::is('account/mahasiswa/kemenag*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>Kemenag</p>
       </a>
