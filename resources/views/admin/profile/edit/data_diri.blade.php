@@ -265,14 +265,14 @@
               echo 'selected';
             }
           } ?> >Laki-laki</option>
-          <option value="perempuan"
+          <option value="Perempuan"
           <?php 
           if(isset($profile)) {
-            if($profile->jenis_kelamin == 'perempuan') {
+            if($profile->jenis_kelamin == 'Perempuan') {
               echo 'selected';
               }
           }else{
-            if(old('jenis_kelamin') == 'perempuan') {
+            if(old('jenis_kelamin') == 'Perempuan') {
               echo 'selected';
             }
           } ?>
