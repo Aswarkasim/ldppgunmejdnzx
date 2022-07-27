@@ -25,9 +25,9 @@ class AdminKelasController extends Controller
         $cari = request('cari');
         $periode_id = Session::get('periode_id');
         if ($cari) {
-            $kelas = Kelas::with(['mahasiswa'])->where('name', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('name', 'asc')->paginate(10);
+            $kelas = Kelas::with(['kelaspeserta'])->where('name', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('name', 'asc')->paginate(10);
         } else {
-            $kelas = Kelas::with(['mahasiswa'])->orderBy('name', 'asc')->wherePeriodeId($periode_id)->paginate(10);
+            $kelas = Kelas::with(['kelaspeserta'])->orderBy('name', 'asc')->wherePeriodeId($periode_id)->paginate(10);
         }
         $data = [
             'title'   => 'Kelas',

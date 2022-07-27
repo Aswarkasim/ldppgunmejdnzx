@@ -11,8 +11,8 @@ class Kelas extends Model
 
     protected $guarded = [];
 
-    function mahasiswa()
+    function kelaspeserta()
     {
-        return $this->hasMany(Mahasiswa::class, 'no_ukg', 'no_ukg');
+        return $this->hasMany(KelasPeserta::class);
     }
 }

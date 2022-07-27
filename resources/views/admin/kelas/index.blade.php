@@ -33,7 +33,7 @@
     <tr>
       <td width="50px">{{$kelas->firstItem() + $loop->index}}</td>
       <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} </b></a></td>
-      <td>{{count($row->mahasiswa)}}</td>
+      <td>{{count($row->kelaspeserta)}}</td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
