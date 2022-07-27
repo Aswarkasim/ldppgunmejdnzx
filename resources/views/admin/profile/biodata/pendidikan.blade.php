@@ -36,27 +36,27 @@
 
   <tr class="bg-secondary">
     <td>Nama Perguruan Tinggi (PT) S2</td>
-    <td>: {{$profile->pt_s1}}</td>
+    <td>: {{$profile->pt_s2}}</td>
   </tr>
   <tr>
     <td>Prodi S2</td>
-    <td>: {{$profile->nama_prodi_s1}}</td>
+    <td>: {{$profile->nama_prodi_s2}}</td>
   </tr>
   <tr>
     <td>Nomor Ijazah S2</td>
-    <td>: {{$profile->nomor_ijazah_s1}}</td>
+    <td>: {{$profile->nomor_ijazah_s2}}</td>
   </tr>
   <tr>
     <td>IPK S2</td>
-    <td>: {{$profile->ipk_s1}}</td>
+    <td>: {{$profile->ipk_s2}}</td>
   </tr>
   <tr>
     <td>Tanggal Lulus S2</td>
-    <td>: {{$profile->tanggal_kelulusan_s1}}</td>
+    <td>: {{$profile->tanggal_kelulusan_s2}}</td>
   </tr>
   <tr>
     <td>Alamat PT S2</td>
-    <td>: {{$profile->alamat_pt_s1}}</td>
+    <td>: {{$profile->alamat_pt_s2}}</td>
   </tr>
   <tr>
     <td>Provinsi S2</td>
