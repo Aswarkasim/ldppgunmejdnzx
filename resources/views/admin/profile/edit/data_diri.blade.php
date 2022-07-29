@@ -126,7 +126,7 @@
           <label for=""> Periode<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text"  class="form-control @error('periode_id') is-invalid @enderror" name="periode_id"  value="Periode I"  disabled placeholder="Periode PPG">
+          <input type="text"  class="form-control @error('periode_id') is-invalid @enderror" name="periode_id"  value="{{$profile->periode->name}}"  disabled placeholder="Periode PPG">
            @error('periode_id')
           <div class="invalid-feedback">
           {{$message}}
