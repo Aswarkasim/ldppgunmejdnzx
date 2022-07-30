@@ -99,6 +99,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::prefix('/user')->middleware(['role:superadmin'])->group(function () {
         Route::get('/mahasiswa', [AdminUserController::class, 'mahasiswa']);
         Route::get('/admin', [AdminUserController::class, 'admin']);
+        Route::put('/periode', [AdminUserController::class, 'periode']);
         Route::get('/export', [AdminUserController::class, 'exportExcel']);
         Route::get('/delete/province/{id}', [AdminUserController::class, 'deleteProvince']);
     });

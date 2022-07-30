@@ -8,6 +8,7 @@ use App\Models\Province;
 use App\Models\VerifyRole;
 use App\Models\BidangStudi;
 use App\Models\Kelas;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
@@ -39,6 +40,7 @@ class AdminUserController extends Controller
             'title'   => 'Manajemen User',
             'user' => $user,
             'periode_id' => Session::get('periode_id'),
+            'periode'   => Periode::with('jenisPpg')->get(),
             'content' => 'admin/user/index'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -132,7 +134,7 @@ class AdminUserController extends Controller
             'province' => Province::all(),
             'user'     => User::find($id),
             'kelas'     => $kelas,
-            'verifyRole' => VerifyRole::with('province')->whereUserId($id)->get(),
+            'verifyRole' => VerifyRole::with('province')->whereUserId($id)->wherePeriodeId($periode_id)->get(),
             'content' => 'admin/user/show'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -229,5 +231,16 @@ class AdminUserController extends Controller
     {
 
         return Excel::download(new UserExport(), 'registrasi_mahasiswa.xlsx');
+    }
+
+    function periode(Request $request)
+    {
+        $user = User::whereRole('verificator')->get();
+        foreach ($user as $item) {
+            $item->periode_id = $request->periode_id;
+            $item->save();
+        }
+        Toastr::success('Periode berhasil diubah', 'Sukses');
+        return redirect('/account/user/?role=verificator');
     }
 }

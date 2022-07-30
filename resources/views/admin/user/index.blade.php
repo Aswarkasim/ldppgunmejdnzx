@@ -10,6 +10,11 @@
   <a href="/account/user/create?role={{request('role')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
   @endif
 
+  
+  @if (request('role')== 'verificator')
+    @include('admin.user.periode_modal')
+  @endif
+
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">
