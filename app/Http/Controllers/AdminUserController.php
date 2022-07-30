@@ -30,14 +30,15 @@ class AdminUserController extends Controller
         $role = request('role');
 
         if ($cari) {
-            $user = User::with('bidang_studi')->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(20);
+            $user = User::with(['bidang_studi'])->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(20);
         } else {
-            $user = User::with(['bidang_studi', 'verifyHistory'])->latest()->where('role', $role)->paginate(20);
+            $user = User::with(['bidang_studi'])->latest()->where('role', $role)->paginate(20);
         }
         // dd($user);
         $data = [
             'title'   => 'Manajemen User',
             'user' => $user,
+            'periode_id' => Session::get('periode_id'),
             'content' => 'admin/user/index'
         ];
         return view('admin/layouts/wrapper', $data);
