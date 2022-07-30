@@ -46,9 +46,9 @@
       <td width="50px">{{$user->firstItem() + $loop->index}}</td>
       <td><a href="/account/user/{{$row->id}}?role={{request('role')}}"><b>{{$row->name}}</b></a> <br> {{ 'ID : '.$row->no_ukg}} </td>
     <?php if(request('role') == 'verificator'){
-      $history = \App\Models\VerifyRole::whereUserId($row->id)->count();
+      $history = \App\Models\VerifyRole::whereUserId($row->id)->get();
     } ?>
-      {!!request('role') == 'verificator' ? '<td>'.$history.'</td>' : ''!!}
+      {!!request('role') == 'verificator' ? '<td>'.count($history).'</td>' : ''!!}
       <td>{{$row->role}}</td>
       <td>
         <div class="btn-group">
