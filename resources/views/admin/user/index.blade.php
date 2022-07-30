@@ -8,7 +8,6 @@
 
   @if (request('role') != null)
   <a href="/account/user/create?role={{request('role')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
-      
   @endif
 
   <div class="float-right">
@@ -29,6 +28,7 @@
       <th>No</th>
       <th>Nama</th>
       {!!request('role') == 'verificator' ? '<th>Jumah Verifikasi Mahasiwa</th>' : ''!!}
+      {!!request('role') == 'admin' ? '<th>Jumlah Kelas</th>' : ''!!}
       <th>Role</th>
       <th>Action</th>
     </tr>

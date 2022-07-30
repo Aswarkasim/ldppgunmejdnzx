@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Province;
 use App\Models\VerifyRole;
 use App\Models\BidangStudi;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
@@ -118,10 +119,18 @@ class AdminUserController extends Controller
     public function show($id)
     {
         //
+        $role = request('role');
+        $periode_id = Session::get('periode_id');
+        $kelas = [];
+        $adminkelasrole = [];
+        if ($role == 'admin') {
+            $kelas = Kelas::wherePeriodeId($periode_id)->get();
+        }
         $data = [
             'title'   => 'Tambah ',
             'province' => Province::all(),
             'user'     => User::find($id),
+            'kelas'     => $kelas,
             'verifyRole' => VerifyRole::with('province')->whereUserId($id)->get(),
             'content' => 'admin/user/show'
         ];

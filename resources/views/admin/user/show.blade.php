@@ -52,6 +52,33 @@
         </div>
         @endif
 
+      @if (request('role') == 'admin')
+            
+        <div class="col-md-6">
+          @include('admin.user.kelas_modal')
+          {{-- <a href="">Tambah Provinsi</a> --}}
+
+            <br>
+            <table class="table">
+              <tr>
+                <td>No</td>
+                <td>Provinsi</td>
+                <td>#</td>
+              </tr>
+              @foreach ($adminkelasrole as $item)
+                  <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$item->kelas->name}}</td>
+                    <td>
+                      <a href="/account/user/delete/kelas/{{$item->id}}"><i class="fas fa-times"></i></a>
+                    </td>
+                  </tr>
+              @endforeach
+            </table>
+
+        </div>
+        @endif
+
        </div>
       </div>
     </div>
