@@ -2,17 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\Nilai;
+use Ramsey\Uuid\Uuid;
 use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
-use App\Models\Nilai;
+use App\Imports\NilaiImport;
+use App\Models\KelasPeserta;
 use Illuminate\Http\Request;
+use App\Models\Adminkelasrole;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminPenilaianController extends Controller
 {
     //
-    function index()
+
+    function kelas()
+    {
+        $adminKelas = Adminkelasrole::with('kelas')->get();
+        $data = [
+            'title'   => 'Penilaian',
+            'adminKelas' => $adminKelas,
+            'content' => 'admin/penilaian/kelas'
+        ];
+
+        return view('admin/layouts/wrapper', $data);
+    }
+    function mahasiswa($kelas_id)
     {
         $role = Auth::user()->role;
         $periode_id = '';
@@ -21,10 +40,12 @@ class AdminPenilaianController extends Controller
         } else {
             $periode_id = Auth::user()->periode_id;
         }
-        $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->whereStatus('VALID')->paginate(10);
+        // $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->whereStatus('VALID')->paginate(10);
+        $kelas_peserta = KelasPeserta::with('mahasiswa')->whereKelasId($kelas_id)->get();
         $data = [
             'title'   => 'Penilaian',
-            'mahasiswa' => $mahasiswa,
+            'kelas_peserta' => $kelas_peserta,
+            'matakuliah' => Matakuliah::wherePeriodeId($periode_id)->get(),
             'content' => 'admin/penilaian/index'
         ];
 
@@ -34,19 +55,19 @@ class AdminPenilaianController extends Controller
     function show($id)
     {
         $mahasiswa = Mahasiswa::find($id);
+        // dd($mahasiswa);
+        // print_r($mahasiswa->user_id);
+        // die;
 
         $matakuliah = Matakuliah::wherePeriodeId($mahasiswa->periode_id)->get();
 
         // dd($mahasiswa);
         foreach ($matakuliah as $item) {
-            $cek = Nilai::wherePeriodeId($mahasiswa->periode_id)->whereUserId($mahasiswa->user_id)->whereMatakuliahId($item->id)->first();
+            $cek = Nilai::whereNoUkg($mahasiswa->no_ukg)->whereMatakuliahId($item->id)->first();
 
             if ($cek == false) {
                 $data = [
-                    'periode_id'    => $mahasiswa->periode_id,
-                    'user_id'    => $mahasiswa->user_id,
-                    'mahasiswa_id'    => $id,
-                    'bidang_studi_id' => $mahasiswa->bidang_studi_id,
+                    'no_ukg'           => $mahasiswa->no_ukg,
                     'matakuliah_id'    => $item->id,
                 ];
                 Nilai::create($data);
@@ -56,7 +77,7 @@ class AdminPenilaianController extends Controller
 
         $data = [
             'title'   => 'Penilaian',
-            'nilai'    => Nilai::with(['mahasiswa', 'matakuliah'])->whereUserId($mahasiswa->user_id)->get(),
+            'nilai'    => Nilai::with(['mahasiswa', 'matakuliah'])->whereNoUkg($mahasiswa->no_ukg)->get(),
             'content' => 'admin/penilaian/show'
         ];
 
@@ -73,5 +94,49 @@ class AdminPenilaianController extends Controller
         return response()->json([
             'Status'   => 'Sukses'
         ]);
+    }
+
+    function updateStatusMahasiswa()
+    {
+        $id = request('id');
+        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa->keaktifan = request('keaktifan');
+        $mahasiswa->save();
+
+        return response()->json([
+            'Status'   => 'Sukses'
+        ]);
+    }
+
+    function importNilai(Request $request)
+    {
+
+
+        // try {
+        $file = $request->file('file');
+        $uuid1 = Uuid::uuid4()->toString();
+        $uuid2 = Uuid::uuid4()->toString();
+        $file_name = $uuid1 . $uuid2 . '.' . $file->getClientOriginalExtension();
+
+        // $file_name = time() . "_" . $file->getClientOriginalName();
+
+        $storage = 'uploads/excel/';
+        $file->move($storage, $file_name);
+        // $data['file'] = $storage . $file_name;
+
+        Excel::import(new NilaiImport, public_path('/uploads/excel/') . $file_name);
+
+        Alert::success('Sukses', 'Data telah di import');
+        return redirect('/account/penilaian/kelas');
+        // } catch (\Throwable $th) {
+        //     Alert::error('Error', 'Tidak sesuai format, atau data sudah ada');
+        //     return redirect('/account/penilaian/kelas');
+        // }
+    }
+
+    function downloadFormat()
+    {
+        // return Storage::download('/public/docs/format-excel.xlsx');
+        return response()->download('dokumen/format-nilai.xlsx');
     }
 }

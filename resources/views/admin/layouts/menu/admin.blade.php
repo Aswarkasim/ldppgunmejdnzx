@@ -1,8 +1,19 @@
+
+
 <li class="nav-item">
-  <a href="/account/penilaian" class="nav-link {{Request::is('account/penilaian*') ? 'active' : ''}}">
+  <a href="/account/penilaian/kelas" class="nav-link {{Request::is('account/penilaian*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-edit"></i>
     <p>
-      Penilaian
+      Kelas
+    </p>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a href="/account/admin/matakuliah" class="nav-link {{Request::is('account/admin/matakuliah*') ? 'active' : ''}}">
+    <i class="nav-icon fas fa-book"></i>
+    <p>
+      Matakuliah
     </p>
   </a>
 </li>

@@ -23,7 +23,7 @@
          <select class="form-control @error('periode_id') is-invalid @enderror" id="periode_id " name="periode_id" required>
             <option value="">Pilih Periode</option>
             @foreach ($periode as $item)
-                <option value="{{$item->id}}">{{$item->jenisPpg->name.' Periode '.$item->name}}</option>
+                <option value="{{$item->id}}" >{{$item->jenisPpg->name.' Periode '.$item->name}}</option>
             @endforeach
           </select>
       </div>

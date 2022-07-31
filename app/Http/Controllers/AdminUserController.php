@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UserExport;
+use App\Models\Adminkelasrole;
 use App\Models\User;
 use App\Models\Province;
 use App\Models\VerifyRole;
@@ -31,9 +32,9 @@ class AdminUserController extends Controller
         $role = request('role');
 
         if ($cari) {
-            $user = User::with(['bidang_studi'])->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(20);
+            $user = User::with(['bidang_studi', 'periode'])->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', $role)->latest()->paginate(20);
         } else {
-            $user = User::with(['bidang_studi'])->latest()->where('role', $role)->paginate(20);
+            $user = User::with(['bidang_studi', 'periode'])->latest()->where('role', $role)->paginate(20);
         }
         // dd($user);
         $data = [
@@ -125,16 +126,21 @@ class AdminUserController extends Controller
         $role = request('role');
         $periode_id = Session::get('periode_id');
         $kelas = [];
+        $verifyRole = [];
         $adminkelasrole = [];
         if ($role == 'admin') {
             $kelas = Kelas::wherePeriodeId($periode_id)->get();
+            $adminkelasrole = Adminkelasrole::with('kelas')->wherePeriodeId($periode_id)->whereUserId($id)->get();
+        } else if ($role == 'verificator') {
+            $verifyRole = VerifyRole::with('province')->whereUserId($id)->wherePeriodeId($periode_id)->get();
         }
         $data = [
             'title'   => 'Tambah ',
             'province' => Province::all(),
             'user'     => User::find($id),
             'kelas'     => $kelas,
-            'verifyRole' => VerifyRole::with('province')->whereUserId($id)->wherePeriodeId($periode_id)->get(),
+            'adminkelasrole'     => $adminkelasrole,
+            'verifyRole' => $verifyRole,
             'content' => 'admin/user/show'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -242,5 +248,28 @@ class AdminUserController extends Controller
         }
         Toastr::success('Periode berhasil diubah', 'Sukses');
         return redirect('/account/user/?role=verificator');
+    }
+
+
+    function addKelas(Request $request)
+    {
+        $data = [
+            'periode_id'    => Session::get('periode_id'),
+            'user_id'       => $request->user_id,
+            'kelas_id'       => $request->kelas_id,
+        ];
+        Adminkelasrole::create($data);
+        Toastr::success('Status berkas diubah', 'Sukses');
+        return redirect('/account/user/' . $data['user_id'] . '?role=admin');
+    }
+
+
+    function deleteKelas($id)
+    {
+        $adminkelas = Adminkelasrole::find($id);
+        $user_id = $adminkelas->user_id;
+        DB::table('adminkelasroles')->delete($id);
+        Toastr::success('Kelas berhasil dihapus', 'Sukses');
+        return redirect('/account/user/' . $user_id . '?role=admin');
     }
 }

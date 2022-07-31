@@ -10,4 +10,9 @@ class Adminkelasrole extends Model
     use HasFactory;
 
     protected $guarded = [''];
+
+    function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

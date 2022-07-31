@@ -3,7 +3,10 @@
 
 <div class="card">
 <div class="card-body">
+
+  @isset($create)
   <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+  @endisset
 
   <div class="float-right">
     <form action="" method="get">
@@ -29,7 +32,7 @@
     @foreach ($matakuliah as $row)
         
     <tr>
-      <td width="50px">{{$matakuliah->firstItem() + $loop->index}}</td>
+      <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->name}} </td>
       <td>
         <div class="btn-group">
@@ -56,9 +59,12 @@
   </tbody>
 </table>
 
-  <div class="float-right">
-    {{$matakuliah->links()}}
-  </div>
+@isset($matakuliah)
+    
+<div class="float-right">
+  {{$matakuliah->links()}}
+</div>
+@endisset
 </div>
 </div>
 

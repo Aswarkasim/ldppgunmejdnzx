@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->belongsTo(Mahasiswa::class);
     }
 
+    function periode()
+    {
+        return $this->belongsTo(Periode::class)->with('jenisPpg');
+    }
+
     function bidang_studi()
     {
         return $this->belongsTo(BidangStudi::class);

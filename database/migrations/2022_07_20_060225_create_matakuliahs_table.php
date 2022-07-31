@@ -16,6 +16,7 @@ class CreateMatakuliahsTable extends Migration
         Schema::create('matakuliahs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('periode_id')->nullable();
+            $table->string('kode')->nullable();
             $table->string('name');
             $table->timestamps();
         });

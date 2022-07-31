@@ -8,7 +8,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h6 class="modal-title" id="exampleModalLabel">Tambah Provinsi</h6>
+        <h6 class="modal-title" id="exampleModalLabel">Tambah Kelas</h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -27,21 +27,21 @@
         @endphp
     <input type="hidden" name="user_id" value="{{$user_id}}">
       <div class="modal-body">
-         <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas" name="kelas_id" required>
-                <option value="">Pilih Provinsi</option>
-                @foreach($kelas as $item)
-                
-                  @php
-                    $cek = App\Models\Adminkelasrole::wherePeriodeId($periode_id)->whereProvinceId($item->id)->first();
+        <select class="form-control @error('kelas_id') is-invalid @enderror" id="kelas" name="kelas_id" required>
+          <option value="">Tambah Kelas</option>
+          @foreach($kelas as $item)
+          
+            @php
+              $cek = App\Models\Adminkelasrole::wherePeriodeId($periode_id)->whereKelasId($item->id)->first();
 
-                    if(empty($cek)){
-                      echo '<option value="'.$item->id.'">'.$item->name.'</option>';
-                    }
+              if(empty($cek)){
+                echo '<option value="'.$item->id.'">'.$item->name.'</option>';
+              }
 
-                  @endphp
-                 
-                @endforeach
-              </select>
+            @endphp
+            
+          @endforeach
+        </select>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

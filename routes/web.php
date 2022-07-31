@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminGeneralController;
 use App\Http\Controllers\AdminJenisPpgController;
 use App\Http\Controllers\AdminKelasController;
 use App\Http\Controllers\AdminKelasPesertaController;
@@ -102,6 +103,9 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::put('/periode', [AdminUserController::class, 'periode']);
         Route::get('/export', [AdminUserController::class, 'exportExcel']);
         Route::get('/delete/province/{id}', [AdminUserController::class, 'deleteProvince']);
+
+        Route::post('/kelas', [AdminUserController::class, 'addKelas']);
+        Route::get('/kelas/delete/{id}', [AdminUserController::class, 'deleteKelas']);
     });
     Route::resource('/user', AdminUserController::class);
 
@@ -136,11 +140,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/list/province/{id}', [AdminVerifikasiController::class, 'province']);
     });
 
-    Route::prefix('/penilaian')->group(function () {
-        Route::get('/', [AdminPenilaianController::class, 'index']);
-        Route::get('/nilai/update', [AdminPenilaianController::class, 'updateNilai']);
-        Route::get('/show/{id}', [AdminPenilaianController::class, 'show']);
-    });
+
 
 
     Route::prefix('/mahasiswa')->group(function () {
@@ -169,6 +169,24 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::prefix('/dosen')->middleware('role:dosen')->group(function () {
         Route::get('/', [DosenProfileController::class, 'index']);
     });
+
+
+    // ============== ADMIN KELAS ================
+
+    Route::prefix('/penilaian')->group(function () {
+        Route::get('/kelas', [AdminPenilaianController::class, 'kelas']);
+        Route::get('/kelas/mahasiswa/{id}', [AdminPenilaianController::class, 'mahasiswa']);
+        Route::get('/nilai/update', [AdminPenilaianController::class, 'updateNilai']);
+        Route::get('/mahasiswa/keaktifan', [AdminPenilaianController::class, 'updateStatusMahasiswa']);
+        Route::get('/show/{id}', [AdminPenilaianController::class, 'show']);
+        Route::post('/import', [AdminPenilaianController::class, 'importNilai']);
+        Route::get('/download', [AdminPenilaianController::class, 'downloadFormat']);
+    });
+
+    Route::prefix('/admin')->middleware('role:admin')->group(function () {
+        Route::get('/matakuliah', [AdminGeneralController::class, 'matakuliah']);
+    });
+
 
     //================ MAHASISWA ========================
     Route::prefix('/profile')->middleware('role:mahasiswa')->group(function () {

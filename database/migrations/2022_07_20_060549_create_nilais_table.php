@@ -18,9 +18,10 @@ class CreateNilaisTable extends Migration
             $table->foreignId('periode_id')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('mahasiswa_id')->nullable();
+            $table->string('no_ukg')->nullable();
             $table->foreignId('bidang_studi_id')->nullable();
             $table->foreignId('matakuliah_id')->nullable();
-            $table->bigInteger('nilai')->default([0]);
+            $table->string('nilai')->default([0]);
             $table->timestamps();
         });
     }

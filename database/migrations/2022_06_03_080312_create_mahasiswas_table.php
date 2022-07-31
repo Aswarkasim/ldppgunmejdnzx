@@ -131,6 +131,7 @@ class CreateMahasiswasTable extends Migration
 
             $table->enum('status', ['LENGKAPI', 'WAITING', 'PENDING', 'VALID', 'INVALID']);
             $table->boolean('is_registered')->default(0);
+            $table->enum('keaktifan', ['AKTIF', 'NONAKTIF'])->default('AKTIF');
             $table->timestamps();
         });
     }

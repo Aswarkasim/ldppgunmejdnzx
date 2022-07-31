@@ -70,7 +70,7 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->kelas->name}}</td>
                     <td>
-                      <a href="/account/user/delete/kelas/{{$item->id}}"><i class="fas fa-times"></i></a>
+                      <a href="/account/user/kelas/delete/{{$item->id}}"><i class="fas fa-times"></i></a>
                     </td>
                   </tr>
               @endforeach
