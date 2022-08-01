@@ -22,7 +22,12 @@ class AdminPenilaianController extends Controller
 
     function kelas()
     {
-        $adminKelas = Adminkelasrole::with('kelas')->get();
+        $user_id = Auth::user()->id;
+        $periode_id = Auth::user()->periode_id;
+        if ($periode_id == null) {
+            Session::get('periode_id');
+        }
+        $adminKelas = Adminkelasrole::with('kelas')->whereUserId($user_id)->get();
         $data = [
             'title'   => 'Penilaian',
             'adminKelas' => $adminKelas,
