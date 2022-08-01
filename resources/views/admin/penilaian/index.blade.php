@@ -49,6 +49,11 @@
               <option value="">--Nilai--</option>
               <option value="AKTIF" {{$row->mahasiswa->keaktifan == 'AKTIF' ? 'selected' : ''}}>AKTIF</option>
               <option value="NONAKTIF" {{$row->mahasiswa->keaktifan == 'NONAKTIF' ? 'selected' : ''}}>NONAKTIF</option>
+              <option value="CUTI" {{$row->mahasiswa->keaktifan == 'CUTI' ? 'selected' : ''}}>CUTI</option>
+              <option value="LULUS" {{$row->mahasiswa->keaktifan == 'LULUS' ? 'selected' : ''}}>LULUS</option>
+              <option value="DO" {{$row->mahasiswa->keaktifan == 'DO' ? 'selected' : ''}}>DO</option>
+              <option value="MUT" {{$row->mahasiswa->keaktifan == 'MUT' ? 'selected' : ''}}>MUT</option>
+              <option value="KELUAR" {{$row->mahasiswa->keaktifan == 'KELUAR' ? 'selected' : ''}}>CUTI</option>
             </select>
           </td>
           </tr>

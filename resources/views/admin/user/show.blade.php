@@ -62,7 +62,7 @@
             <table class="table">
               <tr>
                 <td>No</td>
-                <td>Provinsi</td>
+                <td>Kelas LMS</td>
                 <td>#</td>
               </tr>
               @foreach ($adminkelasrole as $item)
