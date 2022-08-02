@@ -61,6 +61,7 @@ class AdminMatakuliahController extends Controller
         //
         $data = $request->validate([
             'name'              => 'required',
+            'kode'              => 'required',
         ]);
         $data['periode_id'] = Session::get('periode_id');
         Matakuliah::create($data);
@@ -110,6 +111,7 @@ class AdminMatakuliahController extends Controller
         $matakuliah = Matakuliah::find($id);
         $data = $request->validate([
             'name'              => 'required',
+            'kode'              => 'required',
         ]);
         $matakuliah->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');

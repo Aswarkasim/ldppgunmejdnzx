@@ -13,7 +13,7 @@ class Nilai extends Model
 
     function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class);
+        return $this->belongsTo(Mahasiswa::class, 'no_ukg', 'no_ukg');
     }
 
     function matakuliah()

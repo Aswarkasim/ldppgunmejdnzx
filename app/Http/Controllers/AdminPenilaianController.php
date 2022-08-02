@@ -36,8 +36,10 @@ class AdminPenilaianController extends Controller
 
         return view('admin/layouts/wrapper', $data);
     }
-    function mahasiswa($kelas_id)
+    function mahasiswa($matakuliah_id)
     {
+        $kelas_id = request('kelas_id');
+
         $role = Auth::user()->role;
         $periode_id = '';
         if ($role == 'superadmin') {
@@ -46,14 +48,43 @@ class AdminPenilaianController extends Controller
             $periode_id = Auth::user()->periode_id;
         }
         // $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->whereStatus('VALID')->paginate(10);
-        $kelas_peserta = KelasPeserta::with('mahasiswa')->whereKelasId($kelas_id)->get();
+        $kelas_peserta = KelasPeserta::whereKelasId($kelas_id)->get();
+        foreach ($kelas_peserta as $item) {
+            $cek = Nilai::whereNoUkg($item->no_ukg)->whereMatakuliahId($matakuliah_id)->first();
+            if ($cek == false) {
+                $data = [
+                    'kelas_id'         => $kelas_id,
+                    'no_ukg'           => $item->no_ukg,
+                    'matakuliah_id'    => $matakuliah_id,
+                ];
+                Nilai::create($data);
+            }
+        }
         $data = [
             'title'   => 'Penilaian',
-            'kelas_peserta' => $kelas_peserta,
-            'matakuliah' => Matakuliah::wherePeriodeId($periode_id)->get(),
-            'content' => 'admin/penilaian/index'
+            // 'matakuliah' => Matakuliah::wherePeriodeId($periode_id)->get(),
+            'nilai'     => Nilai::with('mahasiswa')->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get(),
+            'content' => 'admin/penilaian/mahasiswa'
         ];
 
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    function matakuliah($kelas_id)
+    {
+        $role = Auth::user()->role;
+        $periode_id = '';
+        if ($role == 'superadmin') {
+            $periode_id = Session::get('periode_id');
+        } else {
+            $periode_id = Auth::user()->periode_id;
+        }
+        $data = [
+            'title'   => 'Penilaian',
+            'kelas_id'  => $kelas_id,
+            'matakuliah' => Matakuliah::wherePeriodeId($periode_id)->get(),
+            'content' => 'admin/penilaian/matakuliah'
+        ];
         return view('admin/layouts/wrapper', $data);
     }
 
@@ -82,6 +113,7 @@ class AdminPenilaianController extends Controller
 
         $data = [
             'title'   => 'Penilaian',
+            'matakuliah' => $matakuliah,
             'nilai'    => Nilai::with(['mahasiswa', 'matakuliah'])->whereNoUkg($mahasiswa->no_ukg)->get(),
             'content' => 'admin/penilaian/show'
         ];

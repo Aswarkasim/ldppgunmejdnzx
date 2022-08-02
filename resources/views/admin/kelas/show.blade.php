@@ -12,6 +12,7 @@
             <th width="100px">No.</th>
             <th>NO UKG/Peg.ID</th>
             <th>Nama</th>
+            <th>Status</th>
             <th width="200px">Action</th>
           </tr>
 
@@ -20,6 +21,17 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$item->no_ukg}}</td>
             <td>{{ isset($item->mahasiswa) ? $item->mahasiswa->namalengkap : ''}}</td>
+            <td>
+            <select name="keaktifan{{$item->mahasiswa->id}}" value="{{$item->mahasiswa->nilai}}" onchange="updateStatusMahasiswa({{$item->mahasiswa->id}})" class="form-control">
+              <option value="">--Nilai--</option>
+              <option value="AKTIF" {{$item->mahasiswa->keaktifan == 'AKTIF' ? 'selected' : ''}}>AKTIF</option>
+              <option value="NONAKTIF" {{$item->mahasiswa->keaktifan == 'NONAKTIF' ? 'selected' : ''}}>NONAKTIF</option>
+              <option value="CUTI" {{$item->mahasiswa->keaktifan == 'CUTI' ? 'selected' : ''}}>CUTI</option>
+              <option value="LULUS" {{$item->mahasiswa->keaktifan == 'LULUS' ? 'selected' : ''}}>LULUS</option>
+              <option value="DO" {{$item->mahasiswa->keaktifan == 'DO' ? 'selected' : ''}}>DO</option>
+              <option value="MUT" {{$item->mahasiswa->keaktifan == 'MUT' ? 'selected' : ''}}>MUT</option>
+              <option value="KELUAR" {{$item->mahasiswa->keaktifan == 'KELUAR' ? 'selected' : ''}}>CUTI</option>
+            </select>
             <td>
               <a href="/account/kelas/peserta/delete/{{$item->id}}"><i class="fas fa-sign-out-alt"></i> Keluarkan</a>
             </td>
@@ -33,3 +45,25 @@
 
 
 {{-- <input type="number" onchange="updateNilai(1)" name="" id=""> --}}
+
+<script>
+
+// function test(param){
+//   console.log(param);
+// }
+
+function updateStatusMahasiswa(id){
+  console.log('harga')
+  var keaktifan = $("[name='keaktifan"+id+"']").val()
+  
+  $.ajax({
+    method:'GET',
+    url: '/account/penilaian/mahasiswa/keaktifan?id='+id+'&keaktifan='+keaktifan,
+    dataType:'json',
+    success: function(data){
+      console.log(data)
+    }
+  });
+}
+
+</script>

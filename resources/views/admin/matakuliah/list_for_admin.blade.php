@@ -21,8 +21,8 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Matakuliah</th>
       <th>Kode Matakuliah</th>
+      <th>Matakuliah</th>
     </tr>
   </thead>
 {{-- @dd($matakuliah) --}}
@@ -31,8 +31,8 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
+      <td>{{$row->kode}} </td>
       <td>{{$row->name}} </td>
-      <td>{{$row->id}} </td>
     </tr>
 
     @endforeach

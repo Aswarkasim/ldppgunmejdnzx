@@ -10,6 +10,17 @@
             @method('PUT')
         @endif
           @csrf
+
+          <div class="form-group">
+            <label for="">Kode</label>
+            <input type="text" class="form-control  @error('kode') is-invalid @enderror"  name="kode"  value="{{isset($matakuliah) ? $matakuliah->kode : old('kode')}}" placeholder="Kode">
+             @error('kode')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+             @enderror
+          </div>
+
           <div class="form-group">
             <label for="">Nama</label>
             <input type="text" class="form-control  @error('name') is-invalid @enderror"  name="name"  value="{{isset($matakuliah) ? $matakuliah->name : old('name')}}" placeholder="Nama">

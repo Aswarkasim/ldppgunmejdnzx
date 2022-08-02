@@ -35,7 +35,7 @@
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td>{{$row->kode}} </td>
-      <td>{{$row->name}} </td>
+      <td><a href="/account/penilaian/matakuliah/mahasiswa/{{$row->id}}?kelas_id={{$kelas_id}}"><b>{{$row->name}}</b></a> </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
@@ -61,12 +61,7 @@
   </tbody>
 </table>
 
-@isset($matakuliah)
-    
-<div class="float-right">
-  {{$matakuliah->links()}}
-</div>
-@endisset
+
 </div>
 </div>
 

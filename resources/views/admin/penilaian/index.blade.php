@@ -7,7 +7,7 @@
   <div class="d-flex">
     {{-- <a href="{{$create}}" class="btn btn-primary mr-2"><i class="fa fa-plus"></i> Tambah</a> --}}
     <a href="/account/penilaian/kelas" class="btn btn-primary mx-1"><i class="fas fa-arrow-left"></i> Kembali</a>
-    @include('admin.penilaian.import_nilai') 
+    {{-- @include('admin.penilaian.import_nilai')  --}}
 
   </div>
 
@@ -29,7 +29,7 @@
           <tr>
              <th>No</th>
             <th>Nama</th>
-            <th>Status</th>
+            {{-- <th>Status</th> --}}
           </tr>
         </thead>
 
@@ -45,7 +45,7 @@
             <br> Bidang Studi : {{ $row->bidang_studi != null ? $row->bidang_studi->name : ''}}
           </td>
           <td>
-             <select name="keaktifan{{$row->mahasiswa->id}}" value="{{$row->mahasiswa->nilai}}" onchange="updateStatusMahasiswa({{$row->mahasiswa->id}})" class="form-control">
+             {{-- <select name="keaktifan{{$row->mahasiswa->id}}" value="{{$row->mahasiswa->nilai}}" onchange="updateStatusMahasiswa({{$row->mahasiswa->id}})" class="form-control">
               <option value="">--Nilai--</option>
               <option value="AKTIF" {{$row->mahasiswa->keaktifan == 'AKTIF' ? 'selected' : ''}}>AKTIF</option>
               <option value="NONAKTIF" {{$row->mahasiswa->keaktifan == 'NONAKTIF' ? 'selected' : ''}}>NONAKTIF</option>
@@ -54,7 +54,7 @@
               <option value="DO" {{$row->mahasiswa->keaktifan == 'DO' ? 'selected' : ''}}>DO</option>
               <option value="MUT" {{$row->mahasiswa->keaktifan == 'MUT' ? 'selected' : ''}}>MUT</option>
               <option value="KELUAR" {{$row->mahasiswa->keaktifan == 'KELUAR' ? 'selected' : ''}}>CUTI</option>
-            </select>
+            </select> --}}
           </td>
           </tr>
 

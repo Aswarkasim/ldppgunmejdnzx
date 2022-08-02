@@ -36,7 +36,7 @@
           @foreach ($adminKelas as $item)            
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td><a href="/account/penilaian/kelas/mahasiswa/{{$item->kelas_id}}"><b>{{isset($item->kelas) ? $item->kelas->name : ''}}</b></a></td>
+            <td><a href="/account/penilaian/kelas/matakuliah/{{$item->kelas_id}}"><b>{{isset($item->kelas) ? $item->kelas->name : ''}}</b></a></td>
           </tr>
           @endforeach
         </tbody>
