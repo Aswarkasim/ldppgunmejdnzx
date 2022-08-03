@@ -125,7 +125,49 @@ class AdminPenilaianController extends Controller
     {
         $id = request('id');
         $nilai = Nilai::find($id);
-        $nilai->nilai = request('nilai');
+        $index = request('nilai');
+        $angka = 0;
+
+        switch ($index) {
+            case 'A':
+                $angka = 4.0;
+                break;
+            case 'A-':
+                $angka = 3.75;
+                break;
+            case 'B+':
+                $angka = 3.25;
+                break;
+            case 'B':
+                $angka = 3.0;
+                break;
+            case 'B-':
+                $angka = 2.75;
+                break;
+            case 'C+':
+                $angka = 2.25;
+            case 'C':
+                $angka = 2;
+                break;
+            case 'C-':
+                $angka = 1.75;
+                break;
+            case 'D':
+                $angka = 1;
+                break;
+            case 'E':
+                $angka = 0;
+                break;
+            case '':
+                $angka = 0;
+                break;
+            default:
+                $angka = 0;
+                break;
+        }
+
+        $nilai->nilai = $index;
+        $nilai->angka = $angka;
         $nilai->save();
 
         return response()->json([

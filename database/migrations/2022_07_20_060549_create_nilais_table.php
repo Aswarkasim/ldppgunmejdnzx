@@ -15,13 +15,11 @@ class CreateNilaisTable extends Migration
     {
         Schema::create('nilais', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('periode_id')->nullable();
-            $table->foreignId('user_id')->nullable();
-            $table->foreignId('mahasiswa_id')->nullable();
+            $table->foreignId('kelas_id')->nullable();
             $table->string('no_ukg')->nullable();
-            $table->foreignId('bidang_studi_id')->nullable();
             $table->foreignId('matakuliah_id')->nullable();
             $table->string('nilai')->default([0]);
+            $table->double('angka')->default([0]);
             $table->timestamps();
         });
     }

@@ -29,6 +29,8 @@
           <tr>
              <th>No</th>
             <th>Nama</th>
+            <th>Matakuliah</th>
+            <th>Angka</th>
             <th>Nilai</th>
           </tr>
         </thead>
@@ -42,6 +44,8 @@
           <td>
             {{$row->no_ukg}} - {{$row->mahasiswa->namalengkap}}
           </td>
+          <td>{{$row->matakuliah->name}}</td>
+          <td>{{$row->angka}}</td>
           <td>
             <select name="nilai{{$row->id}}" value="{{$row->nilai}}" onchange="updateNilai({{$row->id}})" class="form-control">
               <option value="">--Nilai--</option>
@@ -53,10 +57,9 @@
               <option value="C+" {{$row->nilai == 'C+' ? 'selected' : ''}}>C+</option>
               <option value="C" {{$row->nilai == 'C' ? 'selected' : ''}}>C</option>
               <option value="C-" {{$row->nilai == 'C-' ? 'selected' : ''}}>C-</option>
-              <option value="D+" {{$row->nilai == 'D+' ? 'selected' : ''}}>D+</option>
               <option value="D" {{$row->nilai == 'D' ? 'selected' : ''}}>D</option>
-              <option value="D-" {{$row->nilai == 'D-' ? 'selected' : ''}}>D-</option>
               <option value="E" {{$row->nilai == 'E' ? 'selected' : ''}}>E</option>
+              <option value="K" {{$row->nilai == 'K' ? 'selected' : ''}}>K</option>
             </select>
           </td>
           </tr>
