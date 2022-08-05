@@ -43,7 +43,10 @@
         </div>
       </form>
 
-       <embed src="/{{$mahasiswa->bukti_keaktifan}}" type="application/pdf" width="100%" height="600px">
+      @if ($mahasiswa->bukti_keaktifan != null)
+          
+      <embed src="/{{$mahasiswa->bukti_keaktifan}}" type="application/pdf" width="100%" height="600px">
+        @endif
 
     </div>
   </div>
