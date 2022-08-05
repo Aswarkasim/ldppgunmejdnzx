@@ -1,7 +1,9 @@
-<form action="/account/profile/pasfoto" method="POST" enctype="multipart/form-data">
+<form action="/account/dosen/pasfoto" method="POST" enctype="multipart/form-data">
 @method('PUT')
 @csrf
-
+ @if($errors->any())
+        {!! implode('', $errors->all('<div>:message</div>')) !!}
+    @endif
 <input type="hidden" name="id" value="{{$profile->id}}">
 <div class="row">
  <div class="col-md-6">

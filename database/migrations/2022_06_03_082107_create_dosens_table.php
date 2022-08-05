@@ -16,6 +16,7 @@ class CreateDosensTable extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('periode_id');
             $table->string('namalengkap')->nullable();
             $table->string('nip')->nullable();
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
@@ -34,35 +35,25 @@ class CreateDosensTable extends Migration
 
 
             $table->string('alamat_rumah')->nullable();
-            $table->string('kab_rumah')->nullable();
-            $table->string('prov_rumah')->nullable();
-
-            $table->string('kab_rumah_name')->nullable();
-            $table->string('prov_rumah_name')->nullable();
-
             //instansi
-            $table->string('nama_insatansi')->nullable();
-            $table->string('alamat_instansi')->nullable();
-
-            $table->string('kab_instansi')->nullable();
-            $table->string('prov_instansi')->nullable();
-
-
-            $table->string('kab_instansi_name')->nullable();
-            $table->string('prov_instansi_name')->nullable();
-
-            //alamat
-
+            $table->string('nama_instansi')->nullable();
+            $table->string('fakultas')->nullable();
+            $table->string('jurusan')->nullable();
+            $table->string('prodi')->nullable();
 
             //pendidikan
             $table->string('s1_jurusan')->nullable();
+            $table->string('tahun_selesai_s1')->nullable();
             $table->string('s2_jurusan')->nullable();
+            $table->string('tahun_selesai_s2')->nullable();
             $table->string('s3_jurusan')->nullable();
+            $table->string('tahun_selesai_s3')->nullable();
 
 
-            $table->string('nama_buku_rekening')->nullable();
+            $table->string('nama_pemilik')->nullable();
             $table->string('nomor_rekening')->nullable();
             $table->string('nama_bank')->nullable();
+            $table->text('pasfoto')->nullable();
 
 
 

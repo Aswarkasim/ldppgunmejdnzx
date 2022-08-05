@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adminkelasrole;
 use App\Models\User;
 use App\Models\Berkas;
 use App\Models\Periode;
@@ -115,9 +116,14 @@ class AdminDashboardController extends Controller
 
     function admin()
     {
-        $data = [
-            'content'   => 'admin/dashboard/admin'
-        ];
+        $periode_id = Auth::user()->periode_id;
+        $user_id = Auth::user()->id;
+        $kelas = Adminkelasrole::wherePeriodeId($periode_id)->whereUserId($user_id)->count();
+        $mahasiswa =
+            $data = [
+                'kelas'     => $kelas,
+                'content'   => 'admin/dashboard/admin'
+            ];
         return view('admin/layouts/wrapper', $data);
     }
 

@@ -1,14 +1,18 @@
-<form action="/account/profile/instansi" method="POST">
+<form action="/account/dosen/instansi" method="POST">
 @method('PUT')
 @csrf
 
+ @if($errors->any())
+        {!! implode('', $errors->all('<div class="text text-danger">:message</div>')) !!}
+    @endif
+    
 <div class="row">
   <div class="col-md-6">
 
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Nama Instansi<span class="text-danger">*</span></label>
+          <label for="">Nama Perguruan Tinggi<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nama_instansi') is-invalid @enderror" name="nama_instansi"  value="{{isset($profile) ? $profile->nama_instansi : old('nama_instansi')}}" placeholder="Nama Instansi">
@@ -21,58 +25,55 @@
         @enderror
     </div>
 
-         <div class="form-group">
+    <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for="">Alamat Domisili<span class="text-danger">*</span></label>
+          <label for="">Fakultas<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('alamat_domisili') is-invalid @enderror" name="alamat_domisili"  value="{{isset($profile) ? $profile->alamat_domisili : old('alamat_domisili')}}" placeholder="Alamat Domisili">
-           @error('alamat_domisili')
-          <div class="invalid-feedback">
-          {{$message}}
-          </div>
-        @enderror
-          
-          <div class="row pt-1">
-            <div class="col-md-6">
-              <select class="form-control @error('provinsi_tempat_tinggal') is-invalid @enderror" id="province" name="provinsi_tempat_tinggal" required>
-                <option value="">Pilih Provinsi</option>
-                @foreach($provinces as $item)
-                  <option value="{{$item->id}}" {{$item->id == $profile->provinsi_tempat_tinggal ? 'selected' : ''}} >{{$item->name}}</option>
-                  {{-- <option value="{{$item->id}}"  >{{$item->name}}</option> --}}
-                @endforeach
-              </select>
-               @error('provinsi_tempat_tinggal')
-                <div class="invalid-feedback">
-                {{$message}}
-                </div>
-              @enderror
-              <div class="invalid-feedback">
-                Please select a valid province.
-              </div>
+          <input type="text" class="form-control @error('fakultas') is-invalid @enderror" name="fakultas"  value="{{isset($profile) ? $profile->fakultas : old('fakultas')}}" placeholder="Instansi">
+          @error('fakultas')
+            <div class="invalid-feedback">
+            {{$message}}
             </div>
-
-             <div class="col-md-6">
-               <select class="form-control @error('kabupaten_tempat_tinggal') is-invalid @enderror" id="city" name="kabupaten_tempat_tinggal" disabled required>
-                    <option value="">Pilih Kota/Kabupaten</option>
-                  </select>
-                   @error('kabupaten_domisili')
-                    <div class="invalid-feedback">
-                    {{$message}}
-                    </div>
-                  @enderror
-                  <div class="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
-            </div>
-          </div>
-          
-
-  
+          @enderror
         </div>
       </div>
-     
+      
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Jurusan<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{isset($profile) ? $profile->jurusan : old('jurusan')}}" placeholder="Jurusan">
+          @error('jurusan')
+            <div class="invalid-feedback">
+            {{$message}}
+            </div>
+          @enderror
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="">Prodi<span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" class="form-control @error('prodi') is-invalid @enderror" name="prodi"  value="{{isset($profile) ? $profile->prodi : old('prodi')}}" placeholder="Prodi">
+          @error('prodi')
+            <div class="invalid-feedback">
+            {{$message}}
+            </div>
+          @enderror
+        </div>
+      </div>
+      
     </div>
    
 

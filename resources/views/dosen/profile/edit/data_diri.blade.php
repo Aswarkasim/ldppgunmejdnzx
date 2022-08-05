@@ -1,6 +1,6 @@
 {{-- Mapel yg diampuh
   emai; --}}
-<form action="/account/profile/datadiri" method="POST">
+<form action="/account/dosen/datadiri" method="POST">
 @method('PUT')
 @csrf
 <div class="row">
@@ -31,7 +31,7 @@
       <div class="form-group">
         <div class="row">
           <div class="col-md-3">
-            <label for="">NIP<span class="text-danger">*</span></label>
+            <label for="">NIDN<span class="text-danger">*</span></label>
           </div>
           <div class="col-md-9">
             <input type="text" class="form-control @error('nip') is-invalid @enderror" name="nip"  value="{{isset($profile) ? $profile->nip : old('nip')}}" placeholder="NIP">
@@ -95,6 +95,8 @@
       </div>
       
     </div>
+
+   
 
 
 
@@ -200,7 +202,7 @@
          
       </div>
 
-      <div class="form-group">
+    <div class="form-group">
       <div class="row">
         <div class="col-md-3">
           <label for="">No. Hp<span class="text-danger">*</span></label>
@@ -236,50 +238,14 @@
           <label for="">Alamat Domisili<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
-          <input type="text" class="form-control @error('alamat_domisili') is-invalid @enderror" name="alamat_domisili"  value="{{isset($profile) ? $profile->alamat_domisili : old('alamat_domisili')}}" placeholder="Alamat Domisili">
-           @error('alamat_domisili')
+          <input type="text" class="form-control @error('alamat_rumah') is-invalid @enderror" name="alamat_rumah"  value="{{isset($profile) ? $profile->alamat_rumah : old('alamat_rumah')}}" placeholder="Alamat Domisili">
+           @error('alamat_rumah')
           <div class="invalid-feedback">
           {{$message}}
           </div>
         @enderror
-          
-          <div class="row pt-1">
-            <div class="col-md-6">
-              <select class="form-control @error('provinsi_tempat_tinggal') is-invalid @enderror" id="province" name="provinsi_tempat_tinggal" required>
-                <option value="">Pilih Provinsi</option>
-                @foreach($provinces as $item)
-                  <option value="{{$item->id}}" {{$item->id == $profile->provinsi_tempat_tinggal ? 'selected' : ''}} >{{$item->name}}</option>
-                  {{-- <option value="{{$item->id}}"  >{{$item->name}}</option> --}}
-                @endforeach
-              </select>
-               @error('provinsi_tempat_tinggal')
-                <div class="invalid-feedback">
-                {{$message}}
-                </div>
-              @enderror
-              <div class="invalid-feedback">
-                Please select a valid province.
-              </div>
-            </div>
-
-             <div class="col-md-6">
-               <select class="form-control @error('kabupaten_tempat_tinggal') is-invalid @enderror" id="city" name="kabupaten_tempat_tinggal" disabled required>
-                    <option value="">Pilih Kota/Kabupaten</option>
-                  </select>
-                   @error('kabupaten_domisili')
-                    <div class="invalid-feedback">
-                    {{$message}}
-                    </div>
-                  @enderror
-                  <div class="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
-            </div>
-          </div>
-          
-
   
-        </div>
+       </div>
       </div>
      
     </div>

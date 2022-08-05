@@ -17,6 +17,7 @@ use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminDosenController;
 use App\Http\Controllers\AdminGeneralController;
 use App\Http\Controllers\AdminJenisPpgController;
 use App\Http\Controllers\AdminKelasController;
@@ -142,12 +143,17 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 
 
+    Route::prefix('/dosen')->group(function () {
+        Route::get('/', [AdminDosenController::class, 'index']);
+    });
+
 
     Route::prefix('/mahasiswa')->group(function () {
         // Route::get('/', [AdminMahasiswaController::class, 'index']);
         // Route::post('/destroy/{id}', [AdminMahasiswaController::class, 'destroy']);
         // Route::get('/show/{id}', [AdminMahasiswaController::class, 'show']);
         Route::get('/biodata/{id}', [AdminMahasiswaController::class, 'biodata']);
+        Route::post('/biodata/bukti/upload', [AdminMahasiswaController::class, 'uploadBuktiMengundurkanDiri']);
         Route::get('/download', [AdminMahasiswaController::class, 'downloadFormat']);
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);
@@ -166,9 +172,17 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/kategori', AdminCategoryPostController::class);
     });
 
-    Route::prefix('/dosen')->middleware('role:dosen')->group(function () {
+    // ============DOSEN====================
+    Route::prefix('/user/dosen')->middleware('role:dosen')->group(function () {
         Route::get('/', [DosenProfileController::class, 'index']);
+        Route::put('/datadiri', [DosenProfileController::class, 'updateDataDiri']);
+        Route::put('/instansi', [DosenProfileController::class, 'updateInstansi']);
+        Route::put('/pendidikan', [DosenProfileController::class, 'updatePendidikan']);
+        Route::put('/rekening', [DosenProfileController::class, 'updateRekening']);
+        Route::put('/pasfoto', [DosenProfileController::class, 'pasfoto']);
     });
+
+
 
 
     // ============== ADMIN KELAS ================

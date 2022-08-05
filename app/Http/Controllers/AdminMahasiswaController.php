@@ -392,4 +392,40 @@ class AdminMahasiswaController extends Controller
         Alert::success('Sukses', 'Periode telah perbaharui');
         return redirect('/account/dashboard');
     }
+
+    function uploadBuktiMengundurkanDiri(Request $request)
+    {
+
+        // dd($request->all());
+        $mahasiswa_id = $request->mahasiswa_id;
+        // $profile = Mahasiswa::whereUserId($user_id)->first();
+
+        // $request->validate([
+        //     'bukti_keaktifan'  => 'mimes:pdf',
+        // ]);
+
+        // $bukti_keaktifan = $request->hasFile('bukti_keaktifan');
+        // dd($request->all());
+        $profile = Mahasiswa::find($mahasiswa_id);
+
+        if ($profile->bukti_keaktifan != null) {
+            unlink($profile->bukti_keaktifan);
+        }
+
+        //masih belum bagus
+        $bukti_keaktifan = $request->file('bukti_keaktifan');
+        // dd($bukti_keaktifan);
+        $uuid1 = Uuid::uuid4()->toString();
+        $uuid2 = Uuid::uuid4()->toString();
+        $file_name = $uuid1 . $uuid2 . '.' . $bukti_keaktifan->getClientOriginalExtension();
+
+        $storage = 'uploads/bukti_keaktifan/';
+        $bukti_keaktifan->move($storage, $file_name);
+        // $data['path'] = $storage;
+        $data['bukti_keaktifan'] =  $storage . $file_name;
+
+        $profile->update($data);
+        Alert::success('Sukses', 'Berkas diupload');
+        return redirect('/account/verifikasi/biodata/' . $profile->user_id);
+    }
 }

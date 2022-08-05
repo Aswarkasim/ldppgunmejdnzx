@@ -49,22 +49,13 @@
   </a>
 </li> --}}
 
-<li class="nav-item {{Request::is('account/dosen*') ? 'menu-open' : ''}}">
-  <a href="#" class="nav-link {{Request::is('account/dosen*') ? 'active' : ''}}">
+<li class="nav-item">
+  <a href="/account/dosen" class="nav-link {{Request::is('account/dosen*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-graduation-cap"></i>
     <p>
       Dosen
-     <i class="right fas fa-angle-left"></i>
     </p>
   </a>
-  <ul class="nav nav-treeview">
-    <li class="nav-item">
-      <a href="/account/mahasiswa?kementerian=KEMENDIKBUD" class="nav-link {{request('kementerian') == 'KEMENDIKBUD' ? 'child-active' : ''}}">
-        <i class="far fa-circle nav-icon"></i>
-        <p>Kemendikbud</p>
-      </a>
-    </li>
-  </ul>
 </li>
 
 <li class="nav-item {{Request::is('account/mahasiswa*') ? 'menu-open' : ''}}">

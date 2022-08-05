@@ -2,12 +2,12 @@
 <table class="table">
 
 <tr>
-  <td>Nama Lengkap</td>
+  <td>Nama Lengkap <small>(Lengkap dengan gelar)</small></td>
   <td>: {{$profile->namalengkap}}</td>
 </tr>
 
 <tr>
-  <td>NIP</td>
+  <td>NIDN</td>
   <td>: {{$profile->nip}}</td>
 </tr>
   <tr>
@@ -30,10 +30,10 @@
     <td>Alamat</td>
     <td>: {{$profile->alamat_rumah}}</td>
   </tr>
-  <tr>
+  {{-- <tr>
     <td>Pekerjaan</td>
     <td>: {{$profile->pekerjaan}}</td>
-  </tr>
+  </tr> --}}
   <tr>
     <td>Pangkat/golongan</td>
     <td>: {{$profile->pangkat_golongan}}</td>
@@ -42,18 +42,7 @@
     <td>No. HP</td>
     <td>: {{$profile->nohp}}</td>
   </tr>
-  <tr>
-    <td>Alamat</td>
-    <td>: {{$profile->alamat_rumah}}</td>
-  </tr>
-  <tr>
-    <td>Kabupaten/Kota</td>
-    <td>: {{isset($profile->kab_rumah) ? $profile->kab_rumah->name : ''}}</td>
-  </tr>
-    <tr>
-    <td>Provinsi</td>
-    <td>: {{ isset($profile->prov_rumah) ? $profile->prov_rumah->name : ''}}</td>
-  </tr>
+
 
  
 

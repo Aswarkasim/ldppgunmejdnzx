@@ -6,18 +6,19 @@
   </tr>
 
   <tr>
-    <td>Alamat</td>
-    <td>: {{$profile->alamat_instansi}}</td>
+    <td>Fakultas</td>
+    <td>: {{$profile->fakultas}}</td>
   </tr>
 
   <tr>
-    <td>Kabupaten</td>
-    <td>: {{isset($profile->kab_instansi) ? $profile->kab_instansi->name : ''}}</td>
+    <td>Jurusan</td>
+    <td>: {{$profile->jurusan}}</td>
   </tr>
-    <tr>
-    <td>Provinsi</td>
-    <td>: {{ isset($profile->prov_insatansi) ? $profile->prov_insatansi->name : ''}}</td>
+  <tr>
+    <td>Prodi</td>
+    <td>: {{$profile->prodi}}</td>
   </tr>
+
 
 </table>
 

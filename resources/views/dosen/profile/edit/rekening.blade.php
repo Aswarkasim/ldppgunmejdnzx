@@ -1,4 +1,4 @@
-<form action="/account/profile/rekening" method="POST">
+<form action="/account/dosen/rekening" method="POST">
 @method('PUT')
 @csrf
 
@@ -66,7 +66,7 @@
         </div>
         <div class="col-md-9">
           <input type="text" class="form-control @error('nomor_rekening') is-invalid @enderror" name="nomor_rekening"  value="{{isset($profile) ? $profile->nomor_rekening : old('nomor_rekening')}}" placeholder="Nomor Rekening">
-          <p class="text-danger">Jika bank lainnya, ketikkan nama bank di depan nomor rekening. Contoh : 11220000000 (BANK Mandiri)</p>
+          {{-- <p class="text-danger">Jika bank lainnya, ketikkan nama bank di depan nomor rekening. Contoh : 11220000000 (BANK Mandiri)</p> --}}
            @error('nomor_rekening')
               <div class="invalid-feedback">
               {{$message}}
