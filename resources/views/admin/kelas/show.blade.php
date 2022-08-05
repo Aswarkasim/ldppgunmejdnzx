@@ -20,7 +20,12 @@
           <tr>
             <td>{{$loop->iteration}}</td>
             <td>{{$item->no_ukg}}</td>
-            <td>{{ isset($item->mahasiswa) ? $item->mahasiswa->namalengkap : ''}}</td>
+            {{-- <td>{{ isset($item->mahasiswa) ? $item->mahasiswa->namalengkap : ''}}</td> --}}
+            @isset($item->mahasiswa)
+                <td><b><a href="/account/verifikasi/biodata/{{$item->mahasiswa->user_id}}" target="blank">{{$item->mahasiswa->namalengkap}}</b></a></td>
+            @else
+            <td>Nama Kosong</td>
+            @endisset
             <td>
             <select name="keaktifan{{$item->mahasiswa->id}}" value="{{$item->mahasiswa->nilai}}" onchange="updateStatusMahasiswa({{$item->mahasiswa->id}})" class="form-control">
               <option value="">--Nilai--</option>
