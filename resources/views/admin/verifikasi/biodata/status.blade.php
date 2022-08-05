@@ -33,7 +33,7 @@
         <input type="hidden" name="mahasiswa_id" value="{{$mahasiswa->id}}">
         <div class="modal-body">
           <div class="form-group">
-            <label for="">File Excel</label>
+            <label for="">File PDF</label>
             <input type="file" name="bukti_keaktifan" required class="form-control">
           </div>
         </div>
