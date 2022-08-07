@@ -154,6 +154,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         // Route::get('/show/{id}', [AdminMahasiswaController::class, 'show']);
         Route::get('/biodata/{id}', [AdminMahasiswaController::class, 'biodata']);
         Route::post('/biodata/bukti/upload', [AdminMahasiswaController::class, 'uploadBuktiMengundurkanDiri']);
+        Route::put('/biodata/keaktifan/alasan', [AdminMahasiswaController::class, 'updateAlasan']);
         Route::get('/download', [AdminMahasiswaController::class, 'downloadFormat']);
         Route::get('/export', [AdminMahasiswaController::class, 'exportExcel']);
         Route::post('/import', [AdminMahasiswaController::class, 'import']);

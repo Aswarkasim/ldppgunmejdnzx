@@ -423,7 +423,19 @@ class AdminMahasiswaController extends Controller
         $bukti_keaktifan->move($storage, $file_name);
         // $data['path'] = $storage;
         $data['bukti_keaktifan'] =  $storage . $file_name;
+        $profile->update($data);
+        Alert::success('Sukses', 'Berkas diupload');
+        return redirect('/account/verifikasi/biodata/' . $profile->user_id);
+    }
 
+    function updateAlasan(Request $request)
+    {
+        // dd($request->all());
+        $profile = Mahasiswa::find($request->mahasiswa_id);
+        // dd($profile);
+        $data = [
+            'alasan'    => $request->alasan
+        ];
         $profile->update($data);
         Alert::success('Sukses', 'Berkas diupload');
         return redirect('/account/verifikasi/biodata/' . $profile->user_id);

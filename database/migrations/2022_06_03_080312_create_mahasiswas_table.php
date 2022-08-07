@@ -133,6 +133,7 @@ class CreateMahasiswasTable extends Migration
             $table->boolean('is_registered')->default(0);
             $table->enum('keaktifan', ['AKTIF', 'NONAKTIF', 'CUTI', 'LULUS', 'DO', 'MUT', 'KELUAR'])->default('AKTIF');
             $table->text('bukti_keaktifan')->nullable();
+            $table->text('alasan')->nullable();
             $table->timestamps();
         });
     }
