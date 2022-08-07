@@ -17,7 +17,7 @@
         <td>Alasan</td>
         <td>: {{$mahasiswa->alasan}} 
          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#UpdateAlasanModal">
-        <i class="fas fa-comment"></i> {{$mahasiswa->bukti_keaktifan != null ? 'Ubah' : 'Simpan'}}
+        <i class="fas fa-comment"></i> Update Alasan
       </button>
         </td>
       </tr>
