@@ -66,6 +66,34 @@
             {{$row->namalengkap}}
         @endif
          <br>
+         @switch($row->keaktifan)
+           @case('AKTIF')
+               <i class="fas fa-check text-success"></i> AKTIF
+              @break
+
+          @case('NONAKTIF')
+              <i class="fas fa-times text-danger"></i> NONAKTIF
+              @break
+
+          @case('CUTI')
+              <i class="fas fa-info text-info"></i> CUTI
+              @break
+        
+          @case('LULUS')
+               <i class="fas fa-check text-info"></i> LULUS
+              @break
+
+          @case('DO')
+              <i class="fas fa-times text-danger"></i> DO
+              @break
+
+          @case('KELUAR')
+              <i class="fas fa-times text-danger"></i> KELUAR
+              @break
+          @default
+              
+        @endswitch
+
            @switch($row->status)
           @case('LENGKAPI')
               <i class="fas fa-edit text-danger"></i> Belum Lengkap
