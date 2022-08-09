@@ -85,6 +85,8 @@
             <td>nama_bank</td>
             <td>nama_pemilik</td>
             <td>nomor_rekening</td>
+            <td>status</td>
+            <td>alasan</td>
     </tr>
   </thead>
 
@@ -175,6 +177,8 @@
             <td>{{$item->nama_bank}}</td>
             <td>{{$item->nama_pemilik}}</td>
             <td>{{$item->nomor_rekening}}</td>
+            <td>{{$item->keaktifan}}</td>
+            <td>{{$item->alasan}}</td>
     </tr>
     @endforeach
   </tbody>
