@@ -23,12 +23,19 @@ class MahasiswaExport implements FromView
     //     return Mahasiswa::whereIsRegistered(1)->get();
     // }
 
+    protected $filter;
+
+    function __construct($filter)
+    {
+        $this->filter = $filter;
+    }
 
 
     public function view(): View
     {
         // $kemeterian = request('kemeterian');
-        $data['mahasiswa'] = Mahasiswa::whereIsRegistered(1)->get();
+        // die($this->filter);
+        $data['mahasiswa'] = Mahasiswa::whereIsRegistered(1)->whereKeaktifan($this->filter)->get();
         return view('admin.mahasiswa.export', $data);
     }
 

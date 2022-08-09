@@ -28,13 +28,18 @@ class AdminMahasiswaController extends Controller
         //
         $periode_id = Session::get('periode_id');
         $cari = request('cari');
-        $kementerian = request('kementerian');
+        $filter = request('filter');
+
+        if ($filter == null) {
+            $filter = 'AKTIF';
+        }
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(10);
         }
+
 
 
         $data = [
@@ -50,12 +55,20 @@ class AdminMahasiswaController extends Controller
         //
         $periode_id = Session::get('periode_id');
         $cari = request('cari');
+        $filter = request('filter');
+
+        if (
+            $filter == null
+        ) {
+            $filter = 'AKTIF';
+        }
+
         $kementerian = 'KEMENDIKBUD';
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         }
 
 
@@ -74,10 +87,18 @@ class AdminMahasiswaController extends Controller
         $cari = request('cari');
         $kementerian = 'KEMENAG';
 
+        $filter = request('filter');
+
+        if (
+            $filter == null
+        ) {
+            $filter = 'AKTIF';
+        }
+
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         }
 
 
@@ -316,7 +337,12 @@ class AdminMahasiswaController extends Controller
     {
 
         $this->updateNameById();
-        return Excel::download(new MahasiswaExport(), 'mahasiswa.xlsx');
+        $filter = request('filter');
+        if ($filter == null) {
+            $filter = 'AKTIF';
+        }
+        // die($filter);
+        return Excel::download(new MahasiswaExport($filter), 'mahasiswa.xlsx');
     }
 
     function downloadFormat()

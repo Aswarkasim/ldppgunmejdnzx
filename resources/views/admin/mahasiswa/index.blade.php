@@ -9,13 +9,29 @@
    <a href="/account/mahasiswa/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
   @endif
 
-  <a href="/account/mahasiswa/export" class="btn btn-info"><i class="fa fa-upload"></i> Export</a>
+  <a href="/account/mahasiswa/export?filter={{request('filter')}}" class="btn btn-info"><i class="fa fa-upload"></i> Export</a>
   {{-- <a href="/account/mahasiswa/export" target="_blank" class="btn btn-warning mb-3"><i class="fa fa-user-times"></i> Peseta yang belum Registrasi</a> --}}
   @include('/admin/mahasiswa/import')
 
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">
+
+      @if (Request::is('account/mahasiswa/kemenag') || Request::is('account/mahasiswa/kemendikbud'))
+          
+      <select name="filter" class="form-control">
+        <option value="">-- FILTER --</option>
+        <option value="AKTIF" {{request('filter') == 'AKTIF' ? 'selected' : ''}}>AKTIF</option>
+        <option value="NONAKTIF" {{request('filter') == 'NONAKTIF' ? 'selected' : ''}}>NONAKTIF</option>
+        <option value="CUTI" {{request('filter') == 'CUTI' ? 'selected' : ''}}>CUTI</option>
+        <option value="LULUS" {{request('filter') == 'LULUS' ? 'selected' : ''}}>LULUS</option>
+        <option value="DO" {{request('filter') == 'DO' ? 'selected' : ''}}>DO</option>
+        <option value="MUT" {{request('filter') == 'MUT' ? 'selected' : ''}}>MUT</option>
+        <option value="KELUAR" {{request('filter') == 'KELUAR' ? 'selected' : ''}}>KELUAR</option>
+      </select>
+      @endif
+
+
         <input type="text" name="cari" class="form-control" placeholder="Cari nama atau nomor ukg">
         <span class="input-group-append">
           <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>

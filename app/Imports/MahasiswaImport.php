@@ -13,6 +13,7 @@ class MahasiswaImport implements ToModel
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
+
     public function model(array $row)
     {
         return new Mahasiswa([
