@@ -140,7 +140,7 @@
 </table>
 
   <div class="float-right">
-    {{$mahasiswa->links()}}
+    {{$mahasiswa->appends(request()->except('page'))links()}}
   </div>
 </div>
 </div>
