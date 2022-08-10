@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\VerifyHistory;
 use App\Exports\MahasiswaExport;
 use App\Imports\MahasiswaImport;
+use App\Models\KelasPeserta;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -366,7 +367,18 @@ class AdminMahasiswaController extends Controller
             'kabupatenByOrangtua'
         ])->wherePeriodeId($periode_id)->get();
 
+
         foreach ($mahasiswa as $item) {
+
+            if (isset($item->bidang_studi)) {
+                $item->bidang_studi_name = $item->bidang_studi->name;
+            }
+
+            $kelasPeserta = KelasPeserta::with('kelas')->whereNoUkg($item->no_ukg)->first();
+            // dd($kelasPeserta);
+            if (isset($kelasPeserta)) {
+                $item->kelas_name = $kelasPeserta->kelas->name;
+            }
 
             if (isset($item->bidang_studi)) {
                 $item->bidang_studi_name = $item->bidang_studi->name;

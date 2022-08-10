@@ -3,6 +3,7 @@
     <tr>
             <td>periode_id</td>
             <td>bidang_studi_id</td>
+            <td>kelas</td>
             <td>npm</td>
             <td>no_ukg</td>
             <td>nuptk</td>
@@ -95,6 +96,7 @@
     <tr>
             <td>{{$item->periode_id}}</td>
             <td>{{$item->bidang_studi_name}}</td>
+            <td>{{$item->kelas_name}}</td>
             <td>{{$item->npm}}</td>
             <td>{{$item->no_ukg}}</td>
             <td>{{$item->nuptk}}</td>

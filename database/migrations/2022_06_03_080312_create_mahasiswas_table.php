@@ -20,6 +20,7 @@ class CreateMahasiswasTable extends Migration
             $table->foreignId('bidang_studi_id')->nullable();
 
             $table->foreignId('bidang_studi_name')->nullable();
+            $table->foreignId('kelas_name')->nullable();
             $table->string('npm')->nullable();
             $table->string('no_ukg')->nullable()->unique();
             $table->string('nuptk')->nullable();
