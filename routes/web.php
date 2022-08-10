@@ -149,7 +149,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 
     Route::prefix('/mahasiswa')->group(function () {
-        // Route::get('/', [AdminMahasiswaController::class, 'index']);
+        Route::get('/sinkron', [AdminMahasiswaController::class, 'sinkron']);
         // Route::post('/destroy/{id}', [AdminMahasiswaController::class, 'destroy']);
         // Route::get('/show/{id}', [AdminMahasiswaController::class, 'show']);
         Route::get('/biodata/{id}', [AdminMahasiswaController::class, 'biodata']);

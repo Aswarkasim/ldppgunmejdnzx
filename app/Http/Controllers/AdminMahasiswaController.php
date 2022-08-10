@@ -36,9 +36,9 @@ class AdminMahasiswaController extends Controller
         }
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(10)->appends(request()->except('page'));
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(10)->appends(request()->except('page'));
         }
 
 
@@ -67,9 +67,9 @@ class AdminMahasiswaController extends Controller
         $kementerian = 'KEMENDIKBUD';
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10)->appends(request()->except('page'));
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10)->appends(request()->except('page'));
         }
 
 
@@ -97,9 +97,9 @@ class AdminMahasiswaController extends Controller
         }
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10)->appends(request()->except('page'));
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10)->appends(request()->except('page'));
         }
 
 
@@ -243,14 +243,14 @@ class AdminMahasiswaController extends Controller
     {
 
         $periode_id = Session::get('periode_id');
-        // $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(30);
+        // $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10)->appends(request()->except('page'));
 
         $cari = request('cari');
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10)->appends(request()->except('page'));
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10)->appends(request()->except('page'));
         }
 
         $data = [
@@ -265,14 +265,14 @@ class AdminMahasiswaController extends Controller
     {
 
         $periode_id = Session::get('periode_id');
-        // $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(30);
+        // $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(0)->wherePeriodeId($periode_id)->latest()->paginate(10)->appends(request()->except('page'));
 
         $cari = request('cari');
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus('LENGKAPI')->wherePeriodeId($periode_id)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus('LENGKAPI')->wherePeriodeId($periode_id)->latest()->paginate(10)->appends(request()->except('page'));
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus('LENGKAPI')->wherePeriodeId($periode_id)->latest()->paginate(30);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus('LENGKAPI')->wherePeriodeId($periode_id)->latest()->paginate(10)->appends(request()->except('page'));
         }
 
         $data = [
@@ -477,5 +477,11 @@ class AdminMahasiswaController extends Controller
         $profile->update($data);
         Alert::success('Sukses', 'Berkas diupload');
         return redirect('/account/verifikasi/biodata/' . $profile->user_id);
+    }
+
+    function sinkron()
+    {
+        $this->updateNameById();
+        return redirect('/account/mahasiswa/kemendikbud');
     }
 }

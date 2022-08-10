@@ -34,8 +34,8 @@
 
         <input type="text" name="cari" class="form-control" placeholder="Cari nama atau nomor ukg">
         <span class="input-group-append">
-          <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-          <a href="/account/mahasiswa" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i></a>
+          <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i> Cari</button>
+          <a href="/account/mahasiswa" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i> Sinkronkan</a>
         </span>
       </div>
       </form>
@@ -47,7 +47,8 @@
       <th>NO UKG</th>
       <th>NPM</th>
       <th>Nama</th>
-      <th>Provinsi</th>
+      {{-- <th>Provinsi</th> --}}
+      <th>Kelas</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -111,7 +112,8 @@
               
         @endswitch
       </td>
-      <td>{{ isset($row->provinceBydomisili) ? $row->provinceBydomisili->name : ''}} </td>
+      {{-- <td>{{ isset($row->provinceBydomisili) ? $row->provinceBydomisili->name : ''}} </td> --}}
+      <td>{{ isset($row->kelas_name) ? $row->kelas_name : 'Sinkronkan data'}} </td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
