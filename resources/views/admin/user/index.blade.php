@@ -45,7 +45,7 @@
         
     <tr>
       <td width="50px">{{$user->firstItem() + $loop->index}}</td>
-      <td><a href="/account/user/{{$row->id}}?role={{request('role')}}"><b>{{$row->name}}</b></a> <br> {{ 'ID : '.$row->no_ukg}} </td>
+      <td><a href="/account/user/{{$row->id}}?role={{$row->role}}"><b>{{$row->name}}</b></a> <br> {{ 'ID : '.$row->no_ukg}} </td>
       {!!request('role') == 'verificator' ? '<td>'.$row->periode->jenisPpg->name.' Periode '.$row->periode->name.'</td>' : ''!!}
     <?php if(request('role') == 'verificator'){
       $history = \App\Models\VerifyHistory::wherePeriodeId($periode_id)->where('verificator_id',$row->id)->count();
