@@ -13,6 +13,8 @@ use App\Models\KelasProgram;
 use Illuminate\Http\Request;
 use App\Models\Configuration;
 use App\Models\Dosen;
+use App\Models\Kelas;
+use App\Models\KelasPeserta;
 use App\Models\VerifyHistory;
 use App\Models\RegisterSetting;
 use App\Models\VerifyRole;
@@ -118,12 +120,18 @@ class AdminDashboardController extends Controller
     {
         $periode_id = Auth::user()->periode_id;
         $user_id = Auth::user()->id;
-        $kelas = Adminkelasrole::wherePeriodeId($periode_id)->whereUserId($user_id)->count();
-        $mahasiswa =
-            $data = [
-                'kelas'     => $kelas,
-                'content'   => 'admin/dashboard/admin'
-            ];
+        $kelas = Adminkelasrole::wherePeriodeId($periode_id)->whereUserId($user_id)->get();
+
+        $mahasiswa = 0;
+        foreach ($kelas as $k) {
+            $kls = KelasPeserta::whereKelasId($k->kelas_id)->count();
+            $mahasiswa = $kls + $mahasiswa;
+        }
+        $data = [
+            'kelas'     => $kelas,
+            'mahasiswa'     => $mahasiswa,
+            'content'   => 'admin/dashboard/admin'
+        ];
         return view('admin/layouts/wrapper', $data);
     }
 

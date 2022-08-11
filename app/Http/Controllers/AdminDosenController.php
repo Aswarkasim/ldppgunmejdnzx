@@ -14,9 +14,21 @@ class AdminDosenController extends Controller
         $periode_id = Session::get('periode_id');
         $dosen = Dosen::wherePeriodeId($periode_id)->paginate(10);
         $data = [
-            'title'   => 'Mahasiswa',
+            'title'   => 'Data Dosen',
             'dosen' => $dosen,
             'content' => 'admin/dosen/index'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    function detail($id)
+    {
+        $dosen  = Dosen::find($id);
+
+        $data = [
+            'title'   => 'Data Dosen',
+            'dosen' => $dosen,
+            'content' => 'admin/dosen/detail'
         ];
         return view('admin/layouts/wrapper', $data);
     }

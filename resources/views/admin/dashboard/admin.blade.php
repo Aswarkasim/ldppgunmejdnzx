@@ -9,7 +9,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Kelas</span>
             <span class="info-box-number">
-              {{$kelas}}
+              {{count($kelas)}}
               <small>Kelas</small>
             </span>
 
@@ -27,7 +27,7 @@
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Mahasiswa</span>
             <span class="info-box-number">
-              10
+              {{$mahasiswa}}
               <small>Mahasiswa</small>
             </span>
 

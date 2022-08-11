@@ -28,7 +28,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>NIP</th>
+      <th>NIDN</th>
       <th>Nama</th>
       <th>Action</th>
     </tr>
@@ -40,7 +40,7 @@
     <tr>
       <td width="50px">{{$dosen->firstItem() + $loop->index}}</td>
       <td>{{$row->nip}} </td>
-      <td><a href=""><b>{{$row->namalengkap}}</b></a></td>
+      <td><a href="/account/admin/dosen/detail/{{$row->id}}" target="blank"><b>{{$row->namalengkap}}</b></a></td>
 
       <td>
         <div class="btn-group">
