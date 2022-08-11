@@ -121,6 +121,7 @@ class AdminDashboardController extends Controller
         $periode_id = Auth::user()->periode_id;
         $user_id = Auth::user()->id;
         $kelas = Adminkelasrole::wherePeriodeId($periode_id)->whereUserId($user_id)->get();
+        print_r('Periode ID  : ' . $periode_id . '---- User ID :' . $user_id);
         dd($kelas);
         $mahasiswa = 0;
         foreach ($kelas as $k) {
