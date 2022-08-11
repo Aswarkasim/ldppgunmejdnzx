@@ -53,10 +53,11 @@ class AdminUserController extends Controller
         $cari = request('cari');
         $role = request('role');
 
+        $periode_id = Session::get('periode_id');
         if ($cari) {
-            $user = User::with('bidang_studi')->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', 'admin')->latest()->paginate(20);
+            $user = User::with('bidang_studi')->wherePeriodeId($periode_id)->where('name', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->where('role', 'admin')->latest()->paginate(20);
         } else {
-            $user = User::with(['bidang_studi', 'verifyHistory'])->latest()->where('role', 'admin')->paginate(20);
+            $user = User::with(['bidang_studi', 'verifyHistory'])->wherePeriodeId($periode_id)->latest()->where('role', 'admin')->paginate(20);
         }
         // dd($user);
         $data = [
