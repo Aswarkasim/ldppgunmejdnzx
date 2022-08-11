@@ -34,7 +34,7 @@
       <th>Nama</th>
       {!!request('role') == 'verificator' ? '<th>Periode</th>' : ''!!}
       {!!request('role') == 'verificator' ? '<th>Jumah Verifikasi Mahasiwa</th>' : ''!!}
-      {!!request('role') == 'admin' ? '<th>Jumlah Kelas</th>' : ''!!}
+      {{-- {!!request('role') == 'admin' ? '<th>Jumlah Kelas</th>' : ''!!} --}}
       <th>Role</th>
       <th>Action</th>
     </tr>

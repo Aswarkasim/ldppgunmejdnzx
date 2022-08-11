@@ -25,7 +25,7 @@
         </div>
 
 
-        @if (request('role') == 'verificator')
+        @if ($user->role == 'verificator')
             
         <div class="col-md-6">
           @include('admin.user.province_modal')
@@ -52,7 +52,7 @@
         </div>
         @endif
 
-      @if (request('role') == 'admin')
+      @if ($user->role == 'admin')
             
         <div class="col-md-6">
           @include('admin.user.kelas_modal')
