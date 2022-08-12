@@ -24,7 +24,7 @@
     </div>
  
 
-    <p class="alert alert-info"> Tekan Sinkronasi jika Nilai index tidak sinkron</p>
+    <p class="text-info"><i class="fas fa-info"></i> Tekan Sinkronasi jika Nilai index tidak sinkron</p>
     <table id="example1" class="table table-striped">
         <thead>
           <tr>
