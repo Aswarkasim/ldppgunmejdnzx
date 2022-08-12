@@ -24,6 +24,7 @@
     </div>
  
 
+    <p class="alert alert-info"> Tekan Sinkronasi jika Nilai index tidak sinkron</p>
     <table id="example1" class="table table-striped">
         <thead>
           <tr>
