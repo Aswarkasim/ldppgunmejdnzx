@@ -154,8 +154,47 @@ class AdminPenilaianController extends Controller
             $nilai_index = 'K';
         }
 
+        switch ($nilai_index) {
+            case  'A':
+                $nilai_mutu = 4.0;
+                break;
+            case 'A-':
+                $nilai_mutu = 3.75;
+                break;
+            case 'B+':
+                $nilai_mutu = 3.25;
+                break;
+            case 'B':
+                $nilai_mutu = 3.0;
+                break;
+            case 'B-':
+                $nilai_mutu = 2.75;
+                break;
+            case 'C+':
+                $nilai_mutu = 2.25;
+            case 'C':
+                $nilai_mutu = 2;
+                break;
+            case 'C-':
+                $nilai_mutu = 1.75;
+                break;
+            case 'D':
+                $nilai_mutu = 1;
+                break;
+            case 'E':
+                $nilai_mutu = 0;
+                break;
+            case '':
+                $nilai_mutu = 0;
+                break;
+            default:
+                $nilai_mutu = 0;
+                break;
+        }
+
         $nilai->nilai_acuan = $nilai_acuan;
         $nilai->nilai_index = $nilai_index;
+        $nilai->nilai_mutu = $nilai_mutu;
         // $nilai->angka = $angka;
         $nilai->save();
 
@@ -208,43 +247,3 @@ class AdminPenilaianController extends Controller
         return response()->download('dokumen/format-nilai.xlsx');
     }
 }
-
-
-
-// switch ($nilai_acuan) {
-// case  :
-//     $nilai_index = 4.0;
-//     break;
-// case 'A-':
-//     $nilai_index = 3.75;
-//     break;
-// case 'B+':
-//     $nilai_index = 3.25;
-//     break;
-// case 'B':
-//     $nilai_index = 3.0;
-//     break;
-// case 'B-':
-//     $nilai_index = 2.75;
-//     break;
-// case 'C+':
-//     $nilai_index = 2.25;
-// case 'C':
-//     $nilai_index = 2;
-//     break;
-// case 'C-':
-//     $nilai_index = 1.75;
-//     break;
-// case 'D':
-//     $nilai_index = 1;
-//     break;
-// case 'E':
-//     $nilai_index = 0;
-//     break;
-// case '':
-//     $nilai_index = 0;
-//     break;
-// default:
-//     $nilai_index = 0;
-//     break;
-// }
