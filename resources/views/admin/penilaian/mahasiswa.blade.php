@@ -17,7 +17,7 @@
             <input type="text" name="cari" class="form-control" placeholder="Cari..">
             <span class="input-group-append">
               <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-              <a href="/account/penilaian" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i></a>
+              <a href="/account/penilaian/matakuliah/mahasiswa/{{$matakuliah_id}}?kelas_id={{$kelas_id}}" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i> Sinkronasi</a>
             </span>
           </div>
         </form>
@@ -30,8 +30,8 @@
              <th>No</th>
             <th>Nama</th>
             <th>Matakuliah</th>
-            <th>Angka</th>
-            <th>Nilai</th>
+            <th>Nilai Acuan</th>
+            <th>Nilai Index</th>
           </tr>
         </thead>
 
@@ -45,9 +45,9 @@
             {{$row->no_ukg}} - {{$row->mahasiswa->namalengkap}}
           </td>
           <td>{{$row->matakuliah->name}}</td>
-          <td>{{$row->angka}}</td>
           <td>
-            <select name="nilai{{$row->id}}" value="{{$row->nilai}}" onchange="updateNilai({{$row->id}})" class="form-control">
+             <input type="number" name="nilai_acuan{{$row->id}}" value="{{$row->nilai_acuan}}" onchange="updateNilai({{$row->id}})" class="form-control">
+            {{-- <select name="nilai{{$row->id}}" value="{{$row->nilai}}" onchange="updateNilai({{$row->id}})" class="form-control">
               <option value="">--Nilai--</option>
               <option value="A" {{$row->nilai == 'A' ? 'selected' : ''}}>A</option>
               <option value="A-" {{$row->nilai == 'A-' ? 'selected' : ''}}>A-</option>
@@ -60,8 +60,10 @@
               <option value="D" {{$row->nilai == 'D' ? 'selected' : ''}}>D</option>
               <option value="E" {{$row->nilai == 'E' ? 'selected' : ''}}>E</option>
               <option value="K" {{$row->nilai == 'K' ? 'selected' : ''}}>K</option>
-            </select>
+            </select> --}}
           </td>
+          <td>{{$row->nilai_index}}</td>
+
           </tr>
 
           @endforeach
@@ -87,11 +89,11 @@ function test(param){
 
 function updateNilai(id){
   console.log('harga')
-  var nilai = $("[name='nilai"+id+"']").val()
+  var nilai_acuan = $("[name='nilai_acuan"+id+"']").val()
   
   $.ajax({
     method:'GET',
-    url: '/account/penilaian/nilai/update?id='+id+'&nilai='+nilai,
+    url: '/account/penilaian/nilai/update?id='+id+'&nilai_acuan='+nilai_acuan,
     dataType:'json',
     success: function(data){
       console.log(data)

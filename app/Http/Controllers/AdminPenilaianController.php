@@ -63,6 +63,8 @@ class AdminPenilaianController extends Controller
         $data = [
             'title'   => 'Penilaian',
             // 'matakuliah' => Matakuliah::wherePeriodeId($periode_id)->get(),
+            'matakuliah_id' => $matakuliah_id,
+            'kelas_id' => $kelas_id,
             'nilai'     => Nilai::with('mahasiswa')->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get(),
             'content' => 'admin/penilaian/mahasiswa'
         ];
@@ -125,49 +127,36 @@ class AdminPenilaianController extends Controller
     {
         $id = request('id');
         $nilai = Nilai::find($id);
-        $index = request('nilai');
-        $angka = 0;
+        $nilai_acuan = request('nilai_acuan');
+        $nilai_index = 'K';
 
-        switch ($index) {
-            case 'A':
-                $angka = 4.0;
-                break;
-            case 'A-':
-                $angka = 3.75;
-                break;
-            case 'B+':
-                $angka = 3.25;
-                break;
-            case 'B':
-                $angka = 3.0;
-                break;
-            case 'B-':
-                $angka = 2.75;
-                break;
-            case 'C+':
-                $angka = 2.25;
-            case 'C':
-                $angka = 2;
-                break;
-            case 'C-':
-                $angka = 1.75;
-                break;
-            case 'D':
-                $angka = 1;
-                break;
-            case 'E':
-                $angka = 0;
-                break;
-            case '':
-                $angka = 0;
-                break;
-            default:
-                $angka = 0;
-                break;
+        if ($nilai_acuan <= 100 && $nilai_acuan >= 91) {
+            $nilai_index = 'A';
+        } else if ($nilai_acuan <= 90 && $nilai_acuan >= 86) {
+            $nilai_index = 'A-';
+        } else if ($nilai_acuan <= 85 && $nilai_acuan >= 81) {
+            $nilai_index = 'B+';
+        } else if ($nilai_acuan <= 80 && $nilai_acuan >= 76) {
+            $nilai_index = 'B';
+        } else if ($nilai_acuan <= 75 && $nilai_acuan >= 71) {
+            $nilai_index = 'B-';
+        } else if ($nilai_acuan <= 70 && $nilai_acuan >= 66) {
+            $nilai_index = 'C+';
+        } else if ($nilai_acuan <= 65 && $nilai_acuan >= 61) {
+            $nilai_index = 'C';
+        } else if ($nilai_acuan <= 60 && $nilai_acuan >= 56) {
+            $nilai_index = 'C-';
+        } else if ($nilai_acuan <= 55 && $nilai_acuan >= 46) {
+            $nilai_index = 'D';
+        } else if ($nilai_acuan <= 45 && $nilai_acuan >= 0) {
+            $nilai_index = 'E';
+        } else {
+            $nilai_index = 'K';
         }
 
-        $nilai->nilai = $index;
-        $nilai->angka = $angka;
+        $nilai->nilai_acuan = $nilai_acuan;
+        $nilai->nilai_index = $nilai_index;
+        // $nilai->angka = $angka;
         $nilai->save();
 
         return response()->json([
@@ -219,3 +208,43 @@ class AdminPenilaianController extends Controller
         return response()->download('dokumen/format-nilai.xlsx');
     }
 }
+
+
+
+// switch ($nilai_acuan) {
+// case  :
+//     $nilai_index = 4.0;
+//     break;
+// case 'A-':
+//     $nilai_index = 3.75;
+//     break;
+// case 'B+':
+//     $nilai_index = 3.25;
+//     break;
+// case 'B':
+//     $nilai_index = 3.0;
+//     break;
+// case 'B-':
+//     $nilai_index = 2.75;
+//     break;
+// case 'C+':
+//     $nilai_index = 2.25;
+// case 'C':
+//     $nilai_index = 2;
+//     break;
+// case 'C-':
+//     $nilai_index = 1.75;
+//     break;
+// case 'D':
+//     $nilai_index = 1;
+//     break;
+// case 'E':
+//     $nilai_index = 0;
+//     break;
+// case '':
+//     $nilai_index = 0;
+//     break;
+// default:
+//     $nilai_index = 0;
+//     break;
+// }

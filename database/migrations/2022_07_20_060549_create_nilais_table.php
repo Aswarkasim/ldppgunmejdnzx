@@ -18,8 +18,9 @@ class CreateNilaisTable extends Migration
             $table->foreignId('kelas_id')->nullable();
             $table->string('no_ukg')->nullable();
             $table->foreignId('matakuliah_id')->nullable();
-            $table->string('nilai')->default([0]);
-            $table->double('angka')->default([0]);
+            $table->double('nilai_acuan')->default([0]);
+            $table->string('nilai_index')->default('K');
+            $table->double('nilai_mutu')->default([0]);
             $table->timestamps();
         });
     }
