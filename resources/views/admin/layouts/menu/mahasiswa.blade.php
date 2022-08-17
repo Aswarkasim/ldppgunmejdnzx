@@ -8,6 +8,15 @@
   </li>  
   
   <li class="nav-item">
+    <a href="/account/ppi" class="nav-link {{Request::is('account/ppi*') ? 'active' : ''}}">
+      <i class="nav-icon fas fa-graduation-cap  "></i>
+      <p>
+        PPI
+      </p>
+    </a>
+  </li>
+
+    <li class="nav-item">
     <a href="/account/profile?page=data_diri" class="nav-link {{Request::is('account/profile*') ? 'active' : ''}}">
       <i class="nav-icon fas fa-edit  "></i>
       <p>

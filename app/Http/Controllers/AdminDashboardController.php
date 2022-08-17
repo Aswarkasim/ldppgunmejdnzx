@@ -104,7 +104,8 @@ class AdminDashboardController extends Controller
         }
 
         $data = [
-            'periode'   => Periode::latest()->get(),
+            // 'periode'   => Periode::latest()->get(),
+            'periode'       => Periode::find($periode_id),
             'jenis'     => JenisPpg::all(),
             'register_setting'  => RegisterSetting::with(['periode', 'jenis_ppg'])->first(),
             'total_mahasiswa' => Mahasiswa::wherePeriodeId($periode_id)->count(),
@@ -227,5 +228,19 @@ class AdminDashboardController extends Controller
         }
 
         return response()->json($dataPeriode);
+    }
+
+    function updatePpiPeriode(Request $request)
+    {
+        $periode_id = Session::get('periode_id');
+        $periode = Periode::find($periode_id);
+        $data = [
+            'ppi_status'    => $request->ppi_status,
+            'nomor_surat_first' => $request->nomor_surat_first,
+            'nomor_surat_last' => $request->nomor_surat_last,
+        ];
+        $periode->update($data);
+        Alert::success('Sukses', "Pengaturan PPI telah diubah");
+        return redirect('/account/dashboard');
     }
 }

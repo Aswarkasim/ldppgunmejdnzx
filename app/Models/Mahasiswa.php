@@ -17,9 +17,20 @@ class Mahasiswa extends Model
         return $this->belongsTo(BidangStudi::class);
     }
 
+
     function periode()
     {
         return $this->belongsTo(Periode::class)->with('jenisPpg');
+    }
+
+    function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+
+    function kabupaten()
+    {
+        return $this->belongsTo(kabupaten::class);
     }
 
     function provinceBydomisili()

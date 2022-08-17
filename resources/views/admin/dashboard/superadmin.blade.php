@@ -92,13 +92,13 @@
           <div>
             @switch($register_setting->status)
                 @case('WAITING')
-                    <div class="text text-warning">Menuggu</div>
+                    <div class="alert alert-warning">Menuggu</div>
                     @break
                 @case('BUKA')
-                    <div class="text text-success">Buka</div>
+                    <div class="alert alert-success">Buka</div>
                     @break
                 @case('TUTUP')
-                    <div class="text text-danger">Tutup</div>
+                    <div class="alert alert-danger">Tutup</div>
                     @break
                 @default
                     
@@ -108,8 +108,40 @@
 @include('admin.dashboard.register_setting')
 
 
+
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-group">
+          <span><b>Status PPI</b></span>
+           @switch($periode->ppi_status)
+                @case('NONAKTIF')
+                    <div class="alert alert-danger">NONAKTIF</div>
+                    @break
+                @case('AKTIF')
+                    <div class="alert alert-success">AKTIF</div>
+                    @break
+                @default
+                    
+            @endswitch
+        </div>
+
+        <div class="text-group">
+          <span><b>Nomor Surat Awal</b></span>
+          <p>{{$periode->nomor_surat_first}}</p>
+        </div>
+
+        <div class="text-group">
+          <span><b>Nomor Surat Akhir</b></span>
+          <p>{{$periode->nomor_surat_last}}</p>
+        </div>
+@include('admin.dashboard.ppi')
       </div>
     </div>
   </div>

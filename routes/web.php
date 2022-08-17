@@ -32,6 +32,7 @@ use App\Http\Controllers\AdminPetunjukController;
 use App\Http\Controllers\AdminRegisterSettingController;
 use App\Http\Controllers\AdminTimelineController;
 use App\Http\Controllers\DosenProfileController;
+use App\Http\Controllers\MahasiswaPpiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('account.dashboard');
     Route::get('/dashboard/status', [AdminDashboardController::class, 'changeStatus']);
     Route::get('/dashboard/config/periode/{id}', [AdminDashboardController::class, 'periodeLD']);
+    Route::put('/dashboard/periode/ppi/update', [AdminDashboardController::class, 'updatePpiPeriode']);
     Route::get('/periode', [AdminDashboardController::class, 'periodeActive']);
 
 
@@ -216,6 +218,12 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::put('/pasfoto', [AdminProfileController::class, 'pasfoto']);
         Route::put('/rekening', [AdminProfileController::class, 'updateRekening']);
         Route::get('/biodata', [AdminProfileController::class, 'biodata']);
+    });
+
+    Route::prefix('/ppi')->group(function () {
+        Route::get('/', [MahasiswaPpiController::class, 'index']);
+        Route::put('/edit', [MahasiswaPpiController::class, 'edit']);
+        Route::get('/cetak', [MahasiswaPpiController::class, 'cetakSurat']);
     });
 
 

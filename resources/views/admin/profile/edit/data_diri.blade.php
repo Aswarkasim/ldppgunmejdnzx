@@ -369,28 +369,28 @@
           
           <div class="row pt-1">
             <div class="col-md-6">
-              <select class="form-control @error('provinsi_tempat_tinggal') is-invalid @enderror" id="province" name="provinsi_tempat_tinggal" required>
+              <select class="form-control @error('province_id') is-invalid @enderror" id="province" name="province_id" required>
                 <option value="">Pilih Provinsi</option>
                 @foreach($provinces as $item)
-                  <option value="{{$item->id}}" {{$item->id == $profile->provinsi_tempat_tinggal ? 'selected' : ''}} >{{$item->name}}</option>
+                  <option value="{{$item->id}}" {{$item->id == $profile->province_id ? 'selected' : ''}} >{{$item->name}}</option>
                   {{-- <option value="{{$item->id}}"  >{{$item->name}}</option> --}}
                 @endforeach
               </select>
-               @error('provinsi_tempat_tinggal')
+               @error('province_id')
                 <div class="invalid-feedback">
                 {{$message}}
                 </div>
-              @enderror
+                @enderror
               <div class="invalid-feedback">
                 Please select a valid province.
               </div>
             </div>
 
              <div class="col-md-6">
-               <select class="form-control @error('kabupaten_tempat_tinggal') is-invalid @enderror" id="city" name="kabupaten_tempat_tinggal" disabled required>
+               <select class="form-control @error('regency_id') is-invalid @enderror" id="city" name="regency_id" disabled required>
                     <option value="">Pilih Kota/Kabupaten</option>
                   </select>
-                   @error('kabupaten_domisili')
+                   @error('regency_id')
                     <div class="invalid-feedback">
                     {{$message}}
                     </div>

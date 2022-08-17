@@ -29,12 +29,28 @@
           <div class="info-box-content">
             <span class="info-box-text">Cetak Bukti Lapor Diri</span>
             <a href="/account/berkas/cetak" class="btn btn-primary" target="_blank">Cetak</a>
-
           </div>
           <!-- /.info-box-content -->
         </div>
         <!-- /.info-box -->
       </div>
+
+
+       <div class="col-md-4">
+        
+        <div class="info-box">
+          <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-print"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Cetak Surat PPL</span>
+            <a href="/account/ppi/cetak" class="btn btn-primary" target="_blank">Cetak</a>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+
+
       {{-- <div class="col-md-4">
         
         <div class="info-box">
