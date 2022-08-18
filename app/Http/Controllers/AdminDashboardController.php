@@ -160,9 +160,11 @@ class AdminDashboardController extends Controller
 
         // count percentage berkas where not null
         $user_id = auth()->user()->id;
+        $periode_id = auth()->user()->id;
 
         $data = [
             'user'      => User::find($user_id),
+            'periode'   => Periode::find($periode_id),
             'mahasiswa' => Mahasiswa::whereUserId($user_id)->first(),
             'content'   => 'admin/dashboard/mahasiswa'
         ];
