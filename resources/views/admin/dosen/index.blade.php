@@ -5,9 +5,7 @@
 <div class="card-body">
   {{-- <a href="{{$create}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
 
-  @if (Request::is('account/dosen/notregisted'))
    <a href="/account/dosen/create" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-  @endif
 
   <a href="/account/dosen/export" class="btn btn-info"><i class="fa fa-upload"></i> Export</a>
   {{-- <a href="/account/dosen/export" target="_blank" class="btn btn-warning mb-3"><i class="fa fa-user-times"></i> Peseta yang belum Registrasi</a> --}}

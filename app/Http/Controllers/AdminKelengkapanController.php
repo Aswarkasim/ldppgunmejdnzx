@@ -24,9 +24,9 @@ class AdminKelengkapanController extends Controller
         $cari = request('cari');
 
         if ($cari) {
-            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('name', 'desc')->latest()->paginate(10);
+            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->orderBy('name', 'desc')->latest()->paginate(10);
         } else {
-            $kelengkapan = Kelengkapan::wherePeriodeId($periode_id)->orderBy('name', 'desc')->paginate(10);
+            $kelengkapan = Kelengkapan::orderBy('name', 'desc')->paginate(10);
         }
         $data = [
             'title'   => 'Kelengkapan',

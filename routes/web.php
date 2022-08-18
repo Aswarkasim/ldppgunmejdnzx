@@ -149,6 +149,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/', [AdminDosenController::class, 'index']);
         Route::get('/detail/{id}', [AdminDosenController::class, 'detail']);
     });
+    Route::resource('/dosen', AdminDosenController::class);
 
 
     Route::prefix('/mahasiswa')->group(function () {

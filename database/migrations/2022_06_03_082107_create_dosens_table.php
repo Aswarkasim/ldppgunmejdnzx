@@ -16,9 +16,11 @@ class CreateDosensTable extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('periode_id');
+            $table->foreignId('periode_id')->nullable();
             $table->string('namalengkap')->nullable();
             $table->string('nip')->nullable();
+            $table->string('nomor_serdos')->nullable();
+
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
             $table->string('agama')->nullable();
             $table->string('tempat_lahir')->nullable();

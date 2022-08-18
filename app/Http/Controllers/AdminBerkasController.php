@@ -32,7 +32,7 @@ class AdminBerkasController extends Controller
 
         $kelengkapan = Kelengkapan::get();
         foreach ($kelengkapan as $item) {
-            $cek = Berkas::whereUserId($user_id)->whereKelengkapanId($item->id)->wherePeriodeId($mahasiswa->periode_id)->first();
+            $cek = Berkas::whereUserId($user_id)->whereKelengkapanId($item->id)->first();
             if ($cek == false) {
                 $data = [
                     'user_id'           => $user_id,
