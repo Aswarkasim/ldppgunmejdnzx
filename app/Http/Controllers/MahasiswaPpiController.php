@@ -89,6 +89,8 @@ class MahasiswaPpiController extends Controller
 
         $periode = Periode::find($periode_id);
 
+        dd($periode);
+
         if ($periode->ppi_status == 'NONAKTIF') {
             Alert::info('PPI', 'Belum dibuka');
             return redirect('/account/dashboard');
