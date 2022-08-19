@@ -103,6 +103,8 @@ class AdminDashboardController extends Controller
             ]);
         }
 
+        $periode_id = Session::get('periode_id');
+
         $data = [
             // 'periode'   => Periode::latest()->get(),
             'periode'       => Periode::find($periode_id),
