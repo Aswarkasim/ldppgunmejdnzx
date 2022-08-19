@@ -78,6 +78,7 @@
           <select name="jenjang_pendidikan" class="form-control @error('jenjang_pendidikan') is-invalid @enderror" id="">
                 <option value="">-- Jenjang --</option>
                 <option value="PAUD/RA" {{$profile->jenjang_pendidikan == 'PAUD/RA' ? 'selected' : ''}}>PAUD/RA</option>
+                <option value="SD/MI" {{$profile->jenjang_pendidikan == 'SLB' ? 'selected' : ''}}>SLB</option>
                 <option value="SD/MI" {{$profile->jenjang_pendidikan == 'SD/MI' ? 'selected' : ''}}>SD/MI</option>
                 <option value="SMP/MTS" {{$profile->jenjang_pendidikan == 'SMP/MTS' ? 'selected' : ''}}>SMP/MTS</option>
                 <option value="SMA/SMK/MA/MAK" {{$profile->jenjang_pendidikan == 'SMA/SMK/MA/MAK' ? 'selected' : ''}}>SMA/SMK/MA/MAK</option>
