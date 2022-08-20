@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,5 +21,20 @@ class AdminGeneralController extends Controller
             'content' => 'admin/matakuliah/list_for_admin'
         ];
         return view('admin/layouts/wrapper', $data);
+    }
+
+    function ubahPeriodeUser()
+    {
+        $mahasiswa = Mahasiswa::all();
+
+        $user = User::all();
+        foreach ($user as $row) {
+            $mahasiswa = Mahasiswa::whereUserId($row->id)->first();
+            if ($row->periode_id != $mahasiswa->periode_id) {
+                $row->periode_id = $mahasiswa->periode_id;
+                $row->save();
+            }
+        }
+        return redirect()->back()->with('success', 'Berhasil mengubah periode user');
     }
 }

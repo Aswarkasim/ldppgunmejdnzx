@@ -252,6 +252,7 @@ Route::get('/toast', function () {
     return view('welcome');
 });
 
+Route::get('/ubah-periode', [AdminGeneralController::class, 'ubahPeriodeUser']);
 
 Route::get('/get-regency/{province_id?}', [AdminProfileController::class, 'getCity']);
 Route::get('/get-periode/{jenis_ppg_id?}', [AdminDashboardController::class, 'getPeriode']);
