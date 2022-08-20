@@ -30,9 +30,11 @@ class AdminGeneralController extends Controller
         $user = User::all();
         foreach ($user as $row) {
             $mahasiswa = Mahasiswa::whereUserId($row->id)->first();
-            if ($row->periode_id != $mahasiswa->periode_id) {
-                $row->periode_id = $mahasiswa->periode_id;
-                $row->save();
+            if ($mahasiswa) {
+                if ($row->periode_id != $mahasiswa->periode_id) {
+                    $row->periode_id = $mahasiswa->periode_id;
+                    $row->save();
+                }
             }
         }
         return redirect()->back()->with('success', 'Berhasil mengubah periode user');
