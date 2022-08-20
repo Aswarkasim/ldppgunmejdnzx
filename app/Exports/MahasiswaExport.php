@@ -24,10 +24,12 @@ class MahasiswaExport implements FromView
     // }
 
     protected $filter;
+    protected $periode_id;
 
-    function __construct($filter)
+    function __construct($filter, $periode_id)
     {
         $this->filter = $filter;
+        $this->periode_id = $periode_id;
     }
 
 
@@ -35,7 +37,7 @@ class MahasiswaExport implements FromView
     {
         // $kemeterian = request('kemeterian');
         // die($this->filter);
-        $data['mahasiswa'] = Mahasiswa::whereIsRegistered(1)->whereKeaktifan($this->filter)->get();
+        $data['mahasiswa'] = Mahasiswa::whereIsRegistered(1)->whereKeaktifan($this->filter)->wherePeriodeId($this->periode_id)->get();
         return view('admin.mahasiswa.export', $data);
     }
 

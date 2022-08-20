@@ -338,12 +338,13 @@ class AdminMahasiswaController extends Controller
     {
 
         $this->updateNameById();
+        $periode_id = Session::get('periode_id');
         $filter = request('filter');
         if ($filter == null) {
             $filter = 'AKTIF';
         }
         // die($filter);
-        return Excel::download(new MahasiswaExport($filter), 'mahasiswa.xlsx');
+        return Excel::download(new MahasiswaExport($filter, $periode_id), 'mahasiswa.xlsx');
     }
 
     function downloadFormat()
