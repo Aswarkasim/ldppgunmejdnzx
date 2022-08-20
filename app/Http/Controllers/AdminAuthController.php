@@ -54,10 +54,10 @@ class AdminAuthController extends Controller
         $data['password']   = bcrypt(request('password'));
 
 
-        $mahasiswa = Mahasiswa::whereNoUkg($request->no_ukg)->first();
+        $mahasiswa = Mahasiswa::whereNoUkg($request->no_ukg)->wherePeriodeId($request->periode_id)->first();
         if (!$mahasiswa) {
             Alert::error('Gagal', 'Nomor UKG anda tidak terdaftar');
-            return back()->with('registerError', 'Nomor UKG anda tidak terdaftar');
+            return back()->with('registerError', 'Nomor UKG anda tidak terdaftar untuk periode ini');
             // alert()->success('SuccessAlert', 'Lorem ipsum dolor sit amet.');
         } else {
             $user = User::create($data);
