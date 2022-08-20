@@ -33,7 +33,7 @@
         
     <tr>
       <td width="50px">{{$periode->firstItem() + $loop->index}}</td>
-      <td>{{$row->name}} </td>
+      <td>{{$row->name}} <small>{{'ID : '.$row->id}}</small> </td>
       <td>{{$row->jenisPpg->name}} </td>
       <td>{{$row->tahun}} </td>
       <td>{{$row->desc}} </td>
