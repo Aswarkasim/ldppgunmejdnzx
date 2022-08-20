@@ -27,7 +27,7 @@ class AdminGeneralController extends Controller
     {
         $mahasiswa = Mahasiswa::all();
 
-        $user = User::all();
+        $user = User::whereRole('mahasiswa')->wherePeriodeId(2)->get();
         foreach ($user as $row) {
             $mahasiswa = Mahasiswa::whereUserId($row->id)->first();
             if ($mahasiswa) {
