@@ -78,7 +78,7 @@
 </table>
 
   <div class="float-right">
-    {{$user->links()}}
+    {{$user->appends(request()->except('page'))->links()}}
   </div>
 </div>
 </div>
