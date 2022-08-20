@@ -144,7 +144,7 @@
       @endif
 
       <p class="text-center">Sudah punya akun? silakan <a href="/auth">Login</a></p>
-
+<p>Lihat petunjuk pendaftaran <a href="https://siappgunm.com/petunjuk">disni</a></p>
     </div>
   </div>
 </form>
