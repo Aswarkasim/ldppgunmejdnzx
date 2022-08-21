@@ -42,13 +42,18 @@ class AdminAuthController extends Controller
     function doRegister(Request $request)
     {
         // dd($request);
+        $message = [
+            'unique'    => ':attribute anda telah diregistrasi sebelumnya. Silakan login',
+            'required'  => ':attribute tidak boleh kosong',
+            'same'      => 'Password harus sama'
+        ];
         $data = $request->validate([
             'no_ukg'       => 'required|unique:users',
             'name'       => 'required',
             'nohp'       => 'required|unique:users',
             'password'       => 'required',
             're_password'   => 'required|same:password'
-        ]);
+        ], $message);
         $data['role']   = 'Mahasiswa';
         $data['periode_id'] = $request->periode_id;
         $data['password']   = bcrypt(request('password'));
