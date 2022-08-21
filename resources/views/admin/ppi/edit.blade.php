@@ -34,7 +34,7 @@
 <br>
          <div class="form-grup">
           <label for="">Kabupaten/Kota</label>
-          <input type="text" name="kabupaten_name" value="{{$ppi->kabupaten_name}}" required placeholder="Alamat" class="form-control">
+          <input type="text" name="kabupaten_name" value="{{$ppi->kabupaten_name}}" required placeholder="Kabupaten/Kota" class="form-control">
         </div>
 
 
