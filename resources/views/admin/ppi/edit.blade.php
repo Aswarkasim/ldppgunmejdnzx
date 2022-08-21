@@ -19,22 +19,22 @@
 
         <div class="form-grup">
           <label for="">Nama Lengkap</label>
-          <input type="text" name="namalengkap" placeholder="Nama Lengkap" class="form-control">
+          <input type="text" name="namalengkap" value="{{$ppi->namalengkap}}" required placeholder="Nama Lengkap" class="form-control">
         </div>
 <br>
         <div class="form-grup">
           <label for="">Nama Sekolah</label>
-          <input type="text" name="sekolah_lokasi" placeholder="Nama Sekolah" class="form-control">
+          <input type="text" name="sekolah_lokasi" value="{{$ppi->sekolah_lokasi}}" required placeholder="Nama Sekolah" class="form-control">
         </div>
 <br>
         <div class="form-grup">
           <label for="">Alamat</label>
-          <input type="text" name="alamat" placeholder="Alamat" class="form-control">
+          <input type="text" name="alamat" value="{{$ppi->alamat}}" required placeholder="Alamat" class="form-control">
         </div>
 <br>
          <div class="form-grup">
           <label for="">Kabupaten/Kota</label>
-          <input type="text" name="kabupaten_name" placeholder="Alamat" class="form-control">
+          <input type="text" name="kabupaten_name" value="{{$ppi->kabupaten_name}}" required placeholder="Alamat" class="form-control">
         </div>
 
 
