@@ -42,7 +42,7 @@
 
           <tr>
             <td>Lokas  PPI</td>
-            <td>: {{$ppi->kabupaten->name}}</td>
+            <td>: {{isset($ppi->kabupaten) ? $ppi->kabupaten->name}}</td>
           </tr>
 
           <tr>
