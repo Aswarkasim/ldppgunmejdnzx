@@ -50,6 +50,15 @@
 </li> --}}
 
 <li class="nav-item">
+  <a href="/account/pamong" class="nav-link {{Request::is('account/pamong*') ? 'active' : ''}}">
+    <i class="fas fa-chalkboard-teacher"></i>
+    <p>
+      Guru Pamong
+    </p>
+  </a>
+</li>
+
+<li class="nav-item">
   <a href="/account/dosen" class="nav-link {{Request::is('account/dosen*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-graduation-cap"></i>
     <p>

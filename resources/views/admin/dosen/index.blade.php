@@ -38,7 +38,7 @@
     <tr>
       <td width="50px">{{$dosen->firstItem() + $loop->index}}</td>
       <td>{{$row->nip}} </td>
-      <td><a href="/account/admin/dosen/detail/{{$row->id}}" target="blank"><b>{{$row->namalengkap}}</b></a></td>
+      <td><a href="/account/dosen/{{$row->id}}"><b>{{$row->namalengkap}}</b></a></td>
 
       <td>
         <div class="btn-group">

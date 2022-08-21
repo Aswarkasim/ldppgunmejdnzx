@@ -147,7 +147,9 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::prefix('/dosen')->group(function () {
         Route::get('/', [AdminDosenController::class, 'index']);
-        Route::get('/detail/{id}', [AdminDosenController::class, 'detail']);
+        Route::get('/export', [AdminDosenController::class, 'exportExcel']);
+        Route::post('/import', [AdminDosenController::class, 'import']);
+        Route::get('/download', [AdminDosenController::class, 'downloadFormat']);
     });
     Route::resource('/dosen', AdminDosenController::class);
 

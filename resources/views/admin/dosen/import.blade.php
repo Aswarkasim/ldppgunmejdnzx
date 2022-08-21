@@ -14,13 +14,13 @@
         </button>
       </div>
 
-      <form action="/account/mahasiswa/import" enctype="multipart/form-data" method="POST">
+      <form action="/account/dosen/import" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="modal-body">
           <div class="form-group">
             <label for="">File Excel</label>
             <input type="file" name="file" class="form-control">
-            <p>*Hanya menerima format xls dan xlsx. Ikuti formati berikut sebelum mengupload <a href="/account/mahasiswa/download"><i class="fas fa-download"></i> Download</a></p>
+            <p>*Hanya menerima format xls dan xlsx. Ikuti formati berikut sebelum mengupload <a href="/account/dosen/download"><i class="fas fa-download"></i> Download</a></p>
           </div>
         </div>
         <div class="modal-footer">
