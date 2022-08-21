@@ -48,7 +48,7 @@
           </tr>
 
           <tr>
-            <td>Kabupaten/Kota</td>
+            <td>Kabupaten/Kota PPI</td>
             <td>: {{$ppi->kabupaten_name}}</td>
           </tr>
 
