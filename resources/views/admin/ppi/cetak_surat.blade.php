@@ -70,9 +70,9 @@
   <br>
   <strong>
     Yth. <br>
-    Kepala Sekolah/Madrasah {{$ppi->lokasi}}<br>
-    Alamat  <br>
-    di {{ isset($ppi->kabupaten->name) ? ucwords(strtolower($ppi->kabupaten->name)) : ''}}
+    Kepala Sekolah/Madrasah {{$ppi->sekolah_lokasi}}<br>
+    {{$ppi->alamat}}  <br>
+    di {{ $ppi->kabupaten_name}}
   </strong>
 
   <br>
@@ -88,7 +88,7 @@
 
      <tr>
       <td>Nama Mahasiswa</td>
-      <td>: {{$ppi->mahasiswa->namalengkap}}</td>
+      <td>: {{$ppi->namalengkap}}</td>
     </tr>
 
      <tr>
@@ -98,8 +98,7 @@
 
      <tr>
       <td>Lokasi PPI</td>
-      <td>: {{ isset($ppi->kabupaten) ? ucwords(strtolower($ppi->kabupaten->name)) : ''}}</td>
-    </tr>
+      <td>: {{ $ppi->sekolah_lokasi}}
 
      <tr>
       <td>Asal Sekolah</td>
@@ -114,12 +113,12 @@
     <p>
       Ketua Program Studi <br>
       Pendidikan Profesi Guru <br>
-      <img src="/img/ttd_darmawang.png" style="position: absolute" alt=""><br>
-      <img src="/img/paraf.png" style="width:40px;position: absolute; margin-top: 70px; margin-left: 240px" alt=""><br>
+      <img src="/img/ttd_hasnawi.png" width="300px" style="position: absolute" alt=""><br>
+      <img src="/img/parafforwr1.png" style="width:40px;position: absolute; margin-top: 70px; margin-left: 310px" alt=""><br>
 
       <br>
-      Dr. Ir. Darmawang, M.Kes. <br>
-          NIP. 19620707 199103 1 002
+      <b>Prof.Dr. H. Hasnawi Haris, M.Hum.</b><br>
+          NIP. 196712311993031016 
     </p>
 
   </div>

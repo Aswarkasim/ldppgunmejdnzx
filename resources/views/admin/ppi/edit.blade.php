@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenterEdit">
-  <i class="fas fa-edit"></i> Edit
+  <i class="fas fa-edit"></i> Lengkapi Data
 </button>
 
 <!-- Modal -->
@@ -18,39 +18,25 @@
       <div class="modal-body">
 
         <div class="form-grup">
-          <label for="">Nama Sekolah</label>
-          <input type="text" name="sekolah_lokasi" placeholder="Ex: SMKN 1 Karossa" class="form-control">
+          <label for="">Nama Lengkap</label>
+          <input type="text" name="namalengkap" placeholder="Nama Lengkap" class="form-control">
         </div>
-
+<br>
         <div class="form-grup">
-          <label for="">Provinsi</label>
-             <select class="form-control @error('province_id') is-invalid @enderror" id="province" name="province_id" required>
-                <option value="">Pilih Provinsi</option>
-                @foreach($provinces as $item)
-                  <option value="{{$item->id}}">{{$item->name}}</option>
-                  {{-- <option value="{{$item->id}}"  >{{$item->name}}</option> --}}
-                @endforeach
-              </select>
-               @error('province_id')
-                <div class="invalid-feedback">
-                {{$message}}
-                </div>
-                @enderror
+          <label for="">Nama Sekolah</label>
+          <input type="text" name="sekolah_lokasi" placeholder="Nama Sekolah" class="form-control">
+        </div>
+<br>
+        <div class="form-grup">
+          <label for="">Alamat</label>
+          <input type="text" name="alamat" placeholder="Alamat" class="form-control">
+        </div>
+<br>
+         <div class="form-grup">
+          <label for="">Kabupaten/Kota</label>
+          <input type="text" name="kabupaten_name" placeholder="Alamat" class="form-control">
         </div>
 
-        <div class="form-group mt-2">
-          <select class="form-control @error('kabupaten_id') is-invalid @enderror" id="city" name="kabupaten_id" disabled required>
-              <option value="">Pilih Kota/Kabupaten</option>
-            </select>
-              @error('kabupaten_id')
-              <div class="invalid-feedback">
-              {{$message}}
-              </div>
-            @enderror
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
-        </div>
 
       </div>
       <div class="modal-footer">

@@ -27,7 +27,7 @@
 
           <tr>
             <td>Nama Lengkap</td>
-            <td>: {{$mahasiswa->namalengkap}}</td>
+            <td>: {{$ppi->namalengkap}}</td>
           </tr>
 
           <tr>
@@ -40,9 +40,14 @@
             <td>: {{$ppi->sekolah_lokasi}}</td>
           </tr>
 
+           <tr>
+            <td>Alamat</td>
+            <td>: {{$ppi->alamat}}</td>
+          </tr>
+
           <tr>
-            <td>Lokas  PPI</td>
-            <td>: {{isset($ppi->kabupaten) ? $ppi->kabupaten->name : ''}}</td>
+            <td>Kabupaten/Kota</td>
+            <td>: {{$ppi->kabupaten_name}}</td>
           </tr>
 
           <tr>

@@ -18,6 +18,8 @@ class CreatePpisTable extends Migration
             $table->foreignId('periode_id');
             $table->string('user_id');
             $table->string('mahasiswa_id');
+            $table->string('namalengkap')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('province_id')->nullable();
             $table->string('kabupaten_id')->nullable();
             $table->string('nomor_surat')->nullable();

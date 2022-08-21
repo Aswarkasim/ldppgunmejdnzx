@@ -75,9 +75,12 @@ class MahasiswaPpiController extends Controller
         $ppi = Ppi::whereUserId($user_id)->wherePeriodeId($periode_id)->first();
 
         $data = [
+            'namalengkap'    => $request->namalengkap,
             'sekolah_lokasi'    => $request->sekolah_lokasi,
-            'province_id'       => $request->province_id,
-            'kabupaten_id'       => $request->kabupaten_id,
+            'alamat'    => $request->alamat,
+            'kabupaten_name'    => $request->kabupaten_name,
+            // 'province_id'       => $request->province_id,
+            // 'kabupaten_id'       => $request->kabupaten_id,
         ];
         $ppi->update($data);
         return redirect('/account/ppi');
