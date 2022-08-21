@@ -28,7 +28,7 @@
           </tr>
 
           <tr>
-            <td>Nama Lengkap</td>
+            <td>Nama Lengkap <small>(Lengkap dengan gelar)</small></td>
             <td>: {{$ppi->namalengkap}}</td>
           </tr>
 
