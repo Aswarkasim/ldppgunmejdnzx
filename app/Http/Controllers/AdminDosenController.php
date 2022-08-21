@@ -51,7 +51,7 @@ class AdminDosenController extends Controller
             'nama_pemilik'                  => 'required',
         ]);
 
-        $data['nomor_serdos']   = 'BNI';
+        $data['nama_bank']   = 'BNI';
 
         Dosen::create($data);
         Alert::success('Sukses', 'Dosen telah ditambahkan');
@@ -85,7 +85,7 @@ class AdminDosenController extends Controller
             'nama_pemilik'          => 'required',
         ]);
 
-        $data['nomor_serdos']   = 'BNI';
+        $data['nama_bank']   = 'BNI';
 
         $dosen->update($data);
         Alert::success('Sukses', 'Dosen telah diedit');

@@ -43,7 +43,7 @@ class MahasiswaPpiController extends Controller
                     'user_id'    => $user_id,
                     'periode_id'    => $periode_id,
                     'mahasiswa_id'  => $mahasiswa->id,
-                    'mahasiswa'     => $mahasiswa,
+                    // 'mahasiswa'     => $mahasiswa,
                     'perihal'       => 'Pelaksanaan PPI Mahasiswa ' . $periode->jenisPpg->name . ' Periode ' . $periode->name . ' Tahun ' . $periode->tahun
                 ];
                 Ppi::create($data_ppi);

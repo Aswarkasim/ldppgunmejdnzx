@@ -1,38 +1,39 @@
 <?php
 
-use App\Http\Controllers\AdminAkunController;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminAkunController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminDosenController;
+use App\Http\Controllers\AdminKelasController;
+use App\Http\Controllers\AdminNotifController;
 use App\Http\Controllers\AdminProdiController;
 use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminBerkasController;
+use App\Http\Controllers\AdminPamongController;
+use App\Http\Controllers\AdminGeneralController;
+use App\Http\Controllers\AdminPeriodeController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\DosenProfileController;
+use App\Http\Controllers\MahasiswaPpiController;
+use App\Http\Controllers\AdminJenisPpgController;
+use App\Http\Controllers\AdminPetunjukController;
+use App\Http\Controllers\AdminTimelineController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminMahasiswaController;
+use App\Http\Controllers\AdminPenilaianController;
+use App\Http\Controllers\AdminMatakuliahController;
 use App\Http\Controllers\AdminVerifikasiController;
 use App\Http\Controllers\AdminBidangStudiController;
 use App\Http\Controllers\AdminKelengkapanController;
 use App\Http\Controllers\AdminCategoryPostController;
-use App\Http\Controllers\AdminConfigurationController;
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\AdminDosenController;
-use App\Http\Controllers\AdminGeneralController;
-use App\Http\Controllers\AdminJenisPpgController;
-use App\Http\Controllers\AdminKelasController;
 use App\Http\Controllers\AdminKelasPesertaController;
 use App\Http\Controllers\AdminKelasProgramController;
-use App\Http\Controllers\AdminMahasiswaController;
-use App\Http\Controllers\AdminMatakuliahController;
-use App\Http\Controllers\AdminNotifController;
-use App\Http\Controllers\AdminPenilaianController;
-use App\Http\Controllers\AdminPeriodeController;
-use App\Http\Controllers\AdminPetunjukController;
+use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminRegisterSettingController;
-use App\Http\Controllers\AdminTimelineController;
-use App\Http\Controllers\DosenProfileController;
-use App\Http\Controllers\MahasiswaPpiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,6 +153,14 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/download', [AdminDosenController::class, 'downloadFormat']);
     });
     Route::resource('/dosen', AdminDosenController::class);
+
+    Route::prefix('/pamong')->group(function () {
+        Route::get('/', [AdminPamongController::class, 'index']);
+        Route::get('/export', [AdminPamongController::class, 'exportExcel']);
+        Route::post('/import', [AdminPamongController::class, 'import']);
+        Route::get('/download', [AdminPamongController::class, 'downloadFormat']);
+    });
+    Route::resource('/pamong', AdminPamongController::class);
 
 
     Route::prefix('/mahasiswa')->group(function () {
