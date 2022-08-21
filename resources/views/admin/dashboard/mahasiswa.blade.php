@@ -19,6 +19,11 @@
           @default
               
       @endswitch
+
+       <div class="alert alert-warning">
+          <i class="fas fa-info"></i>  Sebelum anda mencetak surat izin Praktik Pembelajaran Inovatif,silakan mengisi data-data yang diperlukan di menu PPI
+        </div>
+
     </div>
     <div class="row">
        <div class="col-md-4">
@@ -89,5 +94,11 @@
     </div>
 
     
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+   
   </div>
 </div>

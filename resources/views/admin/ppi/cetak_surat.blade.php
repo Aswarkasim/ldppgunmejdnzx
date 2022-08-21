@@ -111,8 +111,8 @@
 
   <div class="ttd" style="margin-left: 400px">
     <p>
-      Ketua Program Studi <br>
-      Pendidikan Profesi Guru <br>
+      Wakil Rektor <br>
+      Bidang Akademik <br>
       <img src="/img/ttd_hasnawi.png" width="300px" style="position: absolute" alt=""><br>
       <img src="/img/parafforwr1.png" style="width:40px;position: absolute; margin-top: 70px; margin-left: 310px" alt=""><br>
 
@@ -125,7 +125,6 @@
 
   <p>Tembusan kepada yang Terhormat:</p>
   <ol>
-    <li>Wakil Rektor Bidang Akademik UNM (Sebagai Laporan)</li>
     <li>Wakil Rektor Bidang Pengembangan dan Kerjasama UNM</li>
     <li>Para Kepala Dinas Pendidikan Provinsi Lokasi PPI</li>
     <li>Para Kepala Kantor Wilayah Kementerian Agama Provinsi Lokasi PPI</li>

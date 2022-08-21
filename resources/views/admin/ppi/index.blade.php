@@ -14,6 +14,8 @@
         {{-- <a href="" class="btn btn-primary" target="_blank"><i class="fas fa-edit"></i> Edit</a> --}}
         @include('admin.ppi.edit')
         <a href="/account/ppi/cetak" class="btn btn-info" target="_blank"><i class="fas fa-print"></i> Cetak</a>
+
+        
         <table class="table mt-2">
           <tr>
             <td>Nomor Surat</td>
@@ -36,7 +38,7 @@
           </tr>
 
           <tr>
-            <td>Sekolah Tujuan</td>
+            <td>PPI Sekolah Tujuan</td>
             <td>: {{$ppi->sekolah_lokasi}}</td>
           </tr>
 
