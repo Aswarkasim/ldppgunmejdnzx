@@ -63,7 +63,7 @@
 
     <tr>
       <td>Perihal</td>
-      <td>: {{$ppi->perihal}}</td>
+      <td>: {{'Pelaksanaan PPI '.$ppi->periode->name. ' '.$ppi->periode->jenisPpg->name.' Tahun '.$ppi->periode->tahun}}</td>
     </tr>
   </table>
 
@@ -125,6 +125,7 @@
 
   <p>Tembusan kepada yang Terhormat:</p>
   <ol>
+    <li>Rektor Universitas Negeri Makassar (sebagai laporan)</li>
     <li>Wakil Rektor Bidang Pengembangan dan Kerjasama UNM</li>
     <li>Para Kepala Dinas Pendidikan Provinsi Lokasi PPI</li>
     <li>Para Kepala Kantor Wilayah Kementerian Agama Provinsi Lokasi PPI</li>

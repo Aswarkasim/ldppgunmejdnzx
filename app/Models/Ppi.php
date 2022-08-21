@@ -20,4 +20,9 @@ class Ppi extends Model
     {
         return $this->belongsTo(Regency::class);
     }
+
+    function periode()
+    {
+        return $this->belongsTo(Periode::class)->with('jenisPpg');
+    }
 }

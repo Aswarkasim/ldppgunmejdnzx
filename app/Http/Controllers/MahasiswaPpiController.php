@@ -44,7 +44,7 @@ class MahasiswaPpiController extends Controller
                     'periode_id'    => $periode_id,
                     'mahasiswa_id'  => $mahasiswa->id,
                     // 'mahasiswa'     => $mahasiswa,
-                    'perihal'       => 'Pelaksanaan PPI Mahasiswa ' . $periode->jenisPpg->name . ' Periode ' . $periode->name . ' Tahun ' . $periode->tahun
+                    'perihal'       => 'Pelaksanaan PPI Mahasiswa ' . $periode->jenisPpg->name . ' ' . $periode->name . ' Tahun ' . $periode->tahun
                 ];
                 Ppi::create($data_ppi);
             }
@@ -99,7 +99,7 @@ class MahasiswaPpiController extends Controller
             return redirect('/account/dashboard');
         } else {
 
-            $ppi = Ppi::with('mahasiswa')->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
+            $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
             if ($ppi->kabupaten_name != null && $ppi->sekolah_lokasi != null && $ppi->namalengkap != null && $ppi->alamat != null) {
                 $data['ppi'] = $ppi;
                 return view('admin.ppi.cetak_surat', $data);
