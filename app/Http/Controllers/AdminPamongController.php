@@ -75,7 +75,7 @@ class AdminPamongController extends Controller
         $pamong = Pamong::find($id);
         // dd($pamong->nuptk);
         $data = $request->validate([
-            'nuptk'                   => 'required|unique:pamongs,nuptk,' . $pamong->nuptk,
+            'nuptk'                   => 'required|unique:pamongs,nuptk,' . $pamong->id,
             'namalengkap'           => 'required',
             'nomor_serdik'          => 'required',
             'nama_sekolah'          => 'required',

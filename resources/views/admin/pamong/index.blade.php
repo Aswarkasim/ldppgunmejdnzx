@@ -26,7 +26,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>NIDN</th>
+      <th>NUPTK</th>
       <th>Nama</th>
       <th>Action</th>
     </tr>
@@ -37,7 +37,7 @@
         
     <tr>
       <td width="50px">{{$pamong->firstItem() + $loop->index}}</td>
-      <td>{{$row->nip}} </td>
+      <td>{{$row->nuptk}} </td>
       <td><a href="/account/pamong/{{$row->id}}"><b>{{$row->namalengkap}}</b></a></td>
 
       <td>

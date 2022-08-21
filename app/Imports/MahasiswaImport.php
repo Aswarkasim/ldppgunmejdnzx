@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class MahasiswaImport implements ToModel
+class MahasiswaImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -26,5 +27,10 @@ class MahasiswaImport implements ToModel
             'status'            => 'LENGKAPI'
 
         ]);
+    }
+
+    public function startRow(): int
+    {
+        return 2;
     }
 }

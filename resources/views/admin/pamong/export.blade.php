@@ -1,11 +1,12 @@
 <table>
   <thead>
     <tr>
-      <td>NIDN</td>
-      <td>Nomor Serdos</td>
+      <td>NUPTK</td>
+      <td>Nomor Serdik</td>
       <td>Nama Lengkap</td>
       <td>NPWP</td>
       <td>Pangkat/Golongan</td>
+      <td>Nama Sekolah</td>
       <td>Alamat Rumah</td>
       <td>No Hp</td>
       <td>Nomor Rekening</td>
@@ -17,11 +18,12 @@
   <tbody>
     @foreach ($pamong as $item)
     <tr>
-      <td>{{$item->nip}}</td>
-      <td>{{$item->nomor_serdos}}</td>
+      <td>{{$item->nuptk}}</td>
+      <td>{{$item->nomor_serdik}}</td>
       <td>{{$item->namalengkap}}</td>
       <td>{{$item->npwp}}</td>
       <td>{{$item->pangkat_golongan}}</td>
+      <td>{{$item->nama_sekolah}}</td>
       <td>{{$item->alamat_rumah}}</td>
       <td>{{$item->nohp}}</td>
       <td>{{$item->nomor_rekening}}</td>

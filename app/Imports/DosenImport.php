@@ -17,7 +17,7 @@ class DosenImport implements ToModel, WithStartRow
     {
         return new Dosen([
             //
-            'nip'               => $row[0],
+            'nuptk'             => $row[0],
             'nomor_serdos'      => $row[1],
             'namalengkap'       => $row[2],
             'npwp'              => $row[3],

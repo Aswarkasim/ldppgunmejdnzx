@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Models\KelasPeserta;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class KelasPesertaImport implements ToModel
+class KelasPesertaImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -26,5 +27,10 @@ class KelasPesertaImport implements ToModel
             'kelas_id'      => $this->kelas_id,
             'no_ukg'          => $row[0]
         ]);
+    }
+
+    public function startRow(): int
+    {
+        return 2;
     }
 }

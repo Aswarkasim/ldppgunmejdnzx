@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\Models\Nilai;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class NilaiImport implements ToModel
+class NilaiImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -29,5 +30,10 @@ class NilaiImport implements ToModel
                 'nilai'         => $row[3]
             ]);
         }
+    }
+
+    public function startRow(): int
+    {
+        return 2;
     }
 }

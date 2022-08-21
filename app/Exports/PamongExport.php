@@ -3,15 +3,19 @@
 namespace App\Exports;
 
 use App\Models\Pamong;
+use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class PamongExport implements FromCollection
+class PamongExport implements FromView
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+     * @return \Illuminate\Support\Collection
+     */
+
+    public function view(): View
     {
-        return Pamong::all();
+        $data['pamong'] = Pamong::all();
+        return view('admin.pamong.export', $data);
     }
 }

@@ -13,10 +13,14 @@
       <div class="col-md-6">
         {{-- make form group for fill the namalengkap --}}
 
+         @if($errors->any())
+            {!! implode('', $errors->all('<div class="text text-danger">:message</div>')) !!}
+        @endif
+
         <div class="form-group">
-          <label for="nip">NUPTK</label>
-          <input type="text" class="form-control  @error('nip') is-invalid @enderror" id="nip" value="{{isset($pamong) ? $pamong->nip : old('nip')}}" name="nip" placeholder="NUPTK">
-           @error('nip')
+          <label for="nuptk">NUPTK</label>
+          <input type="text" class="form-control  @error('nuptk') is-invalid @enderror" id="nuptk" value="{{isset($pamong) ? $pamong->nuptk : old('nuptk')}}" name="nuptk" placeholder="NUPTK">
+           @error('nuptk')
                 <div class="invalid-feedback">
                   {{$message}}
                 </div>
@@ -37,6 +41,16 @@
           <label for="nomor_serdik">Nomor Serdik</label>
           <input type="text" class="form-control  @error('nomor_serdik') is-invalid @enderror" id="nomor_serdik" value="{{isset($pamong) ? $pamong->nomor_serdik : old('nomor_serdik')}}" name="nomor_serdik" placeholder="Nomor Serdik">
            @error('nomor_serdik')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+             @enderror
+        </div>
+
+         <div class="form-group">
+          <label for="npwp">NPWP</label>
+          <input type="text" class="form-control  @error('npwp') is-invalid @enderror" id="npwp" value="{{isset($pamong) ? $pamong->npwp : old('npwp')}}" name="npwp" placeholder="NPWP">
+           @error('npwp')
                 <div class="invalid-feedback">
                   {{$message}}
                 </div>

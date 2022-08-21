@@ -74,7 +74,7 @@ class AdminDosenController extends Controller
         $dosen = Dosen::find($id);
         // dd($dosen->nip);
         $data = $request->validate([
-            'nip'                   => 'required|unique:dosens,nip,' . $dosen->nip,
+            'nip'                   => 'required|unique:dosens,nip,' . $dosen->id,
             'namalengkap'           => 'required',
             'nomor_serdos'          => 'required',
             'npwp'                  => 'required',

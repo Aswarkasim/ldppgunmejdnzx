@@ -18,7 +18,7 @@ class CreatePamongsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('periode_id')->nullable();
             $table->string('namalengkap')->nullable();
-            $table->string('nuptk')->nullable();
+            $table->string('nuptk')->nullable()->unique();
             $table->string('nomor_serdik')->nullable();
             $table->string('npwp')->nullable();
 
