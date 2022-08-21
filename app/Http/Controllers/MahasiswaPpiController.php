@@ -100,7 +100,7 @@ class MahasiswaPpiController extends Controller
         } else {
 
             $ppi = Ppi::with('mahasiswa')->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
-            if ($ppi->kabupaten_id != null && $ppi->sekolah_lokasi != null) {
+            if ($ppi->kabupaten_name != null && $ppi->sekolah_lokasi != null && $ppi->namalengkap != null && $ppi->alamat != null) {
                 $data['ppi'] = $ppi;
                 return view('admin.ppi.cetak_surat', $data);
             } else {
