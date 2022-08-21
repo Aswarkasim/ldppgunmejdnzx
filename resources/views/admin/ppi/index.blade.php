@@ -43,7 +43,7 @@
           </tr>
 
            <tr>
-            <td>Alamat</td>
+            <td>Alamat Lokasi PPI</td>
             <td>: {{$ppi->alamat}}</td>
           </tr>
 
