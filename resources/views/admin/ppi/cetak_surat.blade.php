@@ -111,8 +111,7 @@
 
   <div class="ttd" style="margin-left: 400px">
     <p>
-      Wakil Rektor <br>
-      Bidang Akademik <br>
+      Wakil Rektor Bidang Akademik <br>
       <img src="/img/ttd_hasnawi.png" width="300px" style="position: absolute" alt=""><br>
       <img src="/img/parafforwr1.png" style="width:40px;position: absolute; margin-top: 70px; margin-left: 310px" alt=""><br>
 
