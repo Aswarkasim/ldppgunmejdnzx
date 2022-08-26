@@ -119,7 +119,7 @@
     <div class="card">
       <div class="card-body">
         <div class="text-group">
-          <span><b>Status PPI</b></span>
+          <span><b>Status PPI {{$periode->jenisPpg->name.' '.$periode->name. ' Tahun '. $periode->tahun}}</b></span>
            @switch($periode->ppi_status)
                 @case('NONAKTIF')
                     <div class="alert alert-danger">NONAKTIF</div>

@@ -107,7 +107,7 @@ class AdminDashboardController extends Controller
 
         $data = [
             // 'periode'   => Periode::latest()->get(),
-            'periode'       => Periode::find($periode_id),
+            'periode'       => Periode::with('jenisPpg')->find($periode_id),
             'jenis'     => JenisPpg::all(),
             'register_setting'  => RegisterSetting::with(['periode', 'jenis_ppg'])->first(),
             'total_mahasiswa' => Mahasiswa::wherePeriodeId($periode_id)->count(),
