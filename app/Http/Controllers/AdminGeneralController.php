@@ -25,18 +25,27 @@ class AdminGeneralController extends Controller
 
     function ubahPeriodeUser()
     {
-        $mahasiswa = Mahasiswa::all();
 
-        $user = User::whereRole('mahasiswa')->wherePeriodeId(2)->get();
-        foreach ($user as $row) {
-            $mahasiswa = Mahasiswa::whereUserId($row->id)->first();
-            if ($mahasiswa) {
-                if ($row->periode_id != $mahasiswa->periode_id) {
-                    $row->periode_id = $mahasiswa->periode_id;
-                    $row->save();
+        $periode_id = request('periode_id');
+
+        if ($periode_id) {
+
+
+            $mahasiswa = Mahasiswa::all();
+
+            $user = User::whereRole('mahasiswa')->wherePeriodeId($periode_id)->get();
+            foreach ($user as $row) {
+                $mahasiswa = Mahasiswa::whereUserId($row->id)->first();
+                if ($mahasiswa) {
+                    if ($row->periode_id != $mahasiswa->periode_id) {
+                        $row->periode_id = $mahasiswa->periode_id;
+                        $row->save();
+                    }
                 }
             }
+            return redirect()->back()->with('success', 'Berhasil mengubah periode user');
         }
-        return redirect()->back()->with('success', 'Berhasil mengubah periode user');
+    }else{
+        die('gagal');
     }
 }
