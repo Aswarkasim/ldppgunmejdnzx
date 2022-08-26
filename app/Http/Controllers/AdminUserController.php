@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\UserExport;
-use App\Models\Adminkelasrole;
 use App\Models\User;
-use App\Models\Province;
-use App\Models\VerifyRole;
-use App\Models\BidangStudi;
 use App\Models\Kelas;
 use App\Models\Periode;
+use App\Models\Province;
+use App\Models\Mahasiswa;
+use App\Models\VerifyRole;
+use App\Exports\UserExport;
+use App\Models\BidangStudi;
 use Illuminate\Http\Request;
+use App\Models\Adminkelasrole;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Hash;
@@ -272,5 +273,22 @@ class AdminUserController extends Controller
         DB::table('adminkelasroles')->delete($id);
         Toastr::success('Kelas berhasil dihapus', 'Sukses');
         return redirect('/account/user/' . $user_id . '?role=admin');
+    }
+
+    function ubahPeriodeUser()
+    {
+
+        $periode_id = request('periode_id');
+
+        if ($periode_id) {
+            $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->get();
+
+            foreach ($mahasiswa as $item) {
+                $user = User::whereNoUkg($item->no_ukg)->first();
+                if($item->periode_id != $user->periode_id){
+                    $user->periode_id = $mahasiswa
+                }
+            }
+        }
     }
 }
