@@ -44,8 +44,8 @@ class AdminGeneralController extends Controller
                 }
             }
             return redirect()->back()->with('success', 'Berhasil mengubah periode user');
+        } else {
+            die('gagal');
         }
-    }else{
-        die('gagal');
     }
 }
