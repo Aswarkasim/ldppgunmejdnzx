@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\kelas;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -16,7 +16,7 @@ class KelasImport implements ToModel
      */
     public function model(array $row)
     {
-        return new kelas([
+        return new Kelas([
             //
             'periode_id'    => Session::get('periode_id'),
             'name'          => $row[0]
