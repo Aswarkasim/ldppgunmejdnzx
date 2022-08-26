@@ -22,7 +22,7 @@
             <td>{{$item->no_ukg}}</td>
             {{-- <td>{{ isset($item->mahasiswa) ? $item->mahasiswa->namalengkap : ''}}</td> --}}
             @isset($item->mahasiswa)
-                <td><b><a href="/account/verifikasi/biodata/{{$item->mahasiswa->user_id}}" target="blank">{{$item->mahasiswa->namalengkap}}</b></a></td>
+                <td><b><a href="/account/kelas/detail/peserta/{{$item->mahasiswa->no_ukg}}?kelas_id={{$item->kelas_id}}" >{{$item->mahasiswa->namalengkap}}</b></a></td>
             @else
             <td>Nama Kosong</td>
             @endisset

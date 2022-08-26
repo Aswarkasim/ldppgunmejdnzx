@@ -130,6 +130,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::post('/peserta/import', [AdminKelasPesertaController::class, 'import']);
         Route::get('/peserta/download', [AdminKelasPesertaController::class, 'downloadFormat']);
         Route::get('/peserta/delete/{id}', [AdminKelasPesertaController::class, 'delete']);
+        Route::get('/detail/peserta/{no_ukg}', [AdminKelasPesertaController::class, 'detailPeserta']);
     });
     Route::resource('/kelas', AdminKelasController::class);
 
