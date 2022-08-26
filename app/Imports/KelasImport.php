@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class KelasImport implements ToModel
+class KelasImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -23,8 +23,8 @@ class KelasImport implements ToModel
         ]);
     }
 
-    // public function startRow(): int
-    // {
-    //     return 2;
-    // }
+    public function startRow(): int
+    {
+        return 2;
+    }
 }
