@@ -275,20 +275,20 @@ class AdminUserController extends Controller
         return redirect('/account/user/' . $user_id . '?role=admin');
     }
 
-    function ubahPeriodeUser()
-    {
+    // function ubahPeriodeUser()
+    // {
 
-        $periode_id = request('periode_id');
+    //     $periode_id = request('periode_id');
 
-        if ($periode_id) {
-            $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->get();
+    //     if ($periode_id) {
+    //         $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->get();
 
-            foreach ($mahasiswa as $item) {
-                $user = User::whereNoUkg($item->no_ukg)->first();
-                if($item->periode_id != $user->periode_id){
-                    $user->periode_id = $mahasiswa
-                }
-            }
-        }
-    }
+    //         foreach ($mahasiswa as $item) {
+    //             $user = User::whereNoUkg($item->no_ukg)->first();
+    //             if($item->periode_id != $user->periode_id){
+    //                 $user->periode_id = $mahasiswa
+    //             }
+    //         }
+    //     }
+    // }
 }
