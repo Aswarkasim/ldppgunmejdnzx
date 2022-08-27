@@ -50,7 +50,7 @@ class AdminPenilaianController extends Controller
         // $mahasiswa = Mahasiswa::wherePeriodeId($periode_id)->whereStatus('VALID')->paginate(10);
         $kelas_peserta = KelasPeserta::whereKelasId($kelas_id)->get();
         foreach ($kelas_peserta as $item) {
-            $cek = Nilai::whereNoUkg($item->no_ukg)->whereMatakuliahId($matakuliah_id)->first();
+            $cek = Nilai::whereNoUkg($item->no_ukg)->whereMatakuliahId($matakuliah_id)->wherePeriodeId($periode_id)->first();
             if ($cek == false) {
                 $data = [
                     'kelas_id'         => $kelas_id,

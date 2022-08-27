@@ -17,12 +17,13 @@
       </div>
       </form>
   </div>
-<table id="example1" class="table table-striped">
+<table id="example1" class="table table-striped table-hover">
   <thead>
     <tr>
       <th>No</th>
       <th>Kelas</th>
       <th>Jumlah Mahasiswa</th>
+      <th>NIilai</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -34,6 +35,7 @@
       <td width="50px">{{$kelas->firstItem() + $loop->index}}</td>
       <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} </b></a></td>
       <td>{{count($row->kelaspeserta)}}</td>
+      <td><a href="/account/kelas/show/nilai/{{$row->id}}"><b><i class="fas fa-circle"></i> Lihat Nilai</b></a></td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

@@ -125,6 +125,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::prefix('/kelas')->middleware('role:superadmin')->group(function () {
         Route::post('/import', [AdminKelasController::class, 'import']);
+        Route::get('/show/nilai/{kelas_id}', [AdminKelasController::class, 'lihatNilai']);
         Route::get('/download', [AdminKelasController::class, 'downloadFormat']);
         Route::post('/peserta/create', [AdminKelasPesertaController::class, 'create']);
         Route::post('/peserta/import', [AdminKelasPesertaController::class, 'import']);

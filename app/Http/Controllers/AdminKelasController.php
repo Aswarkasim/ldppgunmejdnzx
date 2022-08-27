@@ -6,6 +6,8 @@ use App\Models\Kelas;
 use Ramsey\Uuid\Uuid;
 use App\Imports\KelasImport;
 use App\Models\KelasPeserta;
+use App\Models\Matakuliah;
+use App\Models\Nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -173,5 +175,20 @@ class AdminKelasController extends Controller
     {
         // return Storage::download('/public/docs/format-excel.xlsx');
         return response()->download('dokumen/format-kelas.xlsx');
+    }
+
+    function lihatNilai($kelas_id)
+    {
+        $periode_id = Session::get('periode_id');
+        $matakuliah_id = request('matakuliah_id');
+        $nilai = Nilai::with(['mahasiswa', 'matakuliah'])->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get();
+        // dd($nilai);
+        $data = [
+            'title'             => 'Detail Nilai dari ',
+            'nilai'             => $nilai,
+            'matakuliah'        => Matakuliah::wherePeriodeId($periode_id)->get(),
+            'content'           => 'admin/kelas/nilai'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 }
