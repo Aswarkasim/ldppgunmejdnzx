@@ -11,7 +11,7 @@
             <select name="matakuliah_id" class="form-control" id="">
               <option value="">-- Pilih Matakuliah --</option>
               @foreach ($matakuliah as $item)
-              <option value="{{$item->id}}">{{$item->name}}</option>
+              <option value="{{$item->id}}" {{$item->id == request('matakuliah_id') ? 'selected' : ''}}>{{$item->name}}</option>
               @endforeach
             </select>
             <button type="submit" class="btn btn-primary">Lihat</button>
