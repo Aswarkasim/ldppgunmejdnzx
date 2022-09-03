@@ -376,7 +376,7 @@ class AdminMahasiswaController extends Controller
             }
 
             $kelasPeserta = KelasPeserta::with('kelas')->whereNoUkg($item->no_ukg)->first();
-            dd($kelasPeserta);
+            // dd($kelasPeserta);
             if (isset($kelasPeserta)) {
                 $item->kelas_name = $kelasPeserta->kelas->name;
             }
