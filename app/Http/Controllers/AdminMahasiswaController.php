@@ -373,48 +373,70 @@ class AdminMahasiswaController extends Controller
 
             if (isset($item->bidang_studi)) {
                 $item->bidang_studi_name = $item->bidang_studi->name;
+            } else {
+                $item = '';
             }
 
             $kelasPeserta = KelasPeserta::with('kelas')->whereNoUkg($item->no_ukg)->first();
             // dd($kelasPeserta);
             if (isset($kelasPeserta)) {
                 $item->kelas_name = $kelasPeserta->kelas->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->bidang_studi)) {
                 $item->bidang_studi_name = $item->bidang_studi->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->kabupatenByDomisili)) {
                 $item->kabupaten_tempat_tinggal_name = $item->kabupatenByDomisili->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->provinceBydomisili)) {
                 $item->provinsi_tempat_tinggal_name = $item->provinceBydomisili->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->kabupatenByPts1)) {
                 $item->kabupaten_kota_pt_s1_name = $item->kabupatenByPts1->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->provinceByPts1)) {
                 $item->provinsi_pt_s1_name = $item->provinceByPts1->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->kabupatenByPts2)) {
                 $item->kabupaten_kota_pt_s2_name = $item->kabupatenByPts2->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->provinceByPts2)) {
                 $item->provinsi_pt_s2_name = $item->provinceByPts2->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->kabupatenByOrangtua)) {
                 $item->kabupaten_orangtua_name = $item->kabupatenByOrangtua->name;
+            } else {
+                $item = '';
             }
 
             if (isset($item->kabupatenByOrangtua)) {
                 $item->provinsi_orangtua_name = $item->provinceByOrangtua->name;
+            } else {
+                $item = '';
             }
             $item->save();
         }
