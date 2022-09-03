@@ -33,7 +33,7 @@
         {{-- @dd($row->mahasiswa) --}}
     <tr>
       <td width="50px">{{$kelas->firstItem() + $loop->index}}</td>
-      <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} <small>ID : {{$item->id}}</small> </b></a></td>
+      <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} <small>ID : {{$row->id}}</small> </b></a></td>
       <td>{{count($row->kelaspeserta)}}</td>
       <td><a href="/account/kelas/show/nilai/{{$row->id}}"><b><i class="fas fa-circle"></i> Lihat Nilai</b></a></td>
       <td>
