@@ -68,7 +68,7 @@
         
         <div class="form-group">
           <label for="alamat_rumah">Alamat Rumah</label>
-          <input type="text" class="form-control  @error('alamat_rumah') is-invalid @enderror" id="alamat_rumah" value="{{isset($dosen) ? $dosen->alamat_rumah : old('alamat_rumah')}}" name="alamat_rumah" placeholder="Alamat Rumah">
+          <input type="text" name="alamat_rumah" class="form-control  @error('alamat_rumah') is-invalid @enderror" id="alamat_rumah" value="{{isset($dosen) ? $dosen->alamat_rumah : old('alamat_rumah')}}"  placeholder="Alamat Rumah">
            @error('alamat_rumah')
                 <div class="invalid-feedback">
                   {{$message}}
