@@ -31,7 +31,7 @@
 
           <tr>
             <td>Alamat</td>
-            <td>: {{$dosen->alamat}}</td>
+            <td>: {{$dosen->alamat_rumah}}</td>
           </tr>
 
           <tr>
