@@ -190,6 +190,13 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/kategori', AdminCategoryPostController::class);
     });
 
+    // ============VERIFICATOR====================
+    Route::prefix('/verificator')->middleware('role:verificator')->group(function () {
+        Route::get('/kelas', [AdminKelasController::class, 'index']);
+        Route::get('/kelas/show/nilai/{kelas_id}', [AdminKelasController::class, 'lihatNilai']);
+    });
+
+
     // ============DOSEN====================
     Route::prefix('/user/dosen')->middleware('role:dosen')->group(function () {
         Route::get('/', [DosenProfileController::class, 'index']);

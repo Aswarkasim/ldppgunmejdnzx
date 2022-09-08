@@ -22,19 +22,19 @@
           <table class="table">
             <tr>
               <th>No</th>
+              <th>NPM</th>
               <th>Nama</th>
               <td>Nilai Acuan</td>
               <td>Nilai Index</td>
-              <td>Nilai Mutu</td>
             </tr>
             
             @foreach ($nilai as $item)
             <tr>
               <td>{{$loop->iteration}}</td>
+              <td>{{$item->mahasiswa->npm}}</td>
               <td>{{$item->mahasiswa->namalengkap}}</td>
               <td>{{$item->nilai_acuan}}</td>
               <td>{{$item->nilai_index}}</td>
-              <td>{{$item->nilai_mutu}}</td>
             </tr>
             @endforeach
           </table>

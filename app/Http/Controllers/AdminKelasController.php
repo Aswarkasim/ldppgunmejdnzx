@@ -26,6 +26,11 @@ class AdminKelasController extends Controller
         //
         $cari = request('cari');
         $periode_id = Session::get('periode_id');
+
+        if ($periode_id == null) {
+            $periode_id = auth()->user()->periode_id;
+        }
+
         if ($cari) {
             $kelas = Kelas::with(['kelaspeserta'])->where('name', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('name', 'asc')->paginate(10);
         } else {
@@ -180,6 +185,12 @@ class AdminKelasController extends Controller
     function lihatNilai($kelas_id)
     {
         $periode_id = Session::get('periode_id');
+
+        if ($periode_id == null) {
+            $periode_id = auth()->user()->periode_id;
+        }
+
+
         $matakuliah_id = request('matakuliah_id');
         $nilai = Nilai::with(['mahasiswa', 'matakuliah'])->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get();
         // dd($nilai);

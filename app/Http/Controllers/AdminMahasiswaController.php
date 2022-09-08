@@ -31,14 +31,21 @@ class AdminMahasiswaController extends Controller
         $cari = request('cari');
         $filter = request('filter');
 
+
+
         if ($filter == null) {
             $filter = 'AKTIF';
         }
 
+        $berkas = request('berkas');
+        if ($berkas == null) {
+            $berkas = 'VALID';
+        }
+
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->whereStatus($berkas)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKeaktifan($filter)->whereStatus($berkas)->latest()->paginate(10);
         }
 
 
@@ -58,18 +65,21 @@ class AdminMahasiswaController extends Controller
         $cari = request('cari');
         $filter = request('filter');
 
-        if (
-            $filter == null
-        ) {
+        if ($filter == null) {
             $filter = 'AKTIF';
+        }
+
+        $berkas = request('berkas');
+        if ($berkas == null) {
+            $berkas = 'VALID';
         }
 
         $kementerian = 'KEMENDIKBUD';
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         }
 
 
@@ -96,10 +106,15 @@ class AdminMahasiswaController extends Controller
             $filter = 'AKTIF';
         }
 
+        $berkas = request('berkas');
+        if ($berkas == null) {
+            $berkas = 'VALID';
+        }
+
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
         }
 
 

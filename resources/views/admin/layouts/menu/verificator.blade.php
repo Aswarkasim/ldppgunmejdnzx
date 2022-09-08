@@ -6,7 +6,15 @@
       </p>
     </a>
   </li>   --}}
-  
+
+  <li class="nav-item">
+    <a href="/account/verificator/kelas" class="nav-link {{Request::is('account/verificator/kelas*') ? 'active' : ''}}">
+      <i class="nav-icon fas fa-edit"></i>
+      <p>
+        Kelas
+      </p>
+    </a>
+  </li>
   
   <li class="nav-item">
   <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi*') ? 'active' : ''}}">

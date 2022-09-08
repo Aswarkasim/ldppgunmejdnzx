@@ -29,6 +29,16 @@
         <option value="MUT" {{request('filter') == 'MUT' ? 'selected' : ''}}>MUT</option>
         <option value="KELUAR" {{request('filter') == 'KELUAR' ? 'selected' : ''}}>KELUAR</option>
       </select>
+
+      <select name="berkas" class="form-control">
+        <option value="">-- STATUS BERKAS --</option>
+        <option value="LENGKAPI" {{request('berkas') == 'LENGKAPI' ? 'selected' : ''}}>BELUM LENGKAP</option>
+        <option value="WAITING" {{request('berkas') == 'WAITING' ? 'selected' : ''}}>MENUNGGU</option>
+        <option value="VALID" {{request('berkas') == 'VALID' ? 'selected' : ''}}>VALID</option>
+        <option value="INVALID" {{request('berkas') == 'INVALID' ? 'selected' : ''}}>TIDAK VALID</option>
+      </select>
+
+
       @endif
 
 

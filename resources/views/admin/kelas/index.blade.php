@@ -3,9 +3,21 @@
 
 <div class="card">
 <div class="card-body">
-  <a href="{{$create}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-  @include('admin/kelas/import')
+@php
+    $role = auth()->user()->role;
 
+    if($role == 'superadmin'){
+      $link_nilai = '/account/kelas/show/nilai/';
+    }else if($role == 'verificator'){
+      $link_nilai = '/account/verificator/kelas/show/nilai/';
+    }
+@endphp
+  @if ($role == 'superadmin')
+      
+    <a href="{{$create}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+    @include('admin/kelas/import')
+  
+  @endif
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">
@@ -35,7 +47,7 @@
       <td width="50px">{{$kelas->firstItem() + $loop->index}}</td>
       <td><a href="/account/kelas/{{$row->id}}"><b>{{$row->name}} <small>ID : {{$row->id}}</small> </b></a></td>
       <td>{{count($row->kelaspeserta)}}</td>
-      <td><a href="/account/kelas/show/nilai/{{$row->id}}"><b><i class="fas fa-circle"></i> Lihat Nilai</b></a></td>
+      <td><a href="{{$link_nilai.$row->id}}"><b><i class="fas fa-circle"></i> Lihat Nilai</b></a></td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
