@@ -26,6 +26,8 @@
             @else
             <td>Nama Kosong</td>
             @endisset
+            
+            @isset($item->mahasiswa)
             <td>
             <select name="keaktifan{{$item->mahasiswa->id}}" value="{{$item->mahasiswa->nilai}}" onchange="updateStatusMahasiswa({{$item->mahasiswa->id}})" class="form-control">
               <option value="">--Nilai--</option>
@@ -37,6 +39,11 @@
               <option value="MUT" {{$item->mahasiswa->keaktifan == 'MUT' ? 'selected' : ''}}>MUT</option>
               <option value="KELUAR" {{$item->mahasiswa->keaktifan == 'KELUAR' ? 'selected' : ''}}>CUTI</option>
             </select>
+            @else
+            <td>Nama Kosong</td>
+            @endisset
+
+
             <td>
               <a href="/account/kelas/peserta/delete/{{$item->id}}"><i class="fas fa-sign-out-alt"></i> Keluarkan</a>
             </td>
