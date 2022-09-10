@@ -29,6 +29,7 @@
         <thead>
           <tr>
              <th>No</th>
+            <th>No UKG</th>
             <th>Nama</th>
             <th>Matakuliah</th>
             <th>Nilai Acuan</th>
@@ -41,11 +42,12 @@
           <tr>
           
           <td width="50px">{{$loop->iteration}}</td>
+          <td> {{$row->no_ukg}} </td>
           @isset($item->mahasiswa)
 
             {{-- <td width="50px">{{$kelas_peserta->firstItem() + $loop->index}}</td> --}}
           <td>
-            {{$row->no_ukg}} - {{$row->mahasiswa->namalengkap}}
+            {{$row->mahasiswa->namalengkap}}
           </td>
           <td>{{$row->matakuliah->name}}</td>
           <td>
