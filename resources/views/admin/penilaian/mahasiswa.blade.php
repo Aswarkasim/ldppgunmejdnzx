@@ -47,7 +47,7 @@
 
             {{-- <td width="50px">{{$kelas_peserta->firstItem() + $loop->index}}</td> --}}
           <td>
-            {{$row->mahasiswa->namalengkap}}
+            {{isset($row->mahasiswa) ? $row->mahasiswa->namalengkap : 'Data Kosong'}}
           </td>
           <td>{{$row->matakuliah->name}}</td>
           <td>
