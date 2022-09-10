@@ -38,11 +38,11 @@
 
         <tbody>
           @foreach ($nilai as $row)
+          <tr>
           
           <td width="50px">{{$loop->iteration}}</td>
           @isset($item->mahasiswa)
 
-          <tr>
             {{-- <td width="50px">{{$kelas_peserta->firstItem() + $loop->index}}</td> --}}
           <td>
             {{$row->no_ukg}} - {{$row->mahasiswa->namalengkap}}
@@ -67,14 +67,14 @@
           </td>
           <td>{{$row->nilai_index}}</td>
 
-          </tr>
+         
           @else
           <td>Data Kosong</td>
           <td>Data Kosong</td>
           <td>Data Kosong</td>
           <td>Data Kosong</td>
           @endisset
-
+        </tr>
           @endforeach
 
         </tbody>
