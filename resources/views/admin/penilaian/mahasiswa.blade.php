@@ -23,7 +23,7 @@
         </form>
     </div>
  
-
+@dd($nilai)
     <p class="text-info my-2"><i class="fas fa-info"></i> Tekan Sinkronasi jika Nilai index tidak sinkron</p>
     <table id="example1" class="table table-striped">
         <thead>
