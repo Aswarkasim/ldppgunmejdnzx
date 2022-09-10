@@ -51,7 +51,7 @@
           <td>{{$row->matakuliah->name}}</td>
           
           
-          @isset($item->mahasiswa)
+          @isset($row->mahasiswa)
           <td>
              <input type="number" name="nilai_acuan{{$row->id}}" value="{{$row->nilai_acuan}}" onchange="updateNilai({{$row->id}})" class="form-control">
           </td>
