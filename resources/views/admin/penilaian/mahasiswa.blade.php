@@ -23,13 +23,13 @@
         </form>
     </div>
  
-@dd($nilai)
+
     <p class="text-info my-2"><i class="fas fa-info"></i> Tekan Sinkronasi jika Nilai index tidak sinkron</p>
     <table id="example1" class="table table-striped">
         <thead>
           <tr>
              <th>No</th>
-            <th>No UKG</th>
+            <th>NO UKG</th>
             <th>Nama</th>
             <th>Matakuliah</th>
             <th>Nilai Acuan</th>
@@ -42,8 +42,8 @@
           <tr>
           
           <td width="50px">{{$loop->iteration}}</td>
-          <td> {{$row->no_ukg}} </td>
-          @isset($item->mahasiswa)
+          <td> {{$row->no_ukg}} -</td>
+          {{-- @isset($item->mahasiswa) --}}
 
             {{-- <td width="50px">{{$kelas_peserta->firstItem() + $loop->index}}</td> --}}
           <td>
@@ -70,12 +70,12 @@
           <td>{{$row->nilai_index}}</td>
 
          
-          @else
+          {{-- @else
           <td>Data Kosong</td>
           <td>Data Kosong</td>
           <td>Data Kosong</td>
           <td>Data Kosong</td>
-          @endisset
+          @endisset --}}
         </tr>
           @endforeach
 
