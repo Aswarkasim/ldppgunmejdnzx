@@ -43,39 +43,24 @@
           
           <td width="50px">{{$loop->iteration}}</td>
           <td> {{$row->no_ukg}} -</td>
-          {{-- @isset($item->mahasiswa) --}}
-
-            {{-- <td width="50px">{{$kelas_peserta->firstItem() + $loop->index}}</td> --}}
+          
+          {{-- <td width="50px">{{$kelas_peserta->firstItem() + $loop->index}}</td> --}}
           <td>
             {{isset($row->mahasiswa) ? $row->mahasiswa->namalengkap : 'Data Kosong'}}
           </td>
           <td>{{$row->matakuliah->name}}</td>
+          
+          
+          @isset($item->mahasiswa)
           <td>
              <input type="number" name="nilai_acuan{{$row->id}}" value="{{$row->nilai_acuan}}" onchange="updateNilai({{$row->id}})" class="form-control">
-            {{-- <select name="nilai{{$row->id}}" value="{{$row->nilai}}" onchange="updateNilai({{$row->id}})" class="form-control">
-              <option value="">--Nilai--</option>
-              <option value="A" {{$row->nilai == 'A' ? 'selected' : ''}}>A</option>
-              <option value="A-" {{$row->nilai == 'A-' ? 'selected' : ''}}>A-</option>
-              <option value="B+" {{$row->nilai == 'B+' ? 'selected' : ''}}>B+</option>
-              <option value="B" {{$row->nilai == 'B' ? 'selected' : ''}}>B</option>
-              <option value="B-" {{$row->nilai == 'B-' ? 'selected' : ''}}>B-</option>
-              <option value="C+" {{$row->nilai == 'C+' ? 'selected' : ''}}>C+</option>
-              <option value="C" {{$row->nilai == 'C' ? 'selected' : ''}}>C</option>
-              <option value="C-" {{$row->nilai == 'C-' ? 'selected' : ''}}>C-</option>
-              <option value="D" {{$row->nilai == 'D' ? 'selected' : ''}}>D</option>
-              <option value="E" {{$row->nilai == 'E' ? 'selected' : ''}}>E</option>
-              <option value="K" {{$row->nilai == 'K' ? 'selected' : ''}}>K</option>
-            </select> --}}
           </td>
+          @else
+          <td>Data Kosong</td>
+          @endisset 
           <td>{{$row->nilai_index}}</td>
 
          
-          {{-- @else
-          <td>Data Kosong</td>
-          <td>Data Kosong</td>
-          <td>Data Kosong</td>
-          <td>Data Kosong</td>
-          @endisset --}}
         </tr>
           @endforeach
 
