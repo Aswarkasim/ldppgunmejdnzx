@@ -31,7 +31,7 @@ class MahasiswaGeneralController extends Controller
                 // die('kedua');
                 $cek = $this->checkLulus($nilai);
 
-                if ($cek == false) {
+                if ($cek) {
                     // die('ketiga');
                     // die($cek);
                     $data['mahasiswa'] = Mahasiswa::with('periode')->whereUserId($user_id)->first();
@@ -56,9 +56,9 @@ class MahasiswaGeneralController extends Controller
 
         foreach ($nilai as $item) {
             if ($item->nilai_index != null && $item->nilai_index != 'K' && $item->nilai_index != 'E') {
-                return true;
-            } else {
                 return false;
+            } else {
+                return true;
             }
         }
     }
