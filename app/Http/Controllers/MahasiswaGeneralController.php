@@ -56,9 +56,9 @@ class MahasiswaGeneralController extends Controller
 
         foreach ($nilai as $item) {
             if ($item->nilai_index != null && $item->nilai_index != 'K' && $item->nilai_index != 'E') {
-                return false;
-            } else {
                 return true;
+            } else {
+                return false;
             }
         }
     }
