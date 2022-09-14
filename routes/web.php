@@ -34,6 +34,7 @@ use App\Http\Controllers\AdminKelasPesertaController;
 use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminRegisterSettingController;
+use App\Http\Controllers\MahasiswaGeneralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     Route::get('/dashboard/status', [AdminDashboardController::class, 'changeStatus']);
     Route::get('/dashboard/config/periode/{id}', [AdminDashboardController::class, 'periodeLD']);
     Route::put('/dashboard/periode/ppi/update', [AdminDashboardController::class, 'updatePpiPeriode']);
+    Route::put('/dashboard/periode/skbs/update', [AdminDashboardController::class, 'updateSkbsPeriode']);
     Route::get('/periode', [AdminDashboardController::class, 'periodeActive']);
 
 
@@ -245,6 +247,10 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/', [MahasiswaPpiController::class, 'index']);
         Route::put('/edit', [MahasiswaPpiController::class, 'edit']);
         Route::get('/cetak', [MahasiswaPpiController::class, 'cetakSurat']);
+    });
+
+    Route::prefix('/mahasiswa')->middleware('role:mahasiswa')->group(function () {
+        Route::get('/skbs/cetak', [MahasiswaGeneralController::class, 'cetakSkbs']);
     });
 
 

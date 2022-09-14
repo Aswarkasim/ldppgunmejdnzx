@@ -247,4 +247,18 @@ class AdminDashboardController extends Controller
         Alert::success('Sukses', "Pengaturan PPI telah diubah");
         return redirect('/account/dashboard');
     }
+
+
+    function updateSkbsPeriode(Request $request)
+    {
+        $periode_id = Session::get('periode_id');
+        $periode = Periode::find($periode_id);
+        $data = [
+            'nomor_skbs_awal' => $request->nomor_skbs_awal,
+            'nomor_skbs_akhir' => $request->nomor_skbs_akhir,
+        ];
+        $periode->update($data);
+        Alert::success('Sukses', "SKBS telah diubah");
+        return redirect('/account/dashboard');
+    }
 }

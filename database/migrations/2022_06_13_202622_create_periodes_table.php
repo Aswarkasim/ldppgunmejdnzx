@@ -22,6 +22,8 @@ class CreatePeriodesTable extends Migration
             $table->enum('ppi_status', ['AKTIF', 'NONAKTIF'])->default('NONAKTIF');
             $table->integer('nomor_surat_first')->nullable();
             $table->integer('nomor_surat_last')->nullable();
+            $table->integer('nomor_skbs_awal')->nullable();
+            $table->integer('nomor_skbs_akhir')->nullable();
             $table->timestamps();
         });
     }

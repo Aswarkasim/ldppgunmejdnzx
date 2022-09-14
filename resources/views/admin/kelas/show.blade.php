@@ -7,6 +7,14 @@
         <a href="/account/kelas" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</a>
           @include('admin/kelas/add_peserta')
           @include('admin/kelas/import_peserta')
+          <br>
+         
+          <p>Admin Kelas 
+
+            @foreach ($admin as $item)
+                {{ $item->user->name }},
+            @endforeach
+          </p>
         <table class="table table-hover mt-2">
           <tr>
             <th width="100px">No.</th>

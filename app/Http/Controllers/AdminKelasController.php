@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use Ramsey\Uuid\Uuid;
 use App\Imports\KelasImport;
+use App\Models\Adminkelasrole;
 use App\Models\KelasPeserta;
 use App\Models\Matakuliah;
 use App\Models\Nilai;
@@ -90,10 +91,12 @@ class AdminKelasController extends Controller
         //   //
         $kelas = Kelas::find($id);
         $kelas_Peserta = KelasPeserta::with(['mahasiswa', 'kelas'])->whereKelasId($id)->get();
+        $admin = Adminkelasrole::with('user')->whereKelasId($id)->get();
         // dd($kelas);
         $data = [
             'title'   => 'Peserta Kelas ' . $kelas->name,
             'kelas'    => $kelas_Peserta,
+            'admin'     => $admin,
             'content' => 'admin/kelas/show'
         ];
         return view('admin/layouts/wrapper', $data);

@@ -141,9 +141,30 @@
           <span><b>Nomor Surat Akhir</b></span>
           <p>{{$periode->nomor_surat_last}}</p>
         </div>
-@include('admin.dashboard.ppi')
+        @include('admin.dashboard.ppi')
       </div>
     </div>
   </div>
+
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+
+        <span><b>SKBS</b></span>
+
+        <div class="text-group">
+          <span><b>Nomor Surat Awal</b></span>
+          <p>{{$periode->nomor_skbs_awal}}</p>
+        </div>
+
+        <div class="text-group">
+          <span><b>Nomor Surat Akhir</b></span>
+          <p>{{$periode->nomor_skbs_akhir}}</p>
+        </div>
+        @include('admin.dashboard.skbs')
+      </div>
+    </div>
+  </div>
+
 </div>
 

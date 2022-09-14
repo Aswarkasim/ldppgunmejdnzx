@@ -15,4 +15,9 @@ class Adminkelasrole extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
+
+    function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
