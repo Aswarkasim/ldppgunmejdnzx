@@ -31,7 +31,7 @@ class MahasiswaGeneralController extends Controller
                 // die('kedua');
                 $cek = $this->checkLulus($nilai);
 
-                if ($cek) {
+                if ($cek == false) {
                     // die('ketiga');
                     // die($cek);
                     $data['mahasiswa'] = Mahasiswa::with('periode')->whereUserId($user_id)->first();
