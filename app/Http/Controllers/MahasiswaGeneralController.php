@@ -54,12 +54,22 @@ class MahasiswaGeneralController extends Controller
     private function checkLulus($nilai)
     {
 
+        $jumlah = count($nilai);
+        $berhasil = 0;
+        $gagal = 0;
+
         foreach ($nilai as $item) {
             if ($item->nilai_index != null && $item->nilai_index != 'K' && $item->nilai_index != 'E') {
-                return true;
+                $berhasil = $berhasil + 1;
             } else {
-                return false;
+                $gagal = $gagal + 1;
             }
+        }
+
+        if ($berhasil == $jumlah) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
