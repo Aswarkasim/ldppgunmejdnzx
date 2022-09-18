@@ -22,7 +22,7 @@ class MahasiswaGeneralController extends Controller
 
         $matakuliah = Matakuliah::wherePeriodeId($periode_id)->get();
         // dd($matakuliah);
-
+        // cek kelulusan
         if ($mahasiswa->keaktifan == 'LULUS') {
             // die('ketiga');
             // die($cek);
