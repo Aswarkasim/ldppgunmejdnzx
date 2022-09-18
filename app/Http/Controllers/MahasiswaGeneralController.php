@@ -6,6 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Models\Nilai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpSpreadsheet\Calculation\Logical\Boolean;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,38 +16,21 @@ class MahasiswaGeneralController extends Controller
     function cetakSkbs()
     {
         // die('masuk');
-        $user_id = auth()->user()->id;
         $no_ukg = auth()->user()->no_ukg;
         $periode_id = auth()->user()->periode_id;
+        $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
 
         $matakuliah = Matakuliah::wherePeriodeId($periode_id)->get();
-        $nilai = Nilai::whereNoUkg($no_ukg)->get();
+        // dd($matakuliah);
 
-        // dd($nilai);
-
-        if (count($matakuliah) == count($nilai)) {
-            // die('pertama');
-
-            if (count($nilai) > 0) {
-                // die('kedua');
-                $cek = $this->checkLulus($nilai);
-
-                if ($cek) {
-                    // die('ketiga');
-                    // die($cek);
-                    $data['mahasiswa'] = Mahasiswa::with('periode')->whereUserId($user_id)->first();
-                    $data['matakuliah'] = Matakuliah::wherePeriodeId($periode_id)->get();
-                    return view('admin.mahasiswa.cetak_skbs', $data);
-                } else {
-                    Alert::info('Info', 'Masih ada matakuliah yang belum dilulusi');
-                    return redirect('/account/dashboard');
-                }
-            } else {
-                Alert::info('Info', 'Masih ada matakuliah yang belum dilulusi');
-                return redirect('/account/dashboard');
-            }
+        if ($mahasiswa->keaktifan == 'LULUS') {
+            // die('ketiga');
+            // die($cek);
+            $data['mahasiswa'] = $mahasiswa;
+            $data['matakuliah'] = $matakuliah;
+            return view('admin.mahasiswa.cetak_skbs', $data);
         } else {
-            Alert::info('Info', 'Masih ada matakuliah yang belum diinput');
+            Alert::info('Info', 'Masih ada matakuliah yang belum dilulusi');
             return redirect('/account/dashboard');
         }
     }

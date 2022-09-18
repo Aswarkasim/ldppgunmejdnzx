@@ -219,6 +219,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         // Route::get('/kelas/mahasiswa/{id}', [AdminPenilaianController::class, 'mahasiswa']);
         Route::get('/kelas/matakuliah/{id}', [AdminPenilaianController::class, 'matakuliah']);
         Route::get('/matakuliah/mahasiswa/{id}', [AdminPenilaianController::class, 'mahasiswa']);
+        Route::get('/matakuliah/mahasiswa/sinkronkan/{id}', [AdminPenilaianController::class, 'sinkronkan']);
         Route::get('/nilai/update', [AdminPenilaianController::class, 'updateNilai']);
         Route::get('/mahasiswa/keaktifan', [AdminPenilaianController::class, 'updateStatusMahasiswa']);
         Route::get('/show/{id}', [AdminPenilaianController::class, 'show']);

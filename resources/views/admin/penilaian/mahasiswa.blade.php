@@ -17,7 +17,7 @@
             <input type="text" name="cari" class="form-control" placeholder="Cari..">
             <span class="input-group-append">
               <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-              <a href="/account/penilaian/matakuliah/mahasiswa/{{$matakuliah_id}}?kelas_id={{$kelas_id}}" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i> Sinkronasi</a>
+              <a href="/account/penilaian/matakuliah/mahasiswa/sinkronkan/{{$matakuliah_id}}?kelas_id={{$kelas_id}}" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i> Sinkronasi</a>
             </span>
           </div>
         </form>

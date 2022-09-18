@@ -72,6 +72,57 @@ class AdminPenilaianController extends Controller
         return view('admin/layouts/wrapper', $data);
     }
 
+    function sinkronkan($matakuliah_id)
+    {
+        $periode_id = auth()->user()->periode_id;
+        $kelas_id = request('kelas_id');
+
+        $matakuliah = Matakuliah::wherePeriodeId($periode_id)->get();
+        $nilaiPerKelas = Nilai::whereKelasId($kelas_id)->get();
+
+        // dd($matakuliah);
+        foreach ($nilaiPerKelas as $item) {
+            $nilai = Nilai::whereNoUkg($item->no_ukg)->get();
+            $mahasiswa = Mahasiswa::whereNoUkg($item->no_ukg)->first();
+
+            if (count($matakuliah) == count($nilai)) {
+                // die('masuk if');
+                if (count($nilai) > 0) {
+                    $cek = $this->checkLulus($nilai);
+
+                    if ($cek) {
+                        $mahasiswa->keaktifan  = 'LULUS';
+                        $mahasiswa->save();
+                    }
+                }
+            }
+        }
+
+        return redirect('/account/penilaian/matakuliah/mahasiswa/' . $matakuliah_id . '?kelas_id=' . $kelas_id);
+    }
+
+    private function checkLulus($nilai)
+    {
+
+        $jumlah = count($nilai);
+        $berhasil = 0;
+        $gagal = 0;
+
+        foreach ($nilai as $item) {
+            if ($item->nilai_index != null && $item->nilai_index != 'K' && $item->nilai_index != 'E') {
+                $berhasil = $berhasil + 1;
+            } else {
+                $gagal = $gagal + 1;
+            }
+        }
+
+        if ($berhasil == $jumlah) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function matakuliah($kelas_id)
     {
         $role = Auth::user()->role;

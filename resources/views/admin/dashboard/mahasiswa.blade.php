@@ -1,31 +1,39 @@
-@php
-    print_r(auth()->user()->id)
-@endphp
+
+
+    
 <div class="row mt-2">
   <div class="col-md-12">
     <div class="my-2">
       {{-- @dd($mahasiswa) --}}
-      @switch($mahasiswa->status)
-          @case('LENGKAPI')
-          <div class="alert alert-warning mt-3"><i class="fas fa-info"></i> Klik tombol ini jika semua data diri dan berkas telah lengkap</div>
-              <a href="/account/dashboard/status?status=WAITING" class="btn btn-primary masuk-verifikasi"><i class="fas fa-upload"></i> Masuk ke verifikasi</a>
-              @break
-          @case('WAITING')
-              <div class="alert alert-info"><i class="fas fa-spinner"></i> Menunggu verifikasi berkas oleh tim verifikasi</div>
-              @break
-          @case('VALID')
-              <div class="alert alert-success"><i class="fas fa-check"></i> Berkas anda valid</div>
-              @break
-          @case('INVALID')
-              <div class="alert alert-danger"><i class="fas fa-times"></i> Berkas anda tidak valid. silakan cek kembali berkas anda</div>
-              @break
-          @default
-              
-      @endswitch
+      @if ($mahasiswa->keaktifan != 'LULUS')
+          @switch($mahasiswa->status)
+              @case('LENGKAPI')
+              <div class="alert alert-warning mt-3"><i class="fas fa-info"></i> Klik tombol ini jika semua data diri dan berkas telah lengkap</div>
+                  <a href="/account/dashboard/status?status=WAITING" class="btn btn-primary masuk-verifikasi"><i class="fas fa-upload"></i> Masuk ke verifikasi</a>
+                  @break
+              @case('WAITING')
+                  <div class="alert alert-info"><i class="fas fa-spinner"></i> Menunggu verifikasi berkas oleh tim verifikasi</div>
+                  @break
+              @case('VALID')
+                  <div class="alert alert-success"><i class="fas fa-check"></i> Berkas anda valid</div>
+                  @break
+              @case('INVALID')
+                  <div class="alert alert-danger"><i class="fas fa-times"></i> Berkas anda tidak valid. silakan cek kembali berkas anda</div>
+                  @break
+              @default
+                  
+          @endswitch
 
-       <div class="alert alert-warning">
-          <i class="fas fa-info"></i>  Sebelum anda mencetak surat izin Praktik Pembelajaran Inovatif,silakan mengisi data-data yang diperlukan di menu PPI
-        </div>
+          <div class="alert alert-warning">
+              <i class="fas fa-info"></i>  Sebelum anda mencetak surat izin Praktik Pembelajaran Inovatif,silakan mengisi data-data yang diperlukan di menu PPI
+            </div>
+
+      @else
+      <div class="alert alert-success">
+        <i class="fas fa-check"></i>  Selamat, anda telah memenuhi syarat kelulusan. ╰(*°▽°*)╯
+      </div>
+      @endif
+
 
     </div>
     <div class="row">
