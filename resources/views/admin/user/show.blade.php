@@ -3,6 +3,8 @@
     <div class="card">
       <div class="card-body">
        <div class="row">
+
+      
         <div class="col-md-6">
            <table class="table">
           <tr>
@@ -80,6 +82,31 @@
         @endif
 
        </div>
+
+       @if ($user->role == 'admin')
+       <div class="row mt-4">
+        <div class="col-md-12">
+          <h4><strong><i class="fas fa-history"></i> Riwayat</strong></h4>
+            <table class="table">
+              <tr>
+                <td>No</td>
+                <td>Deskripsi</td>
+                <td>Tanggal</td>
+              </tr>
+
+              @foreach ($adminHistoryNilai as $item)
+                  <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->desc }}</td>
+                    <td>{{ $item->created_at }}</td>
+                  </tr>
+              @endforeach
+            </table>
+          </div>
+        </div>
+        @endif
+
+
       </div>
     </div>
   </div>

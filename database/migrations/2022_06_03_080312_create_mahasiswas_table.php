@@ -21,114 +21,114 @@ class CreateMahasiswasTable extends Migration
 
             $table->foreignId('bidang_studi_name')->nullable();
             $table->foreignId('kelas_name')->nullable();
-            $table->string('npm')->nullable();
-            $table->string('no_ukg')->nullable()->unique();
-            $table->string('nuptk')->nullable();
+            $table->text('npm')->nullable();
+            $table->text('no_ukg')->nullable()->unique();
+            $table->text('nuptk')->nullable();
             $table->enum('kementerian', ['KEMENDIKBUD', 'KEMENAG'])->nullable();
 
 
-            $table->string('namalengkap')->nullable();
-            $table->string('tempat_lahir')->nullable();
+            $table->text('namalengkap')->nullable();
+            $table->text('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
-            $table->string('nik')->nullable();
+            $table->text('nik')->nullable();
             $table->text('pasfoto')->nullable();
-            $table->string('unggah_kk')->nullable();
-            $table->string('unggah_ktp')->nullable();
-            $table->string('alamat_domisili')->nullable();
+            $table->text('unggah_kk')->nullable();
+            $table->text('unggah_ktp')->nullable();
+            $table->text('alamat_domisili')->nullable();
 
-            $table->string('provinsi_tempat_tinggal')->nullable();
-            $table->string('kabupaten_tempat_tinggal')->nullable();
+            $table->text('provinsi_tempat_tinggal')->nullable();
+            $table->text('kabupaten_tempat_tinggal')->nullable();
 
-            $table->string('kabupaten_tempat_tinggal_name')->nullable();
-            $table->string('provinsi_tempat_tinggal_name')->nullable();
+            $table->text('kabupaten_tempat_tinggal_name')->nullable();
+            $table->text('provinsi_tempat_tinggal_name')->nullable();
 
-            $table->string('kecamatan_tempat_tinggal')->nullable();
-            $table->string('kelurahan_tempat_tinggal')->nullable();
-            $table->string('rt_tempat_tinggal')->nullable();
-            $table->string('rw_tempat_tinggal')->nullable();
-            $table->string('kode_pos')->nullable();
-            $table->string('nohp')->nullable();
-            $table->string('email')->nullable();
-            $table->string('golongan_darah')->nullable();
-            $table->string('agama')->nullable();
+            $table->text('kecamatan_tempat_tinggal')->nullable();
+            $table->text('kelurahan_tempat_tinggal')->nullable();
+            $table->text('rt_tempat_tinggal')->nullable();
+            $table->text('rw_tempat_tinggal')->nullable();
+            $table->text('kode_pos')->nullable();
+            $table->text('nohp')->nullable();
+            $table->text('email')->nullable();
+            $table->text('golongan_darah')->nullable();
+            $table->text('agama')->nullable();
 
 
-            $table->string('nama_instansi')->nullable();
-            $table->string('npsn_sekolah')->nullable();
-            $table->string('akreditasi_sekolah')->nullable();
-            $table->string('jenjang_pendidikan')->nullable();
-            $table->string('alamat_instansi')->nullable();
+            $table->text('nama_instansi')->nullable();
+            $table->text('npsn_sekolah')->nullable();
+            $table->text('akreditasi_sekolah')->nullable();
+            $table->text('jenjang_pendidikan')->nullable();
+            $table->text('alamat_instansi')->nullable();
 
 
             //pendidikan
-            $table->string('pt_s1')->nullable();
-            $table->string('nama_prodi_s1')->nullable();
-            $table->string('nomor_ijazah_s1')->nullable();
-            $table->string('ipk_s1')->nullable();
+            $table->text('pt_s1')->nullable();
+            $table->text('nama_prodi_s1')->nullable();
+            $table->text('nomor_ijazah_s1')->nullable();
+            $table->text('ipk_s1')->nullable();
             $table->date('tanggal_kelulusan_s1')->nullable();
-            $table->string('alamat_pt_s1')->nullable();
+            $table->text('alamat_pt_s1')->nullable();
 
-            $table->string('provinsi_pt_s1')->nullable();
-            $table->string('kabupaten_kota_pt_s1')->nullable();
+            $table->text('provinsi_pt_s1')->nullable();
+            $table->text('kabupaten_kota_pt_s1')->nullable();
 
-            $table->string('provinsi_pt_s1_name')->nullable();
-            $table->string('kabupaten_kota_pt_s1_name')->nullable();
+            $table->text('provinsi_pt_s1_name')->nullable();
+            $table->text('kabupaten_kota_pt_s1_name')->nullable();
 
-            $table->string('unggah_ijazah_s1')->nullable();
-            $table->string('unggah_transkrip_s1')->nullable();
+            $table->text('unggah_ijazah_s1')->nullable();
+            $table->text('unggah_transkrip_s1')->nullable();
 
-            $table->string('pt_s2')->nullable();
-            $table->string('nama_prodi_s2')->nullable();
-            $table->string('nomor_ijazah_s2')->nullable();
-            $table->string('ipk_s2')->nullable();
+            $table->text('pt_s2')->nullable();
+            $table->text('nama_prodi_s2')->nullable();
+            $table->text('nomor_ijazah_s2')->nullable();
+            $table->text('ipk_s2')->nullable();
             $table->date('tanggal_kelulusan_s2')->nullable();
-            $table->string('alamat_pt_s2')->nullable();
+            $table->text('alamat_pt_s2')->nullable();
 
-            $table->string('kabupaten_kota_pt_s2')->nullable();
-            $table->string('provinsi_pt_s2')->nullable();
+            $table->text('kabupaten_kota_pt_s2')->nullable();
+            $table->text('provinsi_pt_s2')->nullable();
 
-            $table->string('kabupaten_kota_pt_s2_name')->nullable();
-            $table->string('provinsi_pt_s2_name')->nullable();
+            $table->text('kabupaten_kota_pt_s2_name')->nullable();
+            $table->text('provinsi_pt_s2_name')->nullable();
 
 
-            $table->string('unggah_ijazah_s2')->nullable();
-            $table->string('unggah_transkrip_s2')->nullable();
+            $table->text('unggah_ijazah_s2')->nullable();
+            $table->text('unggah_transkrip_s2')->nullable();
 
             //keluarga
-            $table->string('nama_pasangan')->nullable();
-            $table->string('pendidikan_pasangan')->nullable();
-            $table->string('pekerjaan_pasangan')->nullable();
+            $table->text('nama_pasangan')->nullable();
+            $table->text('pendidikan_pasangan')->nullable();
+            $table->text('pekerjaan_pasangan')->nullable();
             $table->integer('jumlah_anak')->nullable();
 
             //ayah
-            $table->string('nama_ayah_kandung')->nullable();
-            $table->string('pendidikan_ayah_kandung')->nullable();
-            $table->string('pekerjaan_ayah_kandung')->nullable();
+            $table->text('nama_ayah_kandung')->nullable();
+            $table->text('pendidikan_ayah_kandung')->nullable();
+            $table->text('pekerjaan_ayah_kandung')->nullable();
             $table->integer('penghasilan_ayah_kandung')->nullable();
-            $table->string('nik_ayah_kandung')->nullable();
+            $table->text('nik_ayah_kandung')->nullable();
 
             //ibu
-            $table->string('nama_ibu_kandung')->nullable();
-            $table->string('pendidikan_ibu_kandung')->nullable();
-            $table->string('pekerjaan_ibu_kandung')->nullable();
+            $table->text('nama_ibu_kandung')->nullable();
+            $table->text('pendidikan_ibu_kandung')->nullable();
+            $table->text('pekerjaan_ibu_kandung')->nullable();
             $table->integer('penghasilan_ibu_kandung')->nullable();
-            $table->string('nik_ibu_kandung')->nullable();
+            $table->text('nik_ibu_kandung')->nullable();
 
             //keluarga_dekat
-            $table->string('nohp_keluarga_dekat')->nullable();
-            $table->string('alamat_orangtua')->nullable();
+            $table->text('nohp_keluarga_dekat')->nullable();
+            $table->text('alamat_orangtua')->nullable();
 
 
-            $table->string('kabupaten_orangtua')->nullable();
-            $table->string('provinsi_orangtua')->nullable();
+            $table->text('kabupaten_orangtua')->nullable();
+            $table->text('provinsi_orangtua')->nullable();
 
-            $table->string('kabupaten_orangtua_name')->nullable();
-            $table->string('provinsi_orangtua_name')->nullable();
+            $table->text('kabupaten_orangtua_name')->nullable();
+            $table->text('provinsi_orangtua_name')->nullable();
 
-            $table->string('nama_bank')->nullable();
-            $table->string('nama_pemilik')->nullable();
-            $table->string('nomor_rekening')->nullable();
+            $table->text('nama_bank')->nullable();
+            $table->text('nama_pemilik')->nullable();
+            $table->text('nomor_rekening')->nullable();
 
             $table->enum('status', ['LENGKAPI', 'WAITING', 'PENDING', 'VALID', 'INVALID']);
             $table->boolean('is_registered')->default(0);

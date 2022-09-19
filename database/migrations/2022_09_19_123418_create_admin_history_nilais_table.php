@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegisterSettingsTable extends Migration
+class CreateAdminHistoryNilaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateRegisterSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('register_settings', function (Blueprint $table) {
+        Schema::create('admin_history_nilais', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('jenis_ppg_id')->nullable();
-            $table->foreignId('periode_id')->nullable();
-            $table->enum('is_active', ['WAITING', 'BUKA', 'TUTUP'])->default('WAITING');
+            $table->foreignId('matakuliah_id');
+            $table->foreignId('kelas_id');
+            $table->date('tanggal');
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateRegisterSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('register_settings');
+        Schema::dropIfExists('admin_history_nilais');
     }
 }

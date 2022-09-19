@@ -9,6 +9,7 @@ use App\Models\Province;
 use App\Models\Mahasiswa;
 use App\Models\VerifyRole;
 use App\Exports\UserExport;
+use App\Models\AdminHistoryNilai;
 use App\Models\BidangStudi;
 use Illuminate\Http\Request;
 use App\Models\Adminkelasrole;
@@ -130,9 +131,11 @@ class AdminUserController extends Controller
         $kelas = [];
         $verifyRole = [];
         $adminkelasrole = [];
+        $adminHistoryNilai = [];
         if ($role == 'admin') {
             $kelas = Kelas::wherePeriodeId($periode_id)->get();
             $adminkelasrole = Adminkelasrole::with('kelas')->wherePeriodeId($periode_id)->whereUserId($id)->get();
+            $adminHistoryNilai = AdminHistoryNilai::whereUserId($id)->get();
         } else if ($role == 'verificator') {
             $verifyRole = VerifyRole::with('province')->whereUserId($id)->wherePeriodeId($periode_id)->get();
         }
@@ -142,6 +145,7 @@ class AdminUserController extends Controller
             'user'     => User::find($id),
             'kelas'     => $kelas,
             'adminkelasrole'     => $adminkelasrole,
+            'adminHistoryNilai'  => $adminHistoryNilai,
             'verifyRole' => $verifyRole,
             'content' => 'admin/user/show'
         ];

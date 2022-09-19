@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Imports\NilaiImport;
+use App\Models\AdminHistoryNilai;
 use App\Models\KelasPeserta;
 use Illuminate\Http\Request;
 use App\Models\Adminkelasrole;
@@ -39,6 +40,7 @@ class AdminPenilaianController extends Controller
     function mahasiswa($matakuliah_id)
     {
         $kelas_id = request('kelas_id');
+        $this->addHistory($kelas_id, $matakuliah_id);
 
         $role = Auth::user()->role;
         $periode_id = '';
@@ -75,6 +77,28 @@ class AdminPenilaianController extends Controller
         ];
 
         return view('admin/layouts/wrapper', $data);
+    }
+
+    private function addHistory($kelas_id, $matakuliah_id)
+    {
+        $user_id = auth()->user()->id;
+        $kelas = Kelas::find($kelas_id);
+        $matakuliah = Matakuliah::find($matakuliah_id);
+        $current_date = date('Y-m-d');
+        // dd($current_date);
+
+        $cek = AdminHistoryNilai::whereUserId($user_id)->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->whereTanggal($current_date)->first();
+        // dd($cek);
+        if ($cek == null) {
+            $data = [
+                'user_id'       =>  $user_id,
+                'matakuliah_id' => $matakuliah_id,
+                'kelas_id'      => $kelas_id,
+                'desc'          => 'Telah mengisi nilai di ' . $kelas->name . ' pada matakuliah ' . $matakuliah->name,
+                'tanggal'       => date($current_date)
+            ];
+            AdminHistoryNilai::create($data);
+        }
     }
 
     function sinkronkan($matakuliah_id)
