@@ -60,12 +60,15 @@ class AdminPenilaianController extends Controller
                 Nilai::create($data);
             }
         }
+
+        $nilai = Nilai::with('mahasiswa')->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get();
+        dd($nilai);
         $data = [
             'title'   => 'Penilaian',
             // 'matakuliah' => Matakuliah::wherePeriodeId($periode_id)->get(),
             'matakuliah_id' => $matakuliah_id,
             'kelas_id' => $kelas_id,
-            'nilai'     => Nilai::with('mahasiswa')->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get(),
+            'nilai'     => $nilai,
             'content' => 'admin/penilaian/mahasiswa'
         ];
 
