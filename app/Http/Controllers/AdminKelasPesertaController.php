@@ -65,7 +65,8 @@ class AdminKelasPesertaController extends Controller
     function detailPeserta($no_ukg)
     {
         $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
-        $nilai = Nilai::with(['matakuliah'])->whereNoUkg($no_ukg)->get();
+        $kelas_id = request('kelas_id');
+        $nilai = Nilai::with(['matakuliah'])->whereNoUkg($no_ukg)->whereKelasId($kelas_id)->get();
         // dd($nilai);
         $data = [
             'title'   => 'Detail Nilai dari ' . $mahasiswa->namalengkap,
