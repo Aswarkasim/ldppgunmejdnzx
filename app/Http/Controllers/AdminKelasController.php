@@ -202,7 +202,7 @@ class AdminKelasController extends Controller
         }, 'matakuliah'])
             ->whereKelasId($kelas_id)
             ->whereMatakuliahId($matakuliah_id)
-            ->orderBy('mahasiswas.npm', 'desc')->get();
+            ->get();
 
         // dd($nilai);
         $data = [
