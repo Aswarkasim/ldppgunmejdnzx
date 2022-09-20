@@ -195,7 +195,7 @@ class AdminKelasController extends Controller
 
 
         $matakuliah_id = request('matakuliah_id');
-        $nilai = Nilai::with(['mahasiswa', 'matakuliah'])->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->get();
+        $nilai = Nilai::with(['mahasiswa', 'matakuliah'])->whereKelasId($kelas_id)->whereMatakuliahId($matakuliah_id)->sortBy('mahasiswas.npm')->get();
         // dd($nilai);
         $data = [
             'title'             => 'Detail Nilai dari ',
