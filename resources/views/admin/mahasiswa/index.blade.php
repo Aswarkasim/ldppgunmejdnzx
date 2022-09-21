@@ -45,7 +45,7 @@
         <input type="text" name="cari" class="form-control" placeholder="Cari nama atau nomor ukg">
         <span class="input-group-append">
           <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i> Cari</button>
-          <a href="/account/mahasiswa" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i> Sinkronkan</a>
+          <a href="/account/mahasiswa/sinkron" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i> Sinkronkan</a>
         </span>
       </div>
       </form>

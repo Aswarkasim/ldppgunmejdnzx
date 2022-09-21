@@ -7,13 +7,33 @@
     </a>
   </li>  
   
-  <li class="nav-item">
-    <a href="/account/ppi" class="nav-link {{Request::is('account/ppi*') ? 'active' : ''}}">
-      <i class="nav-icon fas fa-graduation-cap  "></i>
+
+
+  <li class="nav-item {{Request::is('account/ppi*') ? 'menu-open' : ''}}">
+    <a href="#" class="nav-link {{Request::is('account/ppi*') ? 'active' : ''}}">
+      <i class="nav-icon fas fa-graduation-cap"></i>
       <p>
         PPI
+        <i class="right fas fa-angle-left"></i>
       </p>
     </a>
+    <ul class="nav nav-treeview">
+  
+      <li class="nav-item">
+        <a href="/account/ppi" class="nav-link {{Request::is('account/ppi*') ? 'child-active' : ''}}">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Cetak PPI</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="/account/ppi" class="nav-link {{Request::is('account/ppi*') ? 'child-active' : ''}}">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Upload Bukti Selesai</p>
+        </a>
+      </li>
+      
+    </ul>
   </li>
 
     <li class="nav-item">
