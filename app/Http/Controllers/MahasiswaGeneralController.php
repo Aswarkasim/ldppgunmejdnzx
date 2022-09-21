@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Models\Nilai;
+use App\Models\Ppi;
 use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -22,13 +23,17 @@ class MahasiswaGeneralController extends Controller
         $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
 
         $matakuliah = Matakuliah::wherePeriodeId($periode_id)->get();
-        $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
+        // $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
         // dd($matakuliah);
         // cek kelulusan
+        $user_id = auth()->user()->id;
+        $periode_id = auth()->user()->periode_id;
+        $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
+
         if ($mahasiswa->keaktifan == 'LULUS') {
             // die('ketiga');
             // die($cek);
-            if ($dataValid->bukti_selesai_ppi == 1) {
+            if ($ppi->bukti_selesai != null) {
 
                 $data['mahasiswa'] = $mahasiswa;
                 $data['matakuliah'] = $matakuliah;
