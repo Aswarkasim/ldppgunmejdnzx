@@ -255,6 +255,8 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/', [MahasiswaPpiController::class, 'index']);
         Route::put('/edit', [MahasiswaPpiController::class, 'edit']);
         Route::get('/cetak', [MahasiswaPpiController::class, 'cetakSurat']);
+        Route::get('/bukti', [MahasiswaPpiController::class, 'bukti']);
+        Route::put('/bukti/upload', [MahasiswaPpiController::class, 'uploadBukti']);
     });
 
     Route::prefix('/mahasiswa')->middleware('role:mahasiswa')->group(function () {

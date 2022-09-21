@@ -7,7 +7,9 @@ use App\Models\Province;
 use App\Models\Mahasiswa;
 use App\Models\Periode;
 use App\Models\Ppi;
+use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class MahasiswaPpiController extends Controller
@@ -108,6 +110,77 @@ class MahasiswaPpiController extends Controller
                 return redirect('/account/ppi');
             }
         }
+    }
+
+    function bukti()
+    {
+        $user_id = auth()->user()->id;
+        $periode_id = auth()->user()->periode_id;
+        $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
+
+        if ($ppi == null) {
+            Alert::warning('Gagal', 'Anda belum melaksanakan PPI');
+            return redirect('/account/dashboard');
+        } else {
+
+            $data = [
+                'title'   => 'Data PPI',
+                'ppi' => $ppi,
+                'content' => 'admin/ppi/bukti'
+            ];
+            return view('admin/layouts/wrapper', $data);
+        }
+    }
+
+    function uploadBukti(Request $request)
+    {
+        $user_id = auth()->user()->id;
+        $periode_id = auth()->user()->periode_id;
+
+        $ppi = Ppi::whereUserId($user_id)->wherePeriodeId($periode_id)->first();
+
+        $request->validate([
+            'bukti_selesai'  => 'max:200',
+        ]);
+
+        // $bukti_selesai = $request->hasFile('bukti_selesai');
+        // dd($request->all());
+        $ppi = Ppi::find($request->id);
+
+        if ($ppi->bukti_selesai != null) {
+            unlink($ppi->bukti_selesai);
+        }
+
+        //masih belum bagus
+        $bukti_selesai = $request->file('bukti_selesai');
+        // dd($bukti_selesai);
+        $uuid1 = Uuid::uuid4()->toString();
+        $uuid2 = Uuid::uuid4()->toString();
+        $file_name = $uuid1 . $uuid2 . '.' . $bukti_selesai->getClientOriginalExtension();
+
+        $storage = 'uploads/berkas/';
+        $bukti_selesai->move($storage, $file_name);
+        // $data['path'] = $storage;
+        $data['bukti_selesai'] =  $storage . $file_name;
+
+        $ppi->update($data);
+
+        $this->ubahValidProfile('bukti_selesai');
+
+        Alert::success('Sukses', 'Berkas diupload');
+        return redirect('/account/ppi/bukti');
+    }
+
+    private function ubahValidProfile($field)
+    {
+        $no_ukg = auth()->user()->no_ukg;
+        $periode_id  = auth()->user()->periode_id;
+        $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
+
+        $data = [
+            'bukti_selesai_ppi' => 1
+        ];
+        $dataValid->update($data);
     }
 }
 

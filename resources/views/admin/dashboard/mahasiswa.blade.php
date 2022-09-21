@@ -24,8 +24,12 @@
                   
           @endswitch
 
-          <div class="alert alert-warning">
+          <div class="alert alert-info">
               <i class="fas fa-info"></i>  Sebelum anda mencetak surat izin Praktik Pembelajaran Inovatif,silakan mengisi data-data yang diperlukan di menu PPI
+            </div>
+
+            <div class="alert alert-info">
+              <i class="fas fa-info"></i>  Sebelum anda mencetak Surat Keterangan Bebas Studi (SKBS) pastikan anda telah mengupload Surat Keterangan Selesai PPI dan melulusi semua Matakuliah PPG. (●'◡'●)
             </div>
 
       @else

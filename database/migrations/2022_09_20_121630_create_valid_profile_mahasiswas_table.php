@@ -24,6 +24,7 @@ class CreateValidProfileMahasiswasTable extends Migration
             $table->boolean('rekening')->default(0);
             $table->boolean('pasfoto')->default(0);
             $table->boolean('berkas')->default(0);
+            $table->boolean('bukti_selesai_ppi')->default(0);
             $table->timestamps();
         });
     }

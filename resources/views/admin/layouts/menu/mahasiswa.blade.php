@@ -20,14 +20,14 @@
     <ul class="nav nav-treeview">
   
       <li class="nav-item">
-        <a href="/account/ppi" class="nav-link {{Request::is('account/ppi*') ? 'child-active' : ''}}">
+        <a href="/account/ppi" class="nav-link {{Request::is('account/ppi') ? 'child-active' : ''}}">
           <i class="far fa-circle nav-icon"></i>
           <p>Cetak PPI</p>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="/account/ppi" class="nav-link {{Request::is('account/ppi*') ? 'child-active' : ''}}">
+        <a href="/account/ppi/bukti" class="nav-link {{Request::is('account/ppi/bukti*') ? 'child-active' : ''}}">
           <i class="far fa-circle nav-icon"></i>
           <p>Upload Bukti Selesai</p>
         </a>
