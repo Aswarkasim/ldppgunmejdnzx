@@ -12,6 +12,7 @@ use App\Models\Nilai;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class AdminKelasPesertaController extends Controller
 {
@@ -97,8 +98,11 @@ class AdminKelasPesertaController extends Controller
     function downloadFoto()
     {
         $foto = request('path');
-        // $no_ukg=
-        return response()->download($foto, 'Adakah');
+        $no_ukg = request('no_ukg');
+        $namalengkap = request('namalengkap');
+
+
+        return response()->download($foto, $no_ukg . '-' . $namalengkap . '.jpg');
         // return redirect('/account/kelas/' . $kelas_id);
     }
 }

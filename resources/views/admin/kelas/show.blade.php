@@ -33,7 +33,7 @@
                 <td>
                   <b><a href="/account/kelas/detail/peserta/{{$item->mahasiswa->no_ukg}}?kelas_id={{$item->kelas_id}}" >{{$item->mahasiswa->namalengkap}}</b></a><br>
                   @if ($item->mahasiswa->pasfoto != null)
-                  <small><a href="/account/kelas/download/foto?path={{$item->mahasiswa->pasfoto}}">Download Foto</a></small>
+                  <small><a href="/account/kelas/download/foto?path={{$item->mahasiswa->pasfoto}}&no_ukg={{ $item->mahasiswa->no_ukg }}&namalengkap={{ $item->mahasiswa->namalengkap}}">Download Foto</a></small>
                   @else
                       <small>Foto tidak tersedia</small>
                   @endif
