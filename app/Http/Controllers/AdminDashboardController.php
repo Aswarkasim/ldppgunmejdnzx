@@ -17,6 +17,7 @@ use App\Models\Kelas;
 use App\Models\KelasPeserta;
 use App\Models\VerifyHistory;
 use App\Models\RegisterSetting;
+use App\Models\ValidProfileMahasiswa;
 use App\Models\VerifyRole;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
@@ -177,23 +178,19 @@ class AdminDashboardController extends Controller
         //berikan pengecekan jika field profil masih kosong
         $user_id = auth()->user()->id;
         $mahasiswa = Mahasiswa::whereUserId($user_id)->first();
+        $no_ukg = auth()->user()->no_ukg;
+        $periode_id  = auth()->user()->periode_id;
+        $valid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
 
         //cek namalengkap, provinsi_tempat_tinggal not string or null
         if (
-            $mahasiswa->nama_lengkap == null &&
-            $mahasiswa->bidang_studi_id == null &&
-            $mahasiswa->provinsi_tempat_tinggal == null &&
-            $mahasiswa->kabupaten_tempat_tinggal == null &&
-            $mahasiswa->npsn_sekola == null &&
-            $mahasiswa->alamat_instansi == null &&
-            $mahasiswa->pt_s1 == null &&
-            $mahasiswa->alamat_pt_s1 == null &&
-            $mahasiswa->nama_pasangan == null &&
-            $mahasiswa->jumlah_anak == null &&
-            $mahasiswa->nama_ayah_kandung == null &&
-            $mahasiswa->alamat_orangtua == null &&
-            $mahasiswa->pasfoto == null &&
-            $mahasiswa->nomor_rekening == null
+            $valid->data_diri != 1 ||
+            $valid->instansi != 1 ||
+            $valid->pendidikan != 1 ||
+            $valid->keluarga != 1 ||
+            $valid->rekening != 1 ||
+            $valid->pasfoto != 1 ||
+            $valid->berkas != 1
         ) {
             Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
             return redirect('/account/dashboard');

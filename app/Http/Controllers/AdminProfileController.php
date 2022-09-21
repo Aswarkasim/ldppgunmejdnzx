@@ -9,6 +9,7 @@ use App\Models\Regency;
 use App\Models\Province;
 use App\Models\Mahasiswa;
 use App\Models\BidangStudi;
+use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -19,8 +20,9 @@ class AdminProfileController extends Controller
     public function index()
     {
         //
-        $no_ukg = auth()->user()->no_ukg;
         $user_id  = auth()->user()->id;
+        $no_ukg = auth()->user()->no_ukg;
+        $periode_id  = auth()->user()->periode_id;
         $cek = Mahasiswa::whereNoUkg($no_ukg)->whereUserId($user_id)->first();
         if ($cek == false) {
             $data = [
@@ -29,6 +31,16 @@ class AdminProfileController extends Controller
             ];
             Mahasiswa::create($data);
         }
+
+        $cekValidData = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
+        if ($cekValidData == false) {
+            $data = [
+                'periode_id' => $periode_id,
+                'no_ukg' => $no_ukg
+            ];
+            ValidProfileMahasiswa::create($data);
+        }
+
         $profile = Mahasiswa::with(['periode'])->whereUserId($user_id)->whereNoUkg($no_ukg)->first();
         $data = [
             'title'   => 'Data Diri',
@@ -41,12 +53,24 @@ class AdminProfileController extends Controller
         return view('admin/layouts/wrapper', $data);
     }
 
+    private function ubahValidProfile($field)
+    {
+        $no_ukg = auth()->user()->no_ukg;
+        $periode_id  = auth()->user()->periode_id;
+        $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
+
+        $data = [
+            $field => 1
+        ];
+        $dataValid->update($data);
+    }
     function updateDataDiri(Request $request)
     {
         // dd($request->all());
 
         $user_id = auth()->user()->id;
         $profile = Mahasiswa::whereUserId($user_id)->first();
+
 
         // dd($profile);
         // dd($request->all());
@@ -93,6 +117,8 @@ class AdminProfileController extends Controller
         // $profile->kecamatan_tempat_tinggal = $request->kecamatan_tempat_tinggal;
 
         $profile->update($data);
+
+        $this->ubahValidProfile('data_diri');
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=data_diri');
     }
@@ -117,6 +143,9 @@ class AdminProfileController extends Controller
         // $profile->alamat_instansi    = $request->alamat_instansi;
 
         $profile->update($data);
+
+        $this->ubahValidProfile('instansi');
+
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=instansi');
     }
@@ -178,6 +207,9 @@ class AdminProfileController extends Controller
         $profile->provinsi_pt_s2 = $request->provinsi_pt_s2;
 
         $profile->update($data);
+
+        $this->ubahValidProfile('pendidikan');
+
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=pendidikan');
     }
@@ -238,6 +270,9 @@ class AdminProfileController extends Controller
         ]);
 
         $profile->update($data);
+
+        $this->ubahValidProfile('keluarga');
+
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=keluarga');
     }
@@ -272,6 +307,9 @@ class AdminProfileController extends Controller
         $data['pasfoto'] =  $storage . $file_name;
 
         $profile->update($data);
+
+        $this->ubahValidProfile('pasfoto');
+
         Alert::success('Sukses', 'Berkas diupload');
         return redirect('/account/profile?page=pasfoto');
     }
@@ -310,6 +348,9 @@ class AdminProfileController extends Controller
         }
 
         $profile->update($data);
+
+        $this->ubahValidProfile('rekening');
+
         Alert::success('Sukses', 'Data Anda Disimpan');
         return redirect('/account/profile?page=rekening');
     }

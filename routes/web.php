@@ -92,9 +92,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::resource('/kelengkapan', AdminKelengkapanController::class);
 
-    Route::put('/berkas/upload', [AdminBerkasController::class, 'upload']);
-    Route::get('/berkas/cetak', [AdminBerkasController::class, 'cetakBukti']);
-    Route::resource('/berkas', AdminBerkasController::class);
+
 
 
     Route::resource('/timeline', AdminTimelineController::class);
@@ -233,6 +231,15 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
 
     //================ MAHASISWA ========================
+
+    Route::prefix('/berkas')->middleware('role:mahasiswa')->group(function () {
+        Route::put('/upload', [AdminBerkasController::class, 'upload']);
+        Route::get('/cetak', [AdminBerkasController::class, 'cetakBukti']);
+        Route::get('/check', [AdminBerkasController::class, 'checkValidasi']);
+    });
+    Route::resource('/berkas', AdminBerkasController::class)->middleware('role:mahasiswa');
+
+
     Route::prefix('/profile')->middleware('role:mahasiswa')->group(function () {
         Route::get('/', [AdminProfileController::class, 'index']);
         Route::put('/datadiri', [AdminProfileController::class, 'updateDataDiri']);

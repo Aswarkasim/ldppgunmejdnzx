@@ -17,11 +17,15 @@
   @endswitch
 </div> --}}
 
+@if ($valid->berkas == 0)
+<a href="/account/berkas/check" class="btn btn-primary mb-3"><i class="fas fa-edit"></i> Cek validasi berkas</a>
+@else
+<div class="alert alert-success"><i class="fas fa-check"></i> Masuk ke validasi</div>
+@endif
 <div class="row">
   @foreach ($berkas as $item)
   <div class="col-md-6">
 
-        
     <div class="card">
       <div class="card-body">
         <div class="display-flex">
