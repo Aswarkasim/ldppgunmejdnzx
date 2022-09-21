@@ -97,7 +97,8 @@ class AdminKelasPesertaController extends Controller
     function downloadFoto()
     {
         $foto = request('path');
-        return response()->download($foto);
+        // $no_ukg=
+        return response()->download($foto, 'Adakah');
         // return redirect('/account/kelas/' . $kelas_id);
     }
 }
