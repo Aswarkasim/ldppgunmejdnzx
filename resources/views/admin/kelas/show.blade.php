@@ -30,7 +30,14 @@
             <td>{{$item->no_ukg}}</td>
             {{-- <td>{{ isset($item->mahasiswa) ? $item->mahasiswa->namalengkap : ''}}</td> --}}
             @isset($item->mahasiswa)
-                <td><b><a href="/account/kelas/detail/peserta/{{$item->mahasiswa->no_ukg}}?kelas_id={{$item->kelas_id}}" >{{$item->mahasiswa->namalengkap}}</b></a></td>
+                <td>
+                  <b><a href="/account/kelas/detail/peserta/{{$item->mahasiswa->no_ukg}}?kelas_id={{$item->kelas_id}}" >{{$item->mahasiswa->namalengkap}}</b></a><br>
+                  @if ($item->mahasiswa->pasfoto != null)
+                  <small><a href="/account/kelas/download/foto?path={{$item->mahasiswa->pasfoto}}">Download Foto</a></small>
+                  @else
+                      <small>Foto tidak tersedia</small>
+                  @endif
+                </td>
             @else
             <td>Nama Kosong</td>
             @endisset

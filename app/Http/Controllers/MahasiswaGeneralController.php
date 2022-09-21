@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Models\Nilai;
+use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use PhpOffice\PhpSpreadsheet\Calculation\Logical\Boolean;
@@ -21,14 +22,21 @@ class MahasiswaGeneralController extends Controller
         $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
 
         $matakuliah = Matakuliah::wherePeriodeId($periode_id)->get();
+        $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
         // dd($matakuliah);
         // cek kelulusan
         if ($mahasiswa->keaktifan == 'LULUS') {
             // die('ketiga');
             // die($cek);
-            $data['mahasiswa'] = $mahasiswa;
-            $data['matakuliah'] = $matakuliah;
-            return view('admin.mahasiswa.cetak_skbs', $data);
+            if ($dataValid->bukti_selesai_ppi == 1) {
+
+                $data['mahasiswa'] = $mahasiswa;
+                $data['matakuliah'] = $matakuliah;
+                return view('admin.mahasiswa.cetak_skbs', $data);
+            } else {
+                Alert::warning('Peringatan', 'Anda belum mengupload bukti selesai PPI');
+                return redirect('/account/dashboard');
+            }
         } else {
             Alert::info('Info', 'Masih ada matakuliah yang belum dilulusi');
             return redirect('/account/dashboard');

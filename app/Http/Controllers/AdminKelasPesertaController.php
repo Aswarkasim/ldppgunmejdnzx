@@ -93,4 +93,11 @@ class AdminKelasPesertaController extends Controller
         Alert::success('success', 'Peserta telah dikeluarkan');
         return redirect('/account/kelas/' . $peserta->kelas_id);
     }
+
+    function downloadFoto()
+    {
+        $foto = request('path');
+        return response()->download($foto);
+        // return redirect('/account/kelas/' . $kelas_id);
+    }
 }
