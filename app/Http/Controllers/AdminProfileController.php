@@ -59,6 +59,16 @@ class AdminProfileController extends Controller
         $periode_id  = auth()->user()->periode_id;
         $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
 
+        // $cekValidData = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
+        if ($dataValid == false) {
+            $data = [
+                'periode_id' => $periode_id,
+                'no_ukg' => $no_ukg
+            ];
+            ValidProfileMahasiswa::create($data);
+        }
+
+        $dataValid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
         $data = [
             $field => 1
         ];
