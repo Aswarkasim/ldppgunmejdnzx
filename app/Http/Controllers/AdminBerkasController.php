@@ -156,10 +156,10 @@ class AdminBerkasController extends Controller
             ];
             $valid->update($data);
 
-            Alert::error('Success', 'Silakan klik tombol valid di halaman dashboard');
+            Alert::success('Success', 'Silakan klik tombol valid di halaman dashboard');
             return redirect('/account/berkas');
         } else {
-            Alert::error('Error', 'Masih ada berkas wajib belum diupload');
+            Alert::warning('Peringatan', 'Masih ada berkas wajib belum diupload');
             return redirect('/account/berkas');
         }
     }
