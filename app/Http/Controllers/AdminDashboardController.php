@@ -238,7 +238,7 @@ class AdminDashboardController extends Controller
         $dataPeriode = "";
 
         foreach ($periode as $key) {
-            $dataPeriode .= "<option value='" . $key->id . "'>$key->name</option>";
+            $dataPeriode .= "<option value='" . $key->id . "'>$key->name" . " - $key->desc</option>";
         }
 
         return response()->json($dataPeriode);
