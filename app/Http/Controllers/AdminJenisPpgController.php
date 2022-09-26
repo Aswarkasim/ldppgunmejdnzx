@@ -125,7 +125,7 @@ class AdminJenisPpgController extends Controller
     public function destroy($id)
     {
         //
-        DB::table('jenisppgs')->delete($id);
+        DB::table('jenis_ppgs')->delete($id);
         Alert::success('success', 'JenisPpg telah dihapus');
         return redirect('/account/master/jenisppg');
     }

@@ -1,5 +1,9 @@
 <h4 class="bg-primary p-2"><b>DATA KELUARGA</b></h4>
 <table class="table">
+
+
+  @if ($jenis_ppg != 'PRAJAB')
+
   <tr class="bg-secondary">
     <td>Nama Pasangan (Suami/Istri)</td>
     <td>: {{$profile->nama_pasangan}}</td>
@@ -16,7 +20,7 @@
     <td>Jumlah Anak</td>
     <td>: {{$profile->jumlah_anak}}</td>
   </tr>
-
+  @endif
   <tr class="bg-secondary">
     <td><b>Nama Ayah Kandung</b></td>
     <td>: {{$profile->nama_ayah_kandung}}</td>

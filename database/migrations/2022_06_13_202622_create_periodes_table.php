@@ -19,6 +19,7 @@ class CreatePeriodesTable extends Migration
             $table->string('name');
             $table->string('tahun');
             $table->text('desc');
+            $table->enum('jenis', ['PRAJAB', 'DALJAB'])->nullable();
             $table->enum('ppi_status', ['AKTIF', 'NONAKTIF'])->default('NONAKTIF');
             $table->integer('nomor_surat_first')->nullable();
             $table->integer('nomor_surat_last')->nullable();

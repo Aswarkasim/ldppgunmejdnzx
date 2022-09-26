@@ -65,9 +65,11 @@ class AdminDashboardController extends Controller
         // die('masuk');
         $id = request('id');
         $name = request('name');
+        $jenis_ppg_id = request('jenis_ppg_id');
         Session::put([
             'periode_id' => $id,
             'periode_name' => $name,
+            'jenis_ppg_id' => $jenis_ppg_id,
         ]);
         return redirect('/account/dashboard');
     }
@@ -102,6 +104,7 @@ class AdminDashboardController extends Controller
             Session::put([
                 'periode_id' => $periode->id,
                 'periode_name' => $periode->name,
+                'jenis_ppg_id_name' => $periode->jenis_ppg_id,
             ]);
         }
 
@@ -178,40 +181,49 @@ class AdminDashboardController extends Controller
     {
         //berikan pengecekan jika field profil masih kosong
         $user_id = auth()->user()->id;
-        $mahasiswa = Mahasiswa::whereUserId($user_id)->first();
+        $mahasiswa = Mahasiswa::with('periode')->whereUserId($user_id)->first();
         $no_ukg = auth()->user()->no_ukg;
         $periode_id  = auth()->user()->periode_id;
         $valid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
 
         //cek namalengkap, provinsi_tempat_tinggal not string or null
-        if (
-            $valid->data_diri != 1 ||
-            $valid->instansi != 1 ||
-            $valid->pendidikan != 1 ||
-            $valid->keluarga != 1 ||
-            $valid->rekening != 1 ||
-            $valid->pasfoto != 1 ||
-            $valid->berkas != 1
-        ) {
-            Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
-            return redirect('/account/dashboard');
-            //ceck if berkas where user_id and periode_id and kelengkapan_id not null
-            // $berkas = Berkas::whereUserId($user_id)->wherePeriodeId($mahasiswa->periode_id)->whereBerkas(!null)->count();
 
-            // if ($berkas < 10) {
-            //     Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
-            //     return redirect('/account/dashboard');
-            // } else {
-            //     $mahasiswa->status = request('status');
-            //     $mahasiswa->save();
-            //     Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
-            //     return redirect('/account/dashboard');
-            // }
+        if ($mahasiswa->periode->jenis == 'PRAJAB') {
+            if (
+                $valid->data_diri != 1 ||
+                // $valid->instansi != 1 ||
+                $valid->pendidikan != 1 ||
+                $valid->keluarga != 1 ||
+                // $valid->rekening != 1 ||
+                $valid->pasfoto != 1 ||
+                $valid->berkas != 1
+            ) {
+                Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
+                return redirect('/account/dashboard');
+            } else {
+                $mahasiswa->status = request('status');
+                $mahasiswa->save();
+                Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
+                return redirect('/account/dashboard');
+            }
         } else {
-            $mahasiswa->status = request('status');
-            $mahasiswa->save();
-            Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
-            return redirect('/account/dashboard');
+            if (
+                $valid->data_diri != 1 ||
+                $valid->instansi != 1 ||
+                $valid->pendidikan != 1 ||
+                $valid->keluarga != 1 ||
+                $valid->rekening != 1 ||
+                $valid->pasfoto != 1 ||
+                $valid->berkas != 1
+            ) {
+                Alert::error('Data diri atau berkas belum lengkap', 'Cek kembali data diri');
+                return redirect('/account/dashboard');
+            } else {
+                $mahasiswa->status = request('status');
+                $mahasiswa->save();
+                Alert::success('Sukses', 'Berkas dikirim. Tunggu proses verifikasi oleh admin');
+                return redirect('/account/dashboard');
+            }
         }
     }
 

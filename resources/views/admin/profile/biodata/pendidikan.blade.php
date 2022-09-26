@@ -34,6 +34,8 @@
   </tr>
   
 
+  @if ($jenis_ppg != 'PRAJAB')
+      
   <tr class="bg-secondary">
     <td>Nama Perguruan Tinggi (PT) S2</td>
     <td>: {{$profile->pt_s2}}</td>
@@ -67,6 +69,9 @@
     <td>: {{ isset($mahaiswa->kabupatenByPts2) ? $profile->kabupatenByPts2->name : ''}}</td>
   </tr>
 
+  @endif
+
+  
 </table>
 
 <a href="/account/profile?page=pendidikan&action=edit" class="btn btn-primary mb-4 ">

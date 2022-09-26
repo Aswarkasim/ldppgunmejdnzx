@@ -9,7 +9,9 @@
 
 <div class="row">
   <div class="col-md-6">
-    
+    <input type="hidden" name="jenis_ppg" value="{{ $jenis_ppg }}">
+    @if ($jenis_ppg != 'PRAJAB')
+        
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
@@ -77,6 +79,8 @@
         </div>
       </div>
       
+    @endif
+
 
     <div class="form-group">
       <div class="row">

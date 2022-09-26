@@ -42,12 +42,14 @@ class AdminProfileController extends Controller
         }
 
         $profile = Mahasiswa::with(['periode'])->whereUserId($user_id)->whereNoUkg($no_ukg)->first();
+        $jenisPpg = $profile->periode->jenis;
         $data = [
             'title'   => 'Data Diri',
             'profile' => $profile,
             'bidangstudi' => BidangStudi::all(),
             'periode' => Periode::all(),
             'provinces' => Province::get(),
+            'jenis_ppg' => $jenisPpg,
             'content' => 'admin/profile/index'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -84,9 +86,15 @@ class AdminProfileController extends Controller
 
         // dd($profile);
         // dd($request->all());
+
+        $validate = 'required';
+        if ($request->jenis_ppg == 'PRAJAB') {
+            $validate = '';
+        }
+
         $data = $request->validate([
             // 'no_ukg'    => 'required',
-            'nuptk'             => 'required',
+            'nuptk'             => $validate,
             // 'angkatan_id'       => 'required',
             'kementerian'   => 'required',
             'bidang_studi_id'   => 'required',
@@ -255,11 +263,16 @@ class AdminProfileController extends Controller
         // $profile->kabupaten_orangtua = $request->kabupaten_orangtua;
         // $profile->provinsi_orangtua = $request->provinsi_orangtua;
 
+        $validate = 'required';
+        if ($request->jenis_ppg == 'PRAJAB') {
+            $validate = '';
+        }
+
         $data = $request->validate([
-            'nama_pasangan' => 'required',
-            'pendidikan_pasangan' => 'required',
-            'pekerjaan_pasangan' => 'required',
-            'jumlah_anak' => 'required',
+            'nama_pasangan' => $validate,
+            'pendidikan_pasangan' => $validate,
+            'pekerjaan_pasangan' => $validate,
+            'jumlah_anak' => $validate,
 
             'nama_ayah_kandung' => 'required',
             'pendidikan_ayah_kandung' => 'required',

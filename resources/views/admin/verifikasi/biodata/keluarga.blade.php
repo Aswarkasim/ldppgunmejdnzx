@@ -1,6 +1,11 @@
 <h4 class="bg-primary p-2"><b>DATA KELUARGA</b></h4>
 <table class="table">
+  
+  @if ($mahasiswa->periode->jenis != 'PRAJAB')
+      
+
   <tr class="bg-secondary">
+
     <td>Nama Pasangan (Suami/Istri)</td>
     <td>: {{$mahasiswa->nama_pasangan}}</td>
   </tr>
@@ -16,6 +21,7 @@
     <td>Jumlah Anak</td>
     <td>: {{$mahasiswa->jumlah_anak}}</td>
   </tr>
+  @endif
 
   <tr class="bg-secondary">
     <td><b>Nama Ayah Kandung</b></td>

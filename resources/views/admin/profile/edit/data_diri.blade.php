@@ -8,10 +8,11 @@
         {!! implode('', $errors->all('<div class="text text-danger">:message</div>')) !!}
     @endif
 
+    <input type="hidden" name="jenis_ppg" value="{{ $jenis_ppg }}">
     <div class="form-group">
       <div class="row">
         <div class="col-md-3">
-          <label for=""> No. UKG/ Peg.ID<span class="text-danger">*</span></label>
+          <label for=""> No. UKG/ Peg.ID/PTK.ID<span class="text-danger">*</span></label>
         </div>
         <div class="col-md-9">
           <input type="text" disabled class="form-control @error('no_ukg') is-invalid @enderror" name="no_ukg"  value="{{isset($profile) ? $profile->no_ukg : old('no_ukg')}}" placeholder="No. UKG">
@@ -86,6 +87,9 @@
      
     </div>
 
+
+    @if ($jenis_ppg != 'PRAJAB')
+        
       <div class="form-group">
         <div class="row">
           <div class="col-md-3">
@@ -102,6 +106,9 @@
         </div>
        
       </div>
+
+    @endif
+
 
     <div class="form-group">
       <div class="row">

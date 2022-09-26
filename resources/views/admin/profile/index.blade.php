@@ -19,9 +19,12 @@
           <li class="nav-item">
             <a href="?page=data_diri" class="nav-link {{$page == 'data_diri' ? 'active' : ''}} cursor-pointer">Data Diri</a>
           </li>
+          @if ($jenis_ppg != 'PRAJAB')
+              
           <li class="nav-item">
             <a href="?page=instansi" class="nav-link {{$page == 'instansi' ? 'active' : ''}} cursor-pointer">Instansi</a>
           </li>
+          @endif
           <li class="nav-item">
             <a href="?page=pendidikan" class="nav-link {{$page == 'pendidikan' ? 'active' : ''}} cursor-pointer">Pendidikan</a>
           </li>
@@ -29,9 +32,11 @@
             <a href="?page=keluarga" class="nav-link {{$page == 'keluarga' ? 'active' : ''}} cursor-pointer">Keluarga</a>
           </li>
 
+          @if ($jenis_ppg != 'PRAJAB')
            <li class="nav-item">
             <a href="?page=rekening" class="nav-link {{$page == 'rekening' ? 'active' : ''}} cursor-pointer">Rekening</a>
           </li>
+          @endif
 
            <li class="nav-item">
             <a href="?page=pasfoto" class="nav-link {{$page == 'pasfoto' ? 'active' : ''}} cursor-pointer">Pas Foto</a>

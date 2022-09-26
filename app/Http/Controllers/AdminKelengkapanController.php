@@ -20,13 +20,18 @@ class AdminKelengkapanController extends Controller
         //
         // Alert::error('Sukses', 'Kelengkapan telah ditambahkan');
 
-        $periode_id = Session::get('periode_id');
+        $jenis_ppg_id = Session::get('jenis_ppg_id');
+        if ($jenis_ppg_id == 1) {
+            $jenis = 'DALJAB';
+        } else {
+            $jenis = 'PRAJAB';
+        }
         $cari = request('cari');
 
         if ($cari) {
-            $kelengkapan = Kelengkapan::where('name', 'like', '%' . $cari . '%')->orderBy('name', 'desc')->latest()->paginate(10);
+            $kelengkapan = Kelengkapan::whereJenis($jenis)->where('name', 'like', '%' . $cari . '%')->orderBy('name', 'desc')->latest()->paginate(10);
         } else {
-            $kelengkapan = Kelengkapan::orderBy('name', 'desc')->paginate(10);
+            $kelengkapan = Kelengkapan::whereJenis($jenis)->orderBy('name', 'desc')->paginate(10);
         }
         $data = [
             'title'   => 'Kelengkapan',
@@ -66,9 +71,16 @@ class AdminKelengkapanController extends Controller
             'name'              => 'required|min:3',
             'kebutuhan'              => 'required',
             'is_verified'           => 'required',
-            'desc'                  => 'required'
+            'desc'                  => 'required',
         ]);
+        $jenis_ppg_id = Session::get('jenis_ppg_id');
+        if ($jenis_ppg_id == 1) {
+            $jenis = 'DALJAB';
+        } else {
+            $jenis = 'PRAJAB';
+        }
         $data['periode_id'] = Session::get('periode_id');
+        $data['jenis']      = $jenis;
         Kelengkapan::create($data);
         Alert::success('Sukses', 'Kelengkapan telah ditambahkan');
         return redirect('/account/kelengkapan');

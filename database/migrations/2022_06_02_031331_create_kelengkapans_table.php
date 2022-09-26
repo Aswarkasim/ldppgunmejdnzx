@@ -20,6 +20,7 @@ class CreateKelengkapansTable extends Migration
             $table->boolean('is_verified');
             $table->text('desc');
             $table->enum('kebutuhan', ['WAJIB', 'OPTIONAL'])->nullable();
+            $table->enum('jenis', ['PRAJAB', 'DALJAB'])->nullable();
             $table->timestamps();
         });
     }

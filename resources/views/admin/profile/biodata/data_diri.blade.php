@@ -5,9 +5,18 @@
   <td>: {{$profile->npm}}</td>
 </tr>
 <tr>
-  <td>No. UKG/Peg.ID</td>
+  <td>No. UKG/Peg.ID/PTK.ID</td>
   <td>: {{$profile->no_ukg}}</td>
 </tr>
+
+@if ($jenis_ppg != 'PRAJAB')
+
+<tr>
+  <td>NUPTK</td>
+  <td>: {{$profile->nuptk}}</td>
+</tr>
+@endif
+
 <tr>
   <td>Nama Lengkap</td>
   <td>: {{$profile->namalengkap}}</td>

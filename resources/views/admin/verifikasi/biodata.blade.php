@@ -13,12 +13,16 @@
             @endif
             @include('admin.verifikasi.biodata.data_diri')
             @include('admin.verifikasi.biodata.pendidikan')
+            @if ($mahasiswa->periode->jenis != 'PRAJAB')
             @include('admin.verifikasi.biodata.instansi')
+            @endif
           </div>
           
           <div class="col-md-6">
             @include('admin.verifikasi.biodata.keluarga')
+            @if ($mahasiswa->periode->jenis != 'PRAJAB')
             @include('admin.verifikasi.biodata.rekening')
+            @endif
             @include('admin.verifikasi.biodata.pasfoto')
             @include('admin.verifikasi.biodata.berkas')
             

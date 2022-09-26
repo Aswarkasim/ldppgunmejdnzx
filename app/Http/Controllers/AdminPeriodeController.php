@@ -67,6 +67,14 @@ class AdminPeriodeController extends Controller
             'tahun'              => 'required|min:4',
             'desc'              => 'required',
         ]);
+
+        //jika sama dengan prajabatan
+        $jenis = 'DALJAB';
+        if ($request->jenis_ppg_id == 1) {
+            $jenis = 'PRAJAB';
+        }
+        $data['jenis'] = $jenis;
+
         Periode::create($data);
         Alert::success('Sukses', 'Periode telah ditambahkan');
         return redirect('/account/master/periode');
@@ -119,6 +127,13 @@ class AdminPeriodeController extends Controller
             'tahun'              => 'required|min:4',
             'desc'              => 'required',
         ]);
+
+        $jenis = 'DALJAB';
+        if ($request->jenis_ppg_id == 1) {
+            $jenis = 'PRAJAB';
+        }
+        $data['jenis'] = $jenis;
+
         $periode->update($data);
         Alert::success('Sukses', 'Kategori telah diubah');
         return redirect('/account/master/periode');

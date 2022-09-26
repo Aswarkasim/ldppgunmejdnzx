@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berkas;
 use App\Models\Kelengkapan;
 use App\Models\Mahasiswa;
+use App\Models\Periode;
 use App\Models\User;
 use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
@@ -41,8 +42,9 @@ class AdminBerkasController extends Controller
             ValidProfileMahasiswa::create($data);
         }
 
+        $periode = Periode::find($periode_id);
 
-        $kelengkapan = Kelengkapan::get();
+        $kelengkapan = Kelengkapan::whereJenis($periode->jenis)->get();
         foreach ($kelengkapan as $item) {
             $cek = Berkas::whereUserId($user_id)->whereKelengkapanId($item->id)->first();
             if ($cek == false) {
