@@ -34,7 +34,7 @@
 
           <tr>
             <td>Bidang Studi</td>
-            <td>: {{$mahasiswa->bidang_studi->name}}</td>
+            <td>: {{isset($mahasiswa->bidang_studi) ? $mahasiswa->bidang_studi->name : ''}}</td>
           </tr>
 
           <tr>
