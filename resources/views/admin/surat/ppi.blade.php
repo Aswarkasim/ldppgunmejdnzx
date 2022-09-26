@@ -109,8 +109,10 @@
               <div class="form-group">
                 <label for="">Tanda Tangtan</label>
                 @include('admin.surat.ttd')
-    <br>
+                <br>
                 @if ($surat->ttd != null)
+                <a href="/account/surat/ppi/ttd/download?ttd={{ $surat->ttd }}">Download</a>
+                <br>
                     <img src="/{{ $surat->ttd }}" alt="">
                 @endif
               </div>
@@ -121,6 +123,7 @@
                 @include('admin.surat.paraf')
     <br>
                 @if ($surat->paraf != null)
+                <a href="/account/surat/ppi/ttd/download?ttd={{ $surat->paraf }}">Download</a>
                     <img src="/{{ $surat->paraf }}" alt="">
                 @endif
               </div>

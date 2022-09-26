@@ -128,6 +128,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/ppi', [AdminSuratController::class, 'ppi']);
         Route::get('/ppi/preview/{id}', [AdminSuratController::class, 'previewPpi']);
         Route::put('/ppi/save/{id}', [AdminSuratController::class, 'savePpi']);
+        Route::get('/ppi/ttd/download', [AdminSuratController::class, 'downloadTtd']);
         Route::put('/ppi/upload/ttd', [AdminSuratController::class, 'uploadTtd']);
         Route::put('/ppi/upload/paraf', [AdminSuratController::class, 'uploadParaf']);
     });

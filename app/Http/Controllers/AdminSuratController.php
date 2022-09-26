@@ -114,4 +114,12 @@ class AdminSuratController extends Controller
         $data['surat'] = Surat::find($id);
         return view('admin.ppi.cetak_surat', $data);
     }
+
+    function downloadTtd()
+    {
+        $ttd = request('ttd');
+
+        return response()->download($ttd);
+        // return redirect('/account/kelas/' . $kelas_id);
+    }
 }

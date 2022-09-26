@@ -17,6 +17,7 @@ use App\Models\Kelas;
 use App\Models\KelasPeserta;
 use App\Models\VerifyHistory;
 use App\Models\RegisterSetting;
+use App\Models\Surat;
 use App\Models\ValidProfileMahasiswa;
 use App\Models\VerifyRole;
 use Brian2694\Toastr\Facades\Toastr;
@@ -235,14 +236,19 @@ class AdminDashboardController extends Controller
     {
         $periode_id = Session::get('periode_id');
         $periode = Periode::find($periode_id);
-        $data = [
-            'ppi_status'    => $request->ppi_status,
-            // 'nomor_surat_first' => $request->nomor_surat_first,
-            // 'nomor_surat_last' => $request->nomor_surat_last,
-        ];
-        $periode->update($data);
-        Alert::success('Sukses', "Pengaturan PPI telah diubah");
-        return redirect('/account/dashboard');
+        $surat = Surat::whereName('PPI')->wherePeriodeId($periode_id)->first();
+        if ($surat == null) {
+            return redirect('/account/surat/ppi');
+        } else {
+            $data = [
+                'ppi_status'    => $request->ppi_status,
+                // 'nomor_surat_first' => $request->nomor_surat_first,
+                // 'nomor_surat_last' => $request->nomor_surat_last,
+            ];
+            $periode->update($data);
+            Alert::success('Sukses', "Pengaturan PPI telah diubah");
+            return redirect('/account/dashboard');
+        }
     }
 
 
