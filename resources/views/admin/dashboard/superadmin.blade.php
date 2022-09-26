@@ -132,7 +132,7 @@
             @endswitch
         </div>
 
-        <div class="text-group">
+        {{-- <div class="text-group">
           <span><b>Nomor Surat Awal</b></span>
           <p>{{$periode->nomor_surat_first}}</p>
         </div>
@@ -140,7 +140,7 @@
         <div class="text-group">
           <span><b>Nomor Surat Akhir</b></span>
           <p>{{$periode->nomor_surat_last}}</p>
-        </div>
+        </div> --}}
         @include('admin.dashboard.ppi')
       </div>
     </div>

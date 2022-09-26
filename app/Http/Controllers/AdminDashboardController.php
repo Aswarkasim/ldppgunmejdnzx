@@ -237,8 +237,8 @@ class AdminDashboardController extends Controller
         $periode = Periode::find($periode_id);
         $data = [
             'ppi_status'    => $request->ppi_status,
-            'nomor_surat_first' => $request->nomor_surat_first,
-            'nomor_surat_last' => $request->nomor_surat_last,
+            // 'nomor_surat_first' => $request->nomor_surat_first,
+            // 'nomor_surat_last' => $request->nomor_surat_last,
         ];
         $periode->update($data);
         Alert::success('Sukses', "Pengaturan PPI telah diubah");

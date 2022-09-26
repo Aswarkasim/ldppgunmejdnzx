@@ -19,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/dist/css/ktcstyle_white.css">
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  
+  {{-- <script src="/plugins/jquery/jquery.min.js"></script> --}}
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

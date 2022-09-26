@@ -34,6 +34,7 @@ use App\Http\Controllers\AdminKelasPesertaController;
 use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminRegisterSettingController;
+use App\Http\Controllers\AdminSuratController;
 use App\Http\Controllers\MahasiswaGeneralController;
 
 /*
@@ -121,6 +122,14 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::resource('/matakuliah', AdminMatakuliahController::class);
 
         // Route::resource('/prodi', AdminProdiController::class);
+    });
+
+    Route::prefix('/surat')->middleware('role:superadmin')->group(function () {
+        Route::get('/ppi', [AdminSuratController::class, 'ppi']);
+        Route::get('/ppi/preview/{id}', [AdminSuratController::class, 'previewPpi']);
+        Route::put('/ppi/save/{id}', [AdminSuratController::class, 'savePpi']);
+        Route::put('/ppi/upload/ttd', [AdminSuratController::class, 'uploadTtd']);
+        Route::put('/ppi/upload/paraf', [AdminSuratController::class, 'uploadParaf']);
     });
 
     Route::prefix('/kelas')->middleware('role:superadmin')->group(function () {

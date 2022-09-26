@@ -53,7 +53,7 @@
   <table class="">
     <tr>
       <td width="200px">Nomor</td>
-      <td>: {{$ppi->nomor_surat}}/UN36.26/LL/{{date('Y')}}	</td>
+      <td>: {{mt_rand($surat->nomor_surat_awal, $surat->nomor_surat_akhir) }}/UN36.26/LL/{{date('Y')}}	</td>
     </tr>
 
     <tr>
@@ -63,46 +63,46 @@
 
     <tr>
       <td>Perihal</td>
-      <td>: {{'Pelaksanaan PPI '.$ppi->periode->name. ' '.$ppi->periode->jenisPpg->name.' Tahun '.$ppi->periode->tahun}}</td>
+      <td>: {{$surat->perihal}}</td>
     </tr>
   </table>
 
   <br>
   <strong>
     Yth. <br>
-    Kepala Sekolah/Madrasah {{$ppi->sekolah_lokasi}}<br>
-    {{$ppi->alamat}}  <br>
-    di {{ $ppi->kabupaten_name}}
+    Kepala Sekolah/Madrasah {{isset($ppi) ? $ppi->sekolah_lokasi : ''}}<br>
+    {{ isset($ppi) ? $ppi->alamat : 'Tempat'}}  <br>
+    di {{ isset($ppi) ? $ppi->kabupaten_name : 'Tempat'}}
   </strong>
 
   <br>
   <p>
-    Dengan hormat, berdasarkan surat Direktur Pendidikan Profesi, Pembinaan Guru dan Tenaga Kependidikan Nomor 1541/B2/GT 00.03/2022, tanggal 01 Juli 2022 tentang Jadwal Pelaksanaan Pendidikan Profesi Guru (PPG) bagi Guru dalam Jabatan Kategori I tahun 2022, maka kami sampaikan kepada Bapak/Ibu dapat memberikan izin kepada Mahasiswa PPG di bawah ini untuk Praktik Pembelajaran Inovatif (PPI) dari tanggal 25 Agustus 2022 s.d 22 September 2022.
+    {{ $surat->body }}
   </p>
 
   <table style="margin-left: 100px">
     <tr>
       <td width="300px">Nomor Induk Mahasiswa</td>
-      <td>: {{$ppi->mahasiswa->npm}}</td>
+      <td>: {{ isset($ppi) ? $ppi->mahasiswa->npm : ''}}</td>
     </tr>
 
      <tr>
       <td>Nama Mahasiswa</td>
-      <td>: {{$ppi->namalengkap}}</td>
+      <td>: {{ isset($ppi) ? $ppi->namalengkap : ''}}</td>
     </tr>
 
      <tr>
       <td>Bidang Studi</td>
-      <td>: {{$ppi->mahasiswa->bidang_studi->name}}</td>
+      <td>: {{ isset($ppi) ? $ppi->mahasiswa->bidang_studi->name : ''}}</td>
     </tr>
 
      <tr>
       <td>Lokasi PPI</td>
-      <td>: {{ $ppi->sekolah_lokasi}}
+      <td>: {{  isset($ppi) ? $ppi->sekolah_lokasi : ''}}
 
      <tr>
       <td>Asal Sekolah</td>
-      <td>: {{$ppi->mahasiswa->nama_instansi}}</td>
+      <td>: {{ isset($ppi) ? $ppi->mahasiswa->nama_instansi : ''}}</td>
     </tr>
   </table>
 
@@ -111,13 +111,13 @@
 
   <div class="ttd" style="margin-left: 400px">
     <p>
-      Wakil Rektor Bidang Akademik <br>
-      <img src="/img/ttd_hasnawi.png" width="300px" style="position: absolute" alt=""><br>
-      <img src="/img/parafforwr1.png" style="width:40px;position: absolute; margin-top: 70px; margin-left: 310px" alt=""><br>
+      {{ $surat->jabatan_ttd }} <br>
+      <img src="/{{ $surat->ttd }}" width="300px" style="position: absolute" alt=""><br>
+      <img src="/{{ $surat->paraf }}" style="width:40px;position: absolute; margin-top: 70px; margin-left: 310px" alt=""><br>
 
       <br>
-      <b>Prof.Dr. H. Hasnawi Haris, M.Hum.</b><br>
-          NIP. 196712311993031016 
+      <b>{{ $surat->nama_ttd }}</b><br>
+          NIP. {{ $surat->nip }} 
     </p>
 
   </div>

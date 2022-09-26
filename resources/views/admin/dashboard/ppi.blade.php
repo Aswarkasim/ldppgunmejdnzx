@@ -28,7 +28,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="">Nomor Surat Awal</label>
           <input type="number" value="{{$periode->nomor_surat_first}}" class="form-control" name="nomor_surat_first">
         </div>
@@ -36,7 +36,7 @@
          <div class="form-group">
           <label for="">Nomor Surat Akhir</label>
           <input type="number" value="{{$periode->nomor_surat_last}}" class="form-control" name="nomor_surat_last">
-        </div>
+        </div> --}}
 
       </div>
       <div class="modal-footer">

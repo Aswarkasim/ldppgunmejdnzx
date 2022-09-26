@@ -1,26 +1,4 @@
-{{-- <li class="nav-item {{Request::is('account/posts*') ? 'menu-open' : ''}}">
-  <a href="#" class="nav-link {{Request::is('account/posts*') ? 'active' : ''}}">
-    <i class="nav-icon fas fa-newspaper"></i>
-    <p>
-      Artikel
-      <i class="right fas fa-angle-left"></i>
-    </p>
-  </a>
-  <ul class="nav nav-treeview">
-    <li class="nav-item">
-      <a href="/account/posts/post" class="nav-link {{Request::is('account/posts/post*') ? 'child-active' : ''}}">
-        <i class="far fa-circle nav-icon"></i>
-        <p>Artikel</p>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a href="/account/posts/kategori" class="nav-link {{Request::is('account/posts/kategori*') ? 'child-active' : '' }}">
-        <i class="far fa-circle nav-icon"></i>
-        <p>Kategori</p>
-      </a>
-    </li>
-  </ul>
-</li> --}}
+
   
   <li class="nav-item">
   <a href="/account/verifikasi" class="nav-link {{Request::is('account/verifikasi*') ? 'active' : ''}}">
@@ -117,6 +95,27 @@
 
 
 
+<li class="nav-item {{Request::is('account/surat*') ? 'menu-open' : ''}}">
+  <a href="#" class="nav-link {{Request::is('account/surat*') ? 'active' : ''}}">
+    <i class="nav-icon fas fa-envelope"></i>
+    <p>
+      Surat
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+
+    <li class="nav-item">
+      <a href="/account/surat/ppi" class="nav-link {{Request::is('account/surat/ppi*') ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>PPI</p>
+      </a>
+    </li>
+
+  </ul>
+</li>
+
+
 <li class="nav-item {{Request::is('account/master*') ? 'menu-open' : ''}}">
   <a href="#" class="nav-link {{Request::is('account/master*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-folder"></i>
@@ -159,17 +158,6 @@
       </a>
     </li>
 
-    
-    
-    
-
-    {{-- <li class="nav-item">
-      <a href="/account/master/prodi" class="nav-link {{Request::is('account/master/prodi*') ? 'child-active' : ''}}">
-        <i class="far fa-circle nav-icon"></i>
-        <p>Prodi</p>
-      </a>
-    </li> --}}
-    
   </ul>
 </li>
 

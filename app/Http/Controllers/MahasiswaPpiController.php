@@ -7,6 +7,7 @@ use App\Models\Province;
 use App\Models\Mahasiswa;
 use App\Models\Periode;
 use App\Models\Ppi;
+use App\Models\Surat;
 use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
@@ -93,21 +94,28 @@ class MahasiswaPpiController extends Controller
         $periode_id = auth()->user()->periode_id;
 
         $periode = Periode::find($periode_id);
+        $surat = Surat::wherePeriodeId($periode_id)->whereName('ppi')->first();
 
-        // dd($periode);
-
-        if ($periode->ppi_status == 'NONAKTIF') {
-            Alert::info('PPI', 'Belum dibuka');
+        if ($surat == null) {
+            Alert::info('PPI', 'Surat belum dibuat oleh admin');
             return redirect('/account/dashboard');
         } else {
+            // dd($periode);
 
-            $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
-            if ($ppi->kabupaten_name != null && $ppi->sekolah_lokasi != null && $ppi->namalengkap != null && $ppi->alamat != null) {
-                $data['ppi'] = $ppi;
-                return view('admin.ppi.cetak_surat', $data);
+            if ($periode->ppi_status == 'NONAKTIF') {
+                Alert::info('PPI', 'Belum dibuka');
+                return redirect('/account/dashboard');
             } else {
-                Alert::warning('Gagal Cetak', 'Data PPI anda belum lengkap');
-                return redirect('/account/ppi');
+
+                $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
+                if ($ppi->kabupaten_name != null && $ppi->sekolah_lokasi != null && $ppi->namalengkap != null && $ppi->alamat != null) {
+                    $data['ppi'] = $ppi;
+                    $data['surat'] = $surat;
+                    return view('admin.ppi.cetak_surat', $data);
+                } else {
+                    Alert::warning('Gagal Cetak', 'Data PPI anda belum lengkap');
+                    return redirect('/account/ppi');
+                }
             }
         }
     }
