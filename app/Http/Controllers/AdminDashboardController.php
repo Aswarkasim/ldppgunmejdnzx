@@ -187,7 +187,7 @@ class AdminDashboardController extends Controller
         $valid = ValidProfileMahasiswa::whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
 
         if ($valid == null) {
-            redirect('/account/profile?page=data_diri');
+            return redirect('/account/profile?page=data_diri');
         }
 
         //cek namalengkap, provinsi_tempat_tinggal not string or null
