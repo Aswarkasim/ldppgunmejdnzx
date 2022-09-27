@@ -43,15 +43,24 @@
   {{-- <p>--------------------------------------------------------------------------------------------</p> --}}
   <img src="/img/line_kop.png" height="10px" alt="">
 
+  @if ($jenis_ppg == 'DALJAB')
+      
   <div class="text-center" style="font-family: serif">
     <h3><b>BUKTI LAPOR DIRI <br>
-    PENDIDIKAN PROFESI GURU DALAM JABATAN <br>
-    UNIVERSITAS NEGERI MAKASSAR</b></h3>
-  </div>
+      PENDIDIKAN PROFESI GURU DALAM JABATAN <br>
+      UNIVERSITAS NEGERI MAKASSAR</b></h3>
+    </div>
+  @else  
+  <div class="text-center" style="font-family: serif">
+    <h3><b>BUKTI LAPOR DIRI <br>
+      PENDIDIKAN PROFESI GURU PRAJABATAN <br>
+      UNIVERSITAS NEGERI MAKASSAR</b></h3>
+    </div>
 
+  @endif
   <table class="table">
     <tr>
-      <td>No. UKG/ Peg.ID</td>
+      <td>No. UKG/ Peg.ID/PTK.ID</td>
       <td>: {{$mahasiswa->no_ukg}}</td>
     </tr>
 
@@ -65,6 +74,7 @@
       <td>: {{$mahasiswa->bidang_studi->name}}</td>
     </tr>
 
+    @if ($jenis_ppg == 'DALJAB')
     <tr>
       <td>Nama Instansi/Sekolah</td>
       <td>: {{$mahasiswa->nama_instansi}}</td>
@@ -74,6 +84,8 @@
       <td>NPSN</td>
       <td>: {{$mahasiswa->npsn_sekolah}}</td>
     </tr>
+
+    @endif
 
     <tr>
       <td>Jenis Kelamin</td>
