@@ -45,7 +45,8 @@ class AdminSuratController extends Controller
             'jabatan_ttd'        => 'required',
             'nama_ttd'        => 'required',
             'nip'                => 'required',
-            // 'tembusan'           => 'required',
+            'tembusan_kemendikbud'           => 'required',
+            'tembusan_kemenag'           => 'required',
             'body'               => 'required',
         ]);
         $surat->update($data);

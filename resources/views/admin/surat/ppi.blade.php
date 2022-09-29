@@ -86,16 +86,28 @@
                     </div>
                 @enderror
               </div>
+              
 
-              {{-- <div class="form-group">
-                <label for="">Tembusan</label>
-                <textarea class="form-control  @error('tembusan') is-invalid @enderror" id="summernote"  name="tembusan" placeholder="Tembusan">{{isset($surat) ? $surat->tembusan : old('tembusan')}}</textarea>
-                @error('tembusan')
+              <div class="form-group">
+                <label for="">Tembusan Kemendikbud</label>
+                <textarea class="form-control  @error('tembusan_kemendikbud') is-invalid @enderror" id="summernote-kemendikbud"  name="tembusan_kemendikbud" placeholder="Tembusan">{{isset($surat) ? $surat->tembusan_kemendikbud : old('tembusan_kemendikbud')}}</textarea>
+                @error('tembusan_kemendikbud')
                     <div class="invalid-feedback">
                       {{$message}}
                     </div>
                 @enderror
-              </div> --}}
+              </div>
+
+
+              <div class="form-group">
+                <label for="">Tembusan Kemenag</label>
+                <textarea class="form-control  @error('tembusan_kemenag') is-invalid @enderror" id="summernote-kemenag"  name="tembusan_kemenag" placeholder="Tembusan">{{isset($surat) ? $surat->tembusan_kemenag : old('tembusan_kemenag')}}</textarea>
+                @error('tembusan_kemenag')
+                    <div class="invalid-feedback">
+                      {{$message}}
+                    </div>
+                @enderror
+              </div>
 
 
               <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
@@ -143,12 +155,16 @@
 </div>
 
 
+<script src="/plugins/jquery/jquery.min.js"></script>
+
 <script src="/plugins/summernote/summernote-bs4.min.js"></script>
 
 <script>
   $(function () {
     // Summernote
     $('#summernote').summernote()
+    $('#summernote-kemendikbud').summernote()
+    $('#summernote-kemenag').summernote()
 
     // CodeMirror
     CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {

@@ -77,7 +77,7 @@
 
   <br>
   <p>
-    {{ $surat->body }}
+    {!! $surat->body !!}
   </p>
 
   <table style="margin-left: 100px">
@@ -123,16 +123,17 @@
   </div>
 
   <p>Tembusan kepada yang Terhormat:</p>
-  <ol>
-    <li>Rektor Universitas Negeri Makassar (sebagai laporan)</li>
-    <li>Wakil Rektor Bidang Pengembangan dan Kerjasama UNM</li>
-    <li>Para Kepala Dinas Pendidikan Provinsi Lokasi PPI</li>
-    <li>Para Kepala Kantor Wilayah Kementerian Agama Provinsi Lokasi PPI</li>
-    <li>Para Kepala Dinas Pendidikan Kabupaten/Kota Lokasi PPI</li>
-    <li>Para Kepala Kantor Kementerian Agama Kabupaten/Kota Lokasi PPI</li>
-    <li>Pertinggal</li>
-  </ol>
-
+  
+  @if (isset($ppi))
+      
+  @if ($ppi->mahasiswa->kementerian == 'KEMENDIKBUD')
+  {!! $surat->tembusan_kemendikbud !!}
+  
+  @else
+  {!! $surat->tembusan_kemenang !!}
+  @endif
+  
+  @endif
   <script>
     window.print()
   </script>
