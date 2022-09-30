@@ -26,6 +26,7 @@ class CreateNilaisTable extends Migration
             $table->string('namalengkap_name')->nullable();
             $table->string('bidang_studi_name')->nullable();
             $table->string('kelas_name')->nullable();
+            $table->string('matakuliah_name')->nullable();
             $table->timestamps();
         });
     }

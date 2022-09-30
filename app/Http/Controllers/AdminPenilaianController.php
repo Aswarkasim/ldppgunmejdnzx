@@ -57,6 +57,7 @@ class AdminPenilaianController extends Controller
             // print_r($cek);
             if ($cek == null) {
                 $data = [
+                    'periode_id'         => $periode_id,
                     'kelas_id'         => $kelas_id,
                     'no_ukg'           => $item->no_ukg,
                     'matakuliah_id'    => $matakuliah_id,
@@ -180,11 +181,20 @@ class AdminPenilaianController extends Controller
         $matakuliah = Matakuliah::wherePeriodeId($mahasiswa->periode_id)->get();
 
         // dd($mahasiswa);
+        $role = Auth::user()->role;
+        $periode_id = '';
+        if ($role == 'superadmin') {
+            $periode_id = Session::get('periode_id');
+        } else {
+            $periode_id = Auth::user()->periode_id;
+        }
+
         foreach ($matakuliah as $item) {
             $cek = Nilai::whereNoUkg($mahasiswa->no_ukg)->whereMatakuliahId($item->id)->first();
 
             if ($cek == false) {
                 $data = [
+                    'periode_id'    => $periode_id,
                     'no_ukg'           => $mahasiswa->no_ukg,
                     'matakuliah_id'    => $item->id,
                 ];
