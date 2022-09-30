@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\KelasPesertaExport;
+use App\Exports\NilaiExport;
 use App\Models\Kelas;
 use Ramsey\Uuid\Uuid;
 use App\Imports\KelasImport;
 use App\Models\Adminkelasrole;
 use App\Models\KelasPeserta;
+use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Models\Nilai;
 use Illuminate\Http\Request;
@@ -212,5 +215,39 @@ class AdminKelasController extends Controller
             'content'           => 'admin/kelas/nilai'
         ];
         return view('admin/layouts/wrapper', $data);
+    }
+
+    function exportNilaiExcel()
+    {
+        $this->updateDataNilai();
+        $periode_id = Session::get('periode_id');
+        return Excel::download(new NilaiExport($periode_id), 'Nilai.xlsx');
+    }
+
+    private function updateDataNilai()
+    {
+        $periode_id = Session::get('periode_id');
+        $nilai = Nilai::with(['mahasiswa', 'kelas'])->wherePeriodeId($periode_id)->get();
+        foreach ($nilai as $item) {
+            $item->npm = $item->mahasiswa->npm;
+            $item->namalengkap_name = $item->mahasiswa->namalengkap;
+            $item->bidang_studi_name = isset($item->mahasiswa->bidang_studi) ? $item->mahasiswa->bidang_studi->name : null;
+            $item->kelas_name = isset($item->kelas) ?  $item->kelas->name : null;
+
+            $item->save();
+        }
+    }
+
+    function updatePeriodeNilai()
+    {
+        $nilai = Nilai::with('mahasiswa')->get();
+        // dd($nilai[0]);
+        foreach ($nilai as $item) {
+            if ($item->periode_id != $item->mahasiswa->periode_id) {
+                $item->periode_id = $item->mahasiswa->periode_id;
+                $item->save();
+            }
+            // echo $item->mahasiswa->namalengkap;
+        }
     }
 }

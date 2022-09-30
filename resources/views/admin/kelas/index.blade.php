@@ -16,7 +16,7 @@
       
     <a href="{{$create}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
     @include('admin/kelas/import')
-  
+    <a href="/account/kelas/export" class="btn btn-primary"><i class="fas fa-download"></i> Export</a>
   @endif
   <div class="float-right">
     <form action="" method="get">

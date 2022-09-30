@@ -20,4 +20,9 @@ class Nilai extends Model
     {
         return $this->belongsTo(Matakuliah::class);
     }
+
+    function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

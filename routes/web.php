@@ -134,7 +134,9 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     });
 
     Route::prefix('/kelas')->middleware('role:superadmin')->group(function () {
+        Route::get('/update/periode/nilai', [AdminKelasController::class, 'updatePeriodeNilai']);
         Route::post('/import', [AdminKelasController::class, 'import']);
+        Route::get('/export', [AdminKelasController::class, 'exportNilaiExcel']);
         Route::get('/show/nilai/{kelas_id}', [AdminKelasController::class, 'lihatNilai']);
         Route::get('/download', [AdminKelasController::class, 'downloadFormat']);
         Route::post('/peserta/create', [AdminKelasPesertaController::class, 'create']);
