@@ -5,7 +5,9 @@
             <td>Nama Lengkap</td>
             <td>Bidanng Studi</td>
             <td>Kelas</td>
-            <td>Nilai</td>
+            <td>Nilai ACUAN</td>
+            <td>Nilai INDEX</td>
+            <td>Nilai MUTU</td>
 
     </tr>
   </thead>
@@ -17,7 +19,9 @@
           <td>{{ $item->namalengkap_name }}</td>
           <td>{{ $item->bidangstudi_name }}</td>
           <td>{{ $item->kelas_name }}</td>
-          <td>{{ $item->nilai }}</td>
+          <td>{{ $item->nilai_acuan }}</td>
+          <td>{{ $item->nilai_index }}</td>
+          <td>{{ $item->nilai_mutu }}</td>
     </tr>
     @endforeach
   </tbody>
