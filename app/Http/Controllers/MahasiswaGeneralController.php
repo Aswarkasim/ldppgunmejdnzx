@@ -29,7 +29,7 @@ class MahasiswaGeneralController extends Controller
         $user_id = auth()->user()->id;
         $periode_id = auth()->user()->periode_id;
         $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
-        dd($ppi);
+        // dd($ppi);
         if ($mahasiswa->keaktifan == 'LULUS') {
             // die('ketiga');
             // die($cek);
