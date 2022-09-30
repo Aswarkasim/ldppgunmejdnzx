@@ -227,12 +227,13 @@ class AdminKelasController extends Controller
     private function updateDataNilai()
     {
         $periode_id = Session::get('periode_id');
-        $nilai = Nilai::with(['mahasiswa', 'kelas'])->wherePeriodeId($periode_id)->get();
+        $nilai = Nilai::with(['mahasiswa', 'kelas', 'matakuliah'])->wherePeriodeId($periode_id)->get();
         foreach ($nilai as $item) {
             $item->npm = $item->mahasiswa->npm;
             $item->namalengkap_name = $item->mahasiswa->namalengkap;
             $item->bidang_studi_name = isset($item->mahasiswa->bidang_studi) ? $item->mahasiswa->bidang_studi->name : null;
             $item->kelas_name = isset($item->kelas) ?  $item->kelas->name : null;
+            $item->matakuliah_name = isset($item->matakuliah) ?  $item->matakuliah->name : null;
 
             $item->save();
         }
