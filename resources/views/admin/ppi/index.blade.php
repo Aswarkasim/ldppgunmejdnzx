@@ -6,7 +6,7 @@
       <div class="card-body">
 
 
-        @if ($mahasiswa->keaktifan == 'AKTIF')
+        @if ($mahasiswa->keaktifan == 'AKTIF' || $mahasiswa->keaktifan == 'LULUS')
     
         
 
