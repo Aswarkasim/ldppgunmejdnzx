@@ -66,7 +66,7 @@ class AdminMahasiswaController extends Controller
         $filter = request('filter');
 
         if ($filter == null) {
-            $filter = ['AKTIF', 'LULUS'];
+            $filter = 'AKTIF';
         }
 
         $berkas = request('berkas');
