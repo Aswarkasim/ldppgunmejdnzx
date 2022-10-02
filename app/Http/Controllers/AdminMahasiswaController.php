@@ -65,10 +65,6 @@ class AdminMahasiswaController extends Controller
         $cari = request('cari');
         $filter = request('filter');
 
-        if ($filter == null) {
-            $filter = 'AKTIF';
-        }
-
         $berkas = request('berkas');
         if ($berkas == null) {
             $berkas = 'VALID';
@@ -76,11 +72,28 @@ class AdminMahasiswaController extends Controller
 
         $kementerian = 'KEMENDIKBUD';
 
-        if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+        if ($filter != null) {
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+
+            if ($cari) {
+                $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            } else {
+                $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            }
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+
+            if ($cari) {
+                $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            } else {
+                $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
+            }
         }
+
+
+
+
+
+
 
 
         $data = [
