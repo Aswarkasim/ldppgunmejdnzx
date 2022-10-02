@@ -37,49 +37,13 @@ class MahasiswaExport implements FromView
     {
         // $kemeterian = request('kemeterian');
         // die($this->filter);
-        $data['mahasiswa'] = Mahasiswa::whereIsRegistered(1)->whereKeaktifan($this->filter)->wherePeriodeId($this->periode_id)->get();
+
+        if ($this->filter != null) {
+            $mahasiswa = Mahasiswa::whereIsRegistered(1)->whereKeaktifan($this->filter)->wherePeriodeId($this->periode_id)->get();
+        } else {
+            $mahasiswa = Mahasiswa::whereIsRegistered(1)->wherePeriodeId($this->periode_id)->get();
+        }
+        $data['mahasiswa'] = $mahasiswa;
         return view('admin.mahasiswa.export', $data);
     }
-
-    //construct
-    // public function __construct()
-    // {
-    //     $this->mahasiswa = Mahasiswa::whereIsRegistered(1)->get();
-    // }
-    // public function collection()
-    // {
-    //     return $this->mahasiswa;
-    // }
-
-
-    // public function map($row): array
-    // {
-    //     return [
-    //         $row->npm,
-    //         $row->namalengkap,
-    //         $row->bidang_studi->name,
-    //         $row->provinceBydomisili->name,
-    //         $row->status,
-    //         $row->created_at,
-    //         $row->updated_at,
-    //     ];
-    // }
-
-    // function headings(): array
-    // {
-    //     return [
-    //         'NIM',
-    //         'Nama',
-    //         'Bidang Studi',
-    //         'Provinsi',
-    //         'Status',
-    //         'Dibuat',
-    //         'Diubah',
-    //     ];
-    // }
-
-    // public function query()
-    // {
-    //     return Mahasiswa::whereIsRegistered(1);
-    // }
 }

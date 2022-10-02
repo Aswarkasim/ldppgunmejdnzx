@@ -65,9 +65,7 @@ class AdminMahasiswaController extends Controller
         $cari = request('cari');
         $filter = request('filter');
 
-        if ($filter == null) {
-            $filter = 'AKTIF';
-        }
+
 
         $berkas = request('berkas');
         if ($berkas == null) {
@@ -75,6 +73,11 @@ class AdminMahasiswaController extends Controller
         }
 
         $kementerian = 'KEMENDIKBUD';
+
+        if ($filter == null) {
+            $filter = 'AKTIF';
+        }
+
 
         if ($cari) {
             $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
