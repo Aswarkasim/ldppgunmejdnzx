@@ -77,9 +77,9 @@ class AdminMahasiswaController extends Controller
         $kementerian = 'KEMENDIKBUD';
 
         if ($cari) {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->where('namalengkap', 'like', '%' . $cari . '%')->orWhere('no_ukg', 'like', '%' . $cari . '%')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->whereKeaktifan($filter)->latest()->paginate(10);
+            $mahasiswa = Mahasiswa::with('provinceBydomisili')->whereIsRegistered(1)->whereStatus($berkas)->wherePeriodeId($periode_id)->whereKementerian($kementerian)->latest()->paginate(10);
         }
 
 
