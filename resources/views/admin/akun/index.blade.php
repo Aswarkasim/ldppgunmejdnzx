@@ -15,6 +15,7 @@
 
             <div class="form-group">
               <div class="row">
+                <p>Periode ID : {{ $akun->periode_id }}</p>
                 <div class="col-md-3">
                   <label for=""> No. UKG<span class="text-danger">*</span></label>
                 </div>
