@@ -32,7 +32,7 @@
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{ isset($item->mahasiswa->npm) ? $item->mahasiswa->npm : 'Data Kosong'}}</td>
-              <td>{{$item->mahasiswa->namalengkap}}</td>
+              <td>{{ isset($item->mahasiswa->namalengkap) ? $item->mahasiswa->namalengkap : 'Data Kosong'}}</td>
               <td>{{$item->nilai_acuan}}</td>
               <td>{{$item->nilai_index}}</td>
             </tr>
