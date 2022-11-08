@@ -22,7 +22,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           @foreach ($provider_periode as $item)
-          <a href="/account/periode?id={{$item->id}}&name={{$item->name}}" class="dropdown-item" type="button">{{'Periode '.$item->name.' '.$item->jenisPpg->name.' '.$item->tahun}}</a>
+          <a href="/account/periode?id={{$item->id}}&name={{$item->name}}" class="dropdown-item" type="button">{{'Periode '.$item->name.' '.isset($item->jenisPpg) ? $item->jenisPpg->name : '' .' '.$item->tahun}}</a>
           @endforeach
         </div>
       </div>
