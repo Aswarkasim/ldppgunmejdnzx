@@ -45,7 +45,6 @@
             </button>
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
               <a class="dropdown-item" href="/account/master/periode/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
-              <a class="dropdown-item" href="/account/master/periode/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
                 <form action="/account/master/periode/{{$row->id}}" method="post">
                   @method('delete')
