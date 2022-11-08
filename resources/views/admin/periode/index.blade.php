@@ -34,7 +34,7 @@
     <tr>
       <td width="50px">{{$periode->firstItem() + $loop->index}}</td>
       <td>{{$row->name}} <small>{{'ID : '.$row->id}}</small> </td>
-      <td>{{isset($row->jenisPpg) ? $row->jenisPpg->name : ''}} <small>{{ $row->jenis_ppg_id }}</small> </td>
+      <td>{{isset($row->jenisPpg) ? $row->jenisPpg->name : ''}} <small>{{ 'ID : '.$row->jenis_ppg_id }}</small> </td>
       <td>{{$row->tahun}} </td>
       <td>{{$row->desc}} </td>
       <td>
