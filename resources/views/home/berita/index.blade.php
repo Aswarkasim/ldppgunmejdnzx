@@ -2,7 +2,7 @@
   
 .img-post-wrapper {
     max-width: 100%;
-    max-height: 100px;
+    max-height: 200px;
     overflow: hidden;
 }
 
