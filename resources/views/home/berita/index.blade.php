@@ -27,7 +27,7 @@
 
       @endforeach
 
-       <div class="float-right">
+       <div class="float-right mt-3">
             {{$post->appends(request()->except('page'))->links()}}
           </div>
 

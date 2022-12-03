@@ -11,7 +11,7 @@ class HomeBeritaController extends Controller
     function index()
     {
 
-        $post = Post::orderBy('created_at', 'desc')->paginate(5);
+        $post = Post::orderBy('created_at', 'desc')->paginate(1);
         $data = [
             'post'          => $post,
             'content'       => 'home/berita/index'
