@@ -30,6 +30,10 @@
             <a class="nav-link active {{Request::is('/') ? 'active-menu-header' : ''}}" aria-current="page" href="/"><i class="fas fa-home"></i> Beranda</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link active {{Request::is('berita*') ? 'active-menu-header' : ''}}" aria-current="page" href="/berita"><i class="fas fa-newspaper"></i> Berita</a>
+          </li>
+
            <li class="nav-item">
             <a class="nav-link active {{Request::is('petunjuk') ? 'active-menu-header' : ''}}" aria-current="page" href="/petunjuk"><i class="fas fa-directions"></i> Petunjuk Pendaftaran</a>
           </li>

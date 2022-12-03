@@ -3,12 +3,12 @@
   <div class="col-md-12">
     <div class="p-3  card">
       <div class="card-body">
-          <a href="/admin/posts/post" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
+          <a href="/account/posts/post" class="btn btn-info "><i class="fa fa-arrow-left"></i> Kembali</a>
 
-        @if (Request::is('admin/posts/post/create'))
-          <form action="/admin/posts/post" method="POST" enctype="multipart/form-data">  
+        @if (Request::is('account/posts/post/create'))
+          <form action="/account/posts/post" method="POST" enctype="multipart/form-data">  
         @else
-          <form action="/admin/posts/post/{{$post->slug}}" method="POST" enctype="multipart/form-data">  
+          <form action="/account/posts/post/{{$post->slug}}" method="POST" enctype="multipart/form-data">  
             @method('PUT')
         @endif
           @csrf
@@ -28,7 +28,7 @@
 
              
 
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="">Kategori</label>
                 <select name="kategori_id" class="form-control @error('kategori_id') is-invalid @enderror" >
                   <option value="">-- Kategori --</option>
@@ -49,7 +49,7 @@
                       {{$message}}
                     </div>
                 @enderror
-              </div>
+              </div> --}}
 
                 <div class="form-group">
                 <label for="">Gambar</label>

@@ -26,7 +26,7 @@ class AdminPostController extends Controller
             $post = Post::latest()->paginate(10);
         }
         $data = [
-            'title'   => 'Manajemen Artikel',
+            'title'   => 'Manajemen Berita',
             'post' => $post,
             'content' => 'admin/post/index'
         ];
@@ -43,7 +43,7 @@ class AdminPostController extends Controller
         //
 
         $data = [
-            'title'   => 'Tambah Artikel',
+            'title'   => 'Tambah Berita',
             'kategori'  => Kategori::get(),
             'content' => 'admin/post/add'
         ];
@@ -60,7 +60,7 @@ class AdminPostController extends Controller
     {
         //
         $data = $request->validate([
-            'kategori_id'        => 'required',
+            // 'kategori_id'        => 'required',
             'title'              => 'required|min:3',
             'image'              => 'required:mimes:jpg',
             'body'              => 'required|min:3',
@@ -82,7 +82,7 @@ class AdminPostController extends Controller
         }
 
         Post::create($data);
-        Alert::success('Sukses', 'Artikel telah ditambahkan');
+        Alert::success('Sukses', 'Berita telah ditambahkan');
         return redirect('/account/posts/post');
     }
 
@@ -95,6 +95,12 @@ class AdminPostController extends Controller
     public function show($id)
     {
         //
+        $data = [
+            'title'   => 'Tambah Berita',
+            'post' => Post::find($id),
+            'content' => 'admin/post/show'
+        ];
+        return view('admin/layouts/wrapper', $data);
     }
 
     /**
@@ -108,7 +114,7 @@ class AdminPostController extends Controller
         //
 
         $data = [
-            'title'   => 'Tambah Artikel',
+            'title'   => 'Tambah Berita',
             'kategori'  => Kategori::get(),
             'post' => Post::where('slug', $slug)->first(),
             'content' => 'admin/post/add'
@@ -128,7 +134,7 @@ class AdminPostController extends Controller
         //
         $post = Post::where('slug', $slug)->first();
         $data = $request->validate([
-            'kategori_id'        => 'required',
+            // 'kategori_id'        => 'required',
             'title'              => 'required|min:3',
             'image'              => 'mimes:jpeg,jpg,png,bmp',
             'body'              => 'required|min:3',
@@ -155,7 +161,7 @@ class AdminPostController extends Controller
         }
 
         $post->update($data);
-        Alert::success('Sukses', 'Artikel sukses disimpan');
+        Alert::success('Sukses', 'Berita sukses disimpan');
         return redirect('/account/posts/post/' . $data['slug'] . '/edit');
     }
 
@@ -173,7 +179,7 @@ class AdminPostController extends Controller
             unlink($post->image);
         }
         $post->delete();
-        Alert::success('Sukses', 'Artikel sukses dihapus');
+        Alert::success('Sukses', 'Berita sukses dihapus');
         return redirect('/account/posts/post/');
     }
 }

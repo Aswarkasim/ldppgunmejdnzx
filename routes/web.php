@@ -35,6 +35,7 @@ use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminRegisterSettingController;
 use App\Http\Controllers\AdminSuratController;
+use App\Http\Controllers\HomeBeritaController;
 use App\Http\Controllers\MahasiswaGeneralController;
 
 /*
@@ -50,6 +51,10 @@ use App\Http\Controllers\MahasiswaGeneralController;
 
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+
+    Route::get('/berita', [HomeBeritaController::class, 'index']);
+    Route::get('/berita/show/{id}', [HomeBeritaController::class, 'show']);
+
     Route::get('/petunjuk', [HomeController::class, 'petunjuk']);
     Route::get('/timeline', [HomeController::class, 'timeline']);
     Route::get('/helpdesk', [HomeController::class, 'helpdesk']);
