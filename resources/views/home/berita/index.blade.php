@@ -1,3 +1,17 @@
+<style>
+  
+.img-post-wrapper {
+    max-width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.img-post {
+    max-width: 100%;
+}
+
+</style>
+
 <div class="img-wrapper-cover">
   <img src="/img/cover.jpeg" width="100%" alt="">
 </div>
@@ -16,7 +30,10 @@
           
       <div class="card mt-2 shadow-sm rounded">
         <div class="d-flex">
-          <img src="/{{$item->image}}" width="200px" alt="">
+          <div class="img-post-wrapper">
+
+            <img src="/{{$item->image}}" width="200px" alt="">
+          </div>
           
           <div class="content-text p-4">
             <h5><a href="/berita/show/{{$item->id}}" class="text-decoration-none"><strong>{{$item->title}}</strong></a></h5>
