@@ -6,6 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\Matakuliah;
 use App\Models\Nilai;
 use App\Models\Ppi;
+use App\Models\Serdik;
 use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -48,25 +49,20 @@ class MahasiswaGeneralController extends Controller
         }
     }
 
-    private function checkLulus($nilai)
+
+    function cetakSerdik()
     {
+        // die('aa');
+        $no_ukg = auth()->user()->no_ukg;
+        $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
+        // dd($mahasiswa);
+        $serdik = Serdik::whereNoUkg($no_ukg)->first();
 
-        $jumlah = count($nilai);
-        $berhasil = 0;
-        $gagal = 0;
-
-        foreach ($nilai as $item) {
-            if ($item->nilai_index != null && $item->nilai_index != 'K' && $item->nilai_index != 'E') {
-                $berhasil = $berhasil + 1;
-            } else {
-                $gagal = $gagal + 1;
-            }
-        }
-
-        if ($berhasil == $jumlah) {
-            return true;
+        if ($mahasiswa->keaktifan == 'LULUS') {
+            return response()->download('uploads/serdik/' . $serdik->nomor_seri . '.pdf');
         } else {
-            return false;
+            Alert::info('Info', 'Anda belum dinyatakan lulus');
+            return redirect('/account/dashboard');
         }
     }
 }

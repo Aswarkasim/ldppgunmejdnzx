@@ -84,6 +84,20 @@
         <!-- /.info-box -->
       </div>
 
+      <div class="col-md-4">
+        
+        <div class="info-box">
+          <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-certificate"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text"><b>Cetak Sertifikat</b></span>
+            <a href="/account/mahasiswa/serdik/download" class="btn btn-warning" target="_blank">Download</a>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+
 
 
       {{-- <div class="col-md-4">

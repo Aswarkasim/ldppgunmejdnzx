@@ -94,6 +94,15 @@
 </li>
 
 <li class="nav-item">
+  <a href="/account/serdik" class="nav-link {{Request::is('account/serdik*') ? 'active' : ''}}">
+    <i class="nav-icon fas fa-certificate"></i>
+    <p>
+      Serdik
+    </p>
+  </a>
+</li>
+
+<li class="nav-item">
   <a href="/account/kelas" class="nav-link {{Request::is('account/kelas*') ? 'active' : ''}}">
     <i class="nav-icon fas fa-list"></i>
     <p>

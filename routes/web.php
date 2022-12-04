@@ -34,9 +34,11 @@ use App\Http\Controllers\AdminKelasPesertaController;
 use App\Http\Controllers\AdminKelasProgramController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminRegisterSettingController;
+use App\Http\Controllers\AdminSerdikController;
 use App\Http\Controllers\AdminSuratController;
 use App\Http\Controllers\HomeBeritaController;
 use App\Http\Controllers\MahasiswaGeneralController;
+use App\Providers\AdminServiceProvider;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,6 +154,16 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
         Route::get('/download/foto', [AdminKelasPesertaController::class, 'downloadFoto']);
     });
     Route::resource('/kelas', AdminKelasController::class);
+
+
+    Route::prefix('/serdik')->middleware('role:superadmin')->group(function () {
+        Route::post('/import', [AdminSerdikController::class, 'import']);
+        Route::post('/upload', [AdminSerdikController::class, 'uploadSerdik']);
+        Route::get('/download', [AdminSerdikController::class, 'downloadFormat']);
+        Route::get('/listfile', [AdminSerdikController::class, 'listFile']);
+        Route::get('/cek', [AdminSerdikController::class, 'checkFileExist']);
+    });
+    Route::resource('/serdik', AdminSerdikController::class);
 
 
     Route::prefix('/verifikasi')->group(function () {
@@ -279,6 +291,7 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
 
     Route::prefix('/mahasiswa')->middleware('role:mahasiswa')->group(function () {
         Route::get('/skbs/cetak', [MahasiswaGeneralController::class, 'cetakSkbs']);
+        Route::get('/serdik/download', [MahasiswaGeneralController::class, 'cetakSerdik']);
     });
 
 
