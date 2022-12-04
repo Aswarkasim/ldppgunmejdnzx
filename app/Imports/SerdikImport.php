@@ -19,7 +19,7 @@ class SerdikImport implements ToModel, WithStartRow
         return new Serdik([
             'periode_id'    => Session::get('periode_id'),
             'no_ukg'          => $row[0],
-            'nomor_seri'          => $row[0]
+            'nomor_seri'          => $row[1]
         ]);
     }
 
