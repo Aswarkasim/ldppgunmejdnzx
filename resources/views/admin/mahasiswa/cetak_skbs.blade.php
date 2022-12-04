@@ -91,7 +91,7 @@
     @endforeach
 </ol>
 
-<p>pada penyelenggaraan  Program Pendidikan Profesi Guru dalam Jabatan Tahun 2022 Kategori I (Satu) di Universitas Negeri Makassar dan dinyatakan <b>LULUS</b></p>
+<p>pada penyelenggaraan  Program Pendidikan Profesi Guru {{ $periode->jenisPpg->name.' '.$periode->name }} di Universitas Negeri Makassar dan dinyatakan <b>LULUS</b></p>
   <p>Demikian surat keterangan ini dikeluarkan untuk dipergunakan sebagaimana mestinya.</p>
   <img src="/img/stempel_unm.png" style="position: absolute; margin-left:300px; margin-top:20px" width="200px" alt="">
 
