@@ -68,10 +68,11 @@ class AdminSuratController extends Controller
             'jabatan_ttd'        => 'required',
             'nama_ttd'        => 'required',
             'nip'                => 'required',
-            'body'               => 'required',
+            // 'body'               => 'required',
         ]);
 
         $data['perihal']   = $request->perihal;
+        $data['body']   = $request->body;
         $data['tembusan_kemendikbud']   = $request->tembusan_kemendikbud;
         $data['tembusan_kemenag']       = $request->tembusan_kemenag;
         $data['point_mk_kemendikbud']   = $request->point_mk_kemendikbud;
