@@ -62,7 +62,7 @@ class AdminSuratController extends Controller
         // die('masuk');
         $surat = Surat::find($id);
         $data = $request->validate([
-            'perihal'            => 'required',
+            // 'perihal'           => 'required',
             'nomor_surat_awal'   => 'required',
             'nomor_surat_akhir'  => 'required',
             'jabatan_ttd'        => 'required',
@@ -71,6 +71,7 @@ class AdminSuratController extends Controller
             'body'               => 'required',
         ]);
 
+        $data['perihal']   = $request->perihal;
         $data['tembusan_kemendikbud']   = $request->tembusan_kemendikbud;
         $data['tembusan_kemenag']       = $request->tembusan_kemenag;
         $data['point_mk_kemendikbud']   = $request->point_mk_kemendikbud;
