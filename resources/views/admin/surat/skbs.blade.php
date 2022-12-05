@@ -17,7 +17,7 @@
 
                 <input type="hidden" name="name" value="skbs">
 
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="">Perihal</label>
                 <input type="text" class="form-control  @error('perihal') is-invalid @enderror"  name="perihal"  value="{{isset($surat) ? $surat->perihal : old('perihal')}}" placeholder="Perihal">
                 @error('perihal')
@@ -25,7 +25,7 @@
                       {{$message}}
                     </div>
                 @enderror
-              </div>
+              </div> --}}
 
               <div class="form-group">
                 <label for="">Nomor Surat Awal</label>
@@ -79,7 +79,7 @@
               </div>
 
           
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="">Body Surat</label>
                 <textarea class="form-control  @error('body') is-invalid @enderror" id="summernote"  name="body" placeholder="Body Surat">{{isset($surat) ? $surat->body : old('body')}}</textarea>
                 @error('body')
@@ -88,10 +88,10 @@
                     </div>
                 @enderror
               </div>
-              
+               --}}
 
               <div class="form-group">
-                <label for="">Point Kelulusan Kemendikbud</label>
+                <label for="">Body Surat Kemendikbud</label>
                 <textarea class="form-control  @error('point_mk_kemendikbud') is-invalid @enderror" id="summernote-kemendikbud"  name="point_mk_kemendikbud">{{isset($surat) ? $surat->point_mk_kemendikbud : old('point_mk_kemendikbud')}}</textarea>
                 @error('point_mk_kemendikbud')
                     <div class="invalid-feedback">
@@ -101,7 +101,7 @@
               </div>
 
               <div class="form-group">
-                <label for="">Point Kelulusan Kemenag</label>
+                <label for="">Body Surat Kemenang</label>
                 <textarea class="form-control  @error('point_mk_kemenag') is-invalid @enderror" id="summernote-kemenag"  name="point_mk_kemenag">{{isset($surat) ? $surat->point_mk_kemenag : old('point_mk_kemenag')}}</textarea>
                 @error('point_mk_kemenag')
                     <div class="invalid-feedback">
@@ -130,7 +130,7 @@
                 @if ($surat->ttd != null)
                 <a href="/account/surat/ppi/ttd/download?ttd={{ $surat->ttd }}">Download</a>
                 <br>
-                    <img src="/{{ $surat->ttd }}" alt="">
+                    <img src="/{{ $surat->ttd }}" width="200px" alt="">
                 @endif
               </div>
 
@@ -141,7 +141,7 @@
     <br>
                 @if ($surat->paraf != null)
                 <a href="/account/surat/ppi/ttd/download?ttd={{ $surat->paraf }}">Download</a>
-                    <img src="/{{ $surat->paraf }}" alt="">
+                    <img src="/{{ $surat->paraf }}" width="100px" alt="">
                 @endif
               </div>
 

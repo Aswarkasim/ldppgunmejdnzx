@@ -18,6 +18,7 @@
         <form action="/account/surat/ppi/upload/paraf" method="POST" enctype="multipart/form-data">
           @method('PUT')
           @csrf
+          <input type="hidden" name="name" value="{{ request('type') }}">
         <div class="modal-body">
           <input type="hidden" value="{{$surat->id}}" name="id">
           <input type="file" name="paraf" class="form-control" required>

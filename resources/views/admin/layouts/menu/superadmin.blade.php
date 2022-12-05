@@ -124,14 +124,14 @@
   <ul class="nav nav-treeview">
 
     <li class="nav-item">
-      <a href="/account/surat/ppi" class="nav-link {{Request::is('account/surat/ppi*') ? 'child-active' : ''}}">
+      <a href="/account/surat/ppi?type=ppi" class="nav-link {{Request::is('account/surat/ppi*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>PPI</p>
       </a>
     </li>
 
     <li class="nav-item">
-      <a href="/account/surat/skbs" class="nav-link {{Request::is('account/surat/skbs*') ? 'child-active' : ''}}">
+      <a href="/account/surat/skbs?type=skbs" class="nav-link {{Request::is('account/surat/skbs*') ? 'child-active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>SKBS</p>
       </a>

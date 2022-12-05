@@ -92,6 +92,7 @@ class AdminSuratController extends Controller
         $request->validate([
             'ttd'    => 'mimes:png',
         ]);
+        $name = $request->name;
         $surat = Surat::find($request->id);
 
         if ($surat->ttd != null) {
@@ -109,7 +110,7 @@ class AdminSuratController extends Controller
 
         $surat->update($data);
         Alert::success('Sukses', 'Surat diupload');
-        return redirect('/account/surat/ppi');
+        return redirect('/account/surat/' . $name . 'type=' . $name);
     }
 
 
@@ -121,6 +122,7 @@ class AdminSuratController extends Controller
         ]);
         $surat = Surat::find($request->id);
 
+        $name = $request->name;
         if ($surat->paraf != null) {
             unlink($surat->paraf);
         }
@@ -136,7 +138,7 @@ class AdminSuratController extends Controller
 
         $surat->update($data);
         Alert::success('Sukses', 'Surat diupload');
-        return redirect('/account/surat/ppi');
+        return redirect('/account/surat/' . $name . 'type=' . $name);
     }
 
     function previewPpi($id)

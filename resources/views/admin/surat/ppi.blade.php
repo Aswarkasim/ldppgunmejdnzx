@@ -15,6 +15,7 @@
                 @method('PUT')
                 @csrf
 
+                <input type="hidden" name="name" value="{{ request('name') }}">
                 <input type="hidden" name="name" value="ppi">
               <div class="form-group">
                 <label for="">Perihal</label>
@@ -137,7 +138,7 @@
     <br>
                 @if ($surat->paraf != null)
                 <a href="/account/surat/ppi/ttd/download?ttd={{ $surat->paraf }}">Download</a>
-                    <img src="/{{ $surat->paraf }}" alt="">
+                    <img src="/{{ $surat->paraf }}" width="100px"  alt="">
                 @endif
               </div>
 

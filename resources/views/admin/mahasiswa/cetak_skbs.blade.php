@@ -86,13 +86,8 @@
     
   </table>
 <p></p>
-<ol>
-<p>Benar yang bersangkutan telah selesai  mengikuti tahapan Pendidikan Profesi Guru sebagai berikut :</p>
-    {{-- @foreach ($matakuliah as $item)
-    <li>{{ $item->name }}</li>
-    @endforeach --}}
 
-    @isset($mahasiswa)     
+   @isset($mahasiswa)     
       @if ($mahasiswa->kementerian == 'KEMENDIKBUD')
         {!! $surat->point_mk_kemendikbud !!}
           
@@ -104,15 +99,15 @@
     {!! $surat->point_mk_kemendikbud !!}
     @endisset
 
-</ol>
 
- {!! isset($surat) ? $surat->body : '' !!} 
 
-<p>Demikian surat keterangan ini dikeluarkan untuk dipergunakan sebagaimana mestinya.</p>
+ {{-- {!! isset($surat) ? $surat->body : '' !!}  --}}
+
+{{-- <p>Demikian surat keterangan ini dikeluarkan untuk dipergunakan sebagaimana mestinya.</p> --}}
 <img src="/img/stempel_unm.png" style="position: absolute; margin-left:300px; margin-top:20px" width="200px" alt="">
 
-  <div class="ttd" style="margin-left: 400px">
-    {{-- <p style="position: absolute; right: 12px;">Makassar, {{format_tanggal(date('Y-m-d'))}}</p> --}}
+<div class="ttd" style="margin-left: 400px">
+  <div style="right: 12px;">Makassar, {{format_tanggal(date('Y-m-d'))}}</div>
     <p>
       {{ $surat->jabatan_ttd }} <br>
       <img src="/{{ $surat->ttd }}" width="300px" style="position: absolute" alt=""><br>
