@@ -34,6 +34,29 @@ class AdminSuratController extends Controller
         return view('admin/layouts/wrapper', $data);
     }
 
+
+    function skbs()
+    {
+        $periode_id = Session::get('periode_id');
+        $surat = Surat::whereName('SKBS')->wherePeriodeId($periode_id)->first();
+        if ($surat == null) {
+            $dataSurat = [
+                'name'  => 'SKBS',
+                'periode_id' => $periode_id
+            ];
+            Surat::create($dataSurat);
+        }
+
+        $surat = Surat::whereName('SKBS')->wherePeriodeId($periode_id)->first();
+
+        $data = [
+            'title'   => 'Surat SKBS',
+            'surat' => $surat,
+            'content' => 'admin/surat/skbs'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
     function savePpi(Request $request, $id)
     {
         // die('masuk');
@@ -45,15 +68,23 @@ class AdminSuratController extends Controller
             'jabatan_ttd'        => 'required',
             'nama_ttd'        => 'required',
             'nip'                => 'required',
-            'tembusan_kemendikbud'           => 'required',
-            'tembusan_kemenag'           => 'required',
             'body'               => 'required',
         ]);
+
+        $data['tembusan_kemendikbud']   = $request->tembusan_kemendikbud;
+        $data['tembusan_kemenag']       = $request->tembusan_kemenag;
+        $data['point_mk_kemendikbud']   = $request->point_mk_kemendikbud;
+        $data['point_mk_kemenag']       = $request->point_mk_kemenag;
+
+        $typesurat = $request->name;
         $surat->update($data);
 
         Alert::success('Sukses', 'Surat Disimpan');
-        return redirect('/account/surat/ppi');
+        return redirect('/account/surat/' . $typesurat);
     }
+
+
+
 
     function uploadTtd(Request $request)
     {
@@ -114,6 +145,14 @@ class AdminSuratController extends Controller
 
         $data['surat'] = Surat::find($id);
         return view('admin.ppi.cetak_surat', $data);
+    }
+
+    function previewSkbs($id)
+    {
+        // $periode_id = Session::get('periode_id');
+
+        $data['surat'] = Surat::find($id);
+        return view('admin.mahasiswa.cetak_skbs', $data);
     }
 
     function downloadTtd()

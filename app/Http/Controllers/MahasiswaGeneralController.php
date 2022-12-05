@@ -8,6 +8,7 @@ use App\Models\Nilai;
 use App\Models\Periode;
 use App\Models\Ppi;
 use App\Models\Serdik;
+use App\Models\Surat;
 use App\Models\ValidProfileMahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -31,7 +32,6 @@ class MahasiswaGeneralController extends Controller
         $user_id = auth()->user()->id;
         $periode_id = auth()->user()->periode_id;
         $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
-        $periode = Periode::with('jenisPpg')->find($periode_id);
         // dd($ppi);
         if ($mahasiswa->keaktifan == 'LULUS') {
             // die('ketiga');
@@ -40,7 +40,8 @@ class MahasiswaGeneralController extends Controller
 
                 $data['mahasiswa'] = $mahasiswa;
                 $data['matakuliah'] = $matakuliah;
-                $data['periode'] = $periode;
+                $data['surat'] = Surat::wherePeriodeId($periode_id)->whereName('SKBS')->first();
+                // $data['periode'] = $periode;
                 return view('admin.mahasiswa.cetak_skbs', $data);
             } else {
                 Alert::warning('Peringatan', 'Anda belum mengupload bukti selesai PPI');

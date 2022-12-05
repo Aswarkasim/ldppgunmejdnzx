@@ -132,6 +132,11 @@ Route::prefix('/account')->middleware(['auth'])->group(function () {
     });
 
     Route::prefix('/surat')->middleware('role:superadmin')->group(function () {
+        Route::get('/skbs', [AdminSuratController::class, 'skbs']);
+        Route::get('/skbs/preview/{id}', [AdminSuratController::class, 'previewSkbs']);
+        Route::put('/skbs/save/{id}', [AdminSuratController::class, 'saveSkbs']);
+
+
         Route::get('/ppi', [AdminSuratController::class, 'ppi']);
         Route::get('/ppi/preview/{id}', [AdminSuratController::class, 'previewPpi']);
         Route::put('/ppi/save/{id}', [AdminSuratController::class, 'savePpi']);

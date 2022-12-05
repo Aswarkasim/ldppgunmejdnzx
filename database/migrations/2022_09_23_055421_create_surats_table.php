@@ -19,9 +19,15 @@ class CreateSuratsTable extends Migration
             $table->string('name');
             $table->text('body')->nullable();
             $table->text('perihal')->nullable();
-            $table->text('tembusan')->nullable();
+            $table->text('tembusan_kemendikbud')->nullable();
+            $table->text('tembusan_kemenag')->nullable();
+
+            $table->text('point_mk_kemendikbud')->nullable();
+            $table->text('point_mk_kemenag')->nullable();
+
             $table->integer('nomor_surat_awal')->nullable();
             $table->integer('nomor_surat_akhir')->nullable();
+
             $table->string('jabatan_ttd')->nullable();
             $table->string('nama_ttd')->nullable();
             $table->string('nip')->nullable();

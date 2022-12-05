@@ -130,6 +130,13 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a href="/account/surat/skbs" class="nav-link {{Request::is('account/surat/skbs*') ? 'child-active' : ''}}">
+        <i class="far fa-circle nav-icon"></i>
+        <p>SKBS</p>
+      </a>
+    </li>
+
   </ul>
 </li>
 

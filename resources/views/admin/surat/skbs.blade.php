@@ -4,7 +4,7 @@
     <div class="p-3  card">
       <div class="card-body">
           <a href="/account/surat" class="btn btn-primary "><i class="fa fa-arrow-left"></i> Kembali</a>
-          <a href="/account/surat/ppi/preview/{{ $surat->id }}" target="blank" class="btn btn-info "><i class="fa fa-eye"></i> Preview</a>
+          <a href="/account/surat/skbs/preview/{{ $surat->id }}" target="blank" class="btn btn-info "><i class="fa fa-eye"></i> Preview</a>
 
           
 
@@ -15,7 +15,8 @@
                 @method('PUT')
                 @csrf
 
-                <input type="hidden" name="name" value="ppi">
+                <input type="hidden" name="name" value="skbs">
+
               <div class="form-group">
                 <label for="">Perihal</label>
                 <input type="text" class="form-control  @error('perihal') is-invalid @enderror"  name="perihal"  value="{{isset($surat) ? $surat->perihal : old('perihal')}}" placeholder="Perihal">
@@ -90,25 +91,28 @@
               
 
               <div class="form-group">
-                <label for="">Tembusan Kemendikbud</label>
-                <textarea class="form-control  @error('tembusan_kemendikbud') is-invalid @enderror" id="summernote-kemendikbud"  name="tembusan_kemendikbud" placeholder="Tembusan">{{isset($surat) ? $surat->tembusan_kemendikbud : old('tembusan_kemendikbud')}}</textarea>
-                @error('tembusan_kemendikbud')
+                <label for="">Point Kelulusan Kemendikbud</label>
+                <textarea class="form-control  @error('point_mk_kemendikbud') is-invalid @enderror" id="summernote-kemendikbud"  name="point_mk_kemendikbud">{{isset($surat) ? $surat->point_mk_kemendikbud : old('point_mk_kemendikbud')}}</textarea>
+                @error('point_mk_kemendikbud')
                     <div class="invalid-feedback">
                       {{$message}}
                     </div>
                 @enderror
               </div>
-
 
               <div class="form-group">
-                <label for="">Tembusan Kemenag</label>
-                <textarea class="form-control  @error('tembusan_kemenag') is-invalid @enderror" id="summernote-kemenag"  name="tembusan_kemenag" placeholder="Tembusan">{{isset($surat) ? $surat->tembusan_kemenag : old('tembusan_kemenag')}}</textarea>
-                @error('tembusan_kemenag')
+                <label for="">Point Kelulusan Kemenag</label>
+                <textarea class="form-control  @error('point_mk_kemenag') is-invalid @enderror" id="summernote-kemenag"  name="point_mk_kemenag">{{isset($surat) ? $surat->point_mk_kemenag : old('point_mk_kemenag')}}</textarea>
+                @error('point_mk_kemenag')
                     <div class="invalid-feedback">
                       {{$message}}
                     </div>
                 @enderror
               </div>
+
+              
+
+
 
 
               <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
