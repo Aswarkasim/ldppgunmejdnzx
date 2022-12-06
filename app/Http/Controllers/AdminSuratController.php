@@ -112,7 +112,7 @@ class AdminSuratController extends Controller
 
         $surat->update($data);
         Alert::success('Sukses', 'Surat diupload');
-        return redirect('/account/surat/' . $name . 'type=' . $name);
+        return redirect('/account/surat/' . $name . '?type=' . $name);
     }
 
 
@@ -140,7 +140,7 @@ class AdminSuratController extends Controller
 
         $surat->update($data);
         Alert::success('Sukses', 'Surat diupload');
-        return redirect('/account/surat/' . $name . 'type=' . $name);
+        return redirect('/account/surat/' . $name . '?type=' . $name);
     }
 
     function previewPpi($id)

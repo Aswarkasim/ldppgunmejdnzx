@@ -88,15 +88,8 @@
 <p></p>
 
    @isset($mahasiswa)     
-      @if ($mahasiswa->kementerian == 'KEMENDIKBUD')
         {!! $surat->point_mk_kemendikbud !!}
           
-      @else
-      {!! $surat->point_mk_kemenag !!}
-          
-      @endif
-    @else
-    {!! $surat->point_mk_kemendikbud !!}
     @endisset
 
 
