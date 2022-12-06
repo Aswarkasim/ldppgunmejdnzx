@@ -66,16 +66,23 @@ class MahasiswaGeneralController extends Controller
 
     function cetakSerdik()
     {
-        // die('aa');
-        $no_ukg = auth()->user()->no_ukg;
-        $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
-        // dd($mahasiswa);
-        $serdik = Serdik::whereNoUkg($no_ukg)->first();
+        try {
+            //code...
 
-        if ($mahasiswa->keaktifan == 'LULUS') {
-            return response()->download('uploads/serdik/' . $serdik->nomor_seri . '.pdf');
-        } else {
-            Alert::info('Info', 'Anda belum dinyatakan lulus');
+            // die('aa');
+            $no_ukg = auth()->user()->no_ukg;
+            $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
+            // dd($mahasiswa);
+            $serdik = Serdik::whereNoUkg($no_ukg)->first();
+
+            if ($mahasiswa->keaktifan == 'LULUS') {
+                return response()->download('uploads/serdik/' . $serdik->nomor_seri . '.pdf');
+            } else {
+                Alert::info('Info', 'Anda belum dinyatakan lulus');
+                return redirect('/account/dashboard');
+            }
+        } catch (\Throwable $th) {
+            Alert::info('Info', 'Sertifikat anda belum di upload');
             return redirect('/account/dashboard');
         }
     }
