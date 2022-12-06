@@ -100,7 +100,7 @@
                 @enderror
               </div>
 
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label for="">Body Surat Kemenang</label>
                 <textarea class="form-control  @error('point_mk_kemenag') is-invalid @enderror" id="summernote-kemenag"  name="point_mk_kemenag">{{isset($surat) ? $surat->point_mk_kemenag : old('point_mk_kemenag')}}</textarea>
                 @error('point_mk_kemenag')
@@ -108,7 +108,7 @@
                       {{$message}}
                     </div>
                 @enderror
-              </div>
+              </div> --}}
 
               
 
