@@ -39,16 +39,20 @@ class MahasiswaGeneralController extends Controller
             $periode = Periode::find($periode_id);
 
             if ($periode->jenis_ppg_id != 6) {
-                if ($ppi->bukti_selesai != null) {
+                if (isset($ppi)) {
+                    if ($ppi->bukti_selesai != null) {
 
-                    $data['mahasiswa'] = $mahasiswa;
-                    $data['matakuliah'] = $matakuliah;
-                    $data['surat'] = Surat::wherePeriodeId($periode_id)->whereName('SKBS')->first();
-                    // $data['periode'] = $periode;
-                    return view('admin.mahasiswa.cetak_skbs', $data);
+                        $data['mahasiswa'] = $mahasiswa;
+                        $data['matakuliah'] = $matakuliah;
+                        $data['surat'] = Surat::wherePeriodeId($periode_id)->whereName('SKBS')->first();
+                        // $data['periode'] = $periode;
+                        return view('admin.mahasiswa.cetak_skbs', $data);
+                    } else {
+                        Alert::warning('Peringatan', 'Anda belum mengupload bukti selesai PPI');
+                        return redirect('/account/dashboard');
+                    }
                 } else {
-                    Alert::warning('Peringatan', 'Anda belum mengupload bukti selesai PPI');
-                    return redirect('/account/dashboard');
+                    return redirect('/account/ppi');
                 }
             } else {
                 $data['mahasiswa'] = $mahasiswa;
