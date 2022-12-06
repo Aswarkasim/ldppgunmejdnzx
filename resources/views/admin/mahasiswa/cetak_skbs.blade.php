@@ -87,7 +87,7 @@
   </table>
 <p></p>
 
-   @isset($mahasiswa)     
+   @isset($surat)     
         {!! $surat->point_mk_kemendikbud !!}
           
     @endisset
