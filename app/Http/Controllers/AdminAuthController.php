@@ -24,12 +24,29 @@ class AdminAuthController extends Controller
             'password'  => 'required',
         ]);
 
+        // $this->sinkronasi($request);
+
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
+
+            if (auth()->user()->role == 'mahasiswa') {
+                $this->sinkronasi(auth()->user()->no_ukg);
+            }
             return redirect('account/dashboard');
         }
 
         return back()->with('loginError', 'Gagal login. No. UKG atau password anda salah');
+    }
+
+    private function sinkronasi($no_ukg)
+    {
+        $user = User::whereNoUkg($no_ukg)->first();
+        // dd($user);
+        $mahasiswa = Mahasiswa::whereNoUkg($no_ukg)->first();
+        if ($user->periode_id != $mahasiswa->periode_id) {
+            $user->periode_id = $mahasiswa->periode_id;
+            $user->save();
+        }
     }
 
     function register()
@@ -55,11 +72,13 @@ class AdminAuthController extends Controller
             're_password'   => 'required|same:password'
         ], $message);
         $data['role']   = 'Mahasiswa';
-        $data['periode_id'] = $request->periode_id;
+
         $data['password']   = bcrypt(request('password'));
 
 
         $mahasiswa = Mahasiswa::whereNoUkg($request->no_ukg)->wherePeriodeId($request->periode_id)->first();
+        $data['periode_id'] = $mahasiswa->periode_id;
+
         if (!$mahasiswa) {
             Alert::error('Gagal', 'Nomor UKG anda tidak terdaftar');
             return back()->with('registerError', 'Nomor UKG anda tidak terdaftar untuk periode ini');

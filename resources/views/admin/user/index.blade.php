@@ -22,7 +22,7 @@
         <input type="text" name="cari" class="form-control" placeholder="Cari username atau nomor UKG">
         <span class="input-group-append">
           <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
-          <a href="/admin/user" class="btn btn-info btn-flat tombol-hapus"><i class="fa fa-sync-alt"></i></a>
+          <a href="/admin/user" class="btn btn-info btn-flat"><i class="fa fa-sync-alt"></i></a>
         </span>
       </div>
       </form>
