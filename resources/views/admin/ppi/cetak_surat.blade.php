@@ -133,6 +133,8 @@
     
       @else
       {!! $surat->tembusan_kemenang !!}
+
+      @endif
     @else 
     {!! $surat->tembusan_kemendikbud !!}
     @endif
