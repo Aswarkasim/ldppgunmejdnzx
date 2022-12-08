@@ -139,6 +139,9 @@
     {!! $surat->tembusan_kemendikbud !!}
     @endif
 
+    @else 
+    {!! $surat->tembusan_kemendikbud !!}
+
   @endif
   
   <script>
