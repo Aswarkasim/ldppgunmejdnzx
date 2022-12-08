@@ -90,33 +90,40 @@ class MahasiswaPpiController extends Controller
     }
     function cetakSurat()
     {
-        $user_id = auth()->user()->id;
-        $periode_id = auth()->user()->periode_id;
 
-        $periode = Periode::find($periode_id);
-        $surat = Surat::wherePeriodeId($periode_id)->whereName('ppi')->first();
+        try {
 
-        if ($surat == null) {
-            Alert::info('PPI', 'Surat belum dibuat oleh admin');
-            return redirect('/account/dashboard');
-        } else {
-            // dd($periode);
+            $user_id = auth()->user()->id;
+            $periode_id = auth()->user()->periode_id;
 
-            if ($periode->ppi_status == 'NONAKTIF') {
-                Alert::info('PPI', 'Belum dibuka');
+            $periode = Periode::find($periode_id);
+            $surat = Surat::wherePeriodeId($periode_id)->whereName('ppi')->first();
+
+            if ($surat == null) {
+                Alert::info('PPI', 'Surat belum dibuat oleh admin');
                 return redirect('/account/dashboard');
             } else {
+                // dd($periode);
 
-                $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
-                if ($ppi->kabupaten_name != null && $ppi->sekolah_lokasi != null && $ppi->namalengkap != null && $ppi->alamat != null) {
-                    $data['ppi'] = $ppi;
-                    $data['surat'] = $surat;
-                    return view('admin.ppi.cetak_surat', $data);
+                if ($periode->ppi_status == 'NONAKTIF') {
+                    Alert::info('PPI', 'Belum dibuka');
+                    return redirect('/account/dashboard');
                 } else {
-                    Alert::warning('Gagal Cetak', 'Data PPI anda belum lengkap');
-                    return redirect('/account/ppi');
+
+                    $ppi = Ppi::with(['mahasiswa', 'periode'])->wherePeriodeId($periode_id)->whereUserId($user_id)->first();
+                    if ($ppi->kabupaten_name != null && $ppi->sekolah_lokasi != null && $ppi->namalengkap != null && $ppi->alamat != null) {
+                        $data['ppi'] = $ppi;
+                        $data['surat'] = $surat;
+                        return view('admin.ppi.cetak_surat', $data);
+                    } else {
+                        Alert::warning('Gagal Cetak', 'Data PPI anda belum lengkap');
+                        return redirect('/account/ppi');
+                    }
                 }
             }
+            //code...
+        } catch (\Throwable $th) {
+            return redirect('/account/ppi');
         }
     }
 
