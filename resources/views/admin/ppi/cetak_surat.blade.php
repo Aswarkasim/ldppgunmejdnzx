@@ -126,11 +126,17 @@
   
   @if (isset($ppi))
       
-  @if ($ppi->mahasiswa->kementerian == 'KEMENDIKBUD')
-  {!! $surat->tembusan_kemendikbud !!}
-  
-  @else
-  {!! $surat->tembusan_kemenang !!}
+    @if (isset($mahasiswa))
+        
+      @if ($ppi->mahasiswa->kementerian == 'KEMENDIKBUD')
+      {!! $surat->tembusan_kemendikbud !!}
+    
+      @else
+      {!! $surat->tembusan_kemenang !!}
+    @else 
+    {!! $surat->tembusan_kemendikbud !!}
+    @endif
+
   @endif
   
   @endif
