@@ -139,7 +139,6 @@
 
   @endif
   
-  @endif
   <script>
     window.print()
   </script>
