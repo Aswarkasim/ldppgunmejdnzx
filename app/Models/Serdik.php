@@ -12,6 +12,6 @@ class Serdik extends Model
 
     function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'no_ukg', 'no_ukg');
+        return $this->belongsTo(Mahasiswa::class, 'no_ukg', 'no_ukg')->with('bidang_studi');
     }
 }

@@ -26,6 +26,7 @@
     <tr>
       <th>No</th>
       <th>Nama Mahasiswa</th>
+      <th>Bidang Studi</th>
       <th>Nomor Seri</th>
       <th>Avalable</th>
       <th>Action</th>
@@ -40,6 +41,7 @@
       <td><a href="/account/serdik/{{$row->no_ukg}}"><b>{{isset($row->mahasiswa) ? $row->mahasiswa->namalengkap : ''}} <small>ID : {{$row->id}}</small> </b></a><br>
       <small>No. UKG: {{ $row->no_ukg }}</small>
       </td>
+      <td>{{ isset($row->mahasiswa) ? isset($row->mahasiswa->bidang_studi) ? $row->mahasiswa->bidang_studi->name : '' : ''}}</td>
       <td>{{ $row->nomor_seri }}</td>
       <td>
         @if (file_exists('uploads/serdik/'.$row->nomor_seri.'.pdf'))
