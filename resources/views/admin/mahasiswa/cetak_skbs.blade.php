@@ -52,7 +52,7 @@
   <div class="text-center" style="font-family: serif">
     <p><h3><b><u>SURAT KETERANGAN</u></b></h3>
   
-      <h5>Nomor:{{ isset($surat) ? mt_rand($surat->nomor_surat_awal, $surat->nomor_surat_akhir )  : ''}}/UN36.26/LL/2022</h5>
+      <h5>Nomor:{{ isset($surat) ? mt_rand($surat->nomor_surat_awal, $surat->nomor_surat_akhir )  : ''}}/UN36.26/LL/2023</h5>
   </p>
   </div>
 <p>Yang bertanda tangan di bawah ini, Wakil Rektor Bidang Akademik Universitas Negeri Makassar menerangkan bahwa:</p>
