@@ -34,7 +34,7 @@ class AdminSerdikController extends Controller
         }
 
         if ($cari) {
-            $serdik = Serdik::with(['mahasiswa'])->where('no_ukg', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('no_ukg', 'asc')->paginate(10);
+            $serdik = Serdik::with(['mahasiswa'])->where('no_ukg', 'like', '%' . $cari . '%')->orWhere('nomor_seri', 'like', '%' . $cari . '%')->wherePeriodeId($periode_id)->orderBy('no_ukg', 'asc')->paginate(10);
         } else {
             $serdik = Serdik::with(['mahasiswa'])->orderBy('no_ukg', 'asc')->wherePeriodeId($periode_id)->paginate(10);
         }
