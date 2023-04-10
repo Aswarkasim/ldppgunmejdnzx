@@ -42,7 +42,7 @@ class AdminProfileController extends Controller
         }
 
         $profile = Mahasiswa::with(['periode'])->whereUserId($user_id)->whereNoUkg($no_ukg)->first();
-        dd($jenisPpg);
+        dd($profile->periode);
         $jenisPpg = $profile->periode->jenis;
         $data = [
             'title'   => 'Data Diri',
