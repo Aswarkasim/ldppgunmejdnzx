@@ -46,6 +46,9 @@ class AdminAuthController extends Controller
         if ($user->periode_id != $mahasiswa->periode_id) {
             $user->periode_id = $mahasiswa->periode_id;
             $user->save();
+
+            $mahasiswa->user_id = $user->id;
+            $mahasiswa->save();
         }
     }
 
