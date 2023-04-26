@@ -172,7 +172,7 @@ class AdminDashboardController extends Controller
         $data = [
             'user'      => User::find($user_id),
             'periode'   => Periode::find($periode_id),
-            'mahasiswa' => Mahasiswa::whereUserId($user_id)->first(),
+            'mahasiswa' => Mahasiswa::whereUserId($user_id)->wherePeriodeId($periode_id)->first(),
             'content'   => 'admin/dashboard/mahasiswa'
         ];
         return view('admin/layouts/wrapper', $data);
