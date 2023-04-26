@@ -41,7 +41,7 @@ class AdminProfileController extends Controller
             ValidProfileMahasiswa::create($data);
         }
 
-        $profile = Mahasiswa::with(['periode'])->whereUserId($user_id)->whereNoUkg($no_ukg)->first();
+        $profile = Mahasiswa::with(['periode'])->whereUserId($user_id)->whereNoUkg($no_ukg)->wherePeriodeId($periode_id)->first();
         // dd($profile->periode);
         $jenisPpg = $profile->periode->jenis;
         $data = [
