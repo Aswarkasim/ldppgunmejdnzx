@@ -50,7 +50,7 @@ class AdminAuthController extends Controller
             if ($user->id != $mahasiswa->user_id) {
                 $mahasiswa->user_id = $user->id;
                 $mahasiswa->save();
-                return dd($mahasiswa);
+                // return dd($mahasiswa);
             }
         }
     }
