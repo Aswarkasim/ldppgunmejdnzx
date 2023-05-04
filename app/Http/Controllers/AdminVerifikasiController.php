@@ -44,7 +44,8 @@ class AdminVerifikasiController extends Controller
 
         if (Auth::user()->role == 'verificator') {
             $user_id = Auth::user()->id;
-            $verify = VerifyRole::with('province')->whereUserId($user_id)->get();
+            $periode_id = Auth::user()->periode_id;
+            $verify = VerifyRole::with('province')->whereUserId($user_id)->wherePeriodeId($periode_id)->get();
             $data = [
                 'title'   => 'Verifikasi Berkas',
                 'verify' => $verify,
